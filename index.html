@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DRGTECH — Tecnologia Explicada do Jeito Simples</title>
+  <meta name="description" content="Tutoriais práticos e passo a passo para resolver os problemas mais comuns no seu celular, computador e internet. Sem complicação, sem jargão técnico." />
+  <meta name="keywords" content="suporte técnico, tutorial tecnologia, resolver problemas celular, computador lento, wifi caindo, impressora offline" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="DRGTECH — Tecnologia Explicada do Jeito Simples" />
+  <meta property="og:description" content="Tutoriais práticos para resolver seus problemas de tecnologia rápido e sem complicação." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://drgtech.com.br/" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .hero-decoration {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 400px;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .hero-decoration::before {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(37,99,235,0.045) 0%, transparent 65%);
+      top: -300px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .hero > * { position: relative; z-index: 1; }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">D</div>
+        <div>
+          <span class="logo-text">DRGTECH</span>
+          <span class="logo-tagline">Tecnologia do jeito simples</span>
+        </div>
+      </a>
+
+      <div class="header-search">
+        <span class="search-icon">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </span>
+        <input type="text" id="search-input" placeholder="Buscar tutoriais..." autocomplete="off" />
+      </div>
+
+      <nav class="header-nav" aria-label="Navegação principal">
+        <a href="#windows" class="nav-link">Windows</a>
+        <a href="#celular" class="nav-link">Celular</a>
+        <a href="#internet" class="nav-link">Internet</a>
+        <a href="#seguranca" class="nav-link">Segurança</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="#windows" class="nav-link">Windows</a>
+      <a href="#celular" class="nav-link">Celular</a>
+      <a href="#internet" class="nav-link">Internet</a>
+      <a href="#seguranca" class="nav-link">Segurança</a>
+    </nav>
+  </header>
+
+  <main id="conteudo-principal">
+
+  <!-- Hero -->
+  <section class="hero" style="position: relative;">
+    <div class="hero-decoration"></div>
+    <div class="hero-badge animate-in">Tutoriais Gratuitos &amp; Atualizados</div>
+    <h1 class="animate-in delay-1">Resolva seus problemas<br/>de <em>tecnologia</em> agora</h1>
+    <p class="animate-in delay-2">
+      Guias passo a passo escritos por especialistas, pensados para quem não é técnico.
+      Simples, direto ao ponto e sem enrolação.
+    </p>
+    <div class="hero-stats animate-in delay-3">
+      <div class="stat">
+        <span class="stat-num">5+</span>
+        <span class="stat-label">Tutoriais</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Gratuito</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">Passo</span>
+        <span class="stat-label">a Passo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Filter -->
+  <div class="category-bar animate-in delay-4">
+    <button class="cat-btn active" data-category="todos">Todos</button>
+    <button class="cat-btn" data-category="windows">Windows</button>
+    <button class="cat-btn" data-category="celular">Celular</button>
+    <button class="cat-btn" data-category="internet">Internet</button>
+    <button class="cat-btn" data-category="seguranca">Segurança</button>
+  </div>
+
+  <!-- Articles Grid -->
+  <div class="section-divider"></div>
+  <section class="articles-section">
+    <div class="section-header">
+      <h2 class="section-title">Tutoriais em <em>Destaque</em></h2>
+      <span class="section-subtitle">Guias práticos, testados e sempre atualizados</span>
+    </div>
+
+    <div class="articles-grid" id="articles-grid">
+
+      <!-- Card 1 -->
+      <a href="artigos/impressora-offline-windows.html" class="article-card animate-in delay-1"
+         data-title="impressora offline windows" data-category="windows">
+        <div class="card-icon-area">
+          <div class="card-icon icon-blue">🖨️</div>
+          <div class="card-meta">
+            <span class="card-category cat-windows">Windows</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Resolver o Erro de Impressora Offline no Windows</h3>
+          <p class="card-excerpt">A impressora aparece como "Offline" e não imprime nada? Veja os 5 métodos testados para resolver isso em minutos, sem precisar de técnico.</p>
+          <div class="card-footer">
+            <span class="read-time">6 min de leitura</span>
+            <span class="read-more">Ler tutorial →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2 -->
+      <a href="artigos/wifi-caindo-como-resolver.html" class="article-card animate-in delay-2"
+         data-title="wifi caindo internet cair como resolver celular pc" data-category="internet">
+        <div class="card-icon-area">
+          <div class="card-icon icon-purple">📶</div>
+          <div class="card-meta">
+            <span class="card-category cat-wifi">Internet</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Wi-Fi Caindo o Tempo Todo? Veja Como Resolver no Celular e no PC</h3>
+          <p class="card-excerpt">Internet que cai toda hora é frustrante. Descubra as causas mais comuns e os fixes testados que funcionam tanto no celular quanto no computador.</p>
+          <div class="card-footer">
+            <span class="read-time">7 min de leitura</span>
+            <span class="read-more">Ler tutorial →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3 -->
+      <a href="artigos/celular-travando-lento-android.html" class="article-card animate-in delay-3"
+         data-title="celular travando lento android deixar mais rápido" data-category="celular">
+        <div class="card-icon-area">
+          <div class="card-icon icon-green">📱</div>
+          <div class="card-meta">
+            <span class="card-category cat-android">Celular</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Celular Travando e Lento: Como Deixar Seu Android Mais Rápido</h3>
+          <p class="card-excerpt">Seu celular fica travando, apps fecham sozinhos e tudo demora para abrir? Aprenda a acelerar seu Android sem precisar formatar.</p>
+          <div class="card-footer">
+            <span class="read-time">8 min de leitura</span>
+            <span class="read-more">Ler tutorial →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 4 -->
+      <a href="artigos/bateria-celular-acaba-rapido.html" class="article-card animate-in delay-4"
+         data-title="bateria celular acaba rápido economizar android" data-category="celular">
+        <div class="card-icon-area">
+          <div class="card-icon icon-orange">🔋</div>
+          <div class="card-meta">
+            <span class="card-category cat-bateria">Celular</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Bateria do Celular Acaba Rápido? Veja Como Economizar de Verdade</h3>
+          <p class="card-excerpt">Celular que não dura nem meio dia é desgastante. Veja quais apps estão sugando sua bateria e o que fazer para a carga durar muito mais.</p>
+          <div class="card-footer">
+            <span class="read-time">7 min de leitura</span>
+            <span class="read-more">Ler tutorial →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 5 -->
+      <a href="artigos/remover-virus-computador-gratis.html" class="article-card animate-in delay-5"
+         data-title="remover vírus computador grátis sem pagar windows" data-category="seguranca">
+        <div class="card-icon-area">
+          <div class="card-icon icon-red">🛡️</div>
+          <div class="card-meta">
+            <span class="card-category cat-seguranca">Segurança</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Remover Vírus do Computador Sem Pagar Nada</h3>
+          <p class="card-excerpt">Computador lento, anúncios aparecendo do nada, programas estranhos instalados? Siga esse guia e limpe seu PC de vírus usando ferramentas gratuitas.</p>
+          <div class="card-footer">
+            <span class="read-time">9 min de leitura</span>
+            <span class="read-more">Ler tutorial →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="no-results" id="no-results">
+      <p>Nenhum tutorial encontrado para sua busca. Tente outras palavras-chave.</p>
+    </div>
+  </section>
+
+  </main><!-- /main -->
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">D</div>
+          <div>
+            <span class="logo-text">DRGTECH</span>
+            <span class="logo-tagline">Tecnologia do jeito simples</span>
+          </div>
+        </a>
+        <p>Tutoriais gratuitos e práticos para resolver seus problemas de tecnologia. Escritos por especialistas, pensados para você.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Categorias</h4>
+        <ul>
+          <li><a href="#">Windows</a></li>
+          <li><a href="#">Celular Android</a></li>
+          <li><a href="#">Internet e Wi-Fi</a></li>
+          <li><a href="#">Segurança</a></li>
+          <li><a href="#">Bateria e Hardware</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>O Site</h4>
+        <ul>
+          <li><a href="sobre.html">Sobre o DRGTECH</a></li>
+          <li><a href="privacidade.html">Política de Privacidade</a></li>
+          <li><a href="termos.html">Termos de Uso</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 <strong>DRGTECH</strong> — Todos os direitos reservados.</p>
+      <p>Feito para quem só quer que a tecnologia funcione.</p>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Voltar ao topo">↑</button>
+  <script src="js/main.js"></script>
+</body>
+</html>
