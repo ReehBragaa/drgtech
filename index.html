@@ -12,27 +12,7 @@
   <meta property="og:type" content="website" />
   <link rel="canonical" href="https://drgtech.com.br/" />
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    .hero-decoration {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 400px;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
-    }
-    .hero-decoration::before {
-      content: '';
-      position: absolute;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(37,99,235,0.045) 0%, transparent 65%);
-      top: -300px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .hero > * { position: relative; z-index: 1; }
-  </style>
+
 </head>
 <body>
   <div id="progress-bar"></div>
@@ -77,8 +57,7 @@
   <main id="conteudo-principal">
 
   <!-- Hero -->
-  <section class="hero" style="position: relative;">
-    <div class="hero-decoration"></div>
+  <section class="hero">
     <div class="hero-badge animate-in">Tutoriais Gratuitos &amp; Atualizados</div>
     <h1 class="animate-in delay-1">Resolva seus problemas<br/>de <em>tecnologia</em> agora</h1>
     <p class="animate-in delay-2">
