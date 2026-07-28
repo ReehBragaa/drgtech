@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Página Inicial -->
+  <url>
+    <loc>https://drgtech.com.br/</loc>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Páginas Institucionais -->
+  <url>
+    <loc>https://drgtech.com.br/sobre.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/contato.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/privacidade.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/termos.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Artigos / Tutoriais -->
+  <url>
+    <loc>https://drgtech.com.br/artigos/impressora-offline-windows.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/wifi-caindo-como-resolver.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/celular-travando-lento-android.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/bateria-celular-acaba-rapido.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/remover-virus-computador-gratis.html</loc>
+    <priority>0.90</priority>
+  </url>
+</urlset>
