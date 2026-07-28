@@ -132,6 +132,13 @@ body {
   flex-shrink: 0;
 }
 
+.logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .logo-text {
   font-family: var(--font-body);
   font-size: 1.25rem;
