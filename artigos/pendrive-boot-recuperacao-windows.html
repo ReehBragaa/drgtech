@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como Criar Pendrive de Boot e Recuperar o Windows — DRGTECH</title>
+  <meta name="description" content="Aprenda a criar um pendrive de boot oficial da Microsoft e recuperar o Windows 10 ou 11 que não liga, fazer diagnósticos no CMD e salvar seus arquivos." />
+  <meta name="keywords" content="pendrive de boot windows, recuperar windows nao liga, media creation tool, reparo de inicializacao, backup pelo cmd, bios atalhos boot" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Como Criar Pendrive de Boot e Recuperar o Windows" />
+  <meta property="og:description" content="Guia definitivo para criar pendrive de boot do Windows 10/11, acessar a BIOS, reparar a inicialização e salvar seus arquivos." />
+  <meta property="og:type" content="article" />
+  <link rel="canonical" href="https://drgtech.com.br/artigos/pendrive-boot-recuperacao-windows.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Código do Google AdSense -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-SEU_ID_AQUI" crossorigin="anonymous"></script> -->
+  <style>
+    .bios-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.92rem;
+    }
+    .bios-table th {
+      background: var(--primary);
+      color: #fff;
+      text-align: left;
+      padding: 12px 16px;
+      font-family: var(--font-body);
+      font-weight: 600;
+    }
+    .bios-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+    .bios-table tr:nth-child(even) {
+      background: var(--bg-subtle);
+    }
+    .bios-table td strong {
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">D</div>
+        <div>
+          <span class="logo-text">DRGTECH</span>
+          <span class="logo-tagline">Tecnologia do jeito simples</span>
+        </div>
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html" class="nav-link">← Voltar</a>
+        <a href="../index.html#windows" class="nav-link">Windows</a>
+        <a href="../index.html#seguranca" class="nav-link">Segurança</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="../index.html" class="nav-link">← Voltar ao início</a>
+    </nav>
+  </header>
+
+  <!-- Article Layout -->
+  <div class="article-page-wrapper">
+    <main>
+
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Início</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../index.html#windows">Windows</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Pendrive de Boot e Recuperação</span>
+      </nav>
+
+      <!-- Article Header -->
+      <header class="article-header">
+        <span class="article-badge badge-blue">Windows</span>
+        <h1 class="article-h1">Como Criar um Pendrive de Boot e Recuperar o Windows (Guia Completo 2026)</h1>
+        <div class="article-intro-meta">
+          <span class="meta-item">10 min de leitura</span>
+          <span class="meta-item">Atualizado em julho de 2026</span>
+          <span class="meta-item">Equipe DRGTECH</span>
+          <span class="difficulty diff-easy">Nível: Intermediário</span>
+        </div>
+      </header>
+
+      <!-- Intro -->
+      <div class="article-intro">
+        <strong>Seu computador parou de carregar o Windows, travou em tela azul ou fica em loop infinito na inicialização?</strong>
+        Não entre em pânico! Antes de levar para a assistência técnica ou pensar em perder seus arquivos, você mesmo pode criar um pendrive de boot de emergência para diagnosticar, reparar o sistema e até resgatar seus documentos pessoais. Neste guia passo a passo, vou te ensinar todo o processo para Windows 10 e Windows 11.
+      </div>
+
+      <!-- Article Body -->
+      <article class="article-body" id="article-body">
+
+        <!-- Requisitos Prévios -->
+        <h2 id="requisitos">Requisitos Prévios Antes de Começar</h2>
+
+        <p>Para realizar este procedimento com sucesso, você precisará de apenas três itens básicos:</p>
+
+        <ul>
+          <li><strong>Um Pendrive USB:</strong> Capacidade mínima de 8 GB (recomendado: 16 GB). <em>Atenção: todos os arquivos dentro dele serão apagados durante o processo.</em></li>
+          <li><strong>Um Computador Auxiliar Funcionando:</strong> Um segundo computador ou notebook com Windows e conexão à internet para baixar a ferramenta oficial.</li>
+          <li><strong>Ferramenta Oficial da Microsoft:</strong> O utilitário gratuito <em>Media Creation Tool</em> do Windows 10 ou 11.</li>
+        </ul>
+
+        <div class="warning-box">
+          <div class="box-content"><p><strong>Aviso importante:</strong> Salve qualquer arquivo importante presente no pendrive antes de iniciar. A ferramenta da Microsoft irá reformatar o pendrive (em FAT32/NTFS) e apagar tudo o que estiver gravado nele.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Parte 1: Criação do Pendrive -->
+        <h2 id="criacao-pendrive">Parte 1: Criando o Pendrive de Boot Passo a Passo</h2>
+
+        <h3 id="passo-1"><span class="method-badge">Passo 1</span> Preparar o Pendrive no Computador Funcional</h3>
+        <p>Conecte o pendrive USB em uma porta funcionando no computador auxiliar. Certifique-se de que ele foi reconhecido pelo sistema e que não há arquivos importantes salvos nele.</p>
+
+        <h3 id="passo-2"><span class="method-badge">Passo 2</span> Baixar a Ferramenta Oficial da Microsoft</h3>
+        <p>Acesse o site oficial de download de software da Microsoft (<code>microsoft.com/software-download</code>) e faça o download da ferramenta <strong>MediaCreationTool.exe</strong> correspondente à sua versão do Windows (Windows 10 ou Windows 11).</p>
+
+        <div class="img-placeholder">
+          <div class="placeholder-icon">📸</div>
+          <strong>[INSERIR PRINT AQUI: Página oficial da Microsoft com o botão de download do Media Creation Tool]</strong>
+          <p>Destaque o botão "Baixar a ferramenta agora"</p>
+        </div>
+
+        <h3 id="passo-3"><span class="method-badge">Passo 3</span> Executar e Configurar a Mídia</h3>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Clique com o botão direito no arquivo <strong>MediaCreationTool.exe</strong> baixado e selecione <strong>Executar como administrador</strong>.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Aceite os Termos de Licença de Software da Microsoft.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">Na tela de opções, marque: <strong>"Criar mídia de instalação (pen drive, DVD ou arquivo ISO) para outro computador"</strong> e clique em Avançar.</div></li>
+          <li><div class="step-num">4</div><div class="step-text">Verifique se o Idioma está em <strong>Português (Brasil)</strong>, Edição (Windows 10/11) e Arquitetura (64-bit x64).</div></li>
+          <li><div class="step-num">5</div><div class="step-text">Na escolha do tipo de mídia, marque <strong>Unidade flash USB</strong>.</div></li>
+          <li><div class="step-num">6</div><div class="step-text">Selecione a letra da unidade correspondente ao seu pendrive inserido.</div></li>
+        </ol>
+
+        <div class="img-placeholder">
+          <div class="placeholder-icon">📸</div>
+          <strong>[INSERIR PRINT AQUI: Tela do Media Creation Tool com a opção "Unidade flash USB" selecionada]</strong>
+          <p>Mostre a escolha do pendrive na lista de unidades</p>
+        </div>
+
+        <h3 id="passo-4"><span class="method-badge">Passo 4</span> Gravação Automática</h3>
+        <p>A ferramenta fará o download dos arquivos do Windows (.ISO) e gravará os setores de inicialização (Boot Sector) no pendrive de forma totalmente automática. Ao finalizar, será exibida a mensagem: <em>"A sua unidade flash USB está pronta"</em>. Clique em Concluir e remova o pendrive com segurança.</p>
+
+        <div class="divider"></div>
+
+        <!-- Parte 2: BIOS e Atalhos -->
+        <h2 id="menu-boot">Parte 2: Atalhos de Teclas para Boot e BIOS por Marca</h2>
+
+        <p>Para inicializar o computador com defeito usando o pendrive, você precisa ligar o computador e pressionar imediatamente a tecla de <strong>Menu de Boot</strong> da placa-mãe.</p>
+
+        <p>Abaixo está a tabela com os principais atalhos por fabricante:</p>
+
+        <table class="bios-table">
+          <thead>
+            <tr>
+              <th>Fabricante / Marca</th>
+              <th>Tecla Menu de Boot (Boot Menu)</th>
+              <th>Tecla de Acesso à BIOS / UEFI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Dell / Alienware</strong></td>
+              <td><strong>F12</strong></td>
+              <td>F2</td>
+            </tr>
+            <tr>
+              <td><strong>HP / Compaq</strong></td>
+              <td><strong>F9</strong> ou <strong>ESC</strong></td>
+              <td>F10 ou ESC</td>
+            </tr>
+            <tr>
+              <td><strong>Lenovo / ThinkPad</strong></td>
+              <td><strong>F12</strong> ou Botão Novo</td>
+              <td>F1 ou F2</td>
+            </tr>
+            <tr>
+              <td><strong>Asus</strong></td>
+              <td><strong>F8</strong> ou <strong>ESC</strong></td>
+              <td>F2 ou DEL</td>
+            </tr>
+            <tr>
+              <td><strong>Acer</strong></td>
+              <td><strong>F12</strong> <em>(Requer ativação na BIOS)</em></td>
+              <td>F2 ou DEL</td>
+            </tr>
+            <tr>
+              <td><strong>Samsung / Gigabyte</strong></td>
+              <td><strong>F12</strong> ou <strong>F11</strong></td>
+              <td>F2 / DEL</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="tip-box">
+          <div class="box-content"><p><strong>Dica prática:</strong> Ligue o computador e comece a pressionar a tecla indicada repetidamente (em toques rápidos) antes que o logotipo do Windows apareça na tela.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Parte 3: Diagnóstico e Reparo -->
+        <h2 id="reparo-diagnostico">Parte 3: Diagnóstico, Reparo e Ambiente de Recuperação (WinRE)</h2>
+
+        <h3 id="acesso-winre">Acessando o Ambiente de Recuperação</h3>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Insira o pendrive de boot no computador defeituoso e ligue-o pressionando a tecla de Boot (ex: F12 no Dell/Lenovo, F9 na HP).</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Na lista que aparecer, escolha a sua <strong>unidade USB</strong> e pressione Enter.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">Na tela inicial do instalador do Windows, selecione o idioma e clique em <strong>Avançar</strong>.</div></li>
+          <li><div class="step-num">4</div><div class="step-text"><strong>Passo crucial:</strong> No canto inferior esquerdo, clique na opção <strong>"Reparar o computador"</strong> (NÃO clique em "Instalar agora").</div></li>
+          <li><div class="step-num">5</div><div class="step-text">Navegue até <strong>Solução de Problemas</strong> &gt; <strong>Opções Avançadas</strong>.</div></li>
+        </ol>
+
+        <div class="img-placeholder">
+          <div class="placeholder-icon">📸</div>
+          <strong>[INSERIR PRINT AQUI: Tela de instalação do Windows com a opção "Reparar o computador" destacada no canto inferior esquerdo]</strong>
+          <p>Destaque o link de reparo em vermelho</p>
+        </div>
+
+        <h3>Opções de Reparo Disponíveis</h3>
+        <ul>
+          <li><strong>Reparo de Inicialização:</strong> Tenta corrigir automaticamente falhas nos arquivos BCD (Boot Configuration Data) e registros de boot corrompidos.</li>
+          <li><strong>Restauração do Sistema:</strong> Reverte a instalação para um Ponto de Restauração anterior sem afetar seus arquivos pessoais.</li>
+          <li><strong>Prompt de Comando (CMD):</strong> Permite fazer diagnósticos avançados, executar reparos manuais e resgatar arquivos.</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <!-- Parte 4: Comandos de Diagnóstico e Truque de Backup -->
+        <h2 id="comandos-cmd">Parte 4: Comandos do CMD e Truque de Backup de Emergência</h2>
+
+        <h3>Comandos de Diagnóstico Offline no Prompt de Comando</h3>
+        <p>No menu <em>Opções Avançadas</em>, abra o <strong>Prompt de Comando</strong> e execute os seguintes diagnósticos:</p>
+
+        <p><strong>1. Verificação de integridade dos arquivos do sistema Windows offline:</strong></p>
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (WinRE)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">sfc /scannow /offbootdir=C:\ /offwindir=C:\Windows</div>
+        </div>
+
+        <p><strong>2. Correção de setores defeituosos e falhas no disco (HD/SSD):</strong></p>
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (WinRE)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">chkdsk C: /f /r</div>
+        </div>
+
+        <h3>Truque Secreto: Backup de Emergência sem Entrar no Windows</h3>
+        <p>Se o sistema estiver muito danificado e for necessário reinstalar o Windows, você pode salvar seus arquivos antes de formatar usando o Bloco de Notas escondido no Prompt de Comando:</p>
+
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Em <em>Opções Avançadas</em>, selecione <strong>Prompt de Comando</strong>.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Conecte um HD externo ou outro pendrive vazio em uma porta USB.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">No CMD, digite <strong>notepad.exe</strong> e pressione <kbd>Enter</kbd>. O Bloco de Notas irá abrir.</div></li>
+          <li><div class="step-num">4</div><div class="step-text">No Bloco de Notas, vá em <strong>Arquivo</strong> &gt; <strong>Abrir</strong> (ou pressione <kbd>Ctrl + O</kbd>).</div></li>
+          <li><div class="step-num">5</div><div class="step-text">No canto inferior da janela de busca, mude a opção de "Documentos de Texto (*.txt)" para <strong>"Todos os arquivos (*.*)"</strong>.</div></li>
+          <li><div class="step-num">6</div><div class="step-text">Agora você pode usar essa janela do explorador como um gerenciador de arquivos! Navegue até suas pastas (como <code>C:\Users\SeuNome\Documents</code> ou <code>Desktop</code>), clique com o botão direito na pasta, selecione <strong>Copiar</strong>, navegue até o seu HD externo e clique em <strong>Colar</strong>.</div></li>
+        </ol>
+
+        <div class="success-box">
+          <div class="box-content"><p><strong>Dica de ouro:</strong> Essa janela do Bloco de Notas funciona como o próprio Explorador de Arquivos do Windows. Você pode copiar gigabytes de dados importantes antes de reinstalar o sistema do zero!</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- FAQ -->
+        <h2 id="faq">Perguntas Frequentes (FAQ)</h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              Posso usar um pendrive de 4 GB para criar a mídia de inicialização?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Não. A imagem de instalação atual do Windows 10 e Windows 11 ultrapassa os 4 GB de tamanho. É obrigatório utilizar um pendrive de pelo menos 8 GB (16 GB é o ideal).
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Usar o "Reparo de Inicialização" apaga meus arquivos pessoais?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Não! O Reparo de Inicialização e a Restauração do Sistema corrigem apenas registros e arquivos do sistema operacional. Seus documentos, fotos e arquivos pessoais são mantidos intactos.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              O pendrive criado para Windows 10 funciona no Windows 11?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Para ferramentas de diagnóstico básico e comando do prompt (CMD), sim. Porém, para reparo completo ou reinstalação do sistema, é recomendável baixar a versão específica do Media Creation Tool correspondente à versão do Windows instalada na máquina defeituosa.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Conclusão -->
+        <h2 id="conclusao">Conclusão e Dica de Prevenção</h2>
+
+        <p>Criar um pendrive de boot e utilizar o Ambiente de Recuperação do Windows (WinRE) é o método mais seguro e eficaz para resolver travamentos de inicialização, restaurar o sistema e garantir que seus arquivos preciosos fiquem a salvo mesmo em casos de falha crítica.</p>
+
+        <div class="success-box">
+          <div class="box-content"><p><strong>Dica de prevenção:</strong> Mantenha esse pendrive de boot guardado em um local seguro como seu "kit de primeiros socorros digital". Além disso, crie Pontos de Restauração periódicos no Windows para facilitar a recuperação imediata sem a necessidade de comandos avançados.</p></div>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="related-articles">
+          <h2>Outros Tutoriais que Podem Ajudar</h2>
+          <div class="related-grid">
+            <a href="remover-virus-computador-gratis.html" class="related-card">
+              <span class="related-card-title">Como Remover Vírus do PC Grátis</span>
+            </a>
+            <a href="impressora-offline-windows.html" class="related-card">
+              <span class="related-card-title">Como Resolver Impressora Offline no Windows</span>
+            </a>
+            <a href="wifi-caindo-como-resolver.html" class="related-card">
+              <span class="related-card-title">Wi-Fi Caindo? Veja Como Resolver</span>
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </main>
+
+    <!-- Sidebar TOC -->
+    <aside class="toc-sidebar">
+      <div class="toc-card">
+        <div class="toc-title">Neste Artigo</div>
+        <ul class="toc-list">
+          <li><a href="#requisitos">Requisitos prévios</a></li>
+          <li><a href="#criacao-pendrive">Criando o pendrive</a></li>
+          <li class="toc-h3"><a href="#passo-1">Passo 1: Preparar</a></li>
+          <li class="toc-h3"><a href="#passo-2">Passo 2: Baixar ferramenta</a></li>
+          <li class="toc-h3"><a href="#passo-3">Passo 3: Configurar</a></li>
+          <li class="toc-h3"><a href="#passo-4">Passo 4: Gravação</a></li>
+          <li><a href="#menu-boot">Tabela de teclas BIOS/Boot</a></li>
+          <li><a href="#reparo-diagnostico">Recuperação (WinRE)</a></li>
+          <li><a href="#comandos-cmd">Comandos CMD &amp; Backup</a></li>
+          <li><a href="#faq">Perguntas frequentes</a></li>
+          <li><a href="#conclusao">Conclusão</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
+      <p>© 2026 <strong>DRGTECH</strong> — Todos os direitos reservados.</p>
+      <p><a href="../index.html">← Voltar ao início</a></p>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Voltar ao topo">↑</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>

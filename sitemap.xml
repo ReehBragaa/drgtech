@@ -26,6 +26,10 @@
 
   <!-- Artigos / Tutoriais -->
   <url>
+    <loc>https://drgtech.com.br/artigos/pendrive-boot-recuperacao-windows.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
     <loc>https://drgtech.com.br/artigos/impressora-offline-windows.html</loc>
     <priority>0.90</priority>
   </url>
