@@ -1,6 +1,6 @@
 /* ============================================
    DRGTECH — main.js
-   Interatividade: progresso, busca, accordion, TOC
+   Interatividade: progresso, busca, accordion, TOC, navegação
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -33,14 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (hamburger && mobileNav) {
     hamburger.addEventListener('click', () => {
       mobileNav.classList.toggle('open');
-      hamburger.textContent = mobileNav.classList.contains('open') ? '✕' : '☰';
     });
   }
 
   // ─── Homepage Article Search ───
   const searchInput = document.getElementById('search-input');
   const articleCards = document.querySelectorAll('.article-card');
-  const articlesGrid = document.getElementById('articles-grid');
   const noResults = document.getElementById('no-results');
 
   if (searchInput && articleCards.length > 0) {
@@ -73,8 +71,52 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardCat = card.dataset.category?.toLowerCase() || '';
         card.style.display = (filter === 'todos' || cardCat === filter) ? 'flex' : 'none';
       });
+
+      if (noResults) {
+        const anyVisible = [...articleCards].some(c => c.style.display !== 'none');
+        noResults.style.display = anyVisible ? 'none' : 'block';
+      }
     });
   });
+
+  // ─── Header & Mobile Nav Category Filter & Smooth Scroll ───
+  const navLinks = document.querySelectorAll('.header-nav .nav-link, .mobile-nav .nav-link');
+  
+  function applyCategoryFilter(catHash) {
+    if (!catHash) return;
+    const cleanCat = catHash.replace('#', '').toLowerCase();
+    
+    const targetBtn = document.querySelector(`.cat-btn[data-category="${cleanCat}"]`);
+    if (targetBtn) {
+      targetBtn.click();
+      
+      const articlesSection = document.querySelector('.articles-section');
+      if (articlesSection) {
+        articlesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        applyCategoryFilter(href);
+
+        if (mobileNav && mobileNav.classList.contains('open')) {
+          mobileNav.classList.remove('open');
+        }
+      });
+    }
+  });
+
+  // Check URL hash on initial page load (e.g. index.html#windows)
+  if (window.location.hash) {
+    setTimeout(() => {
+      applyCategoryFilter(window.location.hash);
+    }, 150);
+  }
 
   // ─── FAQ Accordion ───
   const faqItems = document.querySelectorAll('.faq-item');
@@ -83,9 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btn) {
       btn.addEventListener('click', () => {
         const isOpen = item.classList.contains('open');
-        // Close all
         faqItems.forEach(i => i.classList.remove('open'));
-        // Toggle current
         if (!isOpen) item.classList.add('open');
       });
     }
@@ -147,16 +187,5 @@ document.addEventListener('DOMContentLoaded', () => {
       animObserver.observe(el);
     });
   }
-
-  // ─── Smooth Scroll for anchor links ───
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
 
 });
