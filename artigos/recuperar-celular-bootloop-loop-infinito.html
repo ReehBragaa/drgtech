@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como Recuperar Celular Preso em Bootloop sem Perder Dados — DRGTECH</title>
+  <meta name="description" content="Guia avançado para recuperar celular em bootloop (loop infinito) no Android e iPhone (DFU Mode, Wipe Cache Partition, ADB Sideload e Fastboot) sem formatar arquivos." />
+  <meta name="keywords" content="celular em bootloop, loop infinito samsung motorola iphone, dfu mode iphone ipsw, wipe cache partition recovery, adb sideload ota, fastboot reparar" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Como Recuperar Celular Preso em Bootloop sem Perder os Dados" />
+  <meta property="og:description" content="Aprenda as diferenças entre Recovery e DFU no iOS, como fazer Wipe Cache no Android e enviar atualizações OTA via ADB Sideload." />
+  <meta property="og:type" content="article" />
+  <link rel="canonical" href="https://drgtech.com.br/artigos/recuperar-celular-bootloop-loop-infinito.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.png" alt="DRGTECH — Tecnologia do jeito simples" class="logo-img" />
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html" class="nav-link">← Voltar</a>
+        <a href="../index.html#celular" class="nav-link">Celular</a>
+        <a href="../index.html#seguranca" class="nav-link">Segurança</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="../index.html" class="nav-link">← Voltar ao início</a>
+    </nav>
+  </header>
+
+  <div class="article-page-wrapper">
+    <main>
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Início</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../index.html#celular">Celular</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Recuperação de Bootloop</span>
+      </nav>
+
+      <header class="article-header">
+        <span class="article-badge badge-green">Celular Avançado</span>
+        <h1 class="article-h1">Como Recuperar Celular Preso em Bootloop (Loop Infinito) sem Perder os Dados Pessoais</h1>
+        <div class="article-intro-meta">
+          <span class="meta-item">12 min de leitura</span>
+          <span class="meta-item">Atualizado em julho de 2026</span>
+          <span class="meta-item">Equipe DRGTECH</span>
+          <span class="difficulty diff-easy">Nível: Avançado</span>
+        </div>
+      </header>
+
+      <div class="article-intro">
+        <strong>Seu celular (Samsung, Motorola, Xiaomi ou iPhone) fica reiniciando continuamente na tela com a logomarca da marca e nunca consegue carregar a tela inicial?</strong>
+        Esse estado é conhecido como <strong>Bootloop (loop infinito de inicialização)</strong> e ocorre quando o sistema operacional encontra arquivos corrompidos durante o boot ou falha ao montar as partições do sistema. A boa notícia é que existem métodos técnicos para restaurar o sistema sem precisar formatar a partição de dados do usuário (<code>/data</code>).
+      </div>
+
+      <article class="article-body" id="article-body">
+
+        <h2 id="ios-dfu-recovery">1. Modo de Recuperação vs. Modo DFU no iOS (Preservando Dados)</h2>
+
+        <p>No iPhone, quando o sistema fica preso na maçã da Apple, existem duas maneiras de reinstalar o firmware original usando o iTunes ou Finder no computador:</p>
+
+        <h3>Modo de Recuperação (Recovery Mode):</h3>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Conecte o iPhone ao computador via cabo USB original.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Para iPhone 8 ou superior: Pressione e solte <strong>Volume Cima</strong>, pressione e solte <strong>Volume Baixo</strong> e, em seguida, mantenha pressionado o botão <strong>Lateral (Power)</strong> até surgir a tela com o ícone de cabo conectando ao computador.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">No computador, o iTunes/Finder detectará o iPhone. <strong>ATENÇÃO:</strong> Na caixa de diálogo que surgir com as opções <em>"Restaurar"</em> ou <em>"Atualizar"</em>, clique exclusivamente em <strong>ATUALIZAR</strong>.</div></li>
+        </ol>
+
+        <div class="success-box">
+          <div class="box-content"><p><strong>Como o botão "Atualizar" salva seus dados:</strong> A opção <em>Atualizar</em> baixa o arquivo oficial da versão mais recente do iOS (<code>.ipsw</code>) e reinscreve apenas a partição do sistema operacional sem tocar na partição criptografada contendo suas fotos, mensagens e aplicativos.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="android-wipe-cache">2. Limpeza de Partição de Cache via Recovery (Android)</h2>
+
+        <p>Em smartphones Android (Samsung, Motorola, Xiaomi), uma atualização incompleta de aplicativo ou arquivo temporário de sistema corrompido pode travar a inicialização na logomarca. É possível resolver isso limpando a partição <code>/cache</code> do sistema sem apagar seus arquivos.</p>
+
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Desligue completamente o celular Android (ou force o desligamento segurando Power + Volume Baixo por 10 segundos).</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Para entrar no <strong>Recovery Mode</strong>: Mantenha pressionados os botões <strong>Power + Volume Cima</strong> (em aparelhos Samsung mais novos, o celular deve estar conectado ao cabo USB do PC).</div></li>
+          <li><div class="step-num">3</div><div class="step-text">No menu do Recovery (tela preta com letras amarelas/azuis), use os botões de volume para navegar até a opção <strong>Wipe Cache Partition</strong> e confirme pressionando o botão Power.</div></li>
+          <li><div class="step-num">4</div><div class="step-text">Selecione <strong>Yes</strong> para confirmar. Em seguida, selecione <strong>Reboot System Now</strong>.</div></li>
+        </ol>
+
+        <div class="warning-box">
+          <div class="box-content"><p><strong>Cuidado extremo:</strong> NUNCA selecione a opção <em>Wipe Data / Factory Reset</em>, pois ela apagará todos os dados pessoais do aparelho. Escolha apenas <strong>Wipe Cache Partition</strong>.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="adb-sideload">3. Regravação de Atualização OTA via ADB Sideload</h2>
+
+        <p>Se o <em>Wipe Cache Partition</em> não resolver o bootloop no Android, você pode regravar o sistema oficial por cima usando o comando <code>adb sideload</code> via computador, mantendo seus dados intactos.</p>
+
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Baixe o pacote oficial de atualização OTA original (arquivo <code>.zip</code>) no site oficial da fabricante do seu celular.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">No celular Android (dentro do menu Recovery Mode), selecione a opção <strong>Apply Update from ADB</strong>.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">No computador, abra a janela de comando (CMD) na pasta da ferramenta ADB e execute:</div></li>
+        </ol>
+
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (ADB)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">adb sideload caminho_do_arquivo_atualizacao.zip</div>
+        </div>
+
+        <p>O processo de gravação do sistema oficial enviará o pacote para o celular e substituirá a imagem de boot danificada por uma cópia limpa, resgatando a inicialização do aparelho.</p>
+
+        <div class="divider"></div>
+
+        <h2 id="faq">Perguntas Frequentes</h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              Bootloop pode ser causado por botão Power preso fisicamente?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Sim! Em muitos casos, sujeira ou oxidação travam o botão Power pressionado continuamente, fazendo com que o aparelho fique ligando e desligando sem parar. Pressione o botão físico várias vezes com toques firmes para checar se ele está destravado.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Se a memória interna do celular estiver 100% cheia pode causar bootloop?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Sim. Quando o espaço de armazenamento esgota completamente, o sistema operacional não consegue criar os arquivos de troca (swap) necessários para inicializar a interface gráfica, entrando em loop. O procedimento de <em>Atualizar (iOS)</em> ou <em>ADB Sideload (Android)</em> ajuda a liberar espaço de arquivos temporários.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="conclusao">Conclusão</h2>
+
+        <p>Ficar com o celular preso em bootloop não significa a perda inevitável de suas fotos e dados. Utilizando o recurso de <em>Atualizar</em> no iOS, executando o <em>Wipe Cache Partition</em> ou enviando imagens oficiais via <em>ADB Sideload</em> no Android, você restaura o boot com total segurança.</p>
+
+        <div class="related-articles">
+          <h2>Outros Tutoriais de Celulares</h2>
+          <div class="related-grid">
+            <a href="consumo-oculto-bateria-thermal-throttling-android-iphone.html" class="related-card">
+              <span class="related-card-title">Diagnóstico de Bateria e Aquecimento</span>
+            </a>
+            <a href="celular-travando-lento-android.html" class="related-card">
+              <span class="related-card-title">Como Deixar Android Travando Mais Rápido</span>
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </main>
+
+    <aside class="toc-sidebar">
+      <div class="toc-card">
+        <div class="toc-title">Neste Artigo</div>
+        <ul class="toc-list">
+          <li><a href="#ios-dfu-recovery">1. iOS Recovery &amp; DFU Mode</a></li>
+          <li><a href="#android-wipe-cache">2. Android Wipe Cache Partition</a></li>
+          <li><a href="#adb-sideload">3. ADB Sideload Update</a></li>
+          <li><a href="#faq">Perguntas Frequentes</a></li>
+          <li><a href="#conclusao">Conclusão</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
+      <p>© 2026 <strong>DRGTECH</strong> — Todos os direitos reservados.</p>
+      <p><a href="../index.html">← Voltar ao início</a></p>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Voltar ao topo">↑</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>

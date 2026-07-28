@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como Diagnosticar Perda de Pacotes, Latência e MTU — DRGTECH</title>
+  <meta name="description" content="Guia técnico completo para identificar falhas de roteamento na internet, perda de pacotes com Tracert/WinMTR, calcular o tamanho ideal do MTU e ativar DoH/DoT." />
+  <meta name="keywords" content="perda de pacotes internet, diagnosticar latencia ping alto, tracert winmtr rotas, calcular mtu ping -f -l, dns over https doh dot, traffic shaping provedor" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Sua Internet Está Lenta? Como Diagnosticar Perda de Pacotes e MTU" />
+  <meta property="og:description" content="Aprenda a mapear rotas com Tracert/WinMTR, calcular o tamanho exato do MTU para evitar fragmentação e proteger seu DNS." />
+  <meta property="og:type" content="article" />
+  <link rel="canonical" href="https://drgtech.com.br/artigos/diagnosticar-perda-pacotes-latencia-mtu-dns.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.png" alt="DRGTECH — Tecnologia do jeito simples" class="logo-img" />
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html" class="nav-link">← Voltar</a>
+        <a href="../index.html#internet" class="nav-link">Internet</a>
+        <a href="../index.html#seguranca" class="nav-link">Segurança</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="../index.html" class="nav-link">← Voltar ao início</a>
+    </nav>
+  </header>
+
+  <div class="article-page-wrapper">
+    <main>
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Início</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../index.html#internet">Internet</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Perda de Pacotes e Roteamento</span>
+      </nav>
+
+      <header class="article-header">
+        <span class="article-badge badge-purple">Redes Avançado</span>
+        <h1 class="article-h1">Sua Internet Está Lenta? Como Diagnosticar Perda de Pacotes, Latência e Problemas de Roteamento</h1>
+        <div class="article-intro-meta">
+          <span class="meta-item">13 min de leitura</span>
+          <span class="meta-item">Atualizado em julho de 2026</span>
+          <span class="meta-item">Equipe DRGTECH</span>
+          <span class="difficulty diff-easy">Nível: Avançado</span>
+        </div>
+      </header>
+
+      <div class="article-intro">
+        <strong>Você contratou um plano de fibra óptica de alta velocidade, mas os vídeos continuam travando, chamadas do Zoom falham e jogos online sofrem com ping alto e desconexões?</strong>
+        O problema quase nunca é a velocidade bruta em Megabits (Mbps), mas sim a <strong>perda de pacotes (Packet Loss)</strong>, a má otimização do tamanho dos pacotes (MTU) ou falhas nas rotas de tráfego do seu provedor de internet (ISP). Neste tutorial avançado de engenharia de redes, aprenda a rastrear falhas com Tracert/WinMTR, ajustar o MTU sem fragmentação e criptografar suas requisições de DNS.
+      </div>
+
+      <article class="article-body" id="article-body">
+
+        <h2 id="diagnostico-rotas">1. Diagnóstico de Rota e Perda de Pacotes (Tracert e WinMTR)</h2>
+
+        <p>A perda de pacotes ocorre quando parte das informações enviadas pelo seu computador não chega ao servidor de destino e precisa ser retransmitida, gerando congelamentos na conexão.</p>
+
+        <p>Para descobrir em qual "salto" (roteador intermediário) a sua conexão está perdendo pacotes, podemos usar as ferramentas de rastreamento de rota:</p>
+
+        <h3>Usando o comando Tracert no Windows:</h3>
+        <p>Abra o Prompt de Comando (CMD) e digite:</p>
+
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">tracert 1.1.1.1</div>
+        </div>
+
+        <p>O <code>tracert</code> listará todos os roteadores por onde os seus dados passam até chegar ao destino. Se os tempos em milissegundos (ms) dispararem bruscamente em um salto específico ou exibirem <code>* Request timed out</code>, o gargalo está localizado naquele servidor.</p>
+
+        <h3>Diagnóstico Contínuo com WinMTR:</h3>
+        <p>Para testes prolongados (durante partidas de jogos ou reuniões), o utilitário gratuito <strong>WinMTR</strong> envia centenas de pings por minuto e exibe a porcentagem exata de perda de pacotes (<strong>% Loss</strong>) em cada ponto da rota.</p>
+
+        <div class="info-box">
+          <div class="box-content"><p><strong>Como interpretar o WinMTR:</strong> Se a perda de pacotes ocorre no <strong>Salto 1</strong> (192.168.1.1), o problema é no seu cabo ou roteador residencial. Se ocorre nos **Saltos 2 a 4**, a falha é nos servidores da sua operadora de internet. Se ocorre apenas no **Salto final**, o servidor do jogo/site está sobrecarregado.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="otimizacao-mtu">2. Otimização do MTU (Maximum Transmission Unit) sem Fragmentação</h2>
+
+        <p>O <strong>MTU (Unidade Máxima de Transmissão)</strong> define o maior tamanho de pacote de dados em bytes que a sua placa de rede e o roteador podem enviar sem precisar fatiar (fragmentar) a informação.</p>
+
+        <p>Se o MTU configurado no seu computador for maior do que o suportado pela rede da sua operadora, o roteador precisará quebrar cada pacote enviado em duas partes, **dobrando a latência (ping) e causando perda de pacotes**.</p>
+
+        <h3>Como descobrir o MTU ideal da sua rede:</h3>
+        <p>No Prompt de Comando, envie um teste de ping desativando a fragmentação (parâmetro <code>-f</code>) e definindo um tamanho de teste (parâmetro <code>-l</code>):</p>
+
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">ping 1.1.1.1 -f -l 1472</div>
+        </div>
+
+        <p>Se o sistema retornar a mensagem <em>"O pacote precisa ser fragmentado"</em>, reduza o valor em 10 (ex: <code>1462</code>, <code>1452</code>) até encontrar o **maior valor exato que responda sem fragmentação**.</p>
+
+        <p>Após encontrar o maior valor sem fragmentação (suponha <code>1464</code>), adicione **28 bytes** referentes aos cabeçalhos IP/ICMP para obter o seu MTU ideal (ex: <code>1464 + 28 = 1492</code>).</p>
+
+        <h3>Como aplicar o novo MTU no Windows:</h3>
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (Admin)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">netsh interface ipv4 set subinterface "Wi-Fi" mtu=1492 store=persistent</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="dns-criptografia">3. Ajustes de DNS de Alta Performance e Criptografia DoH / DoT</h2>
+
+        <p>Muitos provedores de internet utilizam servidores de DNS lentos e desatualizados que sofrem com congestionamento e realizam monitoramento de tráfego (Traffic Shaping).</p>
+
+        <h3>Melhores Servidores de DNS Públicos do Mundo:</h3>
+        <ul>
+          <li><strong>Cloudflare (Mais Rápido):</strong> Primário <code>1.1.1.1</code> / Secundário <code>1.0.0.1</code></li>
+          <li><strong>Quad9 (Foco em Segurança):</strong> Primário <code>9.9.9.9</code> / Secundário <code>149.112.112.112</code></li>
+          <li><strong>Google DNS:</strong> Primário <code>8.8.8.8</code> / Secundário <code>8.8.4.4</code></li>
+        </ul>
+
+        <h3>Ativando DNS sobre HTTPS (DoH) no Windows 11:</h3>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Acesse <strong>Configurações &gt; Rede e Internet &gt; Wi-Fi / Ethernet</strong>.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Em <em>Atribuição de Servidor DNS</em>, clique em <strong>Editar</strong> e selecione <strong>Manual (IPv4)</strong>.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">Insira <code>1.1.1.1</code> em DNS Preferencial e selecione a opção **Somente Criptografado (DNS sobre HTTPS)**.</div></li>
+        </ol>
+
+        <div class="tip-box">
+          <div class="box-content"><p><strong>Vantagem do DoH:</strong> O protocolo DNS over HTTPS criptografa todas as pesquisas de endereços web, impedindo que o provedor de internet espione seus hábitos de navegação ou redirecione suas conexões.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="faq">Perguntas Frequentes</h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              Usar cabo de rede (Ethernet) reduz a perda de pacotes em comparação ao Wi-Fi?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Sim! O cabo de rede Cat5e ou Cat6 elimina 100% das interferências de radiofrequência, paredes e ruídos eletromagnéticos inerentes às conexões sem fio, zerando a perda de pacotes local.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              O que fazer se o WinMTR provar que a perda de pacotes está no provedor?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Exporte o relatório do WinMTR em texto e envie para o suporte técnico avançado (Nível 2/3) da sua operadora. O relatório servirá como prova incontestável para que eles reconfigurem as rotas de BGP do seu circuito.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="conclusao">Conclusão</h2>
+
+        <p>Lentidão de internet não é sinônimo apenas de falta de banda. Diagnosticando rotas defeituosas com Tracert/WinMTR, configurando o MTU perfeito sem fragmentação e criptografando o DNS com DoH, você garante o máximo desempenho e estabilidade na sua conexão.</p>
+
+        <div class="related-articles">
+          <h2>Outros Tutoriais de Rede</h2>
+          <div class="related-grid">
+            <a href="wifi-caindo-como-resolver.html" class="related-card">
+              <span class="related-card-title">Como Resolver Wi-Fi Caindo no Celular e PC</span>
+            </a>
+            <a href="detectar-spywares-ocultos-keyloggers-rats.html" class="related-card">
+              <span class="related-card-title">Como Detectar Trojans e Spywares</span>
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </main>
+
+    <aside class="toc-sidebar">
+      <div class="toc-card">
+        <div class="toc-title">Neste Artigo</div>
+        <ul class="toc-list">
+          <li><a href="#diagnostico-rotas">1. Tracert e WinMTR</a></li>
+          <li><a href="#otimizacao-mtu">2. Otimização do MTU</a></li>
+          <li><a href="#dns-criptografia">3. DNS &amp; Criptografia DoH</a></li>
+          <li><a href="#faq">Perguntas Frequentes</a></li>
+          <li><a href="#conclusao">Conclusão</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
+      <p>© 2026 <strong>DRGTECH</strong> — Todos os direitos reservados.</p>
+      <p><a href="../index.html">← Voltar ao início</a></p>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Voltar ao topo">↑</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>

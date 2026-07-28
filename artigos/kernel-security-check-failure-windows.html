@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como Resolver 'Kernel Security Check Failure' sem Formatar — DRGTECH</title>
+  <meta name="description" content="Guia técnico definitivo para resolver a tela azul Kernel Security Check Failure. Aprenda a analisar crash dumps com WinDbg, reparar arquivos offline e ajustar a integridade HVCI." />
+  <meta name="keywords" content="kernel security check failure, minidump windbg, sfc offbootdir, hvci hyper-v conflito, tela azul windows, reparar bcd .sys" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Como Resolver 'Kernel Security Check Failure' sem Formatar o Windows" />
+  <meta property="og:description" content="Análise profunda de crash dumps com WinDbg, reparo de bibliotecas .sys offline e solução de conflitos HVCI/Hyper-V." />
+  <meta property="og:type" content="article" />
+  <link rel="canonical" href="https://drgtech.com.br/artigos/kernel-security-check-failure-windows.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.png" alt="DRGTECH — Tecnologia do jeito simples" class="logo-img" />
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html" class="nav-link">← Voltar</a>
+        <a href="../index.html#windows" class="nav-link">Windows</a>
+        <a href="../index.html#seguranca" class="nav-link">Segurança</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="../index.html" class="nav-link">← Voltar ao início</a>
+    </nav>
+  </header>
+
+  <div class="article-page-wrapper">
+    <main>
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Início</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../index.html#windows">Windows</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Kernel Security Check Failure</span>
+      </nav>
+
+      <header class="article-header">
+        <span class="article-badge badge-blue">Windows Avançado</span>
+        <h1 class="article-h1">Como Resolver o Erro 'Kernel Security Check Failure' e Recuperar o Boot sem Formatar o Windows</h1>
+        <div class="article-intro-meta">
+          <span class="meta-item">12 min de leitura</span>
+          <span class="meta-item">Atualizado em julho de 2026</span>
+          <span class="meta-item">Equipe DRGTECH</span>
+          <span class="difficulty diff-easy">Nível: Avançado</span>
+        </div>
+      </header>
+
+      <div class="article-intro">
+        <strong>A tela azul da morte (BSOD) com a mensagem <code>KERNEL_SECURITY_CHECK_FAILURE</code> é disparada quando o kernel do Windows detecta que uma estrutura de dados crítica foi corrompida.</strong>
+        Esse erro de verificação de segurança ocorre devido a incompatibilidades severas em drivers de baixo nível (como antivírus ou drivers de GPU), corrupção na tabela de alocação de memória (RAM/Pagefile) ou conflitos entre recursos de virtualização do sistema (HVCI/Hyper-V). Neste guia avançado, você aprenderá a isolar o driver causador com WinDbg, reparar arquivos corrompidos offline e restabelecer o boot sem formatar.
+      </div>
+
+      <article class="article-body" id="article-body">
+
+        <h2 id="analise-dumps">1. Análise de Despejo de Memória (Crash Dumps com WinDbg)</h2>
+
+        <p>Em vez de tentar soluções aleatórias, o método técnico correto para resolver este erro começa identificando exatamente qual arquivo de driver (com extensão <code>.sys</code>) falhou na verificação de integridade.</p>
+
+        <p>Sempre que ocorre um colapso de sistema, o Windows salva um relatório detalhado na pasta <code>C:\Windows\Minidump</code> ou o arquivo de despejo completo em <code>C:\Windows\MEMORY.DMP</code>.</p>
+
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Baixe o <strong>WinDbg (Windows Debugger)</strong> gratuitamente na Microsoft Store ou via SDK do Windows.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Abra o WinDbg como <strong>Administrador</strong>. Vá em <strong>File &gt; Open Dump File</strong> e selecione o arquivo <code>.dmp</code> mais recente em <code>C:\Windows\Minidump</code>.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">Na janela de comando do WinDbg, clique no link azul ou digite o comando de análise avançada:</div></li>
+        </ol>
+
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">WinDbg Command</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">!analyze -v</div>
+        </div>
+
+        <p>Examine a saída do relatório procurando por duas linhas fundamentais:</p>
+        <ul>
+          <li><code>MODULE_NAME:</code> indica a biblioteca ou software responsável (ex: <em>nvlddmkm</em> para NVIDIA, <em>rtwlanu</em> para Realtek Wi-Fi).</li>
+          <li><code>IMAGE_NAME:</code> aponta diretamente para o arquivo causador (ex: <code>DRIVER_CORRUPTED.sys</code>).</li>
+        </ul>
+
+        <div class="info-box">
+          <div class="box-content"><p><strong>Conclusão técnica:</strong> Ao descobrir qual arquivo <code>.sys</code> causou a falha no WinDbg, você pode entrar no Modo de Segurança e desinstalar ou atualizar o driver específico, evitando horas de testes desnecessários.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="reparo-offline">2. Verificação e Substituição de Arquivos Offline via CMD</h2>
+
+        <p>Se o erro impede que o Windows inicie normalmente (causando loop de tela azul ao ligar), você deve reparar o sistema de arquivos diretamente pelo Prompt de Comando do pendrive de boot.</p>
+
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Conecte um pendrive de boot do Windows 10/11 e inicie o computador por ele.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Na tela inicial, selecione <strong>Reparar o computador &gt; Solução de Problemas &gt; Prompt de Comando</strong>.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">Execute o utilitário <code>SFC</code> com os parâmetros de diretório offline para reparar a imagem do Windows sem inicializar o kernel com falha:</div></li>
+        </ol>
+
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (WinRE)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">sfc /scannow /offbootdir=C:\ /offwindir=C:\Windows</div>
+        </div>
+
+        <p>Em seguida, execute a verificação do repositório de componentes da imagem offline do Windows:</p>
+
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (WinRE)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">dism /image:C:\ /cleanup-image /restorehealth</div>
+        </div>
+
+        <div class="warning-box">
+          <div class="box-content"><p><strong>Atenção às letras de unidade:</strong> No ambiente de recuperação WinRE, a letra da partição do Windows pode ser atribuída como <code>D:\</code> ou <code>E:\</code>. Verifique antes digitando <code>dir C:\</code> ou usando o utilitário <code>diskpart</code> (comando <code>list volume</code>).</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="conflito-hvci">3. Incompatibilidade do Hyper-V e Integridade de Memória (HVCI)</h2>
+
+        <p>Outra causa frequente do erro <em>Kernel Security Check Failure</em> no Windows 11 envolve a funcionalidade <strong>HVCI (Hypervisor-Protected Code Integrity)</strong>, também conhecida como "Integridade da Memória".</p>
+
+        <p>Quando a opção HVCI está ativa, o hipervisor do Windows valida se todo código executado no modo kernel possui assinatura digital válida. Programas de virtualização de terceiros (VirtualBox, VMware), emuladores Android ou softwares anticheat de jogos legados tentam injetar drivers sem suporte ao HVCI, provocando o colapso instantâneo do kernel.</p>
+
+        <h3>Como Desativar o HVCI quando o sistema está inicializando:</h3>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Abra o menu <strong>Iniciar</strong> e busque por <strong>Segurança do Windows</strong>.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Navegue até <strong>Segurança do Dispositivo &gt; Detalhes do Isolamento do Núcleo</strong>.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">Desative a opção <strong>Integridade da Memória</strong> e reinicie o computador.</div></li>
+        </ol>
+
+        <h3>Como Desativar o HVCI pelo Registro (caso o Windows não inicie):</h3>
+        <p>Pelo Prompt de Comando do WinRE (pendrive de boot), você pode desativar a verificação de código do hipervisor diretamente na colmeia do registro:</p>
+
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (WinRE)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">reg add "HKLM\System\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v Enabled /t REG_DWORD /d 0 /f</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="faq">Perguntas Frequentes</h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              O erro Kernel Security Check Failure pode ser provocado por defeito físico na memória RAM?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Sim. Se os pentes de memória RAM apresentarem setores defeituosos, os dados gravados no kernel serão corrompidos em tempo de execução. Recomendamos executar a ferramenta <strong>Diagnóstico de Memória do Windows</strong> (<code>mdsched.exe</code>) ou criar um pendrive com o <strong>MemTest86</strong> para validar a integridade física dos módulos.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Atualizar a BIOS/UEFI ajuda a resolver este problema?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Com certeza. Atualizações de BIOS frequentemente corrigem tabelas ACPI e mapeamento de memória do chipset, além de aprimorar a compatibilidade da CPU com recursos de virtualização do Windows 11.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="conclusao">Conclusão</h2>
+
+        <p>O erro <em>Kernel Security Check Failure</em> não exige a formatação imediata do computador. Ao isolar o driver causador com o WinDbg, reparar arquivos do sistema offline via SFC/DISM e ajustar a compatibilidade do HVCI com hipervisores de virtualização, você recupera a estabilidade do sistema sem perder nenhum dado pessoal.</p>
+
+        <div class="related-articles">
+          <h2>Outros Tutoriais de Windows Avançado</h2>
+          <div class="related-grid">
+            <a href="pendrive-boot-recuperacao-windows.html" class="related-card">
+              <span class="related-card-title">Como Criar Pendrive de Boot e Reparar o Windows</span>
+            </a>
+            <a href="remover-virus-computador-gratis.html" class="related-card">
+              <span class="related-card-title">Como Remover Vírus do Computador Grátis</span>
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </main>
+
+    <aside class="toc-sidebar">
+      <div class="toc-card">
+        <div class="toc-title">Neste Artigo</div>
+        <ul class="toc-list">
+          <li><a href="#analise-dumps">1. Análise de Dumps (WinDbg)</a></li>
+          <li><a href="#reparo-offline">2. Reparo SFC/DISM Offline</a></li>
+          <li><a href="#conflito-hvci">3. Conflito HVCI / Hyper-V</a></li>
+          <li><a href="#faq">Perguntas Frequentes</a></li>
+          <li><a href="#conclusao">Conclusão</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
+      <p>© 2026 <strong>DRGTECH</strong> — Todos os direitos reservados.</p>
+      <p><a href="../index.html">← Voltar ao início</a></p>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Voltar ao topo">↑</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>

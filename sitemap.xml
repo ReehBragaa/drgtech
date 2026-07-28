@@ -26,6 +26,30 @@
 
   <!-- Artigos / Tutoriais -->
   <url>
+    <loc>https://drgtech.com.br/artigos/kernel-security-check-failure-windows.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/hd-ssd-100-porcento-windows-resolver.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/consumo-oculto-bateria-thermal-throttling-android-iphone.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/recuperar-celular-bootloop-loop-infinito.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/detectar-spywares-ocultos-keyloggers-rats.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/diagnosticar-perda-pacotes-latencia-mtu-dns.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
     <loc>https://drgtech.com.br/artigos/pendrive-boot-recuperacao-windows.html</loc>
     <priority>0.90</priority>
   </url>

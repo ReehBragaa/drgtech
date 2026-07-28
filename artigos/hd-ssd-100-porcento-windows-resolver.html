@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Windows Travando com HD/SSD em 100%: Como Resolver — DRGTECH</title>
+  <meta name="description" content="Guia técnico para resolver o bug de HD ou SSD em 100% de uso no Gerenciador de Tarefas do Windows. Ajuste SysMain, Pagefile.sys, I/O e SMART." />
+  <meta name="keywords" content="hd 100 porcento windows, ssd 100 porcento uso, sysmain desativar, pagefile.sys ajustar, wmic diskdrive status, falha de i/o evento 51" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Windows Travando com HD/SSD em 100%: Guia Definitivo" />
+  <meta property="og:description" content="Aprenda a desativar leituras contínuas do SysMain, realocar o arquivo de paginação e diagnosticar atributos SMART e erros de I/O." />
+  <meta property="og:type" content="article" />
+  <link rel="canonical" href="https://drgtech.com.br/artigos/hd-ssd-100-porcento-windows-resolver.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.png" alt="DRGTECH — Tecnologia do jeito simples" class="logo-img" />
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html" class="nav-link">← Voltar</a>
+        <a href="../index.html#windows" class="nav-link">Windows</a>
+        <a href="../index.html#seguranca" class="nav-link">Segurança</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="../index.html" class="nav-link">← Voltar ao início</a>
+    </nav>
+  </header>
+
+  <div class="article-page-wrapper">
+    <main>
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Início</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../index.html#windows">Windows</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>HD/SSD 100% de Uso</span>
+      </nav>
+
+      <header class="article-header">
+        <span class="article-badge badge-blue">Windows Avançado</span>
+        <h1 class="article-h1">Windows Travando com HD/SSD em 100%: Guia Definitivo para Resolver Falhas de I/O e Registro</h1>
+        <div class="article-intro-meta">
+          <span class="meta-item">11 min de leitura</span>
+          <span class="meta-item">Atualizado em julho de 2026</span>
+          <span class="meta-item">Equipe DRGTECH</span>
+          <span class="difficulty diff-easy">Nível: Intermediário</span>
+        </div>
+      </header>
+
+      <div class="article-intro">
+        <strong>O Gerenciador de Tarefas do seu Windows mostra a coluna de Disco travada em 100% de uso constantemente, mesmo quando você não está abrindo nenhum programa pesado?</strong>
+        Esse gargalo de entrada e saída (I/O) deixa o computador extremamente lento, provocando engasgos no mouse e congelamentos na interface. Na maioria das vezes, o problema resulta de leituras contínuas desnecessárias do serviço SysMain, má alocação do arquivo de paginação (Pagefile.sys) ou erros de timeout no driver do controlador de disco. Neste guia, apresentamos a solução técnica passo a passo.
+      </div>
+
+      <article class="article-body" id="article-body">
+
+        <h2 id="desativar-sysmain">1. Desativação de Serviços de Leitura Contínua (SysMain e Search)</h2>
+
+        <p>O serviço <strong>SysMain</strong> (antigo <em>Superfetch</em>) foi desenvolvido para pré-carregar aplicativos na memória RAM em discos mecânicos antigos. Porém, em SSDs modernos ou em sistemas com mais de 8 GB de RAM, ele causa um efeito colateral grave: mantém o disco em 100% de atividade constante realizando varreduras em segundo plano.</p>
+
+        <h3>Método 1: Parada via Services.msc e Prompt de Comando</h3>
+        <p>Abra o Prompt de Comando (CMD) como <strong>Administrador</strong> e execute os comandos abaixo para parar e desativar o serviço SysMain e a indexação do Windows Search:</p>
+
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (Admin)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">net stop sysmain
+sc config sysmain start= disabled
+net stop wsearch
+sc config wsearch start= disabled</div>
+        </div>
+
+        <h3>Método 2: Desativação Direta no Registro do Windows</h3>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Pressione <kbd>Win + R</kbd>, digite <strong>regedit</strong> e pressione Enter.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Navegue até a chave: <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters</code></div></li>
+          <li><div class="step-num">3</div><div class="step-text">Dê um duplo clique na chave <strong>EnableSuperfetch</strong> (ou <strong>EnablePrefetcher</strong>) e altere seu valor de <code>3</code> para <code>0</code>.</div></li>
+          <li><div class="step-num">4</div><div class="step-text">Clique em <strong>OK</strong> e reinicie o computador.</div></li>
+        </ol>
+
+        <div class="tip-box">
+          <div class="box-content"><p><strong>Dica de desempenho:</strong> Desativar o SysMain é totalmente seguro e libera o disco imediatamente de operações de I/O em segundo plano, sem afetar o funcionamento dos seus programas.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="ajuste-pagefile">2. Ajuste e Realocação do Arquivo de Paginação (Pagefile.sys)</h2>
+
+        <p>O <code>Pagefile.sys</code> é o arquivo de memória virtual utilizado pelo Windows quando a memória RAM física fica escassa. Se ele estiver fragmentado no HD ou mal dimensionado pelo gerenciamento automático do Windows, pode travar a fila de gravação do disco.</p>
+
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Pressione <kbd>Win + R</kbd>, digite <strong>sysdm.cpl</strong> e vá para a aba <strong>Avançado</strong>.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Na seção <em>Desempenho</em>, clique em <strong>Configurações &gt; aba Avançado &gt; Memória Virtual &gt; Alterar</strong>.</div></li>
+          <li><div class="step-num">3</div><div class="step-text"><strong>Desmarque</strong> a caixa "Gerenciar automaticamente o tamanho do arquivo de paginação para todas as unidades".</div></li>
+          <li><div class="step-num">4</div><div class="step-text">Selecione o disco C:\, marque <strong>Tamanho personalizado</strong> e defina o tamanho inicial e máximo fixo (Recomendado: 1.5x o tamanho da sua memória RAM física em MB). Exemplo para 8GB RAM: Inicial <strong>4096 MB</strong>, Máximo <strong>8192 MB</strong>.</div></li>
+          <li><div class="step-num">5</div><div class="step-text">Se você possui um SSD secundário (Drive D:\ ou E:\), defina a paginação no SSD e selecione <em>"Sem arquivo de paginação"</em> no HD mecânico primário.</div></li>
+        </ol>
+
+        <div class="warning-box">
+          <div class="box-content"><p><strong>Por que fixar o tamanho?</strong> Definir um tamanho inicial e máximo idêntico impede que o Windows fique expandindo e diminuindo o arquivo <code>Pagefile.sys</code> dinamicamente, o que elimina a fragmentação de disco.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="diagnostico-smart">3. Diagnóstico de Atributos SMART e Eventos de I/O no Event Viewer</h2>
+
+        <p>Se as correções de software não reduzirem o uso do disco, você deve investigar se a causa é um problema físico no dispositivo de armazenamento (setores danificados ou erros na controladora SATA/NVMe).</p>
+
+        <h3>Verificação rápida do estado SMART via Prompt de Comando:</h3>
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (Admin)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">wmic diskdrive get status, caption, model</div>
+        </div>
+
+        <p>Se o resultado retornar <code>OK</code>, o disco passou nos testes de integridade básica. Se retornar <code>Pred Fail</code> (Predictive Failure) ou <code>Caution</code>, o disco precisa ser substituído com urgência.</p>
+
+        <h3>Auditoria de erros de I/O no Visualizador de Eventos (Event Viewer):</h3>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Pressione <kbd>Win + X</kbd> e selecione <strong>Visualizador de Eventos</strong>.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Expanda <strong>Logs do Windows &gt; Sistema</strong>.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">Procure por eventos com Fonte <code>disk</code> ou <code>storahci</code> e identificadores de **Evento 51** (erro durante operação de paginação) ou **Evento 153** (opção de E/S cancelada devido a timeout).</div></li>
+        </ol>
+
+        <div class="info-box">
+          <div class="box-content"><p><strong>Solução para Evento 153/storahci:</strong> O Evento 153 ocorre por incompatibilidade no driver AHCI padrão do Windows em SSDs SATA. Atualizar o driver do controlador SATA (ex: Intel RST ou AHCI da placa-mãe) resolve o problema de congelamento.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="faq">Perguntas Frequentes</h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              Colocar um SSD resolve definitivamente o bug de 100% de uso de disco?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Sim! Os HDs mecânicos tradicionais não possuem taxa de IOPS (operações por segundo) suficiente para lidar com as constantes leituras paralelas do Windows 10 e 11. A substituição do HD por um SSD (SATA ou NVMe) aumenta o desempenho em até 10x e zera o gargalo de I/O.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Desativar o Windows Search impede que eu pesquise arquivos?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Não. A pesquisa do Windows continua funcionando, porém sem usar o índice pré-construído em segundo plano. Se você precisar de buscas instantâneas extremamente rápidas, recomendamos o software gratuito e leve <strong>Everything</strong> (da Voidtools).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="conclusao">Conclusão</h2>
+
+        <p>Resolver o travamento do disco em 100% exige desativar serviços de varredura contínua como o SysMain, ajustar o arquivo de paginação para evitar fragmentação e auditar os logs de I/O no Visualizador de Eventos. Seguindo este roteiro técnico, seu computador recuperará o desempenho ideal.</p>
+
+        <div class="related-articles">
+          <h2>Outros Tutoriais de Desempenho no Windows</h2>
+          <div class="related-grid">
+            <a href="kernel-security-check-failure-windows.html" class="related-card">
+              <span class="related-card-title">Como Resolver Kernel Security Check Failure</span>
+            </a>
+            <a href="pendrive-boot-recuperacao-windows.html" class="related-card">
+              <span class="related-card-title">Como Criar Pendrive de Boot e Reparar Windows</span>
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </main>
+
+    <aside class="toc-sidebar">
+      <div class="toc-card">
+        <div class="toc-title">Neste Artigo</div>
+        <ul class="toc-list">
+          <li><a href="#desativar-sysmain">1. Desativar SysMain e Search</a></li>
+          <li><a href="#ajuste-pagefile">2. Ajuste do Pagefile.sys</a></li>
+          <li><a href="#diagnostico-smart">3. Diagnóstico SMART e I/O</a></li>
+          <li><a href="#faq">Perguntas Frequentes</a></li>
+          <li><a href="#conclusao">Conclusão</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
+      <p>© 2026 <strong>DRGTECH</strong> — Todos os direitos reservados.</p>
+      <p><a href="../index.html">← Voltar ao início</a></p>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Voltar ao topo">↑</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>
