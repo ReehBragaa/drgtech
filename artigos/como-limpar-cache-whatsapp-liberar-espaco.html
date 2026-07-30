@@ -10,6 +10,7 @@
   <meta property="og:title" content="Como Limpar o Cache do WhatsApp e Liberar Espaço no Celular" />
   <meta property="og:description" content="Para limpar o cache do WhatsApp sem apagar mensagens ou conversas, vá em Configurações do Android > Aplicativos > WhatsApp > Armazenamento e toque em 'Limpar Cache'. No aplicativo, acesse Configurações > Armazenamento e Dados > Gerenciar Armazenamento para apagar arquivos grandes enviados." />
   <meta property="og:type" content="article" />
+  <!-- Clean Canonical URL -->
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-limpar-cache-whatsapp-liberar-espaco.html" />
   <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
@@ -33,6 +34,33 @@
   ]
 }
   </script>
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Início",
+      "item": "https://drgtech.com.br/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Celular",
+      "item": "https://drgtech.com.br/#celular"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Como Limpar o Cache do WhatsApp e Liberar Espaço no Celular",
+      "item": "https://drgtech.com.br/artigos/como-limpar-cache-whatsapp-liberar-espaco.html"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <div id="progress-bar"></div>
@@ -42,6 +70,10 @@
       <a href="../index.html" class="logo">
         <img src="../img/logo.png" alt="DRGTech — Tecnologia do jeito simples" class="logo-img" />
       </a>
+      <div class="header-search">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="site-search-input" placeholder="Buscar tutoriais..." aria-label="Buscar tutoriais" />
+      </div>
       <nav class="header-nav">
         <a href="../index.html" class="nav-link">← Voltar</a>
         <a href="../index.html#celular" class="nav-link">Celular</a>
@@ -105,9 +137,36 @@
           </li>
         </ol>
 
+        
+
         <div class="success-box">
           <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Caso tenha dúvidas adicionais, consulte os tópicos e perguntas relacionadas ao final deste guia.</p>
+            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
+          </div>
+        </div>
+
+        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
+        <div class="feedback-widget" id="feedback-widget">
+          <p class="feedback-title">Esta resposta foi útil para você?</p>
+          <div class="feedback-buttons">
+            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
+            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
+          </div>
+          <div class="feedback-response" id="feedback-response" style="display:none;">
+            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
+          </div>
+        </div>
+
+        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
+        <div class="question-capture-box">
+          <h3>Ainda tem dúvidas sobre este tema?</h3>
+          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
+          <form class="question-form" id="question-form">
+            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
+            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
+          </form>
+          <div class="question-success-msg" id="question-success-msg" style="display:none;">
+            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
           </div>
         </div>
 
@@ -141,6 +200,7 @@
         <div class="toc-title">Neste Artigo</div>
         <ul class="toc-list">
           <li><a href="#passo-a-passo">Passo a Passo</a></li>
+          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
           <li><a href="#article-body">Dúvidas Relacionadas</a></li>
         </ul>
       </div>

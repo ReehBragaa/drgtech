@@ -188,4 +188,104 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ─── Feedback Widget (Ajudou? 👍 / 👎) ───
+  const feedbackBtns = document.querySelectorAll('.feedback-btn');
+  const feedbackResponse = document.getElementById('feedback-response');
+  const feedbackButtonsContainer = document.querySelector('.feedback-buttons');
+
+  if (feedbackBtns.length > 0) {
+    feedbackBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const vote = btn.dataset.vote;
+        const pageSlug = window.location.pathname;
+
+        // Save vote in localStorage
+        const votes = JSON.parse(localStorage.getItem('drgtech_feedback_votes') || '{}');
+        votes[pageSlug] = vote;
+        localStorage.setItem('drgtech_feedback_votes', JSON.stringify(votes));
+
+        if (feedbackButtonsContainer) feedbackButtonsContainer.style.display = 'none';
+        if (feedbackResponse) {
+          feedbackResponse.style.display = 'block';
+          if (vote === 'no') {
+            const thanksSpan = feedbackResponse.querySelector('.feedback-thanks');
+            if (thanksSpan) thanksSpan.textContent = 'Obrigado pela avaliação! Registramos sua opinião para revisar e enriquecer este guia.';
+          }
+        }
+      });
+    });
+  }
+
+  // ─── Interactive Question Capture ("Ainda tem dúvidas?") ───
+  const questionForm = document.getElementById('question-form');
+  const questionInput = document.getElementById('user-question-input');
+  const questionSuccessMsg = document.getElementById('question-success-msg');
+
+  if (questionForm && questionInput) {
+    questionForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const questionText = questionInput.value.trim();
+      if (!questionText) return;
+
+      // Log submitted question in localStorage queue
+      const questionsQueue = JSON.parse(localStorage.getItem('drgtech_user_questions') || '[]');
+      questionsQueue.push({
+        question: questionText,
+        url: window.location.href,
+        date: new Date().toISOString()
+      });
+      localStorage.setItem('drgtech_user_questions', JSON.stringify(questionsQueue));
+
+      questionForm.reset();
+      if (questionSuccessMsg) questionSuccessMsg.style.display = 'block';
+    });
+  }
+
+  // ─── Header Instant Search Autocomplete ───
+  const headerSearchInput = document.getElementById('site-search-input');
+  if (headerSearchInput) {
+    // Create dropdown container dynamically
+    const dropdown = document.createElement('div');
+    dropdown.className = 'search-autocomplete-dropdown';
+    headerSearchInput.parentElement.appendChild(dropdown);
+
+    headerSearchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+
+      if (query.length < 2) {
+        dropdown.style.display = 'none';
+        return;
+      }
+
+      // Filter existing cards or links
+      const allCards = document.querySelectorAll('.article-card');
+      const matches = [];
+
+      allCards.forEach(card => {
+        const title = card.querySelector('.card-title')?.textContent || '';
+        const href = card.getAttribute('href') || '#';
+        if (title.toLowerCase().includes(query)) {
+          matches.push({ title, href });
+        }
+      });
+
+      if (matches.length > 0) {
+        dropdown.innerHTML = matches.slice(0, 5).map(m => `
+          <a href="${m.href}" class="search-autocomplete-item">
+            ${m.title}
+          </a>
+        `).join('');
+      } else {
+        dropdown.innerHTML = `<div class="search-autocomplete-no-results">Nenhum tutorial encontrado. Sua dúvida será registrada para criação!</div>`;
+      }
+      dropdown.style.display = 'block';
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!headerSearchInput.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+  }
+
 });
