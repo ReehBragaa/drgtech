@@ -103,8 +103,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
-  gap: 24px;
+  height: 68px;
+  gap: 16px;
 }
 
 .logo {
@@ -112,7 +112,8 @@ body {
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  flex-shrink: 0;
+  flex: 1;
+  min-width: 150px;
 }
 
 .logo-icon {
@@ -161,8 +162,9 @@ body {
 }
 
 .header-search {
-  flex: 1;
-  max-width: 360px;
+  flex: 1.5;
+  max-width: 420px;
+  margin: 0 auto;
   position: relative;
 }
 
@@ -200,7 +202,10 @@ body {
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 2px;
+  justify-content: flex-end;
+  gap: 6px;
+  flex: 1;
+  margin-left: auto;
 }
 
 .nav-link {
