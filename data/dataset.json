@@ -1,0 +1,162 @@
+[
+  {
+    "id": 101,
+    "slug": "como-cancelar-assinatura-netflix-celular-pc",
+    "keyword_principal": "Como Cancelar a Assinatura da Netflix pelo Celular e PC",
+    "categoria": "internet",
+    "resposta_curta": "Para cancelar a assinatura da Netflix, acesse netflix.com/youraccount no navegador, faça login na sua conta, clique no botão 'Cancelar Assinatura' na seção Assinatura e Cobrança e confirme o encerramento. O acesso continuará ativo até o final do período de faturamento atual.",
+    "passo_a_passo": [
+      "Acesse o site netflix.com/youraccount no navegador do celular ou computador.",
+      "Faça login com seu e-mail e senha da conta Netflix.",
+      "Na seção 'Assinatura e Cobrança', clique no botão cinza 'Cancelar Assinatura'.",
+      "Clique em 'Quero Concluir o Cancelamento' para confirmar o encerramento da cobrança."
+    ],
+    "duvidas_relacionadas": [102, 103, 104, 105],
+    "read_time": "4 min de leitura",
+    "updated_at": "julho de 2026"
+  },
+  {
+    "id": 102,
+    "slug": "como-tirar-print-screen-notebook-windows",
+    "keyword_principal": "Como Tirar Print Screen no Notebook Windows 10 e 11",
+    "categoria": "windows",
+    "resposta_curta": "Para tirar print no notebook Windows, pressione a combinação Win + Shift + S para abrir a Ferramenta de Captura da Microsoft e recortar uma área da tela, ou pressione a tecla PrtScn (Print Screen) para copiar toda a tela para a área de transferência.",
+    "passo_a_passo": [
+      "Pressione simultaneamente as teclas Windows + Shift + S para ativar a captura seletiva.",
+      "Arraste o cursor do mouse sobre a área da tela que deseja capturar.",
+      "Clique na notificação que surgir no canto inferior direito para editar ou salvar a imagem.",
+      "Para salvar direto em arquivo PNG na pasta Imagens, pressione Windows + Print Screen."
+    ],
+    "duvidas_relacionadas": [101, 103, 106, 107],
+    "read_time": "5 min de leitura",
+    "updated_at": "julho de 2026"
+  },
+  {
+    "id": 103,
+    "slug": "como-limpar-cache-whatsapp-liberar-espaco",
+    "keyword_principal": "Como Limpar o Cache do WhatsApp e Liberar Espaço no Celular",
+    "categoria": "celular",
+    "resposta_curta": "Para limpar o cache do WhatsApp sem apagar mensagens ou conversas, vá em Configurações do Android > Aplicativos > WhatsApp > Armazenamento e toque em 'Limpar Cache'. No aplicativo, acesse Configurações > Armazenamento e Dados > Gerenciar Armazenamento para apagar arquivos grandes enviados.",
+    "passo_a_passo": [
+      "Abra as Configurações do seu smartphone Android.",
+      "Acesse 'Aplicativos' e selecione 'WhatsApp' na lista.",
+      "Toque em 'Armazenamento e cache' e selecione o botão 'Limpar cache'.",
+      "No iPhone, abra o WhatsApp, vá em Configurações > Armazenamento e Dados > Gerenciar Armazenamento para remover fotos e vídeos pesados."
+    ],
+    "duvidas_relacionadas": [101, 102, 104, 108],
+    "read_time": "4 min de leitura",
+    "updated_at": "julho de 2026"
+  },
+  {
+    "id": 104,
+    "slug": "como-descobrir-senha-wifi-conectado-pc-celular",
+    "keyword_principal": "Como Descobrir a Senha do Wi-Fi Conectado no PC e Celular",
+    "categoria": "internet",
+    "resposta_curta": "No Windows, pressione Win + R, digite ncpa.cpl, dê duplo clique no Wi-Fi conectado > Status do Sem Fio > Propriedades da Conexão Sem Fio > aba Segurança e marque 'Mostrar caracteres'. No Android 10 ou superior, acesse Configurações > Wi-Fi > toque na engrenagem da rede > 'Compartilhar com QR Code'.",
+    "passo_a_passo": [
+      "No Windows, pressione Win + R, digite ncpa.cpl e dê Enter.",
+      "Dê duplo clique na conexão Wi-Fi ativa e clique em 'Propriedades da Conexão Sem Fio'.",
+      "Na aba 'Segurança', marque a caixa 'Mostrar caracteres' para revelar a chave de rede.",
+      "No celular Android, exiba o QR Code da rede Wi-Fi e escaneie com a câmera para ver a senha pura."
+    ],
+    "duvidas_relacionadas": [101, 103, 105, 109],
+    "read_time": "5 min de leitura",
+    "updated_at": "julho de 2026"
+  },
+  {
+    "id": 105,
+    "slug": "como-saber-se-whatsapp-foi-clonado-ou-hacker",
+    "keyword_principal": "Como Saber se o WhatsApp Foi Clonado e Como Desconectar Hackers",
+    "categoria": "seguranca",
+    "resposta_curta": "Para verificar se o seu WhatsApp está clonado ou espionado por outro dispositivo, abra o app, toque nos três pontos (ou Ajustes no iPhone) > 'Dispositivos Conectados'. Se houver algum navegador ou computador desconhecido na lista, toque sobre ele e selecione 'Desconectar' imediatamente.",
+    "passo_a_passo": [
+      "Abra o WhatsApp no seu celular principal.",
+      "Toque nos três pontos no canto superior direito (Android) ou no ícone de Ajustes (iPhone).",
+      "Selecione a opção 'Dispositivos conectados'.",
+      "Verifique a lista de navegadores e sessões ativas. Se encontrar algum aparelho suspeito, toque nele e selecione 'Desconectar'."
+    ],
+    "duvidas_relacionadas": [101, 104, 108, 110],
+    "read_time": "6 min de leitura",
+    "updated_at": "julho de 2026"
+  },
+  {
+    "id": 106,
+    "slug": "como-formatar-notebook-windows-10-restaurar-fabrica",
+    "keyword_principal": "Como Formatar o Notebook Windows 10 e Restaurar de Fábrica",
+    "categoria": "windows",
+    "resposta_curta": "Para formatar o notebook com Windows 10 sem precisar de pendrive, acesse Configurações > Atualização e Segurança > Recuperação > 'Restauração do PC' e clique em 'Começar agora'. Escolha se deseja manter seus arquivos pessoais ou remover tudo para uma restauração completa.",
+    "passo_a_passo": [
+      "Acesse o menu Iniciar e clique na engrenagem de Configurações.",
+      "Vá em 'Atualização e Segurança' e selecione 'Recuperação' no menu esquerdo.",
+      "Na seção 'Restaurar o PC', clique no botão 'Começar agora'.",
+      "Escolha entre 'Manter meus arquivos' (apaga apenas programas) ou 'Remover tudo' (formatação completa)."
+    ],
+    "duvidas_relacionadas": [102, 107, 109, 110],
+    "read_time": "7 min de leitura",
+    "updated_at": "julho de 2026"
+  },
+  {
+    "id": 107,
+    "slug": "como-desativar-antivirus-windows-defender-temporariamente",
+    "keyword_principal": "Como Desativar o Windows Defender Antivirus Temporariamente",
+    "categoria": "windows",
+    "resposta_curta": "Para desativar a proteção em tempo real do Windows Defender, abra a Segurança do Windows > Proteção contra vírus e ameaças > Gerenciar configurações abaixo de Configurações de proteção contra vírus e ameaças, e mude a chave 'Proteção em tempo real' para Desativado.",
+    "passo_a_passo": [
+      "Abra a pesquisa do Windows e digite 'Segurança do Windows'.",
+      "Clique em 'Proteção contra vírus e ameaças'.",
+      "Na seção 'Configurações de proteção contra vírus e ameaças', clique em 'Gerenciar configurações'.",
+      "Desative a chave 'Proteção em tempo real'. O antivírus ligará sozinho novamente após reiniciar."
+    ],
+    "duvidas_relacionadas": [102, 105, 106, 108],
+    "read_time": "4 min de leitura",
+    "updated_at": "julho de 2026"
+  },
+  {
+    "id": 108,
+    "slug": "como-recuperar-mensagens-apagadas-whatsapp",
+    "keyword_principal": "Como Recuperar Mensagens Apagadas do WhatsApp no Celular",
+    "categoria": "celular",
+    "resposta_curta": "Para recuperar mensagens apagadas do WhatsApp, desinstale e reinstale o aplicativo no celular. Durante a configuração inicial do seu número, toque em 'Restaurar' quando o app perguntar se deseja recuperar o backup encontrado no Google Drive (Android) ou iCloud (iPhone).",
+    "passo_a_passo": [
+      "Verifique se o seu WhatsApp possui um backup recente em Configurações > Conversas > Backup de conversas.",
+      "Desinstale o aplicativo WhatsApp do seu celular.",
+      "Reinstale o WhatsApp pela Play Store ou App Store e confirme seu número de telefone.",
+      "Na tela de restauração, toque no botão 'Restaurar' para baixar todas as mensagens e mídias salvas."
+    ],
+    "duvidas_relacionadas": [103, 105, 107, 109],
+    "read_time": "5 min de leitura",
+    "updated_at": "julho de 2026"
+  },
+  {
+    "id": 109,
+    "slug": "como-mudar-senha-wifi-roteador-pelo-celular",
+    "keyword_principal": "Como Mudar a Senha do Wi-Fi do Roteador pelo Celular",
+    "categoria": "internet",
+    "resposta_curta": "Para mudar a senha do Wi-Fi pelo celular, conecte-se à rede do roteador, abra o navegador e digite o IP 192.168.1.1 ou 192.168.0.1. Faça login com o usuário e senha do painel, vá na seção Wireless / Wi-Fi Security, altere o campo Senha / Password e salve as configurações.",
+    "passo_a_passo": [
+      "Conecte o celular à rede Wi-Fi que deseja alterar a senha.",
+      "Abra o navegador (Chrome ou Safari) e digite 192.168.1.1 (ou 192.168.0.1) na barra de endereços.",
+      "Digite o usuário e senha do painel de administração do roteador.",
+      "Navegue até a guia Wireless > Segurança Wi-Fi, digite a nova senha e toque em Salvar/Aplicar."
+    ],
+    "duvidas_relacionadas": [101, 104, 106, 110],
+    "read_time": "5 min de leitura",
+    "updated_at": "julho de 2026"
+  },
+  {
+    "id": 110,
+    "slug": "como-ativar-verificacao-duas-etapas-instagram-whatsapp",
+    "keyword_principal": "Como Ativar a Verificação em Duas Etapas no WhatsApp e Instagram",
+    "categoria": "seguranca",
+    "resposta_curta": "Para ativar a verificação em duas etapas no WhatsApp, acesse Configurações > Conta > Confirmação em duas etapas > Ativar e crie um PIN de 6 dígitos. No Instagram, vá em Perfil > Menu ≡ > Central de Contas > Senha e Segurança > Autenticação de dois fatores e escolha o aplicativo autenticador.",
+    "passo_a_passo": [
+      "No WhatsApp: vá em Configurações > Conta > Confirmação em duas etapas > Ativar e defina uma senha PIN de 6 dígitos.",
+      "Insira um e-mail de recuperação seguro para caso esqueça o PIN.",
+      "No Instagram: vá no Perfil > Menu ≡ > Central de Contas Meta > Senha e Segurança.",
+      "Toque em 'Autenticação de dois fatores', selecione sua conta e escolha o método por app autenticador (Google Authenticator) ou WhatsApp."
+    ],
+    "duvidas_relacionadas": [105, 107, 108, 109],
+    "read_time": "6 min de leitura",
+    "updated_at": "julho de 2026"
+  }
+]
