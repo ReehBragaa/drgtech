@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como Bloquear Vazamento de Dados por WebView no Android e iOS — DRGTECH</title>
+  <meta name="description" content="Aprenda a proteger senhas e tráfego de rede contra ataques em navegadores internos (WebView e WKWebView) no Android e iPhone. Ative DoH e navegação isolada." />
+  <meta name="keywords" content="vazamento dados webview android ios, wkwebview vulnerabilidade, mitm ssl pinning, dns privado cloudflare doh, abrir links navegador padrao" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Como Bloquear Vazamento de Dados por WebView no Celular" />
+  <meta property="og:description" content="Guia de segurança para impedir a interceptação de senhas em navegadores embutidos em aplicativos de redes sociais e e-mails." />
+  <meta property="og:type" content="article" />
+  <link rel="canonical" href="https://drgtech.com.br/artigos/vazamento-dados-webview-android-ios.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.png" alt="DRGTECH — Tecnologia do jeito simples" class="logo-img" />
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html" class="nav-link">← Voltar</a>
+        <a href="../index.html#celular" class="nav-link">Celular</a>
+        <a href="../index.html#seguranca" class="nav-link">Segurança</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="../index.html" class="nav-link">← Voltar ao início</a>
+    </nav>
+  </header>
+
+  <div class="article-page-wrapper">
+    <main>
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Início</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../index.html#celular">Celular</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Vazamento por WebView</span>
+      </nav>
+
+      <header class="article-header">
+        <span class="article-badge badge-green">Segurança Mobile</span>
+        <h1 class="article-h1">Como Diagnosticar e Bloquear Vazamento de Dados em Aplicativos por WebView no Android e iOS</h1>
+        <div class="article-intro-meta">
+          <span class="meta-item">10 min de leitura</span>
+          <span class="meta-item">Atualizado em julho de 2026</span>
+          <span class="meta-item">Equipe DRGTECH</span>
+          <span class="difficulty diff-easy">Nível: Intermediário</span>
+        </div>
+      </header>
+
+      <div class="article-intro">
+        <strong>Quando você clica em um link dentro de um aplicativo como Instagram, Gmail ou redes sociais, o site abre em uma janela interna embutida em vez do seu navegador padrão?</strong>
+        Essas janelas internas utilizam componentes conhecidos como <strong>WebView (Android)</strong> ou <strong>WKWebView (iOS)</strong>. Se o aplicativo não implementar técnicas rígidas de verificação como <em>SSL/TLS Certificate Pinning</em>, cibercriminosos ou redes Wi-Fi públicas maliciosas podem executar ataques de <em>Man-in-the-Middle (MitM)</em> ou injeção de scripts para capturar senhas e dados digitados. Aprenda a se proteger.
+      </div>
+
+      <article class="article-body" id="article-body">
+
+        <h2 id="criptografia-doh">Passo 1: Forçar Criptografia DNS e DoH (DNS over HTTPS) no Aparelho</h2>
+
+        <p>A primeira camada de defesa contra interceptação de tráfego em navegadores internos é criptografar todas as consultas de nomes de domínio (DNS) enviadas pelo smartphone.</p>
+
+        <h3>No Android (13, 14 e 15):</h3>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Acesse <strong>Configurações &gt; Rede e Internet &gt; DNS Privado</strong>.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Selecione a opção <strong>Nome do provedor de DNS privado</strong>.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">Digite o hostname de um provedor seguro com suporte a TLS/DoH: <strong><code>one.one.one.one</code></strong> (Cloudflare) ou <strong><code>dns.google</code></strong> (Google) e toque em **Salvar**.</div></li>
+        </ol>
+
+        <h3>No iOS (iPhone / iPad):</h3>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Baixe e instale o perfil de DNS criptografado oficial da Cloudflare (aplicativo 1.1.1.1 ou arquivo de perfil).</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Acesse <strong>Ajustes &gt; Geral &gt; VPN e Gerenciamento de Dispositivos</strong> e ative o perfil de **DNS Criptografado**.</div></li>
+        </ol>
+
+        <div class="divider"></div>
+
+        <h2 id="desativar-webview-modificado">Passo 2: Atualizar e Proteger a Engine de WebView (Android)</h2>
+
+        <p>No Android, aplicativos maliciosos podem tentar utilizar versões desatualizadas ou modificadas do WebView do sistema para burlar a segurança da navegação.</p>
+
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Ative as <strong>Opções do Desenvolvedor</strong> (vá em <em>Configurações &gt; Sobre o Telefone</em> e toque 7 vezes seguidas em <em>Número da Versão</em>).</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Retorne às <strong>Configurações &gt; Sistema &gt; Opções do Desenvolvedor</strong>.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">Procure pelo item <strong>Implementação de WebView</strong>.</div></li>
+          <li><div class="step-num">4</div><div class="step-text">Garanta que o provedor selecionado seja o <strong>Google Chrome oficial</strong> ou o <strong>Android System WebView</strong> atualizado via Google Play Store.</div></li>
+        </ol>
+
+        <div class="warning-box">
+          <div class="box-content"><p><strong>Aviso importante:</strong> Mantenha o aplicativo <em>Android System WebView</em> sempre atualizado na Play Store, pois a Google corrige vulnerabilidades de execução remota de código (RCE) nele mensalmente.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="forcar-navegador-padrao">Passo 3: Forçar Abertura de Links no Navegador Padrão</h2>
+
+        <p>A solução definitiva e mais segura contra injeção de scripts em navegadores internos é configurar os aplicativos para abrir links externos direto no seu navegador principal (como Chrome, Safari, Brave ou Firefox).</p>
+
+        <p>O navegador principal opera em uma caixa de areia (<em>Sandbox</em>) isolada do aplicativo que você estava usando, garantindo a proteção dos seus gerenciadores de senhas e preenchimento automático.</p>
+
+        <h3>Como configurar em apps populares:</h3>
+        <ul>
+          <li><strong>No Instagram / Facebook:</strong> Acesse as <em>Configurações &gt; Configurações da Conta &gt; Mídia / Links</em> e ative a opção <strong>"Abrir links em navegador externo"</strong>.</li>
+          <li><strong>No Gmail / Outlook:</strong> Acesse <em>Configurações &gt; Geral / Preferências</em> e desmarque a opção <em>"Abrir links na web no Gmail/Outlook"</em>.</li>
+        </ul>
+
+        <div class="success-box">
+          <div class="box-content"><p><strong>Dica de segurança:</strong> Sempre que for preencher formulários de login ou dados de cartão de crédito, verifique se a barra de endereço exibe o cadeado de segurança e a URL real no navegador nativo do sistema.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="faq">Perguntas Frequentes (FAQ)</h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              O que é o ataque de injeção de JavaScript no WebView?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                É quando um aplicativo malicioso ou uma página manipulada injeta linhas de código em JavaScript no navegador interno do app para ler tudo o que o usuário digita (inclusive campos de senha) ou capturar dados do armazenamento local (cookies de sessão).
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Usar redes Wi-Fi públicas sem VPN aumenta o risco no WebView?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Sim! Em redes Wi-Fi abertas de shoppings ou aeroportos, hackers podem executar ataques Man-in-the-Middle (MitM) para interceptar requisições de WebViews que não utilizem criptografia TLS/DoH estrita.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="conclusao">Conclusão</h2>
+
+        <p>Proteger suas senhas e tráfego de dados contra vulnerabilidades em WebViews requer ativar a criptografia de DNS (DoH), manter a engine oficial do Android System WebView atualizada e forçar a abertura de links externos no seu navegador de preferência.</p>
+
+        <div class="related-articles">
+          <h2>Outros Tutoriais de Segurança Mobile</h2>
+          <div class="related-grid">
+            <a href="detectar-spywares-ocultos-keyloggers-rats.html" class="related-card">
+              <span class="related-card-title">Como Detectar Spywares e Trojans no Celular</span>
+            </a>
+            <a href="recuperar-celular-bootloop-loop-infinito.html" class="related-card">
+              <span class="related-card-title">Como Recuperar Celular Preso em Bootloop</span>
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </main>
+
+    <aside class="toc-sidebar">
+      <div class="toc-card">
+        <div class="toc-title">Neste Artigo</div>
+        <ul class="toc-list">
+          <li><a href="#criptografia-doh">1. Criptografia DNS e DoH</a></li>
+          <li><a href="#desativar-webview-modificado">2. Engine de WebView</a></li>
+          <li><a href="#forcar-navegador-padrao">3. Abrir no Navegador Padrão</a></li>
+          <li><a href="#faq">Perguntas Frequentes</a></li>
+          <li><a href="#conclusao">Conclusão</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
+      <p>© 2026 <strong>DRGTECH</strong> — Todos os direitos reservados.</p>
+      <p><a href="../index.html">← Voltar ao início</a></p>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Voltar ao topo">↑</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>

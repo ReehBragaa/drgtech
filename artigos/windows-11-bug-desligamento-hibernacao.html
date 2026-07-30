@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Windows 11 Não Desliga ou Reinicia Sozinho: Como Corrigir — DRGTECH</title>
+  <meta name="description" content="Aprenda a corrigir o bug do Windows 11 que não desliga completamente, trava em tela preta ou reinicia sozinho. Solução técnica para Fast Startup, ACPI e ntoskrnl.exe." />
+  <meta name="keywords" content="windows 11 nao desliga, pc reinicia sozinho ao desligar, desativar inicializacao rapida, powercfg cpl hiberbootenabled, kernel-power evento 41, sfc scannow dism" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Windows 11 Não Desliga ou Reinicia Sozinho: Como Corrigir" />
+  <meta property="og:description" content="Guia definitivo para desativar a Inicialização Rápida, reparar falhas do ntoskrnl.exe e recompor tabelas ACPI no Registro." />
+  <meta property="og:type" content="article" />
+  <link rel="canonical" href="https://drgtech.com.br/artigos/windows-11-bug-desligamento-hibernacao.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.png" alt="DRGTECH — Tecnologia do jeito simples" class="logo-img" />
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html" class="nav-link">← Voltar</a>
+        <a href="../index.html#windows" class="nav-link">Windows</a>
+        <a href="../index.html#seguranca" class="nav-link">Segurança</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="../index.html" class="nav-link">← Voltar ao início</a>
+    </nav>
+  </header>
+
+  <div class="article-page-wrapper">
+    <main>
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Início</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../index.html#windows">Windows</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Bug de Desligamento</span>
+      </nav>
+
+      <header class="article-header">
+        <span class="article-badge badge-blue">Windows 11</span>
+        <h1 class="article-h1">Windows 11: Como Corrigir o Bug de Desligamento/Hibernação e Reinicialização em Loop</h1>
+        <div class="article-intro-meta">
+          <span class="meta-item">9 min de leitura</span>
+          <span class="meta-item">Atualizado em julho de 2026</span>
+          <span class="meta-item">Equipe DRGTECH</span>
+          <span class="difficulty diff-easy">Nível: Intermediário</span>
+        </div>
+      </header>
+
+      <div class="article-intro">
+        <strong>Ao clicar em "Desligar" no Windows 11, seu computador reinicia sozinho ou fica travado com a tela preta e as ventoinhas (coolers) ligadas continuamente?</strong>
+        Esse comportamento frustrante é recorrente em atualizações do Windows 11 (especialmente em placas-mãe com <em>System Guard Secure Launch</em> ativado e inconsistências no ACPI / Início Rápido). Quando o arquivo do kernel <code>ntoskrnl.exe</code> falha ao transicionar os drivers para o estado de energia baixa (S4/S5), o Windows interpreta a falha como um erro crítico (Kernel-Power Event ID 41) e força a reinicialização automática. Veja como resolver de forma definitiva.
+      </div>
+
+      <article class="article-body" id="article-body">
+
+        <h2 id="desativar-fast-startup">Passo 1: Desativar a Inicialização Rápida (Fast Startup)</h2>
+
+        <p>A Inicialização Rápida salva a sessão do kernel em um arquivo de hibernação ao desligar. Se algum driver falhar ao entrar em hibernação, o sistema operacional aborta o desligamento e reinicia o PC.</p>
+
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Pressione <kbd>Win + R</kbd>, digite <strong>powercfg.cpl</strong> e pressione <kbd>Enter</kbd>.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">No menu lateral esquerdo, clique em <strong>Escolher a função dos botões de energia</strong>.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">Clique no link azul <strong>Alterar configurações não disponíveis no momento</strong> (requer privilégios de administrador).</div></li>
+          <li><div class="step-num">4</div><div class="step-text">Desmarque a opção <strong>Ligar inicialização rápida (recomendado)</strong> e clique em <strong>Salvar alterações</strong>.</div></li>
+        </ol>
+
+        <div class="tip-box">
+          <div class="box-content"><p><strong>Por que isso resolve:</strong> Em computadores com SSD, a diferença de tempo de boot com a Inicialização Rápida desativada é imperceptível (menos de 2 segundos), mas previne 100% das falhas de transição de energia do kernel.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="correcao-kernel-cmd">Passo 2: Executar Correção do Kernel e Imagem do Windows via CMD</h2>
+
+        <p>Após desativar a Inicialização Rápida, force um desligamento completo e limpo via linha de comando para limpar os estados de energia residuais acumulados na memória RAM:</p>
+
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (Admin)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">shutdown /s /f /t 0</div>
+        </div>
+
+        <p>Ligue o computador novamente. Abra o Prompt de Comando (CMD) como **Administrador** e execute os utilitários de reparo de integridade do arquivo do kernel <code>ntoskrnl.exe</code> e da imagem do sistema:</p>
+
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (Admin)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">sfc /scannow
+DISM /Online /Cleanup-Image /RestoreHealth</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="recomposicao-registro">Passo 3: Recomposição da Tabela de Energia pelo Registro (Avançado)</h2>
+
+        <p>Se o problema persistir, você pode desligar a sinalização de hibernação diretamente no Registro do Windows (HKEY_LOCAL_MACHINE):</p>
+
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Pressione <kbd>Win + R</kbd>, digite <strong>regedit</strong> e pressione <kbd>Enter</kbd>.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Navegue até a chave: <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power</code></div></li>
+          <li><div class="step-num">3</div><div class="step-text">Localize o valor DWORD chamado <strong>HiberbootEnabled</strong>.</div></li>
+          <li><div class="step-num">4</div><div class="step-text">Dê um duplo clique nele e altere o valor de <code>1</code> para <code>0</code>.</div></li>
+          <li><div class="step-num">5</div><div class="step-text">Clique em **OK** e reinicie o computador.</div></li>
+        </ol>
+
+        <div class="warning-box">
+          <div class="box-content"><p><strong>Observação importante:</strong> Essa alteração garante que o Windows 11 execute um ciclo de energia S5 (Shutdown Completo) em todos os encerramentos, resolvendo de vez a tela preta com ventoinhas ligadas.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="faq">Perguntas Frequentes (FAQ)</h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              O evento Kernel-Power ID 41 pode danificar peças físicas do computador?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Não costuma danificar o hardware diretamente, mas desligamentos ou reinicializações abruptas e constantes podem causar corrupção no sistema de arquivos do HD/SSD. Por isso é crucial corrigir a transição de energia.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Atualizar o driver de vídeo (NVIDIA / AMD / Intel) ajuda neste caso?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Sim! Drivers de placa de vídeo desatualizados frequentemente travam ao receber a ordem do kernel para entrar em modo de economia de energia. Mantenha os drivers de GPU e do chipset da placa-mãe atualizados.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="conclusao">Conclusão</h2>
+
+        <p>O bug de desligamento e reinicialização automática no Windows 11 pode ser resolvido desativando a Inicialização Rápida, executando o reparo do kernel com o SFC/DISM e ajustando o valor de <em>HiberbootEnabled</em> no Registro. Com esses passos, seu computador voltará a desligar normalmente.</p>
+
+        <div class="related-articles">
+          <h2>Outros Tutoriais de Windows 11</h2>
+          <div class="related-grid">
+            <a href="kernel-security-check-failure-windows.html" class="related-card">
+              <span class="related-card-title">Como Resolver Kernel Security Check Failure</span>
+            </a>
+            <a href="hd-ssd-100-porcento-windows-resolver.html" class="related-card">
+              <span class="related-card-title">Como Resolver HD/SSD em 100% de Uso</span>
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </main>
+
+    <aside class="toc-sidebar">
+      <div class="toc-card">
+        <div class="toc-title">Neste Artigo</div>
+        <ul class="toc-list">
+          <li><a href="#desativar-fast-startup">1. Desativar Fast Startup</a></li>
+          <li><a href="#correcao-kernel-cmd">2. Correção via CMD</a></li>
+          <li><a href="#recomposicao-registro">3. Ajuste no Registro</a></li>
+          <li><a href="#faq">Perguntas Frequentes</a></li>
+          <li><a href="#conclusao">Conclusão</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
+      <p>© 2026 <strong>DRGTECH</strong> — Todos os direitos reservados.</p>
+      <p><a href="../index.html">← Voltar ao início</a></p>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Voltar ao topo">↑</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>

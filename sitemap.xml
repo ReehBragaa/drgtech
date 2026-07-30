@@ -26,6 +26,22 @@
 
   <!-- Artigos / Tutoriais -->
   <url>
+    <loc>https://drgtech.com.br/artigos/windows-11-bug-desligamento-hibernacao.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/wmiprvse-alto-consumo-cpu-disco-windows.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/vazamento-dados-webview-android-ios.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/dns-spoofing-envenenamento-cache-roteador.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
     <loc>https://drgtech.com.br/artigos/kernel-security-check-failure-windows.html</loc>
     <priority>0.90</priority>
   </url>

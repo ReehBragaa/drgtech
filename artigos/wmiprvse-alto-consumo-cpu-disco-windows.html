@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como Resolver Alto Consumo de CPU pelo WmiPrvSE.exe — DRGTECH</title>
+  <meta name="description" content="Guia técnico avançado para reparar o consumo excessivo de CPU e disco do processo WmiPrvSE.exe (WMI Provider Host) reconstruindo o repositório WMI e isolando o PID." />
+  <meta name="keywords" content="wmiprvse.exe alto consumo cpu disco, wmi provider host travando pc, clientprocessid event viewer, winmgmt salvagerepository, resetrepository wmi" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Como Resolver Alto Consumo de CPU pelo WmiPrvSE.exe" />
+  <meta property="og:description" content="Aprenda a rastrear o aplicativo causador via ClientProcessId no Event Viewer e reconstruir o repositório WMI corrompido." />
+  <meta property="og:type" content="article" />
+  <link rel="canonical" href="https://drgtech.com.br/artigos/wmiprvse-alto-consumo-cpu-disco-windows.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.png" alt="DRGTECH — Tecnologia do jeito simples" class="logo-img" />
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html" class="nav-link">← Voltar</a>
+        <a href="../index.html#windows" class="nav-link">Windows</a>
+        <a href="../index.html#seguranca" class="nav-link">Segurança</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="../index.html" class="nav-link">← Voltar ao início</a>
+    </nav>
+  </header>
+
+  <div class="article-page-wrapper">
+    <main>
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Início</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../index.html#windows">Windows</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>WmiPrvSE.exe Alto Consumo</span>
+      </nav>
+
+      <header class="article-header">
+        <span class="article-badge badge-blue">Windows Avançado</span>
+        <h1 class="article-h1">Desempenho do PC: Como Resolver Alto Consumo de CPU/Disco pelo Processo WmiPrvSE.exe</h1>
+        <div class="article-intro-meta">
+          <span class="meta-item">11 min de leitura</span>
+          <span class="meta-item">Atualizado em julho de 2026</span>
+          <span class="meta-item">Equipe DRGTECH</span>
+          <span class="difficulty diff-easy">Nível: Avançado</span>
+        </div>
+      </header>
+
+      <div class="article-intro">
+        <strong>O Gerenciador de Tarefas do seu Windows exibe constantemente o processo WMI Provider Host (WmiPrvSE.exe) consumindo 30%, 50% ou até 100% do uso da sua CPU e disco?</strong>
+        O processo <code>WmiPrvSE.exe</code> (Windows Management Instrumentation) é um serviço legítimo do sistema responsável por intermediar consultas de telemetria entre o Windows e softwares de terceiros. Quando um programa ou driver entra em um loop infinito de requisições malformadas, o repositório WMI fica corrompido, travando o processador. Veja como identificar o programa causador e reconstruir o repositório.
+      </div>
+
+      <article class="article-body" id="article-body">
+
+        <h2 id="identificar-causador-wmi">Passo 1: Identificar o Aplicativo Causador via Visualizador de Eventos (ClientProcessId)</h2>
+
+        <p>Em vez de desativar o serviço WMI (o que quebraria o funcionamento do Windows), o procedimento técnico correto é descobrir qual aplicativo específico está enviando requisições defeituosas ao WMI.</p>
+
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Pressione <kbd>Win + X</kbd> e abra o <strong>Visualizador de Eventos</strong>.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">No painel esquerdo, navegue até: <strong>Aplicações e Serviços &gt; Microsoft &gt; Windows &gt; WMI-Activity &gt; Operational</strong>.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">Procure por eventos marcados com o nível <strong>Erro</strong>.</div></li>
+          <li><div class="step-num">4</div><div class="step-text">Clique no evento de erro e examine o texto na aba <em>Geral</em>. Procure pela propriedade <strong>ClientProcessId = XXXX</strong> (ex: <code>ClientProcessId = 5120</code>).</div></li>
+          <li><div class="step-num">5</div><div class="step-text">Abra o <strong>Gerenciador de Tarefas</strong> (<kbd>Ctrl + Shift + Esc</kbd>), vá na aba <strong>Detalhes</strong>, ordene pela coluna <strong>PID</strong> e localize o programa que possui o número correspondente (ex: <code>PID 5120</code>).</div></li>
+        </ol>
+
+        <div class="info-box">
+          <div class="box-content"><p><strong>Conclusão técnica:</strong> O processo associado àquele PID (ex: um software de monitoramento de RGB, utilitário de placa mãe desatualizado ou Razer Synapse) é o verdadeiro vilão que está forçando o <code>WmiPrvSE.exe</code> a consumir 100% da sua CPU. Desinstale ou atualize esse programa.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="reconstruir-repositorio-wmi">Passo 2: Reconstruir o Repositório WMI Corrompido</h2>
+
+        <p>Se o WmiPrvSE.exe continuar consumindo alta CPU mesmo após desinstalar programas de terceiros, o banco de dados interno do repositório WMI foi corrompido e precisa ser checado e recriado.</p>
+
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Abra o Prompt de Comando (CMD) como <strong>Administrador</strong>.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Interrompa temporariamente o serviço WMI executando o comando:</div></li>
+        </ol>
+
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (Admin)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">net stop winmgmt</div>
+        </div>
+
+        <p>Em seguida, execute a verificação e tentativa de salvamento do repositório:</p>
+
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (Admin)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">winmgmt /salvagerepository</div>
+        </div>
+
+        <p>Se a resposta do terminal indicar que o repositório é inconsistente ou corrompido, execute o comando de redefinição total para reconstruir o banco de dados do zero:</p>
+
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (Admin)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">winmgmt /resetrepository</div>
+        </div>
+
+        <div class="warning-box">
+          <div class="box-content"><p><strong>Próximo passo:</strong> Após a mensagem de sucesso na reconstrução do repositório, reinicie o computador. O consumo de CPU do <code>WmiPrvSE.exe</code> retornará a menos de 1%.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="faq">Perguntas Frequentes (FAQ)</h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              Posso simplesmente finalizar a tarefa WmiPrvSE.exe no Gerenciador de Tarefas?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Finalizar a tarefa mata temporariamente a instância, mas o Windows irá reabri-la em poucos segundos assim que qualquer outro programa tentar realizar uma consulta WMI. A solução definitiva é desinstalar o app causador (ClientProcessId) ou recriar o repositório.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              O WmiPrvSE.exe pode ser um vírus disfarçado?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                O arquivo legítimo fica localizado estritamente em <code>C:\Windows\System32\wbem\WmiPrvSE.exe</code>. Se você encontrar um arquivo com este nome fora da pasta System32, trata-se de um malware simulando o nome de um processo de sistema.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="conclusao">Conclusão</h2>
+
+        <p>O alto consumo de CPU provocado pelo <em>WmiPrvSE.exe</em> é um sintoma de requisições defeituosas no repositório WMI. Mapeando o processo cliente via <em>ClientProcessId</em> no Visualizador de Eventos e executando o comando <code>winmgmt /resetrepository</code>, seu sistema voltará a rodar leve e responsivo.</p>
+
+        <div class="related-articles">
+          <h2>Outros Tutoriais de Desempenho no Windows</h2>
+          <div class="related-grid">
+            <a href="hd-ssd-100-porcento-windows-resolver.html" class="related-card">
+              <span class="related-card-title">Como Resolver HD/SSD em 100% de Uso</span>
+            </a>
+            <a href="windows-11-bug-desligamento-hibernacao.html" class="related-card">
+              <span class="related-card-title">Como Corrigir Bug de Desligamento no Windows 11</span>
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </main>
+
+    <aside class="toc-sidebar">
+      <div class="toc-card">
+        <div class="toc-title">Neste Artigo</div>
+        <ul class="toc-list">
+          <li><a href="#identificar-causador-wmi">1. Rastrear ClientProcessId</a></li>
+          <li><a href="#reconstruir-repositorio-wmi">2. Reconstruir Repositório WMI</a></li>
+          <li><a href="#faq">Perguntas Frequentes</a></li>
+          <li><a href="#conclusao">Conclusão</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
+      <p>© 2026 <strong>DRGTECH</strong> — Todos os direitos reservados.</p>
+      <p><a href="../index.html">← Voltar ao início</a></p>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Voltar ao topo">↑</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>

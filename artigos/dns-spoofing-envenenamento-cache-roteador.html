@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como Resolver DNS Spoofing e Envenenamento de Cache — DRGTECH</title>
+  <meta name="description" content="Aprenda a identificar e resolver ataques de envenenamento de cache DNS (DNS Poisoning) e redirecionamentos falsos no roteador e Windows via flushdns, hosts e DNSSEC." />
+  <meta name="keywords" content="dns spoofing como resolver, envenenamento de cache dns, ipconfig flushdns arp d, redefinir dns roteador, arquivo hosts falso windows" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Como Resolver DNS Spoofing e Envenenamento de Cache" />
+  <meta property="og:description" content="Guia definitivo para limpar a tabela ARP e cache DNS, reconfigurar servidores DNSSEC no roteador e restaurar o arquivo hosts." />
+  <meta property="og:type" content="article" />
+  <link rel="canonical" href="https://drgtech.com.br/artigos/dns-spoofing-envenenamento-cache-roteador.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.png" alt="DRGTECH — Tecnologia do jeito simples" class="logo-img" />
+      </a>
+      <nav class="header-nav">
+        <a href="../index.html" class="nav-link">← Voltar</a>
+        <a href="../index.html#seguranca" class="nav-link">Segurança</a>
+        <a href="../index.html#internet" class="nav-link">Internet</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="../index.html" class="nav-link">← Voltar ao início</a>
+    </nav>
+  </header>
+
+  <div class="article-page-wrapper">
+    <main>
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../index.html">Início</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../index.html#seguranca">Segurança</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>DNS Spoofing &amp; Cache</span>
+      </nav>
+
+      <header class="article-header">
+        <span class="article-badge badge-red">Segurança de Redes</span>
+        <h1 class="article-h1">Como Resolver Ataques de DNS Spoofing e Envenenamento de Cache em Roteadores</h1>
+        <div class="article-intro-meta">
+          <span class="meta-item">11 min de leitura</span>
+          <span class="meta-item">Atualizado em julho de 2026</span>
+          <span class="meta-item">Equipe DRGTECH</span>
+          <span class="difficulty diff-easy">Nível: Intermediário</span>
+        </div>
+      </header>
+
+      <div class="article-intro">
+        <strong>Você digita o endereço de um site legítimo (como o seu banco ou e-mail) e é redirecionado para uma página falsa de login, mesmo com a URL escrita perfeitamente na barra de navegação?</strong>
+        Esse ataque grave é conhecido como <strong>DNS Spoofing (ou Envenenamento de Cache DNS)</strong>. Ele ocorre quando atacantes alteram as tabelas de mapeamento do seu roteador doméstico ou do seu computador, associando o nome de um domínio verdadeiro ao endereço IP de um servidor clonado mantido por criminosos. Veja como identificar e resolver esse problema imediatamente.
+      </div>
+
+      <article class="article-body" id="article-body">
+
+        <h2 id="limpar-cache-dns">Passo 1: Limpar o Cache de Resolução DNS e Tabela ARP no Computador</h2>
+
+        <p>O Windows armazena localmente os endereços IP dos sites que você visita para acelerar o carregamento. Se essa tabela local foi envenenada por um malware, o primeiro passo é purgeá-la completamente.</p>
+
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Pressione <kbd>Win + X</kbd> e abra o **Terminal do Windows (Admin)** ou **Prompt de Comando (Admin)**.</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Execute a sequência de comandos abaixo, pressionando <kbd>Enter</kbd> após cada linha:</div></li>
+        </ol>
+
+        <div class="cmd-box">
+          <div class="cmd-header">
+            <span class="cmd-label">Prompt de Comando (Admin)</span>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="cmd-code">ipconfig /flushdns
+ipconfig /release
+ipconfig /renew
+arp -d *</div>
+        </div>
+
+        <div class="info-box">
+          <div class="box-content"><p><strong>O que o comando <code>arp -d *</code> faz:</strong> Ele limpa a tabela de resolução de endereços MAC da sua placa de rede, derrubando eventuais ataques de ARP Spoofing disparados por dispositivos infectados conectados à sua rede Wi-Fi.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="redefinir-dns-roteador">Passo 2: Redefinir o DNS Direto no Roteador Doméstico</h2>
+
+        <p>A maioria dos ataques de DNS Spoofing ocorre porque hackers exploram senhas padrão do roteador para alterar os servidores de DNS fornecidos via DHCP para toda a sua casa.</p>
+
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Abra o seu navegador e acesse o painel de administração do roteador (geralmente digitando <strong>192.168.1.1</strong> ou <strong>192.168.0.1</strong>).</div></li>
+          <li><div class="step-num">2</div><div class="step-text">Faça login com a senha de administração. Na seção <strong>Rede / LAN / DHCP Server</strong>, encontre a opção de Servidores DNS.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">Substitua os IPs dos servidores DNS da sua operadora por servidores seguros globais com validação <strong>DNSSEC</strong>:</div></li>
+        </ol>
+
+        <ul>
+          <li><strong>Cloudflare DNS:</strong> Primário <code>1.1.1.1</code> | Secundário <code>1.0.0.1</code></li>
+          <li><strong>Google Public DNS:</strong> Primário <code>8.8.8.8</code> | Secundário <code>8.8.4.4</code></li>
+        </ul>
+
+        <div class="warning-box">
+          <div class="box-content"><p><strong>Dica de segurança essencial:</strong> Altere imediatamente a senha do painel do roteador (nunca deixe 'admin/admin') e desative a opção <strong>Gerenciamento Remoto via HTTP/WAN</strong> nas configurações de segurança do roteador.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="verificar-arquivo-hosts">Passo 3: Verificar e Restaurar o Arquivo hosts do Windows</h2>
+
+        <p>O arquivo <code>hosts</code> é um arquivo de sistema do Windows com prioridade máxima sobre qualquer servidor DNS. Malwares alteram este arquivo para forçar o redirecionamento fixo de sites bancários para IPs falsos.</p>
+
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div class="step-text">Abra o <strong>Bloco de Notas</strong> como **Administrador** (busque por Bloco de Notas no menu Iniciar, clique com botão direito &gt; Executar como Administrador).</div></li>
+          <li><div class="step-num">2</div><div class="step-text">No Bloco de Notas, vá em <strong>Arquivo &gt; Abrir</strong> e cole o caminho: <code>C:\Windows\System32\drivers\etc\hosts</code>.</div></li>
+          <li><div class="step-num">3</div><div class="step-text">No canto inferior direito da janela de busca, mude o filtro para <strong>"Todos os arquivos (*.*)"</strong>.</div></li>
+          <li><div class="step-num">4</div><div class="step-text">Examine o conteúdo do arquivo. Todas as linhas legítimas iniciam com o símbolo de comentário <code>#</code>.</div></li>
+          <li><div class="step-num">5</div><div class="step-text">Se houver linhas sem <code>#</code> ao final do arquivo associando nomes de sites (ex: <code>192.168.x.x banco.com.br</code>), <strong>apague essas linhas maliciosas</strong> e salve o arquivo (<kbd>Ctrl + S</kbd>).</div></li>
+        </ol>
+
+        <div class="success-box">
+          <div class="box-content"><p><strong>Resultado:</strong> Com a limpeza do arquivo hosts e a redefinição de DNSSEC no roteador, o navegador voltará a direcionar suas requisições aos servidores reais e autênticos dos sites.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="faq">Perguntas Frequentes (FAQ)</h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              O que é o protocolo DNSSEC e por que ele previne o Spoofing?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                O DNSSEC (DNS Security Extensions) adiciona assinaturas criptográficas aos registros de DNS. Assim, o seu navegador consegue autenticar digitalmente se a resposta do IP realmente pertence ao proprietário do domínio.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              O símbolo de cadeado (HTTPS) garante que o site não é falso por DNS Spoofing?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Não 100%. Atacantes sofisticados podem gerar certificados SSL gratuitos para os IPs de phishing. O navegador exibirá um alerta de erro de certificado se o nome do domínio no SSL não bater exatamente com o site esperado. Nunca ignore avisos de certificado no navegador.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="conclusao">Conclusão</h2>
+
+        <p>Ataques de DNS Spoofing exigem rápida resposta técnica. Limpando o cache local com <code>ipconfig /flushdns</code> e <code>arp -d *</code>, reconfigurando os servidores DNSSEC no roteador e limpando o arquivo <em>hosts</em> do Windows, você elimina qualquer redirecionamento falso da sua rede.</p>
+
+        <div class="related-articles">
+          <h2>Outros Tutoriais de Segurança e Redes</h2>
+          <div class="related-grid">
+            <a href="diagnosticar-perda-pacotes-latencia-mtu-dns.html" class="related-card">
+              <span class="related-card-title">Como Otimizar DNS e Diagnosticar Redes</span>
+            </a>
+            <a href="detectar-spywares-ocultos-keyloggers-rats.html" class="related-card">
+              <span class="related-card-title">Como Detectar Spywares e Trojans no PC</span>
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </main>
+
+    <aside class="toc-sidebar">
+      <div class="toc-card">
+        <div class="toc-title">Neste Artigo</div>
+        <ul class="toc-list">
+          <li><a href="#limpar-cache-dns">1. Limpar Cache DNS &amp; ARP</a></li>
+          <li><a href="#redefinir-dns-roteador">2. DNSSEC no Roteador</a></li>
+          <li><a href="#verificar-arquivo-hosts">3. Arquivo hosts do Windows</a></li>
+          <li><a href="#faq">Perguntas Frequentes</a></li>
+          <li><a href="#conclusao">Conclusão</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
+      <p>© 2026 <strong>DRGTECH</strong> — Todos os direitos reservados.</p>
+      <p><a href="../index.html">← Voltar ao início</a></p>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Voltar ao topo">↑</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>
