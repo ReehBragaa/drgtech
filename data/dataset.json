@@ -158,5 +158,69 @@
     "duvidas_relacionadas": [105, 107, 108, 109],
     "read_time": "6 min de leitura",
     "updated_at": "julho de 2026"
+  },
+  {
+    "id": 111,
+    "slug": "como-corrigir-falhas-autenticacao-rdp-erro-0x8009030e-credssp",
+    "keyword_principal": "Como Corrigir Falhas de Autenticação RDP (Erro 0x8009030e / CredSSP)",
+    "categoria": "windows",
+    "resposta_curta": "Para resolver o erro 0x8009030e de autenticação RDP no Windows, limpe os caches Kerberos/NTLM via prompt de comando (klist purge e nbtstat -R), adicione a chave AllowEncryptionOracle com valor 2 no registro HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\CredSSP\\Parameters e configure enablecredsspsupport:i:0 no arquivo .rdp.",
+    "passo_a_passo": [
+      "Abra o CMD como Administrador e execute klist purge e nbtstat -R para limpar o cache de credenciais Kerberos e NTLM.",
+      "Pressione Win + R, abra o regedit e vá até HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System.",
+      "Crie as pastas CredSSP e Parameters e adicione o valor DWORD (32 bits) AllowEncryptionOracle com o valor 2.",
+      "Abra o arquivo .rdp no Bloco de Notas e adicione as linhas enablecredsspsupport:i:0 e authentication level:i:2 ao final."
+    ],
+    "duvidas_relacionadas": [102, 106, 107, 114],
+    "read_time": "8 min de leitura",
+    "updated_at": "julho de 2026"
+  },
+  {
+    "id": 112,
+    "slug": "como-resolver-armazenamento-sistema-cheio-iphone-ios",
+    "keyword_principal": "Como Resolver o Armazenamento do Sistema Cheio no iPhone (iOS)",
+    "categoria": "celular",
+    "resposta_curta": "Para limpar os Gigabytes de 'Dados do Sistema' ocupando o iPhone, remova os dados do Safari em Ajustes > Safari > Avançado > Dados dos Sites, faça um Hard Reset para expurgar logs de análise (.ips em /var/mobile/Library/Logs) e realize um backup local criptografado via Finder/iTunes para forçar a consolidação do banco de dados APFS.",
+    "passo_a_passo": [
+      "Vá em Ajustes > Safari > Avançado > Dados dos Sites e toque em 'Remover Todos os Dados'.",
+      "Verifique em Ajustes > Privacidade e Segurança > Análise e Melhorias os logs .ips acumulados.",
+      "Execute um Hard Reset (apertar e soltar Volume +, Volume -, e segurar o botão lateral) para forçar o expurgo de logs de crash.",
+      "Conecte o iPhone ao PC/Mac e execute um 'Backup Criptografado' no Finder ou iTunes para forçar o iOS a consolidar o armazenamento de sistema."
+    ],
+    "duvidas_relacionadas": [103, 108, 110, 113],
+    "read_time": "7 min de leitura",
+    "updated_at": "julho de 2026"
+  },
+  {
+    "id": 113,
+    "slug": "como-eliminar-bateria-vazando-wakelocks-google-play-services",
+    "keyword_principal": "Como Eliminar Bateria Vazando por WakeLocks do Google Play Services",
+    "categoria": "celular",
+    "resposta_curta": "Para evitar que o Google Play Services esgoste a bateria em segundo plano, desative a Varredura de Wi-Fi e Bluetooth em Configurações > Localização > Serviços de Localização, limpe todos os dados do Google Play Services em Aplicativos e execute a restrição de segundo plano via ADB com adb shell cmd appops set com.google.android.gms RUN_IN_BACKGROUND ignore.",
+    "passo_a_passo": [
+      "Acesse Configurações > Localização > Serviços de Localização e desative 'Varredura de Wi-Fi' e 'Varredura de Bluetooth'.",
+      "Vá em Configurações > Aplicativos > mostrar apps do sistema > Google Play Services > Armazenamento > Limpar Todos os Dados.",
+      "Ative a Depuração USB nas Opções do Desenvolvedor no celular e conecte ao computador.",
+      "Execute o comando 'adb shell cmd appops set com.google.android.gms RUN_IN_BACKGROUND ignore' no terminal ADB e reinicie."
+    ],
+    "duvidas_relacionadas": [103, 108, 110, 112],
+    "read_time": "6 min de leitura",
+    "updated_at": "julho de 2026"
+  },
+  {
+    "id": 114,
+    "slug": "como-proteger-roteador-rede-local-contra-injecao-upnp",
+    "keyword_principal": "Como Proteger o Roteador e a Rede Local Contra Injeção no UPnP",
+    "categoria": "seguranca",
+    "resposta_curta": "Para proteger sua rede contra vulnerabilidades do protocolo UPnP, acesse o painel administrativo do roteador (192.168.1.1), inspecione a tabela de mapeamento UPnP ativo, desative a função UPnP nas configurações avançadas de rede e bloqueie as regras de entrada 'Descoberta de Rede (SSDP-In)' e 'Descoberta de Rede (UPnP-In)' no Firewall com Segurança Avançada do Windows (wf.msc).",
+    "passo_a_passo": [
+      "Acesse o painel do seu roteador (192.168.1.1 ou 192.168.0.1) e examine a tabela de Port Forwarding / UPnP.",
+      "Desative o protocolo UPnP nas configurações avançadas e utilize o redirecionamento manual de portas apenas quando necessário.",
+      "No Windows, pressione Win + R, digite wf.msc para abrir o Firewall do Windows com Segurança Avançada.",
+      "Navegue em Regras de Entrada e desative as regras 'Descoberta de Rede (SSDP-In)' e 'Descoberta de Rede (UPnP-In)'."
+    ],
+    "duvidas_relacionadas": [104, 105, 107, 110],
+    "read_time": "7 min de leitura",
+    "updated_at": "julho de 2026"
   }
 ]
