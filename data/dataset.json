@@ -222,5 +222,69 @@
     "duvidas_relacionadas": [104, 105, 107, 110],
     "read_time": "7 min de leitura",
     "updated_at": "julho de 2026"
+  },
+  {
+    "id": 115,
+    "slug": "como-corrigir-erro-0x800f0922-atualizacao-windows-particao-efi",
+    "keyword_principal": "Como Corrigir o Erro 0x800f0922 na Atualização do Windows (Partição EFI)",
+    "categoria": "windows",
+    "resposta_curta": "Para resolver o erro 0x800f0922 no Windows Update causado por falta de espaço na partição EFI (ESP), monte temporariamente a unidade rodando mountvol s: /s no CMD como Administrador, acesse a pasta s:\\EFI\\Microsoft\\Recovery, apague logs de instalação obsoletos ou arquivos de dump temporários e desmonte a unidade com mountvol s: /d antes de reiniciar o pacote de atualização.",
+    "passo_a_passo": [
+      "Abra o PowerShell (Admin) e confirme a partição FAT32 com Get-Volume | Where-Object {$_.FileSystemType -eq 'FAT32'}.",
+      "No CMD como Administrador, monte a partição EFI digitando o comando mountvol s: /s.",
+      "Acesse a unidade s: no terminal, vá até s:\\EFI\\Microsoft\\Recovery e remova logs excedentes ou dumps temporários.",
+      "Verifique o espaço com fsutil volume diskfree s:, desmonte a unidade rodando mountvol s: /d e reinicie o Windows Update."
+    ],
+    "duvidas_relacionadas": [102, 106, 107, 111],
+    "read_time": "8 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 116,
+    "slug": "como-resolver-falhas-corrupcao-memoria-imageio-appledouble-iphone-ios",
+    "keyword_principal": "Como Resolver Trava de Processamento de Imagens ImageIO e AppleDouble no iPhone",
+    "categoria": "celular",
+    "resposta_curta": "Para corrigir travamentos em aplicativos por falhas de corrupção de memória e buffer nos parsers de imagem do iOS (ImageIO e AppleDouble), atualize o iPhone imediatamente em Ajustes > Geral > Atualização de Software para aplicar os patches de bounds checking do kernel, limpe o cache de arquivos temporários em Ajustes > Armazenamento e execute um Hard Reset.",
+    "passo_a_passo": [
+      "Acesse Ajustes > Geral > Atualização de Software e instale a versão mais recente do iOS para aplicar as correções de segurança no ImageIO.",
+      "Vá em Ajustes > Safari > Avançado > Dados dos Sites e toque em 'Remover Todos os Dados'.",
+      "Em Ajustes > Armazenamento do iPhone, selecione aplicativos de mensagens e limpe arquivos recebidos não salvos.",
+      "Realize uma reinicialização forçada (Hard Reset) para descarregar o buffer de memória volátil da GPU."
+    ],
+    "duvidas_relacionadas": [103, 108, 112, 117],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 117,
+    "slug": "como-mitigar-vulnerabilidade-driver-qualcomm-display-android",
+    "keyword_principal": "Como Proteger o Android Contra Vulnerabilidades no Driver Qualcomm Display",
+    "categoria": "celular",
+    "resposta_curta": "Para mitigar falhas de corrupção de memória e estouro de inteiro em drivers gráficos Qualcomm (CVE-2026-21385), atualize o módulo do sistema em Configurações > Segurança e Privacidade > Atualização do sistema Google Play (Mainline) e desative a permissão de 'Instalar aplicativos desconhecidos' em navegadores e gerenciadores de arquivos.",
+    "passo_a_passo": [
+      "Acesse Configurações > Segurança e Privacidade > Atualizações e toque em 'Atualização do sistema Google Play'.",
+      "Verifique se há pacotes Mainline pendentes e instale para atualizar o subsistema de codecs e drivers gráficos.",
+      "Vá em Configurações > Aplicativos > Acesso especial de apps > Instalar aplicativos desconhecidos.",
+      "Revogue a permissão de instalação de APKs manuais para navegadores e gerenciadores de arquivos de terceiros."
+    ],
+    "duvidas_relacionadas": [103, 105, 110, 113],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 118,
+    "slug": "como-rastrear-auditar-movimento-lateral-varredura-rede-local",
+    "keyword_principal": "Como Rastrear e Bloquear Movimento Lateral e Varredura de Portas na Rede Local",
+    "categoria": "seguranca",
+    "resposta_curta": "Para identificar dispositivos comprometidos realizando varredura de portas e movimento lateral (Lateral Movement) na sua rede Wi-Fi, execute uma auditoria Nmap com nmap -sT -p 1-1024 192.168.1.0/24, habilite o registro de conexões rejeitadas (Drop Rules Logging) no painel do roteador e ative a função AP Isolation (Isolamento de AP) para impedir a comunicação direta entre dispositivos locais.",
+    "passo_a_passo": [
+      "Conecte um computador de auditoria à rede e execute a varredura nmap -sT -p 1-1024 192.168.1.0/24 no terminal.",
+      "Examine dispositivos IoT e câmeras IP respondendo em portas ativas como SSH (22), Telnet (23) ou RDP (3389).",
+      "Acesse o painel administrativo do roteador (192.168.1.1) e ative a funcionalidade 'AP Isolation' (Isolamento de AP).",
+      "Habilite os logs de regras de rejeição (Drop Rules Logging) no Firewall do roteador para detectar tentativas de conexões entre sub-redes."
+    ],
+    "duvidas_relacionadas": [104, 105, 110, 114],
+    "read_time": "8 min de leitura",
+    "updated_at": "agosto de 2026"
   }
 ]
