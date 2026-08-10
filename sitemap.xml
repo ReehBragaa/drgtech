@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Página Inicial -->
   <url>
     <loc>https://drgtech.com.br/</loc>
     <priority>1.00</priority>
   </url>
-
-  <!-- Páginas Institucionais -->
   <url>
     <loc>https://drgtech.com.br/sobre.html</loc>
     <priority>0.80</priority>
@@ -23,70 +20,132 @@
     <loc>https://drgtech.com.br/termos.html</loc>
     <priority>0.80</priority>
   </url>
-
-  <!-- Artigos / Tutoriais -->
   <url>
-    <loc>https://drgtech.com.br/artigos/windows-11-bug-desligamento-hibernacao.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-cancelar-assinatura-netflix-celular-pc.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/wmiprvse-alto-consumo-cpu-disco-windows.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-tirar-print-screen-notebook-windows.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/vazamento-dados-webview-android-ios.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-limpar-cache-whatsapp-liberar-espaco.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/dns-spoofing-envenenamento-cache-roteador.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-descobrir-senha-wifi-conectado-pc-celular.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/kernel-security-check-failure-windows.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-saber-se-whatsapp-foi-clonado-ou-hacker.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/hd-ssd-100-porcento-windows-resolver.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-formatar-notebook-windows-10-restaurar-fabrica.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/consumo-oculto-bateria-thermal-throttling-android-iphone.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-desativar-antivirus-windows-defender-temporariamente.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/recuperar-celular-bootloop-loop-infinito.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-recuperar-mensagens-apagadas-whatsapp.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/detectar-spywares-ocultos-keyloggers-rats.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-mudar-senha-wifi-roteador-pelo-celular.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/diagnosticar-perda-pacotes-latencia-mtu-dns.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-ativar-verificacao-duas-etapas-instagram-whatsapp.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/pendrive-boot-recuperacao-windows.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-corrigir-falhas-autenticacao-rdp-erro-0x8009030e-credssp.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/impressora-offline-windows.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-resolver-armazenamento-sistema-cheio-iphone-ios.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/wifi-caindo-como-resolver.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-eliminar-bateria-vazando-wakelocks-google-play-services.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/celular-travando-lento-android.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-proteger-roteador-rede-local-contra-injecao-upnp.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/bateria-celular-acaba-rapido.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-corrigir-erro-0x800f0922-atualizacao-windows-particao-efi.html</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://drgtech.com.br/artigos/remover-virus-computador-gratis.html</loc>
+    <loc>https://drgtech.com.br/artigos/como-resolver-falhas-corrupcao-memoria-imageio-appledouble-iphone-ios.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/como-mitigar-vulnerabilidade-driver-qualcomm-display-android.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/como-rastrear-auditar-movimento-lateral-varredura-rede-local.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/como-corrigir-perfil-temporario-temp-user-profile-service-windows-11.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/como-resolver-portal-captive-wifi-erro-ssl-iphone-ios.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/como-bloquear-conexoes-ocultas-dados-segundo-plano-android.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/como-corrigir-vazamento-dns-ipv6-leak-protecao-rede.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/como-auditar-mitigar-vulnerabilidade-bypass-bitlocker-windows.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/como-corrigir-vazamento-ip-dns-webkit-icloud-private-relay-iphone-ios.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/como-bloquear-acesso-indevido-area-transferencia-clipboard-android-one-ui.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/como-blindar-roteador-rede-domestica-contra-varreduras-externas-ia.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/gestao-avancada-armazenamento-liberacao-memoria-smartphones.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/otimizacao-avancada-autonomia-bateria-gestao-ciclos.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/por-que-computador-fica-lento-passo-a-passo-resolver.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/o-que-fazer-se-internet-cai-toda-hora-passo-a-passo.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/como-criar-uma-senha-segura-e-forte.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/como-saber-se-email-e-falso-ou-golpe-phishing.html</loc>
     <priority>0.90</priority>
   </url>
 </urlset>

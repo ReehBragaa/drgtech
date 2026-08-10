@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://drgtech.com.br/sitemap.xml
 Sitemap: https://drgtech.com.br/sitemap-index.xml

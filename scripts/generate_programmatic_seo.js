@@ -281,9 +281,27 @@ function run() {
 
   console.log(`✅ Generated ${generatedCount} programmatic HTML articles with FAQPage + BreadcrumbList Schema.org!`);
 
+  // Build Master sitemap.xml (All-in-one sitemap preferred by Google Search Console)
+  const masterUrls = [
+    `  <url>\n    <loc>${SITE_URL}/</loc>\n    <priority>1.00</priority>\n  </url>`,
+    `  <url>\n    <loc>${SITE_URL}/sobre.html</loc>\n    <priority>0.80</priority>\n  </url>`,
+    `  <url>\n    <loc>${SITE_URL}/contato.html</loc>\n    <priority>0.80</priority>\n  </url>`,
+    `  <url>\n    <loc>${SITE_URL}/privacidade.html</loc>\n    <priority>0.80</priority>\n  </url>`,
+    `  <url>\n    <loc>${SITE_URL}/termos.html</loc>\n    <priority>0.80</priority>\n  </url>`,
+    ...dataset.map(item => `  <url>\n    <loc>${SITE_URL}/artigos/${item.slug}.html</loc>\n    <priority>0.90</priority>\n  </url>`)
+  ];
+
+  const masterSitemapXML = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${masterUrls.join('\n')}
+</urlset>`;
+
+  fs.writeFileSync(path.join(ROOT_DIR, 'sitemap.xml'), masterSitemapXML, 'utf-8');
+  console.log(`🗺️ Generated master sitemap.xml with ${masterUrls.length} total URLs!`);
+
   // Build Sitemaps (Sitemap Index + Chunked Sitemaps)
   const CHUNK_SIZE = 2000;
-  const sitemapFiles = [];
+  const sitemapFiles = ['sitemap.xml'];
   const allUrls = dataset.map(item => `${SITE_URL}/artigos/${item.slug}.html`);
 
   for (let i = 0; i < dataset.length; i += CHUNK_SIZE) {
@@ -316,27 +334,28 @@ ${sitemapIndexEntries}
 </sitemapindex>`;
 
   fs.writeFileSync(path.join(ROOT_DIR, 'sitemap-index.xml'), sitemapIndexXML, 'utf-8');
-  console.log(`🗺️ Generated sitemap-index.xml with ${sitemapFiles.length} chunked sitemap files!`);
+  console.log(`🗺️ Generated sitemap-index.xml pointing to ${sitemapFiles.join(', ')}!`);
 
   // Generate IndexNow payload format for Bing / Yandex / Seznam
   const indexNowPayload = {
     "host": "drgtech.com.br",
     "key": "drgtech-indexnow-key-2026",
     "keyLocation": `${SITE_URL}/drgtech-indexnow-key-2026.txt`,
-    "urlList": allUrls
+    "urlList": masterUrls.map(u => u.match(/<loc>(.*?)<\/loc>/)[1])
   };
   fs.writeFileSync(path.join(ROOT_DIR, 'indexnow.json'), JSON.stringify(indexNowPayload, null, 2), 'utf-8');
   fs.writeFileSync(path.join(ROOT_DIR, 'drgtech-indexnow-key-2026.txt'), 'drgtech-indexnow-key-2026', 'utf-8');
   console.log('⚡ IndexNow payload and verification key generated!');
 
-  // Update robots.txt to point to sitemap-index.xml
+  // Update robots.txt to point to sitemap.xml and sitemap-index.xml
   const robotsTXT = `User-agent: *
 Allow: /
 
+Sitemap: ${SITE_URL}/sitemap.xml
 Sitemap: ${SITE_URL}/sitemap-index.xml
 `;
   fs.writeFileSync(path.join(ROOT_DIR, 'robots.txt'), robotsTXT, 'utf-8');
-  console.log('🤖 Updated robots.txt pointing to sitemap-index.xml!');
+  console.log('🤖 Updated robots.txt pointing to sitemap.xml!');
 }
 
 run();
