@@ -444,5 +444,35 @@
     "duvidas_relacionadas": [103, 113, 117, 121],
     "read_time": "7 min de leitura",
     "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 129,
+    "slug": "por-que-computador-fica-lento-passo-a-passo-resolver",
+    "keyword_principal": "Por que o Computador Fica Lento e Passo a Passo para Resolver",
+    "categoria": "windows",
+    "resposta_curta": "O computador fica lento principalmente devido ao acúmulo de aplicativos na inicialização (startup apps), falta de espaço livre no HD ou SSD (impedindo a gestão da memória virtual) e excesso de abas no navegador. A solução envolve desabilitar apps no Gerenciador de Tarefas, ativar o Sensor de Armazenamento e usar o Memory Saver no navegador.",
+    "passo_a_passo": [
+      "Pressione Ctrl + Shift + Esc para abrir o Gerenciador de Tarefas, vá na aba Aplicativos de Inicialização, selecione os programas desnecessários e clique em Desabilitar.",
+      "Pressione Win + I, vá em Sistema > Armazenamento, ative o Sensor de Armazenamento (Storage Sense) e execute a limpeza de arquivos temporários e lixeira.",
+      "Ative recursos nativos de suspensão de abas inativas (como Memory Saver no Google Chrome ou Guias Dormitórias no Microsoft Edge) para liberar RAM."
+    ],
+    "duvidas_relacionadas": [102, 106, 107, 123],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 130,
+    "slug": "o-que-fazer-se-internet-cai-toda-hora-passo-a-passo",
+    "keyword_principal": "O que Fazer se a Internet Cai Toda Hora e Passo a Passo para Resolver",
+    "categoria": "internet",
+    "resposta_curta": "Se a internet cai toda hora no PC ou celular, desconecte os cabos de alimentação do modem e roteador da tomada por 30 segundos para descarregar os capacitores e reiniciar o enlace lógico, aproxime o dispositivo para reduzir atenuação de sinal (packet loss) e inspecione a trava e LEDs do cabo Ethernet (RJ45).",
+    "passo_a_passo": [
+      "Desconecte a fonte de alimentação do modem e roteador Wi-Fi da tomada, aguarde 30 segundos para a descarga completa dos capacitores e reconecte aguardando o LED de status estabilizar.",
+      "Aproxime o notebook ou smartphone do roteador Wi-Fi para reduzir a atenuação de sinal de rádio e evitar a perda de pacotes (packet loss).",
+      "Inspecione o cabo de rede Ethernet (RJ45) conectado à placa de rede e ao roteador, garantindo que a trava plástica está encaixada e os LEDs de link estão acesos."
+    ],
+    "duvidas_relacionadas": [101, 104, 109, 114],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
   }
 ]
