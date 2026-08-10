@@ -504,5 +504,155 @@
     "duvidas_relacionadas": [105, 110, 114, 131],
     "read_time": "6 min de leitura",
     "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 133,
+    "slug": "como-corrigir-erro-0x80070005-permissao-negada-windows-update",
+    "keyword_principal": "Como Corrigir o Erro 0x80070005 de Permissão Negada no Windows Update",
+    "categoria": "windows",
+    "resposta_curta": "O erro 0x80070005 (Access Denied) no Windows Update ocorre quando o sistema não possui permissões de gravação na pasta SoftwareDistribution. Para resolver, execute o Prompt de Comando como Administrador, pare os serviços wuauserv e bits, e redefina as permissões do componente com icacls %systemroot%\\SoftwareDistribution /grant administradores:F.",
+    "passo_a_passo": [
+      "Abra o Prompt de Comando como Administrador e digite 'net stop wuauserv' e 'net stop bits' para pausar os serviços de atualização.",
+      "Execute o comando 'icacls %systemroot%\\SoftwareDistribution /grant administradores:F' para restaurar permissões totais de gravação.",
+      "Reinicie os serviços com 'net start wuauserv' e 'net start bits', e tente buscar atualizações novamente em Configurações > Windows Update."
+    ],
+    "duvidas_relacionadas": [102, 107, 119, 129],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 134,
+    "slug": "como-resolver-erro-0x80070422-windows-defender-firewall",
+    "keyword_principal": "Como Resolver o Erro 0x80070422 no Windows Defender e Firewall",
+    "categoria": "windows",
+    "resposta_curta": "O erro 0x80070422 indica que o serviço do Windows Update ou do Firewall do Windows está desativado ou bloqueado no registro. Para corrigir, pressione Win + R, digite services.msc, localize 'Windows Defender Antivirus Service' e 'Serviço de Firewall do Windows', mude o Tipo de Inicialização para Automático e inicie o serviço.",
+    "passo_a_passo": [
+      "Pressione Win + R, digite 'services.msc' e pressione Enter para abrir o gerenciador de serviços do Windows.",
+      "Localize 'Serviço do Windows Update' e 'Firewall do Windows', clique com o botão direito e selecione Propriedades.",
+      "Mude o Tipo de Inicialização para 'Automático', clique no botão 'Iniciar', aplique as alterações e reinicie a máquina."
+    ],
+    "duvidas_relacionadas": [102, 107, 111, 133],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 135,
+    "slug": "como-corrigir-tela-azul-dpc-watchdog-violation-windows-11",
+    "keyword_principal": "Como Corrigir a Tela Azul DPC_WATCHDOG_VIOLATION no Windows 11",
+    "categoria": "windows",
+    "resposta_curta": "A tela azul DPC_WATCHDOG_VIOLATION é causada por drivers de armazenamento SSD/NVMe desatualizados ou incompatíveis com o controlador AHCI/SATA. Para resolver, abra o Gerenciador de Dispositivos, expanda Controladores IDE ATA/ATAPI, altere o driver do controlador SATA para o driver genérico 'SATA AHCI padrão' da Microsoft e execute sfc /scannow.",
+    "passo_a_passo": [
+      "Pressione Win + X, abra o Gerenciador de Dispositivos e expanda a categoria 'Controladores IDE ATA/ATAPI'.",
+      "Clique com o botão direito no controlador SATA instalado, escolha 'Atualizar driver' > 'Procurar drivers no meu computador' > 'Permitir que eu escolha em uma lista'.",
+      "Selecione 'Controlador SATA AHCI padrão', instale o driver da Microsoft, abra o Prompt de Comando (Admin) e rode 'sfc /scannow'."
+    ],
+    "duvidas_relacionadas": [102, 106, 119, 129],
+    "read_time": "8 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 136,
+    "slug": "como-corrigir-erro-conexao-servidor-imessage-facetime-iphone",
+    "keyword_principal": "Como Corrigir o Erro de Conexão com o Servidor no iMessage e FaceTime (iPhone)",
+    "categoria": "celular",
+    "resposta_curta": "Se o iMessage ou FaceTime exibem o erro 'Não foi possível conectar ao servidor de ativação' no iPhone, acesse Ajustes > Geral > Data e Hora e ative 'Automático', desative e reative o iMessage em Ajustes > Mensagens, e redefina as configurações de rede em Ajustes > Geral > Transferir ou Redefinir o iPhone.",
+    "passo_a_passo": [
+      "Vá em Ajustes > Geral > Data e Hora e certifique-se de que a opção 'Definir Automaticamente' está ativada com o fuso horário correto.",
+      "Acesse Ajustes > Mensagens, desative o iMessage, aguarde 15 segundos e reative a chave para forçar um novo aperto de mão com a Apple.",
+      "Se a falha persistir, vá em Ajustes > Geral > Transferir ou Redefinir o iPhone > Redefinir e toque em 'Redefinir Configurações de Rede'."
+    ],
+    "duvidas_relacionadas": [103, 108, 120, 124],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 137,
+    "slug": "como-resolver-iphone-travado-tela-logo-maca-loop-boot",
+    "keyword_principal": "Como Resolver iPhone Travado na Tela do Logo da Maçã (Loop de Boot)",
+    "categoria": "celular",
+    "resposta_curta": "Para destravar um iPhone congelado no logo da Maçã sem perder dados, force a reinicialização pressionando e soltando rapidamente Aumentar Volume, depois Diminuir Volume, e segurando o botão Lateral até a tela apagar. Se não funcionar, conecte ao PC/Mac via cabo e selecione a opção 'Atualizar' no Finder/iTunes em modo de recuperação.",
+    "passo_a_passo": [
+      "Pressione e solte rapidamente o botão Aumentar Volume, pressione e solte Diminuir Volume, e mantenha pressionado o botão Lateral até o logo da Maçã reaparecer.",
+      "Se o loop persistir, conecte o iPhone ao computador com cabo original e abra o Finder (Mac) ou iTunes (Windows).",
+      "Coloque o aparelho em Modo de Recuperação e escolha a opção 'Atualizar' (que reinstala o iOS sem apagar os dados do usuário)."
+    ],
+    "duvidas_relacionadas": [103, 108, 120, 127],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 138,
+    "slug": "como-resolver-erro-interface-sistema-parou-system-ui-android",
+    "keyword_principal": "Como Resolver o Erro 'Interface do Sistema Parou' (System UI) no Android",
+    "categoria": "celular",
+    "resposta_curta": "O erro 'Interface do Sistema Parou' (System UI Process Has Stopped) no Android é causado por falhas de cache do app Google ou atualizações corrompidas do WebView. Para corrigir, acesse Configurações > Aplicativos > Mostrar apps do sistema, busque por 'Android System WebView' e 'Google', e selecione 'Desinstalar Atualizações' e 'Limpar Cache'.",
+    "passo_a_passo": [
+      "Acesse Configurações > Aplicativos, toque nos três pontos superiores e selecione 'Mostrar aplicativos do sistema'.",
+      "Localize 'Android System WebView', toque em Armazenamento > Limpar Cache e selecione 'Desinstalar Atualizações' no menu superior.",
+      "Faça o mesmo procedimento para o aplicativo 'Google', reinicie o smartphone e atualize os apps novamente pela Play Store."
+    ],
+    "duvidas_relacionadas": [103, 105, 121, 125],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 139,
+    "slug": "como-corrigir-erro-download-pendente-google-play-store",
+    "keyword_principal": "Como Corrigir o Erro de Download Pendente na Google Play Store",
+    "categoria": "celular",
+    "resposta_curta": "Se o download de aplicativos fica travado em 'Pendente' na Play Store, acesse Configurações > Aplicativos > Google Play Store > Armazenamento e toque em 'Limpar Dados' e 'Limpar Cache'. Em seguida, limpe o cache do app 'Serviços do Google Play' (Play Services) e desative downloads simultâneos em segundo plano.",
+    "passo_a_passo": [
+      "Vá em Configurações > Aplicativos > Google Play Store > Armazenamento e toque em 'Limpar Cache' e 'Limpar Dados'.",
+      "Localize o app 'Google Play Services' na mesma lista, vá em Armazenamento > Gerenciar Espaço e selecione 'Limpar Todos os Dados'.",
+      "Abra a Play Store, vá nas configurações da sua conta e altere a preferência de download para 'Em qualquer rede'."
+    ],
+    "duvidas_relacionadas": [103, 105, 113, 127],
+    "read_time": "5 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 140,
+    "slug": "como-corrigir-erro-dns-probe-finished-nxdomain-navegador",
+    "keyword_principal": "Como Corrigir o Erro 'DNS_PROBE_FINISHED_NXDOMAIN' no Navegador",
+    "categoria": "internet",
+    "resposta_curta": "O erro DNS_PROBE_FINISHED_NXDOMAIN ocorre quando o servidor DNS não consegue traduzir o nome do domínio para um IP válido. Para resolver no Windows, abra o Prompt de Comando (Admin), execute 'ipconfig /flushdns', 'netsh winsock reset' e altere os servidores DNS da placa de rede para Cloudflare (1.1.1.1 e 1.0.0.1) ou Google (8.8.8.8).",
+    "passo_a_passo": [
+      "Abra o Prompt de Comando como Administrador e execute os comandos: 'ipconfig /flushdns', 'ipconfig /release', 'ipconfig /renew' e 'netsh winsock reset'.",
+      "Pressione Win + R, digite 'ncpa.cpl', clique com botão direito na sua conexão de rede e abra 'Propriedades'.",
+      "Selecione 'Protocolo IP Versão 4 (TCP/IPv4)', marque 'Usar os seguintes endereços de servidor DNS' e insira 1.1.1.1 (DNS Preferencial) e 1.0.0.1 (DNS Alternativo)."
+    ],
+    "duvidas_relacionadas": [101, 104, 122, 130],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 141,
+    "slug": "como-resolver-wifi-conectado-sem-acesso-internet-pc-celular",
+    "keyword_principal": "Como Resolver Wi-Fi Conectado Sem Acesso à Internet no PC e Celular",
+    "categoria": "internet",
+    "resposta_curta": "Se o Wi-Fi aparece como 'Conectado, sem internet', o problema geralmente é um conflito de endereço IP (DHCP) ou erro de gateway. Para resolver, esqueca a rede Wi-Fi nas configurações do dispositivo e reconecte, reinicie o roteador desligando da tomada por 30 segundos, ou defina um IP estático válido nas configurações da conexão.",
+    "passo_a_passo": [
+      "No dispositivo (celular ou PC), acesse as configurações de Wi-Fi, selecione a rede problemática e toque em 'Esquecer rede', conectando novamente com a senha.",
+      "Desconecte o cabo de energia do roteador da tomada, aguarde 30 segundos para limpar o cache de atribuição de IP (DHCP) e ligue-o novamente.",
+      "No Windows, abra o Prompt de Comando (Admin) e execute 'netsh int ip reset' para redefinir completamente a pilha de protocolos TCP/IP."
+    ],
+    "duvidas_relacionadas": [101, 104, 109, 130],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 142,
+    "slug": "como-remover-notificacoes-virus-falsos-chrome-edge",
+    "keyword_principal": "Como Remover Notificações de Vírus Falsos no Google Chrome e Edge",
+    "categoria": "seguranca",
+    "resposta_curta": "Notificações persistentes no canto da tela alertando sobre vírus falsos (como 'Seu PC está infectado!') são causadas por permissões de pop-up concedidas a sites maliciosos. Para remover no Chrome/Edge, acesse Configurações > Privacidade e Segurança > Configurações do Site > Notificações e remova todos os domínios desconhecidos da lista 'Permitido'.",
+    "passo_a_passo": [
+      "No Google Chrome ou Microsoft Edge, clique nos três pontos superiores e abra 'Configurações'.",
+      "Vá em 'Privacidade e segurança' > 'Configurações do site' (ou Permissões do site) > 'Notificações'.",
+      "Examine a seção 'Permitido enviar notificações', clique nos três pontinhos ao lado de cada site estranho ou desconhecido e escolha 'Remover' ou 'Bloquear'."
+    ],
+    "duvidas_relacionadas": [105, 110, 114, 132],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
   }
 ]

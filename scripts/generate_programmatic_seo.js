@@ -107,9 +107,17 @@ function generateHTML(item, datasetMap) {
   <meta name="description" content="${item.resposta_curta.slice(0, 155)}..." />
   <meta name="keywords" content="${item.keyword_principal.toLowerCase()}, tutorial ${catInfo.name.toLowerCase()}, suporte tecnico" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="${item.keyword_principal}" />
+  <meta property="og:title" content="${item.keyword_principal} — DRGTech" />
   <meta property="og:description" content="${item.resposta_curta}" />
   <meta property="og:type" content="article" />
+  <meta property="og:url" content="${canonicalUrl}" />
+  <meta property="og:image" content="${SITE_URL}/img/og-preview.png" />
+  <meta property="og:site_name" content="DRGTech" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${item.keyword_principal} — DRGTech" />
+  <meta name="twitter:description" content="${item.resposta_curta}" />
+  <meta name="twitter:image" content="${SITE_URL}/img/og-preview.png" />
+  <meta property="article:publisher" content="https://drgtech.com.br" />
   <!-- Clean Canonical URL -->
   <link rel="canonical" href="${canonicalUrl}" />
   <link rel="icon" type="image/png" href="../img/favicon.png" />
