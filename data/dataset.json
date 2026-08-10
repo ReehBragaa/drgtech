@@ -286,5 +286,133 @@
     "duvidas_relacionadas": [104, 105, 110, 114],
     "read_time": "8 min de leitura",
     "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 119,
+    "slug": "como-corrigir-perfil-temporario-temp-user-profile-service-windows-11",
+    "keyword_principal": "Como Corrigir Perfil Temporário e Erro no User Profile Service (Windows 11)",
+    "categoria": "windows",
+    "resposta_curta": "Para corrigir o erro de carregamento de perfil temporário (TEMP) no Windows 11, abra o Editor de Registro (regedit), acesse HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProfileList, identifique a chave do seu SID com extensão .bak, renomeie a chave atual para .old, remova a extensão .bak da chave original, mude o valor DWORD State para 0 e reinicie o computador.",
+    "passo_a_passo": [
+      "Pressione Win + R, abra o regedit e navegue até HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProfileList.",
+      "Localize a pasta do seu SID (S-1-5-21-...) com sufixo .bak e confirme a pasta do usuário no valor ProfileImagePath.",
+      "Renomeie a chave sem .bak adicionando .old ao final e remova o sufixo .bak da chave correta.",
+      "Clique duas vezes na chave ajustada, mude o valor DWORD State para 0, reinicie o PC e limpe C:\\Users\\Temp se necessário."
+    ],
+    "duvidas_relacionadas": [102, 106, 107, 115],
+    "read_time": "8 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 120,
+    "slug": "como-resolver-portal-captive-wifi-erro-ssl-iphone-ios",
+    "keyword_principal": "Como Resolver Erro de Portal Captive e Conexão SSL no Wi-Fi do iPhone",
+    "categoria": "celular",
+    "resposta_curta": "Para abrir a tela de login de redes Wi-Fi públicas no iPhone quando o portal captive não carrega, abra o Safari e acesse http://captive.apple.com ou http://neverssl.com. Se o erro de certificado SSL persistir, desative temporariamente a opção 'Endereço Wi-Fi Privado', desligue perfis de VPN/DNS e redefina as Configurações de Rede em Ajustes > Geral > Transferir ou Redefinir o iPhone.",
+    "passo_a_passo": [
+      "Abra o Safari e digite http://captive.apple.com ou http://neverssl.com na barra de endereços para forçar o redirecionamento HTTP.",
+      "Vá em Ajustes > Wi-Fi, toque no 'i' ao lado da rede conectada e desative temporariamente a chave 'Endereço Wi-Fi Privado'.",
+      "Desative temporariamente aplicativos de VPN ou perfis de DNS personalizado (Cloudflare/AdGuard) que mascaram o gateway local.",
+      "Acesse Ajustes > Geral > Transferir ou Redefinir o iPhone > Redefinir e escolha 'Redefinir Configurações de Rede'."
+    ],
+    "duvidas_relacionadas": [103, 104, 108, 116],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 121,
+    "slug": "como-bloquear-conexoes-ocultas-dados-segundo-plano-android",
+    "keyword_principal": "Como Diagnosticar e Bloquear Conexões Ocultas de Dados no Android",
+    "categoria": "celular",
+    "resposta_curta": "Para rastrear e impedir que aplicativos consumam dados móveis e façam conexões de fundo ocultas no Android, inspecione os sockets ativos via ADB com o comando adb shell netstat -W, acesse Configurações > Aplicativos > Uso de dados do app suspeito e desative a chave 'Dados em segundo plano', ou utilize um firewall local por VPN sem root (NetGuard).",
+    "passo_a_passo": [
+      "Ative a Depuração USB nas Opções do Desenvolvedor, conecte ao PC e execute 'adb shell netstat -W' para listar os sockets ativos.",
+      "Identifique o aplicativo e o PID responsável pelas conexões em background direcionadas a servidores de anúncios.",
+      "No celular, acesse Configurações > Aplicativos > selecione o app > Uso de dados e desative 'Dados em segundo plano'.",
+      "Instale um firewall local seguro sem root (como NetGuard ou NoRoot Firewall) para bloquear conexões não autorizadas."
+    ],
+    "duvidas_relacionadas": [103, 105, 113, 117],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 122,
+    "slug": "como-corrigir-vazamento-dns-ipv6-leak-protecao-rede",
+    "keyword_principal": "Como Corrigir Vazamento de DNS por IPv6 (IPv6 Leak) e Proteger a Rede",
+    "categoria": "seguranca",
+    "resposta_curta": "Para impedir que seu provedor monitore requisições de sites via vazamento de DNS IPv6 (IPv6 Leak), abra as conexões de rede (ncpa.cpl), vá nas propriedades de Protocolo IP Versão 6 (TCP/IPv6) e insira servidores seguros (Cloudflare 2606:4700:4700::1111 ou Google 2001:4860:4860::8888), ou desative completamente o IPv6 no painel administrativo do seu roteador.",
+    "passo_a_passo": [
+      "Pressione Win + R, digite ncpa.cpl, clique com o botão direito na conexão ativa e abra 'Propriedades'.",
+      "Selecione 'Protocolo IP Versão 6 (TCP/IPv6)', clique em Propriedades e marque 'Usar os seguintes endereços de servidor DNS'.",
+      "Insira os IPs de DNS IPv6 seguros da Cloudflare (2606:4700:4700::1111 / 2606:4700:4700::1001) ou Google.",
+      "Acesse o painel do seu roteador residencial (192.168.1.1) e desative a opção de conexão IPv6 se ela não for necessária."
+    ],
+    "duvidas_relacionadas": [104, 105, 114, 118],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 123,
+    "slug": "como-auditar-mitigar-vulnerabilidade-bypass-bitlocker-windows",
+    "keyword_principal": "Como Auditar e Mitigar Vulnerabilidades de Bypass no BitLocker (Windows)",
+    "categoria": "windows",
+    "resposta_curta": "Para auditar e mitigar vulnerabilidades de bypass de criptografia no BitLocker, abra o PowerShell como Administrador, execute Get-BitLockerVolume para garantir o uso do algoritmo XTS-AES 256 e a atestação por hardware via TPM, ative um PIN pré-boot obrigatório e audite as contas do grupo Administradores rodando net localgroup Administradores.",
+    "passo_a_passo": [
+      "Abra o PowerShell (Admin) e execute Get-BitLockerVolume para checar os métodos de proteção ativados e alinhamento com o TPM.",
+      "Certifique-se de que a partição utiliza criptografia de hardware XTS-AES 256 e ative a proteção por PIN antes da inicialização.",
+      "Abra o Prompt de Comando (Admin) e audite os membros administrativos executando net localgroup Administradores.",
+      "Remova contas órfãs ou sem uso e revogue permissões de delegação irrestrita no Active Directory para impedir escalação de privilégios."
+    ],
+    "duvidas_relacionadas": [102, 107, 115, 119],
+    "read_time": "8 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 124,
+    "slug": "como-corrigir-vazamento-ip-dns-webkit-icloud-private-relay-iphone-ios",
+    "keyword_principal": "Como Corrigir Vazamento de IP e DNS no WebKit e iCloud Private Relay (iOS)",
+    "categoria": "celular",
+    "resposta_curta": "Para impedir vazamentos de IP real e consultas DNS causados por requisições auxiliares do WebKit no iOS (como DNS Prefetching e WebTransport), acesse Ajustes > Apps > Safari e desative 'Pré-carregar Primeiro Resultado', e audite extensões de rede em Ajustes > Geral > VPN e Gerenciamento Dispositivos > Filtros de Conteúdo.",
+    "passo_a_passo": [
+      "No iPhone, vá em Ajustes > Apps > Safari.",
+      "Desative a opção 'Pré-carregar Primeiro Resultado' para impedir que o WebKit faça consultas DNS diretas fora do proxy.",
+      "Navegue até Ajustes > Geral > VPN e Gerenciamento Dispositivos > Filtros de Conteúdo.",
+      "Examine e remova perfis de rede ou filtros de conteúdo de terceiros legados que forçam o fallback do Private Relay para texto plano."
+    ],
+    "duvidas_relacionadas": [103, 112, 116, 120],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 125,
+    "slug": "como-bloquear-acesso-indevido-area-transferencia-clipboard-android-one-ui",
+    "keyword_principal": "Como Auditar e Bloquear Acesso Indevido à Área de Transferência no Android",
+    "categoria": "celular",
+    "resposta_curta": "Para evitar que aplicativos maliciosos leiam senhas ou chaves Pix copiadas na área de transferência no Android e Samsung One UI, ative o alerta de leitura no sistema, revise as permissões de segundo plano em Configurações > Aplicativos e utilize gerenciadores de senhas seguros que apagam o clipboard automaticamente após 30 a 60 segundos.",
+    "passo_a_passo": [
+      "Fique atento aos alertas da barra superior do Android sempre que um app tentar ler o conteúdo da área de transferência.",
+      "Acesse Configurações > Aplicativos, selecione apps suspeitos e desative permissões de execução em segundo plano desnecessárias.",
+      "Utilize um aplicativo de gerenciamento de senhas confiável configurado para limpar o clipboard em 30 a 60 segundos.",
+      "Evite manter textos planos com dados bancários, cartões ou credenciais copiados na memória temporária do smartphone."
+    ],
+    "duvidas_relacionadas": [103, 105, 113, 121],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 126,
+    "slug": "como-blindar-roteador-rede-domestica-contra-varreduras-externas-ia",
+    "keyword_principal": "Como Blindar o Roteador Doméstico Contra Varreduras Externas por IA",
+    "categoria": "seguranca",
+    "resposta_curta": "Para proteger seu roteador e borda de rede doméstica contra scanners automatizados por IA, acesse o painel administrativo (192.168.1.1), desative o Gerenciamento Remoto via WAN, desabilite o protocolo UPnP e execute um teste externo de portas com a ferramenta ShieldsUP! para garantir que as portas 80, 443 e 8080 fiquem completamente invisíveis.",
+    "passo_a_passo": [
+      "Acesse o painel do seu roteador (192.168.1.1 ou 192.168.0.1) pelo navegador.",
+      "Vá na seção Gerenciamento Remoto / Acesso WAN e desative o acesso ao painel de administração através da internet pública.",
+      "Desative a função UPnP (Universal Plug and Play) nas configurações avançadas do roteador.",
+      "Acesse a ferramenta online ShieldsUP! da GRC e execute uma varredura de portas externa para verificar se nenhuma porta administrativa respondeu."
+    ],
+    "duvidas_relacionadas": [104, 114, 118, 122],
+    "read_time": "8 min de leitura",
+    "updated_at": "agosto de 2026"
   }
 ]
