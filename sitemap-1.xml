@@ -120,4 +120,12 @@
     <loc>https://drgtech.com.br/artigos/o-que-fazer-se-internet-cai-toda-hora-passo-a-passo.html</loc>
     <priority>0.90</priority>
   </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/como-criar-uma-senha-segura-e-forte.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/como-saber-se-email-e-falso-ou-golpe-phishing.html</loc>
+    <priority>0.90</priority>
+  </url>
 </urlset>

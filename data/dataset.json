@@ -474,5 +474,35 @@
     "duvidas_relacionadas": [101, 104, 109, 114],
     "read_time": "6 min de leitura",
     "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 131,
+    "slug": "como-criar-uma-senha-segura-e-forte",
+    "keyword_principal": "Como Criar uma Senha Segura e Forte Passo a Passo",
+    "categoria": "seguranca",
+    "resposta_curta": "Para criar uma senha segura, misture letras maiúsculas e minúsculas, números e símbolos especiais para aumentar a complexidade contra ataques de força bruta, evite datas de nascimento ou nomes pessoais, e utilize um gerenciador de senhas confiável (Bitwarden ou 1Password) para gerar e armazenar credenciais aleatórias.",
+    "passo_a_passo": [
+      "Utilize uma frase-senha longa intercalando caracteres especiais e numerais no lugar de letras comuns para criar combinações complexas.",
+      "Evite usar dados pessoais públicos ou de fácil adivinhação, como datas de nascimento, nomes de familiares, pets ou sequências simples (123456).",
+      "Armazene suas credenciais em um cofre criptografado com chave mestra utilizando um gerenciador de senhas confiável (como Bitwarden ou 1Password)."
+    ],
+    "duvidas_relacionadas": [105, 110, 114, 132],
+    "read_time": "5 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 132,
+    "slug": "como-saber-se-email-e-falso-ou-golpe-phishing",
+    "keyword_principal": "Como Saber se um E-mail é Falso ou Golpe (Phishing)",
+    "categoria": "seguranca",
+    "resposta_curta": "Para identificar se um e-mail é falso ou golpe (phishing), verifique o endereço completo do remetente após o caractere @ para confirmar se pertence ao domínio oficial da empresa, desconfie de mensagens que exigem dinheiro ou dados urgentes sob ameaça de bloqueio, e nunca clique em links suspeitos sem passar o cursor para pré-visualizar a URL real.",
+    "passo_a_passo": [
+      "Clique no nome do remetente no seu cliente de e-mail para expandir o endereço completo e auditar se o domínio após o caractere @ pertence genuinamente à instituição oficial.",
+      "Desconfie de mensagens com senso de urgência ou ameaças de bloqueio de conta, e acesse os serviços digitando o site oficial manualmente no navegador.",
+      "Posicione o cursor do mouse sobre links (sem clicar) para pré-visualizar o destino real da URL na barra de status inferior do seu navegador."
+    ],
+    "duvidas_relacionadas": [105, 110, 114, 131],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
   }
 ]
