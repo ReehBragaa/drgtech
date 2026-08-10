@@ -654,5 +654,155 @@
     "duvidas_relacionadas": [105, 110, 114, 132],
     "read_time": "6 min de leitura",
     "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 143,
+    "slug": "como-usar-comandos-dism-sfc-windows-11-corrigir-erros",
+    "keyword_principal": "Como Usar os Comandos DISM e SFC no Windows 11 para Corrigir Erros",
+    "categoria": "windows",
+    "resposta_curta": "Para reparar arquivos corrompidos e imagens danificadas no Windows 11, abra o Prompt de Comando como Administrador e execute dism /online /cleanup-image /restorehealth para reparar a imagem do sistema e, em seguida, rode sfc /scannow para substituir arquivos protegidos corrompidos.",
+    "passo_a_passo": [
+      "Abra o Menu Iniciar, digite 'cmd', clique com o botão direito sobre Prompt de Comando e escolha 'Executar como Administrador'.",
+      "Digite o comando 'dism /online /cleanup-image /restorehealth' e pressione Enter, aguardando a verificação atingir 100%.",
+      "Após a conclusão do DISM, digite 'sfc /scannow' para verificar a integridade dos arquivos de sistema e reinicie o computador."
+    ],
+    "duvidas_relacionadas": [102, 119, 129, 133],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 144,
+    "slug": "como-resolver-bug-windows-11-nao-desliga-hibernacao",
+    "keyword_principal": "Como Resolver o Bug do Windows 11 que Não Desliga nem Entra em Hibernação",
+    "categoria": "windows",
+    "resposta_curta": "Se o Windows 11 reinicia ao tentar desligar ou falha na hibernação, o erro geralmente é causado pelo recurso de Inicialização Rápida (Fast Startup). Para resolver, abra o Painel de Controle, vá em Opções de Energia > Escolher a função dos botões de energia, clique em 'Alterar configurações não disponíveis no momento' e desmarque 'Ligar inicialização rápida'.",
+    "passo_a_passo": [
+      "Pressione Win + R, digite 'powercfg.cpl' e clique em OK para abrir as Opções de Energia do Painel de Controle.",
+      "No menu esquerdo, clique em 'Escolher a função dos botões de energia' e selecione 'Alterar configurações não disponíveis no momento'.",
+      "Desmarque a opção 'Ligar inicialização rápida (recomendado)', salve as alterações e desative o System Guard Secure Launch se necessário."
+    ],
+    "duvidas_relacionadas": [102, 107, 127, 135],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 145,
+    "slug": "como-resolver-erro-0x80073712-repositorio-corrompido-windows-update",
+    "keyword_principal": "Como Resolver o Erro 0x80073712 de Repositório Corrompido no Windows Update",
+    "categoria": "windows",
+    "resposta_curta": "O erro 0x80073712 (ERROR_SXS_COMPONENT_STORE_CORRUPT) ocorre quando os arquivos do manifesto de atualizações do Windows estão corrompidos. Para corrigir, abra o Prompt de Comando (Admin), rode 'dism /online /cleanup-image /startcomponentcleanup' e limpe a pasta C:\\Windows\\SoftwareDistribution.",
+    "passo_a_passo": [
+      "Abra o Prompt de Comando como Administrador e execute 'dism /online /cleanup-image /startcomponentcleanup' para remover manifestos corrompidos.",
+      "Pare os serviços de atualização digitando 'net stop wuauserv' e 'net stop bits'.",
+      "Navegue até a pasta C:\\Windows\\SoftwareDistribution\\Download, apague todos os arquivos temporários e reinicie os serviços com 'net start wuauserv'."
+    ],
+    "duvidas_relacionadas": [102, 119, 133, 143],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 146,
+    "slug": "como-corrigir-processo-system-consumindo-muita-memoria-ram",
+    "keyword_principal": "Como Corrigir o Processo System Consumindo Muita Memória RAM no Windows",
+    "categoria": "windows",
+    "resposta_curta": "O processo System (ntoskrnl.exe) consumir muita memória RAM ou CPU geralmente indica vazamento de memória por drivers de dispositivo desatualizados (como Killer Network ou áudio Realtek) ou falhas no serviço SysMain (Superfetch). Para resolver, desative temporariamente o SysMain em services.msc e atualize os drivers no Gerenciador de Dispositivos.",
+    "passo_a_passo": [
+      "Pressione Win + R, digite 'services.msc', localize o serviço 'SysMain', mude a inicialização para 'Desativado' e pare o serviço.",
+      "Abra o Gerenciador de Tarefas, identifique se o uso de RAM diminuiu na aba Desempenho > Memória.",
+      "Atualize os drivers de rede e chipset no Gerenciador de Dispositivos para eliminar vazamentos de memória (memory leaks) de drivers legados."
+    ],
+    "duvidas_relacionadas": [102, 107, 127, 129],
+    "read_time": "8 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 147,
+    "slug": "como-resolver-superaquecimento-processador-cpu-thermal-throttling",
+    "keyword_principal": "Como Identificar e Resolver o Superaquecimento do Processador (Thermal Throttling)",
+    "categoria": "windows",
+    "resposta_curta": "O superaquecimento do processador faz a CPU reduzir a frequência de relógio (Thermal Throttling) para evitar danos físicos, causando travamentos extremos no PC. Para corrigir, limpe os coolers e dissipadores, substitua a pasta térmica ressecada do processador e certifique-se de que a circulação de ar dentro do gabinete esteja desobstruída.",
+    "passo_a_passo": [
+      "Monitore as temperaturas da CPU utilizando softwares gratuitos como HWMonitor ou Core Temp (temperaturas acima de 85-90°C indicam aquecimento excessivo).",
+      "Desligue o computador, abra o gabinete/notebook e limpe todo o acúmulo de poeira nos ventiladores e aletas do dissipador.",
+      "Remova o cooler do processador, limpe os resíduos antigos com álcool isopropílico e aplique uma nova camada de pasta térmica à base de prata."
+    ],
+    "duvidas_relacionadas": [102, 106, 127, 146],
+    "read_time": "8 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 148,
+    "slug": "como-resolver-aplicativos-fechando-sozinhos-android-webview",
+    "keyword_principal": "Como Resolver Aplicativos Fechando Sozinhos no Android (WebView Crash)",
+    "categoria": "celular",
+    "resposta_curta": "Aplicativos fechando sozinhos de forma repentina no Android costumam ser causados por bugs na biblioteca Android System WebView ou no app Google. Para corrigir, abra a Google Play Store, busque por 'Android System WebView' e 'Google', selecione 'Atualizar' ou desinstale atualizações corrompidas em Configurações > Aplicativos.",
+    "passo_a_passo": [
+      "Abra a Google Play Store, acesse 'Meus aplicativos e jogos' e verifique se há atualizações pendentes para o 'Android System WebView'.",
+      "Se o problema persistir, vá em Configurações > Aplicativos > Android System WebView e toque em 'Desinstalar Atualizações'.",
+      "Limpe o cache do app Google e do aplicativo afetado em Configurações > Aplicativos > Armazenamento > Limpar Cache."
+    ],
+    "duvidas_relacionadas": [103, 105, 121, 138],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 149,
+    "slug": "como-corrigir-erro-sem-servico-sim-invalido-iphone",
+    "keyword_principal": "Como Corrigir o Erro 'Sem Serviço' ou 'SIM Inválido' no iPhone",
+    "categoria": "celular",
+    "resposta_curta": "O erro 'Sem Serviço' ou 'Buscando...' no iPhone ocorre por desalinhamento físico do chip SIM ou travamento do modem de rádio. Para resolver, ative e desative o Modo Avião por 15 segundos, remova a gaveta do SIM card com a chave de ejeção, limpe o chip com um pano seco de microfibra e redefina as configurações de rede em Ajustes > Geral > Transferir ou Redefinir o iPhone.",
+    "passo_a_passo": [
+      "Abra a Central de Controle no iPhone, ative o 'Modo Avião', aguarde 15 segundos e toque novamente para desativá-lo.",
+      "Utilize a chave de ejeção para remover a gaveta do chip SIM, limpe os contatos metálicos com um pano limpo e seco e insira-o novamente.",
+      "Vá em Ajustes > Geral > Sobre e verifique se há uma atualização de Ajustes da Operadora disponível, ou acesse Ajustes > Geral > Redefinir > Redefinir Configurações de Rede."
+    ],
+    "duvidas_relacionadas": [103, 108, 120, 136],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 150,
+    "slug": "como-corrigir-erro-0x800704cf-rede-inalcancavel-windows",
+    "keyword_principal": "Como Corrigir o Erro 0x800704cf de Rede Inalcançável no Windows",
+    "categoria": "internet",
+    "resposta_curta": "O erro 0x800704cf (O local de rede não pode ser alcançado) no Windows acontece quando adaptadores de rede virtuais legados entram em conflito com a conta Microsoft. Para resolver, acesse o Gerenciador de Dispositivos, expanda Adaptadores de Rede, desinstale adaptadores de miniportas (TAP/TUN) de VPNs antigas e redefina o protocolo Client for Microsoft Networks.",
+    "passo_a_passo": [
+      "Pressione Win + X, abra o Gerenciador de Dispositivos e expanda a categoria 'Adaptadores de rede'.",
+      "Clique com o botão direito em adaptadores virtuais não utilizados (como TAP-Windows Adapter ou VPNs antigas) e escolha 'Desinstalar dispositivo'.",
+      "Abra o Prompt de Comando (Admin) e execute 'nbtstat -RR' e 'netsh winsock reset' para reestabelecer o protocolo NetBIOS na rede local."
+    ],
+    "duvidas_relacionadas": [101, 104, 130, 140],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 151,
+    "slug": "como-reduzir-ping-alto-resolver-lag-wifi-jogos",
+    "keyword_principal": "Como Reduzir o Ping Alto e Resolver o Lag no Wi-Fi em Jogos",
+    "categoria": "internet",
+    "resposta_curta": "O ping alto e instável (lag spikes) no Wi-Fi ocorre devido a interferências na frequência de 2.4 GHz e saturação de banda por downloads em segundo plano. Para mitigar, conecte o dispositivo à frequência de 5 GHz do roteador, altere o canal do Wi-Fi para um canal limpo via aplicativo WiFi Analyzer e ative a funcionalidade QoS (Quality of Service) no painel do roteador.",
+    "passo_a_passo": [
+      "Conecte seu computador ou celular à rede Wi-Fi de 5 GHz em vez de 2.4 GHz para obter maior largura de banda e menor latência.",
+      "Baixe o aplicativo WiFi Analyzer, descubra qual canal sem fio está menos congestionado na sua vizinhança e selecione esse canal nas configurações do roteador.",
+      "Acesse o painel administrativo do roteador (192.168.1.1) e ative a opção QoS para priorizar o tráfego de dados de jogos e chamadas de voz."
+    ],
+    "duvidas_relacionadas": [101, 104, 109, 141],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 152,
+    "slug": "como-proteger-arquivos-contra-ransomware-regra-backup-3-2-1",
+    "keyword_principal": "Como Proteger Seus Arquivos Contra Ransomware (Regra de Backup 3-2-1)",
+    "categoria": "seguranca",
+    "resposta_curta": "Para blindar seus documentos contra ataques de ransomware (sequestro de dados por criptografia maliciosa), aplique a regra de backup 3-2-1: mantenha 3 cópias dos seus dados em 2 mídias diferentes (HD externo e nuvem) com 1 cópia mantida totalmente offline (air-gapped) e ative a Proteção Contra Ransomware no Windows Defender.",
+    "passo_a_passo": [
+      "Mantenha 3 cópias dos seus arquivos importantes: a cópia de trabalho no computador, uma cópia em um HD externo/pendrive e uma cópia na nuvem (OneDrive/Google Drive).",
+      "Mantenha a cópia do HD externo desconectada do computador quando não estiver fazendo o backup (backup offline/air-gapped impede infecção cruzada).",
+      "Abra a Segurança do Windows, vá em 'Proteção contra vírus e ameaças' > 'Gerenciar proteção contra ransomware' e ative o 'Acesso a pastas controladas'."
+    ],
+    "duvidas_relacionadas": [105, 110, 114, 131],
+    "read_time": "8 min de leitura",
+    "updated_at": "agosto de 2026"
   }
 ]
