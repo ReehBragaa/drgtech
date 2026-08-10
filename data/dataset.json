@@ -414,5 +414,35 @@
     "duvidas_relacionadas": [104, 114, 118, 122],
     "read_time": "8 min de leitura",
     "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 127,
+    "slug": "gestao-avancada-armazenamento-liberacao-memoria-smartphones",
+    "keyword_principal": "Gestão Avançada de Armazenamento e Liberação de Memória em Smartphones",
+    "categoria": "celular",
+    "resposta_curta": "A escassez de espaço de armazenamento degrada a performance do sistema de arquivos (F2FS/ext4 no Android ou APFS no iOS). A solução técnica envolve offloading de mídia para a nuvem com 'Otimizar Armazenamento' (iOS) ou 'Liberar Espaço' (Android), remoção de pacotes órfãos em Configurações > Armazenamento e limpeza nativa de cache sem aplicativos de terceiros.",
+    "passo_a_passo": [
+      "Configure o backup automatizado na nuvem (Google Fotos ou iCloud) ativando 'Otimizar Armazenamento' (iOS) ou 'Liberar Espaço' (Android) para substituir arquivos pesados por miniaturas de baixo peso.",
+      "Acesse Configurações > Armazenamento > Aplicativos, ordene por tamanho e selecione 'Limpar Dados' antes de desinstalar apps legados para expurgar pastas residuais (/Android/data/).",
+      "Realize a limpeza nativa de cache acessando Configurações > Aplicativos > [App Pesado] > Armazenamento > Limpar Cache, evitando utilitários de terceiros que sobrecarregam o sistema."
+    ],
+    "duvidas_relacionadas": [103, 108, 112, 116],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 128,
+    "slug": "otimizacao-avancada-autonomia-bateria-gestao-ciclos",
+    "keyword_principal": "Otimização Avançada de Autonomia de Bateria e Gestão de Ciclos",
+    "categoria": "celular",
+    "resposta_curta": "O dreno acelerado da bateria é provocado por Wake Locks persistentes e varreduras de rádio. Para mitigar, ajuste a taxa de atualização adaptativa para 60Hz em apps secundários, restrinja permissões de GPS para 'Apenas durante o uso', desative o BLE Scanning e utilize o modo nativo de Suspensão Profunda para congelar daemons sem fechar apps da memória RAM compulsivamente.",
+    "passo_a_passo": [
+      "Ajuste a taxa de atualização de 120Hz para 60Hz em apps secundários e desative o brilho automático se houver oscilações para aliviar o circuito PMIC do display.",
+      "Acesse Configurações > Privacidade e Segurança > Serviços de Localização, mude o GPS para 'Apenas durante o uso' e desative varreduras de Bluetooth (BLE Scanning).",
+      "Evite fechar aplicativos compulsivamente da tela de recentes (o que força reinstanciação do zero na CPU) e utilize o recurso nativo de Suspensão Profunda para apps secundários."
+    ],
+    "duvidas_relacionadas": [103, 113, 117, 121],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
   }
 ]
