@@ -146,38 +146,68 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2000);
       });
     });
+  });
+
   // ─── Interactive Tool: Password Generator ───
-  const btnGeneratePass = document.getElementById('btn-generate-pass');
-  const btnCopyPass = document.getElementById('btn-copy-pass');
-  const generatedPassInput = document.getElementById('generated-password');
+  function initPasswordGenerators() {
+    const btnGeneratePass = document.getElementById('btn-generate-pass');
+    const btnCopyPass = document.getElementById('btn-copy-pass');
+    const generatedPassInput = document.getElementById('generated-password');
+    const passLengthInput = document.getElementById('pass-length');
+    const passLengthVal = document.getElementById('pass-length-val');
+    const chkUpper = document.getElementById('chk-upper');
+    const chkLower = document.getElementById('chk-lower');
+    const chkNum = document.getElementById('chk-num');
+    const chkSym = document.getElementById('chk-sym');
 
-  function generateSecurePassword() {
-    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
-    let pass = '';
-    const array = new Uint32Array(16);
-    window.crypto.getRandomValues(array);
-    for (let i = 0; i < 16; i++) {
-      pass += chars[array[i] % chars.length];
-    }
-    return pass;
-  }
-
-  if (btnGeneratePass && generatedPassInput) {
-    btnGeneratePass.addEventListener('click', () => {
-      generatedPassInput.value = generateSecurePassword();
-    });
-  }
-
-  if (btnCopyPass && generatedPassInput) {
-    btnCopyPass.addEventListener('click', () => {
-      if (!generatedPassInput.value) return;
-      navigator.clipboard.writeText(generatedPassInput.value).then(() => {
-        const orig = btnCopyPass.textContent;
-        btnCopyPass.textContent = '✓ Copiado!';
-        setTimeout(() => { btnCopyPass.textContent = orig; }, 2000);
+    if (passLengthInput && passLengthVal) {
+      passLengthInput.addEventListener('input', (e) => {
+        passLengthVal.textContent = e.target.value;
       });
-    });
+    }
+
+    function generateSecurePassword() {
+      let chars = '';
+      if (!chkUpper || chkUpper.checked) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      if (!chkLower || chkLower.checked) chars += 'abcdefghijklmnopqrstuvwxyz';
+      if (!chkNum || chkNum.checked) chars += '0123456789';
+      if (!chkSym || chkSym.checked) chars += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+      if (!chars) chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
+
+      const length = passLengthInput ? parseInt(passLengthInput.value, 10) : 16;
+      let pass = '';
+      const array = new Uint32Array(length);
+      window.crypto.getRandomValues(array);
+      for (let i = 0; i < length; i++) {
+        pass += chars[array[i] % chars.length];
+      }
+      return pass;
+    }
+
+    if (btnGeneratePass && generatedPassInput) {
+      btnGeneratePass.addEventListener('click', () => {
+        generatedPassInput.value = generateSecurePassword();
+      });
+      // Auto-generate on load if empty
+      if (!generatedPassInput.value) {
+        generatedPassInput.value = generateSecurePassword();
+      }
+    }
+
+    if (btnCopyPass && generatedPassInput) {
+      btnCopyPass.addEventListener('click', () => {
+        if (!generatedPassInput.value) return;
+        navigator.clipboard.writeText(generatedPassInput.value).then(() => {
+          const orig = btnCopyPass.textContent;
+          btnCopyPass.textContent = '✓ Copiado!';
+          setTimeout(() => { btnCopyPass.textContent = orig; }, 2000);
+        });
+      });
+    }
   }
+
+  initPasswordGenerators();
 
   // ─── Table of Contents — Active Highlighting ───
   const tocLinks = document.querySelectorAll('.toc-list a');

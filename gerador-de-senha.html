@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerador de Senha Segura Online Grátis — DRGTECH</title>
+  <meta name="description" content="Gere senhas fortes, aleatórias e ultra seguras de até 32 caracteres online. Proteja suas contas contra ataques cibernéticos com o gerador seguro do DRGTECH." />
+  <link rel="canonical" href="https://drgtech.com.br/gerador-de-senha.html" />
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Gerador de Senha Segura Online Grátis — DRGTECH" />
+  <meta property="og:description" content="Gere senhas fortes, aleatórias e ultra seguras de até 32 caracteres online com o gerador do DRGTECH." />
+  <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
+  <meta property="og:url" content="https://drgtech.com.br/gerador-de-senha.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="img/logo.png" alt="DRGTECH — Tecnologia do jeito simples" class="logo-img" />
+      </a>
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link">Início</a>
+        <a href="gerador-de-senha.html" class="nav-link active">🛠️ Gerador de Senha</a>
+        <a href="sobre.html" class="nav-link">Sobre</a>
+        <a href="contato.html" class="nav-link">Contato</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="index.html" class="nav-link">Início</a>
+      <a href="gerador-de-senha.html" class="nav-link">🛠️ Gerador de Senhas</a>
+      <a href="sobre.html" class="nav-link">Sobre</a>
+      <a href="contato.html" class="nav-link">Contato</a>
+    </nav>
+  </header>
+
+  <main style="max-width: 900px; margin: 40px auto; padding: 0 24px;">
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Início</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Ferramentas</span>
+      <span class="breadcrumb-sep">›</span>
+      <span>Gerador de Senha Segura</span>
+    </nav>
+
+    <header class="article-header" style="text-align: center; margin-bottom: 2rem;">
+      <span class="article-badge cat-seguranca" style="display: inline-block; margin-bottom: 0.8rem;">Ferramenta Gratuita</span>
+      <h1 class="article-h1" style="font-size: 2.2rem; margin-bottom: 0.8rem;">Gerador de Senha Segura Instantâneo</h1>
+      <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto;">Crie senhas fortes, aleatórias e totalmente à prova de ataques cibernéticos. O processamento é 100% local no seu navegador — suas senhas nunca são enviadas para nenhum servidor.</p>
+    </header>
+
+    <!-- Main Generator Card -->
+    <section class="generator-card" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 20px; padding: 2.5rem 2rem; box-shadow: var(--shadow-md); margin-bottom: 3rem;">
+      
+      <!-- Password Input Display -->
+      <div style="display: flex; gap: 0.8rem; margin-bottom: 2rem; flex-wrap: wrap;">
+        <input type="text" id="generated-password" readonly style="flex: 1; min-width: 280px; padding: 1.1rem 1.4rem; font-family: monospace; font-size: 1.4rem; font-weight: bold; color: #1e293b; background: #f8fafc; border: 2px solid #94a3b8; border-radius: 12px; letter-spacing: 1px;" placeholder="Gerando senha..." />
+        <button id="btn-generate-pass" style="padding: 1.1rem 1.8rem; background: #2563eb; color: #ffffff; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: background 0.2s;">⚡ Gerar Senha Forte</button>
+        <button id="btn-copy-pass" style="padding: 1.1rem 1.5rem; background: #0f172a; color: #ffffff; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: background 0.2s;">📋 Copiar Senha</button>
+      </div>
+
+      <!-- Controls Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; background: #f8fafc; padding: 1.8rem; border-radius: 14px; border: 1px solid #e2e8f0;">
+        
+        <!-- Length Slider -->
+        <div>
+          <label for="pass-length" style="display: flex; justify-content: space-between; font-weight: 700; color: #1e293b; margin-bottom: 0.8rem;">
+            <span>Tamanho da Senha:</span>
+            <span id="pass-length-val" style="color: #2563eb; font-size: 1.2rem;">16</span> caracteres
+          </label>
+          <input type="range" id="pass-length" min="8" max="32" value="16" style="width: 100%; cursor: pointer;" />
+        </div>
+
+        <!-- Checkbox Options -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+          <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-weight: 600; color: #334155;">
+            <input type="checkbox" id="chk-upper" checked style="width: 18px; height: 18px;" /> Maiúsculas (A-Z)
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-weight: 600; color: #334155;">
+            <input type="checkbox" id="chk-lower" checked style="width: 18px; height: 18px;" /> Minúsculas (a-z)
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-weight: 600; color: #334155;">
+            <input type="checkbox" id="chk-num" checked style="width: 18px; height: 18px;" /> Números (0-9)
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-weight: 600; color: #334155;">
+            <input type="checkbox" id="chk-sym" checked style="width: 18px; height: 18px;" /> Símbolos (!@#$)
+          </label>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Informational Long-Form Content for SEO & AdSense -->
+    <article class="article-body">
+      <h2>Por que utilizar senhas fortes geradas aleatoriamente?</h2>
+      <p>Ataques cibernéticos modernos utilizam robôs de força bruta (*Brute Force*) capazes de testar bilhões de combinações de senhas por segundo. Senhas baseadas em nomes de familiares, datas de aniversário ou sequências simples como <code>123456</code> ou <code>senha123</code> são descobertas instantaneamente por hackers.</p>
+      <p>Utilizar um gerador de senhas aleatórias garante que sua chave de acesso possua alta entropia, combinando letras maiúsculas, minúsculas, numerais e caracteres especiais sem nenhum padrão previsível.</p>
+
+      <h2>Como salvar suas senhas com segurança?</h2>
+      <p>Como senhas aleatórias de 16 ou mais caracteres são difíceis de memorizar, a melhor prática recomendada por especialistas de segurança da informação é utilizar um **Gerenciador de Senhas Criptografado**.</p>
+      <ul>
+        <li><strong>Bitwarden:</strong> Gerenciador de código aberto gratuito com sincronização em nuvem segura e criptografia ponta a ponta.</li>
+        <li><strong>1Password:</strong> Excelente opção corporativa e pessoal para armazenar cartões e credenciais.</li>
+        <li><strong>Proton Pass:</strong> Focado em privacidade e integrado ao ecossistema de e-mail seguro.</li>
+      </ul>
+
+      <h2>Segurança e Privacidade do Gerador DRGTECH</h2>
+      <div class="success-box">
+        <div class="box-content">
+          <p><strong>Garantia de Privacidade:</strong> Este gerador utiliza a API nativa <code>window.crypto.getRandomValues()</code> do seu próprio navegador. Nenhum dado gerado nesta página é enviado, transmitido ou armazenado em nossos servidores.</p>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
+      <p>© 2026 <strong>DRGTECH</strong> — Todos os direitos reservados.</p>
+      <p><a href="index.html">← Voltar ao início</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

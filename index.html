@@ -35,6 +35,7 @@
       </div>
 
       <nav class="header-nav" aria-label="Navegação principal">
+        <a href="gerador-de-senha.html" class="nav-link" style="color: #2563eb; font-weight: 700;">🛠️ Gerador de Senha</a>
         <a href="#windows" class="nav-link">Windows</a>
         <a href="#celular" class="nav-link">Celular</a>
         <a href="#internet" class="nav-link">Internet</a>
@@ -46,6 +47,7 @@
       </button>
     </div>
     <nav class="mobile-nav" id="mobile-nav">
+      <a href="gerador-de-senha.html" class="nav-link" style="color: #2563eb; font-weight: 700;">🛠️ Gerador de Senhas</a>
       <a href="#windows" class="nav-link">Windows</a>
       <a href="#celular" class="nav-link">Celular</a>
       <a href="#internet" class="nav-link">Internet</a>
@@ -82,23 +84,29 @@
   <!-- Category Filter -->
   <div class="category-bar animate-in delay-4">
     <button class="cat-btn active" data-category="todos">Todos</button>
+    <a href="gerador-de-senha.html" class="cat-btn" style="text-decoration: none; color: #2563eb; font-weight: 700;">🛠️ Gerador de Senhas</a>
     <button class="cat-btn" data-category="windows">Windows</button>
     <button class="cat-btn" data-category="celular">Celular</button>
     <button class="cat-btn" data-category="internet">Internet</button>
     <button class="cat-btn" data-category="seguranca">Segurança</button>
+  </div>
+
   <!-- Interactive Tool Widget Section -->
-  <section class="tools-section" style="max-width: var(--max-width); margin: 2rem auto; padding: 1.5rem; background: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-sm);">
-    <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
-      <span style="font-size: 1.8rem;">⚙️</span>
-      <div>
-        <h3 style="margin: 0; font-size: 1.3rem; color: var(--text-main);">Ferramenta Útil: Gerador de Senhas Seguras</h3>
-        <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">Gere senhas fortes de alta complexidade instantaneamente no seu navegador sem enviar nada para servidores externos.</p>
+  <section class="tools-section" style="max-width: var(--max-width); margin: 2rem auto; padding: 1.5rem; background: #ffffff; border-radius: 16px; border: 1px solid #cbd5e1; box-shadow: var(--shadow-sm);">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1rem;">
+      <div style="display: flex; align-items: center; gap: 0.8rem;">
+        <span style="font-size: 1.8rem;">⚙️</span>
+        <div>
+          <h3 style="margin: 0; font-size: 1.3rem; color: var(--text-main);">Ferramenta Útil: Gerador de Senhas Seguras</h3>
+          <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">Gere senhas fortes de alta complexidade instantaneamente no seu navegador sem enviar nada para servidores externos.</p>
+        </div>
       </div>
+      <a href="gerador-de-senha.html" style="color: #2563eb; font-weight: 700; text-decoration: underline; font-size: 0.95rem;">Abrir Modo Completo →</a>
     </div>
-    <div class="tool-box" style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; background: #f8fafc; padding: 1.2rem; border-radius: 12px;">
-      <input type="text" id="generated-password" readonly style="flex: 1; min-width: 260px; padding: 0.8rem 1rem; border: 1px solid #cbd5e1; border-radius: 8px; font-family: monospace; font-size: 1.1rem; color: var(--accent-blue); background: #ffffff;" placeholder="Clique em Gerar Senha..." />
-      <button id="btn-generate-pass" style="padding: 0.8rem 1.5rem; background: var(--gradient-primary); color: #ffffff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">🔑 Gerar Senha Forte</button>
-      <button id="btn-copy-pass" style="padding: 0.8rem 1.2rem; background: #e2e8f0; color: var(--text-main); border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">📋 Copiar</button>
+    <div class="tool-box" style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; background: #f8fafc; padding: 1.2rem; border-radius: 12px; border: 1px solid #e2e8f0;">
+      <input type="text" id="generated-password" readonly style="flex: 1; min-width: 260px; padding: 0.9rem 1.1rem; border: 2px solid #cbd5e1; border-radius: 8px; font-family: monospace; font-size: 1.2rem; font-weight: bold; color: #1e293b; background: #ffffff;" placeholder="Clique em Gerar Senha..." />
+      <button id="btn-generate-pass" style="padding: 0.9rem 1.6rem; background: #2563eb; color: #ffffff; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s;">🔑 Gerar Senha Forte</button>
+      <button id="btn-copy-pass" style="padding: 0.9rem 1.4rem; background: #0f172a; color: #ffffff; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s;">📋 Copiar</button>
     </div>
   </section>
 

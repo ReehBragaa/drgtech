@@ -331,6 +331,7 @@ function run() {
   // Build Master sitemap.xml (All-in-one sitemap preferred by Google Search Console)
   const masterUrls = [
     `  <url>\n    <loc>${SITE_URL}/</loc>\n    <priority>1.00</priority>\n  </url>`,
+    `  <url>\n    <loc>${SITE_URL}/gerador-de-senha.html</loc>\n    <priority>0.95</priority>\n  </url>`,
     `  <url>\n    <loc>${SITE_URL}/sobre.html</loc>\n    <priority>0.80</priority>\n  </url>`,
     `  <url>\n    <loc>${SITE_URL}/contato.html</loc>\n    <priority>0.80</priority>\n  </url>`,
     `  <url>\n    <loc>${SITE_URL}/privacidade.html</loc>\n    <priority>0.80</priority>\n  </url>`,
