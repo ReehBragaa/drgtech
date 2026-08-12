@@ -804,5 +804,230 @@
     "duvidas_relacionadas": [105, 110, 114, 131],
     "read_time": "8 min de leitura",
     "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 153,
+    "slug": "como-corrigir-erro-0x800f081f-windows-update-dotnet-framework",
+    "keyword_principal": "Como Corrigir o Erro 0x800f081f no Windows Update (.NET Framework)",
+    "categoria": "windows",
+    "resposta_curta": "O erro 0x800f081f ocorre quando o Windows Update não consegue localizar os arquivos de origem do Microsoft .NET Framework 3.5 ou de patches cumulativos. Para corrigir, abra o Prompt de Comando (Admin) e execute o DISM com o caminho da imagem ISO original: dism /online /enable-feature /featurename:NetFx3 /all /limitaccess /source:D:\\sources\\sxs.",
+    "passo_a_passo": [
+      "Faça o download da imagem ISO oficial do Windows 11 no site da Microsoft e monte o arquivo ISO como uma unidade virtual (ex: Unidade D:).",
+      "Abra o Prompt de Comando como Administrador e execute o comando: 'dism /online /enable-feature /featurename:NetFx3 /all /limitaccess /source:D:\\sources\\sxs' (substituindo D pela letra da sua unidade).",
+      "Após a conclusão da instalação da biblioteca .NET Framework, abra o Windows Update e busque novamente por atualizações."
+    ],
+    "duvidas_relacionadas": [102, 119, 133, 143],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 154,
+    "slug": "como-resolver-uso-disco-100-porcento-sysmain-wmi-provider-host",
+    "keyword_principal": "Como Resolver o Uso de Disco em 100% pelo Serviço SysMain e WMI",
+    "categoria": "windows",
+    "resposta_curta": "O uso contínuo de disco em 100% no Gerenciador de Tarefas reduz drasticamente a velocidade do PC. Para resolver, abra o Gerenciador de Serviços (services.msc), localize os serviços 'SysMain' (Superfetch) e 'Pesquisa do Windows' (Windows Search), desative a inicialização automática e limpe os arquivos de cache da pasta Prefetch.",
+    "passo_a_passo": [
+      "Pressione Win + R, digite 'services.msc', localize o serviço 'SysMain', clique em Propriedades, altere o Tipo de Inicialização para 'Desativado' e clique no botão Parar.",
+      "No mesmo menu de serviços, localize 'Pesquisa do Windows' (Windows Search) e mude o tipo de inicialização para 'Manual'.",
+      "Pressione Win + R, digite 'prefetch', selecione todos os arquivos temporários da pasta e apague-os para liberar as filas de I/O do disco."
+    ],
+    "duvidas_relacionadas": [102, 107, 127, 146],
+    "read_time": "8 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 155,
+    "slug": "como-corrigir-tela-azul-whea-uncorrectable-error-windows-11",
+    "keyword_principal": "Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11",
+    "categoria": "windows",
+    "resposta_curta": "A tela azul WHEA_UNCORRECTABLE_ERROR (Windows Hardware Error Architecture) indica uma falha crítica de hardware ou instabilidade de voltagem no processador, memória RAM ou SSD. Para corrigir, desative o overclock na BIOS/UEFI (restaurando as configurações padrão/XMP), verifique o estado do SSD com a ferramenta CrystalDiskInfo e teste as memórias RAM com a Diagnóstico de Memória do Windows.",
+    "passo_a_passo": [
+      "Reinicie o computador, acesse a BIOS/UEFI (teclas Del ou F2 durante o boot) e selecione a opção 'Load Optimized Defaults' para cancelar qualquer overclock de CPU ou RAM.",
+      "Pressione Win + R, digite 'mdsched.exe', escolha 'Reiniciar agora e verificar se há problemas' e aguarde a verificação das memórias RAM.",
+      "Faça o download da ferramenta gratuita CrystalDiskInfo e confirme se a saúde do seu SSD/NVMe aparece como 'Saudável 100%'."
+    ],
+    "duvidas_relacionadas": [102, 106, 135, 147],
+    "read_time": "8 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 156,
+    "slug": "como-liberar-espaco-oculto-pasta-winsxs-windows",
+    "keyword_principal": "Como Liberar Espaço Oculto na Pasta WinSxS do Windows",
+    "categoria": "windows",
+    "resposta_curta": "A pasta WinSxS (Component Store) pode acumular dezenas de gigabytes em atualizações antigas e arquivos duplicados. Para liberar esse espaço com segurança sem corromper o sistema operacional, abra o Prompt de Comando (Admin) e execute o comando DISM para purga de componentes: dism /online /cleanup-image /analyzecomponentstore seguido por dism /online /cleanup-image /startcomponentcleanup /resetbase.",
+    "passo_a_passo": [
+      "Abra o Prompt de Comando como Administrador e execute 'dism /online /cleanup-image /analyzecomponentstore' para verificar quanto espaço a pasta WinSxS pode liberar.",
+      "Rode o comando de limpeza profunda: 'dism /online /cleanup-image /startcomponentcleanup /resetbase' para consolidar os componentes do Windows.",
+      "Execute o utilitário Limpeza de Disco (cleanmgr.exe) selecionando 'Limpar arquivos do sistema' para expurgar cópias de backup antigas."
+    ],
+    "duvidas_relacionadas": [102, 119, 127, 143],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 157,
+    "slug": "como-resolver-erro-nao-foi-possivel-ativar-rede-celular-iphone",
+    "keyword_principal": "Como Resolver o Erro 'Não Foi Possível Ativar a Rede Celular' no iPhone",
+    "categoria": "celular",
+    "resposta_curta": "O erro 'Não Foi Possível Ativar a Rede Celular' ou 'Falha na Atualização do Celular' no iPhone ocorre quando o iOS perde a comunicação com o chip de banda base (baseband) ou com a operadora. Para resolver, force o reinício do aparelho, ative o Modo Avião por 20 segundos e atualize os Ajustes da Operadora em Ajustes > Geral > Sobre.",
+    "passo_a_passo": [
+      "Acesse Ajustes > Geral > Sobre e mantenha a tela aberta por 10 segundos para verificar se surge um pop-up de 'Atualização de Ajustes da Operadora'.",
+      "Ative o 'Modo Avião' na Central de Controle do iPhone, aguarde 20 segundos e desative-o para reiniciar os rádios móveis.",
+      "Remova a gaveta do chip SIM, verifique se há sujeira ou umidade e recoloque-o. Se persistir, vá em Ajustes > Geral > Transferir ou Redefinir o iPhone > Redefinir > Redefinir Configurações de Rede."
+    ],
+    "duvidas_relacionadas": [103, 108, 120, 149],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 158,
+    "slug": "como-recuperar-fotos-videos-apagados-lixeira-celular",
+    "keyword_principal": "Como Recuperar Fotos e Vídeos Apagados no Celular (Android e iOS)",
+    "categoria": "celular",
+    "resposta_curta": "Se você apagou fotos ou vídeos por engano no celular, o primeiro recurso é verificar a pasta 'Apagados Recentemente' ou 'Lixeira' na Galeria do sistema (onde os arquivos ficam retidos por 30 dias). Caso já tenham sido apagados definitivamente, verifique o backup automático do Google Fotos (Lixeira do Fotos) ou o backup do iCloud no navegador.",
+    "passo_a_passo": [
+      "No iPhone, abra o app Fotos, vá até a aba Álbuns, role até o final e selecione 'Apagados'; no Android, abra a Galeria > Menu > Lixeira.",
+      "Abra o app Google Fotos, toque em Biblioteca > Lixeira e verifique se as fotos apagadas há menos de 60 dias continuam salvas na nuvem.",
+      "Acesse icloud.com ou photos.google.com pelo navegador do computador e confira a lixeira da versão web."
+    ],
+    "duvidas_relacionadas": [103, 112, 127, 148],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 159,
+    "slug": "como-limpar-cache-oculto-telegram-liberar-espaco-celular",
+    "keyword_principal": "Como Limpar o Cache Oculto do Telegram e Liberar Espaço no Celular",
+    "categoria": "celular",
+    "resposta_curta": "O Telegram armazena automaticamente todos os vídeos, fotos, áudios e documentos visualizados em canais e grupos, podendo acumular facilmente mais de 20 GB de cache ocupado no armazenamento interno. Para liberar esse espaço sem perder suas conversas, abra o Telegram, vá em Configurações > Dados e Armazenamento > Uso do Armazenamento e toque em 'Limpar Cache do Telegram'.",
+    "passo_a_passo": [
+      "Abra o aplicativo Telegram no smartphone, toque nas três barras do menu superior (ou na aba Configurações no iPhone) e selecione 'Dados e Armazenamento'.",
+      "Toque na opção 'Uso do Armazenamento' e aguarde o aplicativo calcular o tamanho do cache de fotos, vídeos e arquivos.",
+      "Toque no botão 'Limpar Cache do Telegram' e ajuste a barra 'Manter Mídia' para 3 dias ou 1 semana (assim o Telegram apaga mídias antigas da memória automaticamente sem apagar as conversas)."
+    ],
+    "duvidas_relacionadas": [103, 116, 127, 148],
+    "read_time": "5 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 160,
+    "slug": "como-resolver-erro-dispositivo-incompativel-google-play-store",
+    "keyword_principal": "Como Resolver o Erro 'Seu Dispositivo Não é Compatível' na Play Store",
+    "categoria": "celular",
+    "resposta_curta": "O erro 'Seu dispositivo não é compatível com esta versão' na Google Play Store pode ser causado por acúmulo de dados corrompidos nos Serviços do Google Play ou falta de certificação Play Protect. Para resolver, acesse Configurações > Aplicativos > Google Play Store > Armazenamento e selecione 'Limpar Dados', repetindo o processo para o app 'Serviços do Google Play'.",
+    "passo_a_passo": [
+      "Acesse Configurações > Aplicativos > Google Play Store > Armazenamento e toque em 'Limpar Cache' e 'Limpar Dados'.",
+      "Volte à lista de aplicativos, selecione 'Serviços do Google Play' (Google Play Services), vá em Gerenciar Espaço e selecione 'Limpar Todos os Dados'.",
+      "Reinicie o smartphone, abra a Play Store, vá em Configurações > Sobre e toque em 'Versão da Play Store' para forçar a atualização da loja."
+    ],
+    "duvidas_relacionadas": [103, 105, 121, 139],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 161,
+    "slug": "como-mudar-dns-roteador-windows-android-iphone",
+    "keyword_principal": "Como Mudar o DNS no Roteador, Windows, Android e iPhone",
+    "categoria": "internet",
+    "resposta_curta": "Alterar os servidores DNS padrão da sua operadora para servidores públicos rápidos (como Cloudflare 1.1.1.1 ou Google 8.8.8.8) reduz o tempo de resposta de sites e melhora a velocidade da navegação. A alteração pode ser feita nas conexões de rede (ncpa.cpl) no Windows, em Ajustes > Wi-Fi no iOS, em Configurações > DNS Privado no Android ou no painel administrativo do roteador.",
+    "passo_a_passo": [
+      "No Windows: Pressione Win + R, digite 'ncpa.cpl', abra as Propriedades da sua conexão, clique em 'Protocolo IP Versão 4 (TCP/IPv4)' e defina os servidores DNS para 1.1.1.1 (Primário) e 1.0.0.1 (Secundário).",
+      "No Android: Vá em Configurações > Conexões > Mais configurações de conexão > DNS Privado e insira o nome de host 'one.one.one.one' ou 'dns.google'.",
+      "No iPhone: Vá em Ajustes > Wi-Fi, toque no botão 'i' ao lado da rede, selecione 'Configurar DNS' > 'Manual' e insira 1.1.1.1 e 1.0.0.1."
+    ],
+    "duvidas_relacionadas": [101, 104, 122, 140],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 162,
+    "slug": "como-resolver-erro-err-connection-timed-out-chrome-edge",
+    "keyword_principal": "Como Resolver o Erro 'ERR_CONNECTION_TIMED_OUT' no Navegador",
+    "categoria": "internet",
+    "resposta_curta": "O erro ERR_CONNECTION_TIMED_OUT ocorre quando o navegador envia uma solicitação de acesso a um site, mas o servidor de destino não responde dentro do tempo limite. Para corrigir no Chrome ou Edge, limpe os dados de navegação e o cache de DNS do navegador (chrome://net-internals/#dns), desative proxies e VPNs ativas e redefina a pilha de rede no Prompt de Comando com 'netsh winsock reset'.",
+    "passo_a_passo": [
+      "No Google Chrome, digite 'chrome://net-internals/#dns' na barra de endereços e clique no botão 'Clear host cache'.",
+      "Pressione Win + R, digite 'inetcpl.cpl' para abrir as Propriedades de Internet, vá na aba Conexões > Configurações da LAN e desmarque a opção 'Usar um servidor proxy para a rede LAN'.",
+      "Abra o Prompt de Comando como Administrador e execute 'ipconfig /flushdns' e 'netsh winsock reset', reiniciando o computador em seguida."
+    ],
+    "duvidas_relacionadas": [101, 104, 130, 140],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 163,
+    "slug": "como-transformar-computador-notebook-em-roteador-wifi-hotspot",
+    "keyword_principal": "Como Transformar Seu Computador ou Notebook em um Roteador Wi-Fi",
+    "categoria": "internet",
+    "resposta_curta": "Você pode compartilhar a conexão de internet do seu computador ou notebook (cabeada ou via modem 4G/5G) com celulares e outros dispositivos criando um Ponto de Acesso Móvel (Hotspot). No Windows 10/11, vá em Configurações > Rede e Internet > Ponto de acesso móvel, selecione a conexão a ser compartilhada, defina o nome e senha da rede e ative o botão de compartilhamento.",
+    "passo_a_passo": [
+      "Pressione Win + I para abrir as Configurações do Windows e navegue até a seção 'Rede e Internet'.",
+      "Clique no menu 'Ponto de acesso móvel' (Hotspot) no menu esquerdo e selecione qual conexão você deseja compartilhar ('Ethernet' ou 'Wi-Fi').",
+      "Clique no botão 'Editar', defina o Nome da Rede (SSID) e uma Senha de no mínimo 8 caracteres, e ative a chave 'Ponto de acesso móvel'."
+    ],
+    "duvidas_relacionadas": [101, 104, 109, 141],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 164,
+    "slug": "como-identificar-expulsar-dispositivos-roubando-wifi",
+    "keyword_principal": "Como Identificar e Expulsar Dispositivos Vizinhos Roubando Seu Wi-Fi",
+    "categoria": "internet",
+    "resposta_curta": "Se a velocidade da sua internet caiu repentinamente, terceiros podem estar conectados à sua rede Wi-Fi sem permissão. Para identificar e bloquear intrusos, utilize o aplicativo gratuito Fing no celular para escanear a rede local, acesse o painel administrativo do roteador (192.168.1.1), consulte a tabela de clientes DHCP ativos e altere a senha de segurança para WPA3/WPA2-AES.",
+    "passo_a_passo": [
+      "Instale o aplicativo Fing no seu smartphone ou use o software Wireless Network Watcher no PC para varrer e listar todos os IPs e endereços MAC conectados à sua rede.",
+      "Identifique dispositivos desconhecidos na lista comparando os nomes dos fabricantes dos seus aparelhos.",
+      "Acesse o painel do seu roteador pelo navegador (192.168.1.1 ou 192.168.0.1), vá na seção Sem Fio / Segurança, bloqueie os endereços MAC estranhos na lista de controle de acesso (MAC Filtering) e mude a senha do Wi-Fi."
+    ],
+    "duvidas_relacionadas": [101, 104, 109, 126],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 165,
+    "slug": "como-proteger-conta-whatsapp-contra-golpes-clonagem-sim-swap",
+    "keyword_principal": "Como Proteger Sua Conta do WhatsApp Contra Golpes de Clonagem e SIM Swap",
+    "categoria": "seguranca",
+    "resposta_curta": "Para impedir que golpistas clonem seu WhatsApp ou roubem seu número via troca de chip (SIM Swap), ative a Confirmação em Duas Etapas com um código PIN secreto de 6 dígitos no aplicativo, cadastre seu e-mail pessoal de recuperação e ative o PIN de segurança do chip SIM junto à sua operadora de telefonia.",
+    "passo_a_passo": [
+      "Abra o WhatsApp, vá em Configurações (ou Ajustes) > Conta > Confirmação em duas etapas e toque em 'Ativar'.",
+      "Crie um PIN secreto de 6 dígitos (que você nunca deve compartilhar com ninguém, nem por SMS) e adicione um e-mail de recuperação válido.",
+      "Ligue para a sua operadora ou acesse as configurações de segurança do celular para definir uma senha PIN no chip SIM físico (impedindo que o chip funcione se for colocado em outro celular)."
+    ],
+    "duvidas_relacionadas": [105, 110, 114, 131],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 166,
+    "slug": "como-saber-se-email-senha-foram-vazados-internet",
+    "keyword_principal": "Como Saber se Seu E-mail ou Senha Foram Vazados na Internet",
+    "categoria": "seguranca",
+    "resposta_curta": "Vazamentos de dados em grandes plataformas expõem milhões de senhas e e-mails na internet diariamente. Para verificar se seus dados foram comprometidos em vazamentos públicos, acesse a ferramenta gratuita e confiável Have I Been Pwned (haveibeenpwned.com) ou a checagem de senhas nativa do Google (passwords.google.com) e troque imediatamente credenciais reutilizadas.",
+    "passo_a_passo": [
+      "Acesse o site oficial 'haveibeenpwned.com', digite seu endereço de e-mail no campo de busca e clique no botão 'pwned?'.",
+      "Examine a lista de vazamentos de dados de serviços que contêm seu e-mail e confira quais dados foram expostos (como senhas, telefones ou nomes).",
+      "Acesse o Gerenciador de Senhas do Google (passwords.google.com) > Check-up de senha e troque imediatamente as senhas marcadas como 'comprometidas' ou 'reutilizadas'."
+    ],
+    "duvidas_relacionadas": [105, 110, 131, 132],
+    "read_time": "6 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 167,
+    "slug": "como-remover-adwares-redirecionamentos-maliciosos-navegador",
+    "keyword_principal": "Como Remover Adwares e Redirecionamentos Maliciosos do Navegador",
+    "categoria": "seguranca",
+    "resposta_curta": "Se o seu navegador abre páginas de anúncios indesejadas, altera o buscador padrão sozinho ou redireciona suas pesquisas para sites estranhos, seu sistema foi infectado por adwares ou extensões maliciosas. Para resolver no Chrome ou Edge, remova extensões desconhecidas, restaure as configurações padrão do navegador e rode uma varredura com a ferramenta gratuita Malwarebytes.",
+    "passo_a_passo": [
+      "No Google Chrome ou Microsoft Edge, clique no ícone de peça de quebra-cabeça (Extensões) > 'Gerenciar extensões' e remova qualquer extensão que você não tenha instalado intencionalmente.",
+      "Vá em Configurações > Redefinir configurações > 'Restaurar configurações para os padrões originais' e confirme a redefinição.",
+      "Faça o download gratuito da ferramenta Malwarebytes AdwCleaner, execute uma varredura completa no computador e elimine os adwares e sequestradores de navegador encontrados."
+    ],
+    "duvidas_relacionadas": [105, 110, 114, 142],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
   }
 ]

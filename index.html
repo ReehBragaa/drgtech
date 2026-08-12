@@ -65,7 +65,7 @@
     </p>
     <div class="hero-stats animate-in delay-3">
       <div class="stat">
-        <span class="stat-num">70+</span>
+        <span class="stat-num">85+</span>
         <span class="stat-label">Tutoriais</span>
       </div>
       <div class="stat">
@@ -86,7 +86,21 @@
     <button class="cat-btn" data-category="celular">Celular</button>
     <button class="cat-btn" data-category="internet">Internet</button>
     <button class="cat-btn" data-category="seguranca">Segurança</button>
-  </div>
+  <!-- Interactive Tool Widget Section -->
+  <section class="tools-section" style="max-width: var(--max-width); margin: 2rem auto; padding: 1.5rem; background: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-sm);">
+    <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+      <span style="font-size: 1.8rem;">⚙️</span>
+      <div>
+        <h3 style="margin: 0; font-size: 1.3rem; color: var(--text-main);">Ferramenta Útil: Gerador de Senhas Seguras</h3>
+        <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">Gere senhas fortes de alta complexidade instantaneamente no seu navegador sem enviar nada para servidores externos.</p>
+      </div>
+    </div>
+    <div class="tool-box" style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; background: #f8fafc; padding: 1.2rem; border-radius: 12px;">
+      <input type="text" id="generated-password" readonly style="flex: 1; min-width: 260px; padding: 0.8rem 1rem; border: 1px solid #cbd5e1; border-radius: 8px; font-family: monospace; font-size: 1.1rem; color: var(--accent-blue); background: #ffffff;" placeholder="Clique em Gerar Senha..." />
+      <button id="btn-generate-pass" style="padding: 0.8rem 1.5rem; background: var(--gradient-primary); color: #ffffff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">🔑 Gerar Senha Forte</button>
+      <button id="btn-copy-pass" style="padding: 0.8rem 1.2rem; background: #e2e8f0; color: var(--text-main); border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">📋 Copiar</button>
+    </div>
+  </section>
 
   <!-- Articles Grid -->
   <div class="section-divider"></div>
@@ -97,6 +111,216 @@
     </div>
 
     <div class="articles-grid" id="articles-grid">
+
+      <!-- Card 153: Erro 0x800f081f .NET Framework -->
+      <a href="artigos/como-corrigir-erro-0x800f081f-windows-update-dotnet-framework.html" class="article-card animate-in delay-1"
+         data-title="como corrigir o erro 0x800f081f no windows update dotnet framework dism ISO" data-category="windows">
+        <div class="card-icon-area">
+          <div class="card-icon icon-blue">💻</div>
+          <div class="card-meta"><span class="card-category cat-windows">Windows</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Corrigir o Erro 0x800f081f no Windows Update (.NET Framework)</h3>
+          <p class="card-excerpt">Execute o comando DISM com o caminho da imagem ISO original para restaurar a origem dos componentes .NET.</p>
+          <div class="card-footer"><span class="read-time">7 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
+
+      <!-- Card 154: Disco 100% SysMain WMI -->
+      <a href="artigos/como-resolver-uso-disco-100-porcento-sysmain-wmi-provider-host.html" class="article-card animate-in delay-2"
+         data-title="como resolver o uso de disco em 100 porcento pelo servico sysmain e wmi provider host prefetch" data-category="windows">
+        <div class="card-icon-area">
+          <div class="card-icon icon-blue">💻</div>
+          <div class="card-meta"><span class="card-category cat-windows">Windows</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Resolver o Uso de Disco em 100% pelo Serviço SysMain e WMI</h3>
+          <p class="card-excerpt">Desative os serviços SysMain e Windows Search em services.msc e limpe o cache da pasta Prefetch.</p>
+          <div class="card-footer"><span class="read-time">8 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
+
+      <!-- Card 155: WHEA_UNCORRECTABLE_ERROR -->
+      <a href="artigos/como-corrigir-tela-azul-whea-uncorrectable-error-windows-11.html" class="article-card animate-in delay-3"
+         data-title="como corrigir a tela azul whea uncorrectable error no windows 11 bios uefi cristaldiskinfo mdsched" data-category="windows">
+        <div class="card-icon-area">
+          <div class="card-icon icon-blue">💻</div>
+          <div class="card-meta"><span class="card-category cat-windows">Windows</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11</h3>
+          <p class="card-excerpt">Cancele overclocks na BIOS/UEFI, teste a saúde do SSD com CrystalDiskInfo e teste as memórias com mdsched.</p>
+          <div class="card-footer"><span class="read-time">8 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
+
+      <!-- Card 156: Liberar Espaço WinSxS -->
+      <a href="artigos/como-liberar-espaco-oculto-pasta-winsxs-windows.html" class="article-card animate-in delay-4"
+         data-title="como liberar espaco oculto na pasta winsxs do windows dism startcomponentcleanup resetbase" data-category="windows">
+        <div class="card-icon-area">
+          <div class="card-icon icon-blue">💻</div>
+          <div class="card-meta"><span class="card-category cat-windows">Windows</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Liberar Espaço Oculto na Pasta WinSxS do Windows</h3>
+          <p class="card-excerpt">Rode startcomponentcleanup /resetbase no DISM e purgue arquivos de backup de atualizações antigas.</p>
+          <div class="card-footer"><span class="read-time">7 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
+
+      <!-- Card 157: Não Foi Possível Ativar Rede Celular iPhone -->
+      <a href="artigos/como-resolver-erro-nao-foi-possivel-ativar-rede-celular-iphone.html" class="article-card animate-in delay-5"
+         data-title="como resolver o erro nao foi possivel ativar a rede celular no iphone baseband chip sim operadora" data-category="celular">
+        <div class="card-icon-area">
+          <div class="card-icon icon-green">📱</div>
+          <div class="card-meta"><span class="card-category cat-android">Celular</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Resolver o Erro 'Não Foi Possível Ativar a Rede Celular' no iPhone</h3>
+          <p class="card-excerpt">Atualize os Ajustes da Operadora em Ajustes > Geral > Sobre e redefina os parâmetros de rede do iOS.</p>
+          <div class="card-footer"><span class="read-time">6 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
+
+      <!-- Card 158: Fotos e Vídeos Apagados Lixeira -->
+      <a href="artigos/como-recuperar-fotos-videos-apagados-lixeira-celular.html" class="article-card animate-in delay-1"
+         data-title="como recuperar fotos e videos apagados no celular android e ios lixeira google fotos icloud" data-category="celular">
+        <div class="card-icon-area">
+          <div class="card-icon icon-green">📱</div>
+          <div class="card-meta"><span class="card-category cat-android">Celular</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Recuperar Fotos e Vídeos Apagados no Celular (Android e iOS)</h3>
+          <p class="card-excerpt">Confira a pasta Apagados Recentemente na galeria, a lixeira do Google Fotos e o backup web do iCloud.</p>
+          <div class="card-footer"><span class="read-time">6 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
+
+      <!-- Card 159: Cache Oculto Telegram -->
+      <a href="artigos/como-limpar-cache-oculto-telegram-liberar-espaco-celular.html" class="article-card animate-in delay-2"
+         data-title="como limpar o cache oculto do telegram e liberar espaco no celular dados e armazenamento uso do armazenamento" data-category="celular">
+        <div class="card-icon-area">
+          <div class="card-icon icon-green">📱</div>
+          <div class="card-meta"><span class="card-category cat-android">Celular</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Limpar o Cache Oculto do Telegram e Liberar Espaço no Celular</h3>
+          <p class="card-excerpt">Vá em Dados e Armazenamento > Uso do Armazenamento no Telegram e limpe gigabytes de cache mantendo as conversas.</p>
+          <div class="card-footer"><span class="read-time">5 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
+
+      <!-- Card 160: Dispositivo Incompatível Play Store -->
+      <a href="artigos/como-resolver-erro-dispositivo-incompativel-google-play-store.html" class="article-card animate-in delay-3"
+         data-title="como resolver o erro seu dispositivo nao e compativel na play store google play services limpar dados" data-category="celular">
+        <div class="card-icon-area">
+          <div class="card-icon icon-green">📱</div>
+          <div class="card-meta"><span class="card-category cat-android">Celular</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Resolver o Erro 'Seu Dispositivo Não é Compatível' na Play Store</h3>
+          <p class="card-excerpt">Limpe os dados do app Google Play Store e dos Serviços do Google Play para redefinir as licenças.</p>
+          <div class="card-footer"><span class="read-time">6 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
+
+      <!-- Card 161: Mudar DNS Roteador Windows Android iPhone -->
+      <a href="artigos/como-mudar-dns-roteador-windows-android-iphone.html" class="article-card animate-in delay-4"
+         data-title="como mudar o dns no roteador windows android e iphone cloudflare google dns ncpa cpl dns privado" data-category="internet">
+        <div class="card-icon-area">
+          <div class="card-icon icon-purple">🌐</div>
+          <div class="card-meta"><span class="card-category cat-wifi">Internet</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Mudar o DNS no Roteador, Windows, Android e iPhone</h3>
+          <p class="card-excerpt">Configure servidores rápidos como Cloudflare (1.1.1.1) ou Google (8.8.8.8) para acelerar a resposta de sites.</p>
+          <div class="card-footer"><span class="read-time">7 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
+
+      <!-- Card 162: ERR_CONNECTION_TIMED_OUT -->
+      <a href="artigos/como-resolver-erro-err-connection-timed-out-chrome-edge.html" class="article-card animate-in delay-5"
+         data-title="como resolver o erro err connection timed out no navegador chrome edge net internals proxy netsh winsock" data-category="internet">
+        <div class="card-icon-area">
+          <div class="card-icon icon-purple">🌐</div>
+          <div class="card-meta"><span class="card-category cat-wifi">Internet</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Resolver o Erro 'ERR_CONNECTION_TIMED_OUT' no Navegador</h3>
+          <p class="card-excerpt">Limpe o cache host em chrome://net-internals/#dns, desative proxies na LAN e redefina o Winsock.</p>
+          <div class="card-footer"><span class="read-time">7 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
+
+      <!-- Card 163: Hotspot Wi-Fi PC Notebook -->
+      <a href="artigos/como-transformar-computador-notebook-em-roteador-wifi-hotspot.html" class="article-card animate-in delay-1"
+         data-title="como transformar seu computador ou notebook em um roteador wifi ponto de acesso movel hotspot" data-category="internet">
+        <div class="card-icon-area">
+          <div class="card-icon icon-purple">🌐</div>
+          <div class="card-meta"><span class="card-category cat-wifi">Internet</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Transformar Seu Computador ou Notebook em um Roteador Wi-Fi</h3>
+          <p class="card-excerpt">Ative a função Ponto de Acesso Móvel em Configurações > Rede e Internet e compartilhe sua conexão com senha.</p>
+          <div class="card-footer"><span class="read-time">6 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
+
+      <!-- Card 164: Expulsar Roubando Wi-Fi -->
+      <a href="artigos/como-identificar-expulsar-dispositivos-roubando-wifi.html" class="article-card animate-in delay-2"
+         data-title="como identificar e expulsar dispositivos vizinhos roubando seu wifi fing mac filtering wpa3" data-category="internet">
+        <div class="card-icon-area">
+          <div class="card-icon icon-purple">🌐</div>
+          <div class="card-meta"><span class="card-category cat-wifi">Internet</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Identificar e Expulsar Dispositivos Vizinhos Roubando Seu Wi-Fi</h3>
+          <p class="card-excerpt">Use o app Fing para varrer os IPs conectados, bloqueie os endereços MAC no roteador e mude a senha da rede.</p>
+          <div class="card-footer"><span class="read-time">7 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
+
+      <!-- Card 165: WhatsApp Clonagem SIM Swap -->
+      <a href="artigos/como-proteger-conta-whatsapp-contra-golpes-clonagem-sim-swap.html" class="article-card animate-in delay-3"
+         data-title="como proteger sua conta do whatsapp contra golpes de clonagem e sim swap confirmacao duas etapas pin" data-category="seguranca">
+        <div class="card-icon-area">
+          <div class="card-icon icon-red">🛡️</div>
+          <div class="card-meta"><span class="card-category cat-seguranca">Segurança</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Proteger Sua Conta do WhatsApp Contra Golpes de Clonagem e SIM Swap</h3>
+          <p class="card-excerpt">Ative a Confirmação em Duas Etapas com PIN de 6 dígitos no WhatsApp e defina a senha PIN do chip SIM na operadora.</p>
+          <div class="card-footer"><span class="read-time">6 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
+
+      <!-- Card 166: E-mail Senha Vazados HaveIBeenPwned -->
+      <a href="artigos/como-saber-se-email-senha-foram-vazados-internet.html" class="article-card animate-in delay-4"
+         data-title="como saber se seu e mail ou senha foram vazados na internet have I been pwned passwords google" data-category="seguranca">
+        <div class="card-icon-area">
+          <div class="card-icon icon-red">🛡️</div>
+          <div class="card-meta"><span class="card-category cat-seguranca">Segurança</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Saber se Seu E-mail ou Senha Foram Vazados na Internet</h3>
+          <p class="card-excerpt">Consulte o site Have I Been Pwned e o Check-up de Senha do Google para identificar vazamentos públicos de credenciais.</p>
+          <div class="card-footer"><span class="read-time">6 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
+
+      <!-- Card 167: Remover Adwares Redirecionamentos Navegador -->
+      <a href="artigos/como-remover-adwares-redirecionamentos-maliciosos-navegador.html" class="article-card animate-in delay-5"
+         data-title="como remover adwares e redirecionamentos maliciosos do navegador extensoes adwcleaner malwarebytes" data-category="seguranca">
+        <div class="card-icon-area">
+          <div class="card-icon icon-red">🛡️</div>
+          <div class="card-meta"><span class="card-category cat-seguranca">Segurança</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Como Remover Adwares e Redirecionamentos Maliciosos do Navegador</h3>
+          <p class="card-excerpt">Desinstale extensões suspeitas no Chrome/Edge, redefina as configurações do navegador e rode o AdwCleaner.</p>
+          <div class="card-footer"><span class="read-time">7 min de leitura</span><span class="read-more">Ler tutorial →</span></div>
+        </div>
+      </a>
 
       <!-- Card 143: DISM e SFC Windows 11 -->
       <a href="artigos/como-usar-comandos-dism-sfc-windows-11-corrigir-erros.html" class="article-card animate-in delay-1"

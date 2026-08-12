@@ -146,7 +146,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2000);
       });
     });
-  });
+  // ─── Interactive Tool: Password Generator ───
+  const btnGeneratePass = document.getElementById('btn-generate-pass');
+  const btnCopyPass = document.getElementById('btn-copy-pass');
+  const generatedPassInput = document.getElementById('generated-password');
+
+  function generateSecurePassword() {
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+    let pass = '';
+    const array = new Uint32Array(16);
+    window.crypto.getRandomValues(array);
+    for (let i = 0; i < 16; i++) {
+      pass += chars[array[i] % chars.length];
+    }
+    return pass;
+  }
+
+  if (btnGeneratePass && generatedPassInput) {
+    btnGeneratePass.addEventListener('click', () => {
+      generatedPassInput.value = generateSecurePassword();
+    });
+  }
+
+  if (btnCopyPass && generatedPassInput) {
+    btnCopyPass.addEventListener('click', () => {
+      if (!generatedPassInput.value) return;
+      navigator.clipboard.writeText(generatedPassInput.value).then(() => {
+        const orig = btnCopyPass.textContent;
+        btnCopyPass.textContent = '✓ Copiado!';
+        setTimeout(() => { btnCopyPass.textContent = orig; }, 2000);
+      });
+    });
+  }
 
   // ─── Table of Contents — Active Highlighting ───
   const tocLinks = document.querySelectorAll('.toc-list a');
