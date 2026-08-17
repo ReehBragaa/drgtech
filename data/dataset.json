@@ -1029,5 +1029,50 @@
     "duvidas_relacionadas": [105, 110, 114, 142],
     "read_time": "7 min de leitura",
     "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 168,
+    "slug": "analise-tecnica-zero-day-cve-2026-68820-afd-sys-windows",
+    "keyword_principal": "Análise Técnica do Zero-Day Ativamente Explorado (CVE-2026-68820) no afd.sys do Windows",
+    "categoria": "windows",
+    "resposta_curta": "A vulnerabilidade crítica de Use-After-Free (CVE-2026-68820) no driver afd.sys (WinSock) do Windows permite elevação de privilégios para SYSTEM via condição de corrida. A mitigação exige a instalação imediata do pacote cumulativo de correções de segurança pelo Windows Update ou auditoria via PowerShell.",
+    "passo_a_passo": [
+      "Abra o PowerShell como Administrador e execute 'Get-CimInstance Win32_QuickFixEngineering | Sort-Object InstalledOn -Descending' para verificar a compilação e patches instalados.",
+      "Verifique no Windows Update se a atualização cumulativa mais recente substituiu o arquivo de driver afd.sys no diretório C:\\Windows\\System32\\drivers.",
+      "Configure regras no seu EDR ou antivírus corporativo para monitorar chamadas de memória atípicas e anomalias de alocação de sockets no driver de rede de baixo nível."
+    ],
+    "duvidas_relacionadas": [102, 119, 131, 143],
+    "read_time": "8 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 169,
+    "slug": "impacto-execucao-remota-rce-sharepoint-cve-2026-63520",
+    "keyword_principal": "Como Proteger o Microsoft SharePoint Contra Execução Remota de Código (CVE-2026-63520)",
+    "categoria": "seguranca",
+    "resposta_curta": "A falha de RCE sem autenticação (CVE-2026-63520) no Microsoft SharePoint permite que invasores executem código malicioso remotamente encadeando erros de desserialização. Para blindar seu ambiente, aplique as atualizações do SharePoint Server, restrinja o acesso à porta administrativa e exija proxy reverso com MFA.",
+    "passo_a_passo": [
+      "Isole os servidores SharePoint internos ou híbridos removendo a exposição direta de IPs públicos à internet, redirecionando o tráfego por um WAF/Proxy Reverso com MFA.",
+      "Aplique as atualizações de segurança oficiais para o SharePoint Server 2019 / Subscription Edition lançadas pela Microsoft no ciclo recente.",
+      "Audite os logs do IIS nos diretórios virtuais associados ao SharePoint monitorando requisições HTTP anômalas contendo payloads de desserialização .NET."
+    ],
+    "duvidas_relacionadas": [105, 110, 131, 166],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 170,
+    "slug": "impacto-novas-regras-sideloading-instalacao-apk-android",
+    "keyword_principal": "Como Funcionam as Novas Regras de Sideloading e Instalação de APK no Android",
+    "categoria": "celular",
+    "resposta_curta": "O ecossistema Android introduziu novas barreiras contra golpes de engenharia social para instalação de APKs (sideloading). O fluxo exige ativação do modo de desenvolvedor, período de espera (cooling-off period) de 24h e autenticação biométrica, bloqueando a pressão de golpistas em chamadas telefônicas.",
+    "passo_a_passo": [
+      "Ao tentar instalar um APK fora da Play Store, o Android aciona a nova proteção que solicita confirmação biométrica ou PIN do dispositivo.",
+      "Caso haja uma chamada telefônica em andamento, o sistema forçará a interrupção da ligação ou exigirá uma pausa obrigatória de verificação (cooling-off period).",
+      "Para usuários avançados ou desenvolvedores, acesse Configurações > Opções do Desenvolvedor para autorizar a instalação após o período de carência."
+    ],
+    "duvidas_relacionadas": [103, 105, 121, 148],
+    "read_time": "7 min de leitura",
+    "updated_at": "agosto de 2026"
   }
 ]

@@ -268,4 +268,16 @@
     <loc>https://drgtech.com.br/artigos/como-remover-adwares-redirecionamentos-maliciosos-navegador.html</loc>
     <priority>0.90</priority>
   </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/analise-tecnica-zero-day-cve-2026-68820-afd-sys-windows.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/impacto-execucao-remota-rce-sharepoint-cve-2026-63520.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/impacto-novas-regras-sideloading-instalacao-apk-android.html</loc>
+    <priority>0.90</priority>
+  </url>
 </urlset>
