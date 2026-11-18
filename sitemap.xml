@@ -312,4 +312,16 @@
     <loc>https://drgtech.com.br/artigos/riscos-hardening-redes-celulares-privadas-dispositivos-borda.html</loc>
     <priority>0.90</priority>
   </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/analise-tecnica-zero-day-cve-2026-68820-janela-mitigacao-3-dias-windows.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/impacto-cadeia-execucao-remota-rce-sharepoint-cve-2026-63520-rapid7.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/alertas-nativos-ios-espionagem-direcionada-modo-isolamento-lockdown.html</loc>
+    <priority>0.90</priority>
+  </url>
 </urlset>
