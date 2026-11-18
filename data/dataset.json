@@ -1074,5 +1074,35 @@
     "duvidas_relacionadas": [103, 105, 121, 148],
     "read_time": "7 min de leitura",
     "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 171,
+    "slug": "impacto-em-cadeia-vulnerabilidades-sharepoint-zero-day-winsock",
+    "keyword_principal": "O Impacto em Cadeia das Vulnerabilidades do SharePoint e o Zero-Day WinSock (CVE-2026-68820)",
+    "categoria": "windows",
+    "resposta_curta": "A combinação de explorações RCE no Microsoft SharePoint (CVE-2026-63520) com o zero-day de elevação de privilégio Use-After-Free no afd.sys (CVE-2026-68820) permite ataques em cadeia avançados. A mitigação exige o isolamento de servidores SharePoint, aplicação dos pacotes de segurança de agosto e monitoramento EDR de race conditions no WinSock.",
+    "passo_a_passo": [
+      "Execute auditorias de segurança nos servidores SharePoint locais verificando se as correções de desserialização e validação de entrada de agosto foram aplicadas.",
+      "Inspecione logs do IIS buscando requisições malformadas aos diretórios de colaboração e motores de indexação do SharePoint.",
+      "Configure alertas no EDR corporativo para detectar anomalias de alocação de memória e condições de corrida (race conditions) no driver afd.sys."
+    ],
+    "duvidas_relacionadas": [102, 119, 168, 169],
+    "read_time": "8 min de leitura",
+    "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 172,
+    "slug": "riscos-hardening-redes-celulares-privadas-dispositivos-borda",
+    "keyword_principal": "Riscos em Redes Celulares Privadas e Hardening de Dispositivos de Borda",
+    "categoria": "seguranca",
+    "resposta_curta": "Redes celulares privadas mal segmentadas em instalações industriais e de energia expõem controladores lógicos (PLCs) e dispositivos de borda a invasões. Para proteger o ambiente, adote a arquitetura Zero Trust em segmentos móveis, audite a eliminação total de senhas padrão de fábrica e ative a microsegmentação de tráfego leste-oeste.",
+    "passo_a_passo": [
+      "Audite todos os dispositivos de automação, roteadores industriais e APs móveis garantindo a alteração imediata das credenciais padrão de fábrica.",
+      "Implemente a arquitetura Zero Trust em segmentos móveis privados, tratando todo tráfego de dados celular com a mesma rigidez aplicada à internet pública.",
+      "Configure regras de microsegmentação de firewall e inspeção profunda de pacotes (DPI) para bloquear o tráfego não autorizado leste-oeste (east-west) entre a rede industrial e os modems de borda."
+    ],
+    "duvidas_relacionadas": [105, 110, 150, 164],
+    "read_time": "8 min de leitura",
+    "updated_at": "agosto de 2026"
   }
 ]

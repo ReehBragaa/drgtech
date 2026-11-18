@@ -304,4 +304,12 @@
     <loc>https://drgtech.com.br/artigos/impacto-novas-regras-sideloading-instalacao-apk-android.html</loc>
     <priority>0.90</priority>
   </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/impacto-em-cadeia-vulnerabilidades-sharepoint-zero-day-winsock.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://drgtech.com.br/artigos/riscos-hardening-redes-celulares-privadas-dispositivos-borda.html</loc>
+    <priority>0.90</priority>
+  </url>
 </urlset>
