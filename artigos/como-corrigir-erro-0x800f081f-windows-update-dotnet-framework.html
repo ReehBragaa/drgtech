@@ -3,29 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como Corrigir o Erro 0x800f081f no Windows Update (.NET Framework) — DRGTech</title>
-  <meta name="description" content="O erro 0x800f081f ocorre quando o Windows Update não consegue localizar os arquivos de origem do Microsoft .NET Framework 3.5 ou de patches cumulativos. Pa..." />
-  <meta name="keywords" content="como corrigir o erro 0x800f081f no windows update (.net framework), tutorial windows, suporte tecnico" />
+  <title>Como Corrigir o Erro 0x800F081F no Windows Update e .NET Framework — DRGTech</title>
+  <meta name="description" content="Guia passo a passo para solucionar o erro 0x800F081F no Windows 11 e 10: reparo de fontes do DISM, ativação do .NET Framework 3.5 e limpeza de cache." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Como Corrigir o Erro 0x800f081f no Windows Update (.NET Framework) — DRGTech" />
-  <meta property="og:description" content="O erro 0x800f081f ocorre quando o Windows Update não consegue localizar os arquivos de origem do Microsoft .NET Framework 3.5 ou de patches cumulativos. Pa..." />
+  <meta property="og:title" content="Como Corrigir o Erro 0x800F081F no Windows Update e .NET Framework — DRGTech" />
+  <meta property="og:description" content="Guia passo a passo para solucionar o erro 0x800F081F no Windows 11 e 10: reparo de fontes do DISM, ativação do .NET Framework 3.5 e limpeza de cache." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-corrigir-erro-0x800f081f-windows-update-dotnet-framework.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Como Corrigir o Erro 0x800f081f no Windows Update (.NET Framework) — DRGTech" />
-  <meta name="twitter:description" content="O erro 0x800f081f ocorre quando o Windows Update não consegue localizar os arquivos de origem do Microsoft .NET Framework 3.5 ou de patches cumulativos. Pa..." />
+  <meta name="twitter:title" content="Como Corrigir o Erro 0x800F081F no Windows Update e .NET Framework — DRGTech" />
+  <meta name="twitter:description" content="Guia passo a passo para solucionar o erro 0x800F081F no Windows 11 e 10: reparo de fontes do DISM, ativação do .NET Framework 3.5 e limpeza de cache." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-corrigir-erro-0x800f081f-windows-update-dotnet-framework.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Corrigir o Erro 0x800F081F no Windows Update e .NET Framework",
+  "description": "Guia passo a passo para solucionar o erro 0x800F081F no Windows 11 e 10: reparo de fontes do DISM, ativação do .NET Framework 3.5 e limpeza de cache.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-corrigir-erro-0x800f081f-windows-update-dotnet-framework.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,55 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Corrigir o Erro 0x800f081f no Windows Update (.NET Framework)",
+      "name": "O que significa o parâmetro /LimitAccess no comando DISM?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "O erro 0x800f081f ocorre quando o Windows Update não consegue localizar os arquivos de origem do Microsoft .NET Framework 3.5 ou de patches cumulativos. Para corrigir, abra o Prompt de Comando (Admin) e execute o DISM com o caminho da imagem ISO original: dism /online /enable-feature /featurename:NetFx3 /all /limitaccess /source:D:\\sources\\sxs."
+        "text": "O parâmetro /LimitAccess instrui o DISM a não tentar se conectar ao Windows Update na nuvem nem a servidores WSUS locais, forçando a ferramenta a buscar estritamente os arquivos da pasta ou imagem WIM especificada no parâmetro /Source."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "E se na minha ISO o arquivo for install.esd em vez de install.wim?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se a mídia foi criada pela Ferramenta de Criação de Mídia (Media Creation Tool), o arquivo se chamará install.esd. Basta alterar a sintaxe do comando de /Source:WIM:E:\\sources\\install.wim:1 para /Source:ESD:E:\\sources\\install.esd:1."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "É seguro apagar a pasta SoftwareDistribution.old depois?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. A pasta renomeada SoftwareDistribution.old contém apenas os instaladores e históricos temporários antigos. Depois de confirmar que o Windows Update voltou a funcionar e instalou as atualizações com sucesso, você pode excluí-la com segurança para liberar espaço em disco."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Por que as empresas costumam sofrer mais com o erro 0x800F081F?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Em ambientes corporativos, administradores frequentemente configuram Políticas de Grupo (GPO) que direcionam os computadores para servidores internos WSUS que não têm os pacotes do .NET 3.5 aprovados. A solução é habilitar a política de grupo 'Especificar configurações para a instalação e reparo de componentes opcionais' apontando diretamente para o Windows Update da Microsoft."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O .NET Framework 3.5 ainda é necessário no Windows 11?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O Windows 11 já vem com versões modernas (.NET 4.8 e .NET 8/9) nativamente ativadas. No entanto, aplicativos legados desenvolvidos entre 2005 e 2015 exigem especificamente os binários do .NET 2.0 e 3.5 e não conseguem executar sem que esse recurso opcional esteja habilitado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como verificar se a ISO baixada é da mesma compilação do meu Windows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para evitar erros de incompatibilidade de versão durante o reparo com o DISM, abra o Prompt e digite winver para verificar sua compilação exata (por exemplo, Build 22631). Em seguida, inspecione a ISO montada com o comando dism /Get-WimInfo /WimFile:E:\\sources\\install.wim /index:1 e confira se o número da ServicePack Build coincide ou é superior ao instalado."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,7 +121,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Como Corrigir o Erro 0x800f081f no Windows Update (.NET Framework)",
+      "name": "Como Corrigir o Erro 0x800F081F no Windows Update e .NET Framework",
       "item": "https://drgtech.com.br/artigos/como-corrigir-erro-0x800f081f-windows-update-dotnet-framework.html"
     }
   ]
@@ -103,132 +161,182 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#windows">Windows</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Corrigir o Erro 0x800f081f no ...</span>
+        <span>Como Corrigir o Erro 0x800F081F no…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-blue">Windows</span>
-        <h1 class="article-h1">Como Corrigir o Erro 0x800f081f no Windows Update (.NET Framework)</h1>
+        <h1 class="article-h1">Como Corrigir o Erro 0x800F081F no Windows Update e .NET Framework</h1>
         <div class="article-intro-meta">
-          <span class="meta-item">7 min de leitura</span>
-          <span class="meta-item">Atualizado em agosto de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">5 min de leitura</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> O erro 0x800f081f ocorre quando o Windows Update não consegue localizar os arquivos de origem do Microsoft .NET Framework 3.5 ou de patches cumulativos. Para corrigir, abra o Prompt de Comando (Admin) e execute o DISM com o caminho da imagem ISO original: dism /online /enable-feature /featurename:NetFx3 /all /limitaccess /source:D:\sources\sxs.
+        <strong>Resposta rápida:</strong> O erro 0x800F081F ('CBS_E_SOURCE_NOT_FOUND') indica que o Windows Update ou o DISM não conseguiram localizar os arquivos binários de origem necessários para instalar uma atualização cumulativa ou ativar o recurso .NET Framework 3.5. Para resolver, monte uma imagem ISO oficial do Windows 11, execute o comando de reparo apontando o arquivo install.wim com <code>DISM /Online /Cleanup-Image /RestoreHealth /Source:WIM:X:\sources\install.wim:1 /LimitAccess</code> ou ative o .NET com o comando <code>DISM /Online /Enable-Feature /FeatureName:NetFx3 /All /Source:X:\sources\sxs /LimitAccess</code>.
       </div>
 
       <article class="article-body" id="article-body">
+        <p>O código de erro 0x800F081F é uma das mensagens mais frustrantes do ecossistema de manutenção do Windows. Na arquitetura do subsistema CBS (Component Based Servicing), esse código traduz-se tecnicamente como CBS_E_SOURCE_NOT_FOUND. Ele ocorre quando o instalador do sistema operacional precisa compilar ou atualizar um pacote de componentes, mas os arquivos binários de referência na pasta de armazenamento WinSxS estão corrompidos, ausentes ou inacessíveis.</p>
+        <p>Esse erro manifesta-se tipicamente em dois momentos cruciais: durante a tentativa de instalação de atualizações de segurança cumulativas através do Windows Update ou quando o usuário tenta habilitar recursos legados essenciais, como o .NET Framework 3.5 (necessário para executar softwares profissionais de engenharia, sistemas contábeis e jogos clássicos). A seguir, apresentamos o procedimento técnico oficial para contornar a falha utilizando fontes locais e mídias de instalação limpas.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> Windows 11 e Windows 10</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Corrigir o Erro 0x800f081f no Windows Update (.NET Framework)"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Windows</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
-        </div>
+        <h2 id="entenda-origem-0x800f081f">Por que o Erro CBS_E_SOURCE_NOT_FOUND Acontece?</h2>
+        <p>Quando você comanda a instalação de um recurso no Windows, o sistema operacional segue uma ordem estrita de busca de arquivos:</p>
+        <ul>
+          <li><strong>1. Repositório local WinSxS:</strong> O Windows primeiro verifica se os arquivos compactados necessários já residem na pasta <code>C:\Windows\WinSxS</code>.</li>
+          <li><strong>2. Servidores do Windows Update:</strong> Se não encontrar localmente, o sistema faz requisições HTTPS para os servidores centrais da Microsoft.</li>
+          <li><strong>3. Políticas de Grupo (WSUS/GPO):</strong> Em computadores de empresas gerenciados por domínio corporativo, políticas de rede podem bloquear o acesso ao Windows Update público e falhar caso o servidor WSUS interno não contenha os pacotes opcionais.</li>
+        </ul>
+        <p>Se a conexão com o Windows Update falhar ou se o repositório local tiver sofrido corrupção de manifesto, o instalador desiste e cospe o código 0x800F081F.</p>
 
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
+        <h2 id="ativar-dotnet-com-iso">Solução 1: Ativar o .NET Framework 3.5 Apontando a Pasta SxS da ISO</h2>
+        <p>Se o erro 0x800F081F ocorreu ao tentar ativar o .NET Framework 3.5 pelo Painel de Controle, a maneira mais confiável e à prova de falhas é utilizar a pasta de componentes da mídia ISO oficial:</p>
         <ol class="steps-list">
-
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">Faça o download da imagem ISO oficial do Windows 11 no site da Microsoft e monte o arquivo ISO como uma unidade virtual (ex: Unidade D:).</div>
+            <div class="step-text">Baixe o arquivo ISO oficial do Windows 11 diretamente no site da Microsoft.</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">Abra o Prompt de Comando como Administrador e execute o comando: 'dism /online /enable-feature /featurename:NetFx3 /all /limitaccess /source:D:\sources\sxs' (substituindo D pela letra da sua unidade).</div>
+            <div class="step-text">Dê um duplo clique no arquivo ISO baixado para montá-lo como uma unidade virtual no Explorador de Arquivos (por exemplo, unidade <code>E:</code>).</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">Após a conclusão da instalação da biblioteca .NET Framework, abra o Windows Update e busque novamente por atualizações.</div>
+            <div class="step-text">Abra o Prompt de Comando como Administrador (<code>Windows + X</code> &gt; Terminal / Prompt Admin).</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Execute o comando abaixo, substituindo a letra <code>E:</code> pela letra correspondente à sua unidade montada:</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Aguarde a barra de progresso atingir 100%. Você verá a mensagem: 'A operação foi concluída com êxito'.</div>
+          </li>
+        </ol>
+        <pre class="code-block" data-lang="powershell"><code>DISM /Online /Enable-Feature /FeatureName:NetFx3 /All /Source:E:\sources\sxs /LimitAccess</code></pre>
+        <div class="success-box">
+          <div class="box-content"><p>A pasta sources\sxs da imagem de instalação contém todos os binários originais necessários do .NET Framework 2.0 e 3.5, dispensando qualquer download pela internet.</p></div>
+        </div>
+
+        <h2 id="ajuste-politica-grupo-wsus">Solução 2: Configurar a Política de Grupo para Recursos Opcionais (GPO)</h2>
+        <p>Em máquinas corporativas ou versões Windows Pro/Enterprise conectadas a servidores WSUS, uma diretiva de grupo pode impedir o download de componentes opcionais:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Pressione <code>Windows + R</code>, digite <code>gpedit.msc</code> e pressione Enter.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Navegue até: <strong>Configuração do Computador</strong> &gt; <strong>Modelos Administrativos</strong> &gt; <strong>Sistema</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">No painel direito, localize a política: <strong>Especificar configurações para a instalação e reparo de componentes opcionais</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Dê um duplo clique, marque a opção <strong>Habilitado</strong> e marque a caixa de seleção: <strong>Fazer contato diretamente com o Windows Update para baixar conteúdo de reparo em vez do WSUS</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Clique em Aplicar, OK e feche o editor.</div>
           </li>
         </ol>
 
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <h2 id="reparo-windows-update-dism-wim">Solução 3: Reparar o Repositório do Windows Update com Imagem WIM</h2>
+        <p>Se o erro 0x800F081F impede a instalação de atualizações cumulativas de segurança, você deve usar o DISM para regenerar o repositório de componentes utilizando o arquivo <code>install.wim</code> da ISO montada:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Com a ISO do Windows montada (supondo a letra <code>E:</code>), descubra o índice da sua edição do Windows (Home, Pro) executando:</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Anote o número do índice da sua versão (habitualmente índice 1 para Home ou 6 para Pro).</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Execute o comando de restauração completa apontando o índice correspondente:</div>
+          </li>
+        </ol>
+        <pre class="code-block" data-lang="powershell"><code>dism /Get-WimInfo /WimFile:E:\sources\install.wim
+DISM /Online /Cleanup-Image /RestoreHealth /Source:WIM:E:\sources\install.wim:1 /LimitAccess</code></pre>
+        <p>Após a conclusão com êxito, rode o verificador de arquivos: <code>sfc /scannow</code> e reinicie o computador.</p>
+
+        <h2 id="limpeza-cache-windows-update">Solução 4: Redefinir os Componentes de Download do Windows Update</h2>
+        <p>Arquivos temporários corrompidos na pasta de distribuição de software podem travar as tentativas subsequentes de atualização. Redefina a pasta SoftwareDistribution com estes comandos em lote no Prompt Administrativo:</p>
+        <pre class="code-block" data-lang="powershell"><code>net stop wuauserv
+net stop cryptSvc
+net stop bits
+net stop msiserver
+ren C:\Windows\SoftwareDistribution SoftwareDistribution.old
+ren C:\Windows\System32\catroot2 catroot2.old
+net start wuauserv
+net start cryptSvc
+net start bits
+net start msiserver</code></pre>
+        <p>Abra as Configurações do Windows (<code>Windows + I</code>), acesse o Windows Update e clique em <strong>Verificar se há atualizações</strong> para recomeçar o processo do zero.</p>
+
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>O que significa o parâmetro /LimitAccess no comando DISM?</h3>
+            <p>O parâmetro /LimitAccess instrui o DISM a não tentar se conectar ao Windows Update na nuvem nem a servidores WSUS locais, forçando a ferramenta a buscar estritamente os arquivos da pasta ou imagem WIM especificada no parâmetro /Source.</p>
+          </div>
+          <div class="faq-item">
+            <h3>E se na minha ISO o arquivo for install.esd em vez de install.wim?</h3>
+            <p>Se a mídia foi criada pela Ferramenta de Criação de Mídia (Media Creation Tool), o arquivo se chamará install.esd. Basta alterar a sintaxe do comando de /Source:WIM:E:\sources\install.wim:1 para /Source:ESD:E:\sources\install.esd:1.</p>
+          </div>
+          <div class="faq-item">
+            <h3>É seguro apagar a pasta SoftwareDistribution.old depois?</h3>
+            <p>Sim. A pasta renomeada SoftwareDistribution.old contém apenas os instaladores e históricos temporários antigos. Depois de confirmar que o Windows Update voltou a funcionar e instalou as atualizações com sucesso, você pode excluí-la com segurança para liberar espaço em disco.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Por que as empresas costumam sofrer mais com o erro 0x800F081F?</h3>
+            <p>Em ambientes corporativos, administradores frequentemente configuram Políticas de Grupo (GPO) que direcionam os computadores para servidores internos WSUS que não têm os pacotes do .NET 3.5 aprovados. A solução é habilitar a política de grupo 'Especificar configurações para a instalação e reparo de componentes opcionais' apontando diretamente para o Windows Update da Microsoft.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O .NET Framework 3.5 ainda é necessário no Windows 11?</h3>
+            <p>O Windows 11 já vem com versões modernas (.NET 4.8 e .NET 8/9) nativamente ativadas. No entanto, aplicativos legados desenvolvidos entre 2005 e 2015 exigem especificamente os binários do .NET 2.0 e 3.5 e não conseguem executar sem que esse recurso opcional esteja habilitado.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Como verificar se a ISO baixada é da mesma compilação do meu Windows?</h3>
+            <p>Para evitar erros de incompatibilidade de versão durante o reparo com o DISM, abra o Prompt e digite winver para verificar sua compilação exata (por exemplo, Build 22631). Em seguida, inspecione a ISO montada com o comando dism /Get-WimInfo /WimFile:E:\sources\install.wim /index:1 e confira se o número da ServicePack Build coincide ou é superior ao instalado.</p>
+          </div>
         </div>
 
-        
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://learn.microsoft.com/pt-br/troubleshoot/windows-client/deployment/error-0x800f081f-install-features-on-demand" target="_blank" rel="noopener noreferrer">Microsoft Learn — Erro do Windows Update 0x800F081F</a></li>
+          <li><a href="https://learn.microsoft.com/pt-br/windows-hardware/manufacture/desktop/deploy-net-framework-35-by-using-deployment-image-servicing-and-management--dism" target="_blank" rel="noopener noreferrer">Microsoft Learn — Implantar o .NET Framework 3.5 usando o DISM</a></li>
+        </ul>
 
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
-          </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
-          </div>
-        </div>
-
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-tirar-print-screen-notebook-windows.html" class="related-card">
-              <span class="related-card-title">Como Tirar Print Screen no Notebook Windows 10 e 11</span>
-            </a>
-            <a href="como-corrigir-perfil-temporario-temp-user-profile-service-windows-11.html" class="related-card">
-              <span class="related-card-title">Como Corrigir Perfil Temporário e Erro no User Profile Service (Windows 11)</span>
-            </a>
-            <a href="como-corrigir-erro-0x80070005-permissao-negada-windows-update.html" class="related-card">
-              <span class="related-card-title">Como Corrigir o Erro 0x80070005 de Permissão Negada no Windows Update</span>
-            </a>
             <a href="como-usar-comandos-dism-sfc-windows-11-corrigir-erros.html" class="related-card">
-              <span class="related-card-title">Como Usar os Comandos DISM e SFC no Windows 11 para Corrigir Erros</span>
+              <span class="related-card-title">Como Usar DISM e SFC no Windows 11 para Reparar Arquivos do Sistema</span>
+            </a>
+            <a href="como-corrigir-tela-azul-whea-uncorrectable-error-windows-11.html" class="related-card">
+              <span class="related-card-title">Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11</span>
+            </a>
+            <a href="como-resolver-tela-azul-system-service-exception-windows-11.html" class="related-card">
+              <span class="related-card-title">Como Resolver a Tela Azul SYSTEM_SERVICE_EXCEPTION no Windows 11</span>
+            </a>
+            <a href="como-resolver-uso-disco-100-porcento-sysmain-wmi-provider-host.html" class="related-card">
+              <span class="related-card-title">Como Resolver Uso de Disco em 100% no Windows 11 com SysMain e WMI</span>
             </a>
           </div>
         </div>
@@ -238,13 +346,15 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#entenda-origem-0x800f081f">Por que o Erro CBS_E_SOURCE_NOT_FOUND Acontece?</a></li>
+          <li><a href="#ativar-dotnet-com-iso">Solução 1: Ativar o .NET Framework 3.5 Apontando a Pasta SxS da ISO</a></li>
+          <li><a href="#ajuste-politica-grupo-wsus">Solução 2: Configurar a Política de Grupo para Recursos Opcionais (GPO)</a></li>
+          <li><a href="#reparo-windows-update-dism-wim">Solução 3: Reparar o Repositório do Windows Update com Imagem WIM</a></li>
+          <li><a href="#limpeza-cache-windows-update">Solução 4: Redefinir os Componentes de Download do Windows Update</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -252,7 +362,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>

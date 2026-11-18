@@ -3,29 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como Criar uma Senha Segura e Forte Passo a Passo — DRGTech</title>
-  <meta name="description" content="Para criar uma senha segura, misture letras maiúsculas e minúsculas, números e símbolos especiais para aumentar a complexidade contra ataques de força brut..." />
-  <meta name="keywords" content="como criar uma senha segura e forte passo a passo, tutorial segurança, suporte tecnico" />
+  <title>Como Criar uma Senha Segura e Forte: Guia Completo e Diretrizes NIST — DRGTech</title>
+  <meta name="description" content="Aprenda a criar senhas fortes e inquebráveis baseadas nas diretrizes NIST: método das frases-senha (passphrases), gerenciadores e proteção contra força bruta." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Como Criar uma Senha Segura e Forte Passo a Passo — DRGTech" />
-  <meta property="og:description" content="Para criar uma senha segura, misture letras maiúsculas e minúsculas, números e símbolos especiais para aumentar a complexidade contra ataques de força brut..." />
+  <meta property="og:title" content="Como Criar uma Senha Segura e Forte: Guia Completo e Diretrizes NIST — DRGTech" />
+  <meta property="og:description" content="Aprenda a criar senhas fortes e inquebráveis baseadas nas diretrizes NIST: método das frases-senha (passphrases), gerenciadores e proteção contra força bruta." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-criar-uma-senha-segura-e-forte.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Como Criar uma Senha Segura e Forte Passo a Passo — DRGTech" />
-  <meta name="twitter:description" content="Para criar uma senha segura, misture letras maiúsculas e minúsculas, números e símbolos especiais para aumentar a complexidade contra ataques de força brut..." />
+  <meta name="twitter:title" content="Como Criar uma Senha Segura e Forte: Guia Completo e Diretrizes NIST — DRGTech" />
+  <meta name="twitter:description" content="Aprenda a criar senhas fortes e inquebráveis baseadas nas diretrizes NIST: método das frases-senha (passphrases), gerenciadores e proteção contra força bruta." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-criar-uma-senha-segura-e-forte.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Criar uma Senha Segura e Forte: Guia Completo e Diretrizes NIST",
+  "description": "Aprenda a criar senhas fortes e inquebráveis baseadas nas diretrizes NIST: método das frases-senha (passphrases), gerenciadores e proteção contra força bruta.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-criar-uma-senha-segura-e-forte.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,47 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Criar uma Senha Segura e Forte Passo a Passo",
+      "name": "O que a norma NIST SP 800-63B diz sobre troca periódica de senhas?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Para criar uma senha segura, misture letras maiúsculas e minúsculas, números e símbolos especiais para aumentar a complexidade contra ataques de força bruta, evite datas de nascimento ou nomes pessoais, e utilize um gerenciador de senhas confiável (Bitwarden ou 1Password) para gerar e armazenar credenciais aleatórias."
+        "text": "O NIST desencoraja formalmente a obrigação de troca periódica de senhas (como forçar troca a cada 90 dias) a menos que haja evidência real de vazamento. Pesquisas empíricas comprovaram que forçar trocas frequentes faz os usuários criarem senhas mais fracas e previsíveis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Por que o envio de código 2FA por SMS é considerado inseguro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O protocolo SMS não possui criptografia ponta a ponta e é suscetível ao golpe do SIM Swap (quando criminosos convencem a operadora de telefonia a transferir sua linha para um chip em posse deles). Aplicativos autenticadores geram os códigos localmente no processador do celular, sem depender de rede celular."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Gerenciadores de senhas em nuvem podem ser hackeados?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Embora os servidores possam sofrer ataques, os gerenciadores sérios utilizam a arquitetura 'Zero-Knowledge' (Conhecimento Zero). O cofre é criptografado localmente no seu aparelho com a sua Senha Mestra antes de subir para a nuvem. Mesmo que os servidores sejam invadidos, os criminosos obtêm apenas um bloco ilegível de bytes criptografados."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que é entropia de uma senha?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entropia é a medida matemática em bits da aleatoriedade e imprevisibilidade de uma chave criptográfica. Uma senha com 80 ou mais bits de entropia é considerada matematicamente inviolável por capacidades computacionais conhecidas na atualidade."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "As senhas tradicionais vão acabar com a chegada das Passkeys?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim, gradualmente. As Passkeys (chaves de acesso FIDO2) utilizam biometria e criptografia de chave pública, eliminando a digitação de senhas e sendo imunes ao phishing. No entanto, senhas fortes e frases-senha ainda serão necessárias por muitos anos durante o período de transição dos serviços online."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,7 +113,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Como Criar uma Senha Segura e Forte Passo a Passo",
+      "name": "Como Criar uma Senha Segura e Forte: Guia Completo e Diretrizes NIST",
       "item": "https://drgtech.com.br/artigos/como-criar-uma-senha-segura-e-forte.html"
     }
   ]
@@ -103,132 +153,159 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#seguranca">Segurança</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Criar uma Senha Segura e Forte...</span>
+        <span>Como Criar uma Senha Segura e Forte:…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-red">Segurança</span>
-        <h1 class="article-h1">Como Criar uma Senha Segura e Forte Passo a Passo</h1>
+        <h1 class="article-h1">Como Criar uma Senha Segura e Forte: Guia Completo e Diretrizes NIST</h1>
         <div class="article-intro-meta">
           <span class="meta-item">5 min de leitura</span>
-          <span class="meta-item">Atualizado em agosto de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> Para criar uma senha segura, misture letras maiúsculas e minúsculas, números e símbolos especiais para aumentar a complexidade contra ataques de força bruta, evite datas de nascimento ou nomes pessoais, e utilize um gerenciador de senhas confiável (Bitwarden ou 1Password) para gerar e armazenar credenciais aleatórias.
+        <strong>Resposta rápida:</strong> Para criar uma senha verdadeiramente segura, adote o padrão recomendado pelo NIST (National Institute of Standards and Technology): utilize frases-senha longas com pelo menos 16 caracteres formadas por 4 ou mais palavras aleatórias fáceis de memorizar (ex: <code>Cavalo-Nuvem-Tijolo-Relogio!</code>), nunca reutilize a mesma senha entre sites diferentes e armazene suas credenciais em um gerenciador de senhas confiável protegido por autenticação de dois fatores (2FA).
       </div>
 
       <article class="article-body" id="article-body">
+        <p>Durante décadas, a maioria dos sites e sistemas corporativos impôs aos usuários regras rígidas e antiquadas de criação de senhas: exigia-se um mínimo de 8 caracteres misturando letras maiúsculas, números e símbolos especiais, além de forçar trocas obrigatórias a cada 60 ou 90 dias. O resultado prático dessa abordagem foi desastroso: as pessoas passaram a criar variações previsíveis e fáceis de esquecer (como <code>Mudar@123</code> virando <code>Mudar@124</code>), facilitando o trabalho de softwares automatizados de ataque.</p>
+        <p>Em resposta a essa realidade, o NIST (National Institute of Standards and Technology), órgão máximo de padrões tecnológicos dos Estados Unidos, reformulou integralmente suas diretrizes de identidade digital (Publicação Especial NIST SP 800-63B). A ciência criptográfica comprovou que o comprimento total da senha (entropia) é exponencialmente mais importante do que combinações confusas e curtas. Neste guia prático, ensinamos como construir frases-senha inquebráveis e como blindar sua identidade na web.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> Todas as contas online, redes sociais, bancos e e-mails</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Criar uma Senha Segura e Forte Passo a Passo"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Segurança</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
+        <h2 id="matematica-da-forca-bruta">Entenda a Matemática da Força Bruta: Comprimento vs Complexidade</h2>
+        <p>A tabela abaixo ilustra o tempo médio que placas de vídeo modernas dedicadas (GPUs) com ferramentas de quebra de hash (como Hashcat) levam para quebrar diferentes padrões de senha:</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Padrão da Senha</th><th>Exemplo Típico</th><th>Número de Combinações</th><th>Tempo para Quebra por Força Bruta</th></tr></thead>
+            <tbody>
+              <tr><td>8 caracteres (letras e números)</td><td>Brasil24</td><td>Cerca de 200 bilhões</td><td>Menos de 5 minutos</td></tr>
+              <tr><td>8 caracteres complexos</td><td>Br@s!l24</td><td>Cerca de 6 trilhões</td><td>Menos de 8 horas</td></tr>
+              <tr><td>12 caracteres complexos</td><td>P@ss#w0rd!2026</td><td>Cerca de 470 sextilhões</td><td>Cerca de 2 a 3 anos</td></tr>
+              <tr><td>18+ caracteres (Frase-senha)</td><td>Laranja-Navio-Janela-Fogo!</td><td>Mais de 100 octilhões</td><td>Milhares de séculos (impossível na prática)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="success-box">
+          <div class="box-content"><p>Cada caractere adicional adiciona uma barreira exponencial de cálculo para computadores invasores. Uma senha de 16 caracteres comuns é ordens de grandeza mais resistente do que uma de 8 caracteres cheia de símbolos complexos.</p></div>
         </div>
 
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
+        <h2 id="metodo-das-frases-senha-passphrases">Passo 1: Dominar o Método das Frases-Senha (Passphrases)</h2>
+        <p>O método de frase-senha consiste em encadear palavras independentes da língua portuguesa ou termos memoráveis que não formem expressões óbvias ou provérbios populares conhecidos:</p>
         <ol class="steps-list">
-
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">Utilize uma frase-senha longa intercalando caracteres especiais e numerais no lugar de letras comuns para criar combinações complexas.</div>
+            <div class="step-text">Escolha de 4 a 5 palavras não correlacionadas (evite frases conhecidas de músicas, versículos ou ditados populares).</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">Evite usar dados pessoais públicos ou de fácil adivinhação, como datas de nascimento, nomes de familiares, pets ou sequências simples (123456).</div>
+            <div class="step-text">Separe as palavras utilizando um caractere divisor amigável, como traço (<code>-</code>), ponto (<code>.</code>) ou espaço sublinhado (<code>_</code>).</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">Armazene suas credenciais em um cofre criptografado com chave mestra utilizando um gerenciador de senhas confiável (como Bitwarden ou 1Password).</div>
+            <div class="step-text">Insira uma palavra com letra maiúscula ou um número significativo apenas para atender a formulários que ainda exigem esses critérios legados.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Exemplo prático de frase-senha ultra segura: <code>Caderno-Tigre-Nuvem-Violao.88</code>.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Essa sequência possui mais de 28 caracteres, é facílima de digitar no teclado do celular e absolutamente impenetrável por ataques de dicionário.</div>
           </li>
         </ol>
 
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <h2 id="uso-de-gerenciador-de-senhas">Passo 2: Utilizar um Gerenciador de Senhas Confiável</h2>
+        <p>Nenhum ser humano é capaz de memorizar 80 senhas longas e distintas para cada serviço da vida digital. Tentar memorizar tudo leva à armadilha fatal de reutilizar a mesma senha em múltiplos sites:</p>
+        <ul>
+          <li><strong>Bitwarden:</strong> Solução de código aberto com auditorias públicas de segurança independentes, criptografia ponta a ponta (AES-256) e plano gratuito completo com sincronização ilimitada entre PC e celular.</li>
+          <li><strong>1Password / KeePassXC:</strong> Excelentes alternativas com armazenamento local isolado ou cofres corporativos compartilhados.</li>
+          <li><strong>Chaves do iCloud / Google Password Manager:</strong> Opções nativas integradas aos sistemas iOS e Android com preenchimento automático biométrico por Face ID ou impressão digital.</li>
+        </ul>
+        <p>Com um gerenciador, você só precisa memorizar uma única <strong>Senha Mestra</strong> extremamente forte (sua frase-senha principal). O aplicativo cria e preenche senhas aleatórias de 20 caracteres para todos os outros sites.</p>
+        <div class="info-box">
+          <div class="box-content"><p>Você pode gerar combinações aleatórias de alta entropia gratuitamente utilizando a ferramenta segura do nosso portal em nosso Gerador de Senha Online.</p></div>
         </div>
 
-        
+        <h2 id="ativar-autenticacao-dois-fatores-2fa">Passo 3: Blindagem com Autenticação de Dois Fatores (2FA)</h2>
+        <p>Mesmo a senha mais forte do mundo pode ser vazada se o servidor de uma loja virtual onde você comprou sofrer uma invasão de banco de dados. O 2FA garante que a senha sozinha seja inútil para o invasor:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Ative a Verificação em Duas Etapas em todas as contas prioritárias (e-mail principal, conta Google/Apple, bancos e WhatsApp).</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Dê preferência a aplicativos autenticadores baseados em códigos TOTP temporários de 30 segundos (como Google Authenticator, Microsoft Authenticator ou 2FAS) em vez de códigos enviados por SMS.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Armazene os códigos de recuperação de emergência (códigos de backup de uso único) impressos ou guardados em local físico seguro fora do celular.</div>
+          </li>
+        </ol>
 
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
+        <h2 id="o-que-nunca-fazer-ao-criar-senhas">Passo 4: Armadilhas Comuns que Você Deve Evitar</h2>
+        <ul>
+          <li><strong>Nunca use informações pessoais rastreáveis:</strong> Datas de aniversário de filhos, nomes de animais de estimação, placas de carro ou times de futebol são as primeiras palavras testadas por criminosos usando técnicas de engenharia social (OSINT).</li>
+          <li><strong>Evite substituições visuais óbvias:</strong> Trocar a letra 'a' pelo número '4', 'e' por '3' ou 'o' por '0' em palavras comuns (como <code>P4ssw0rd</code>) já está mapeado em todas as tabelas de ataques de dicionário moderno.</li>
+          <li><strong>Não anote senhas em papéis colados no monitor ou blocos de notas abertos na Área de Trabalho:</strong> Utilize cofres criptografados.</li>
+        </ul>
+
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>O que a norma NIST SP 800-63B diz sobre troca periódica de senhas?</h3>
+            <p>O NIST desencoraja formalmente a obrigação de troca periódica de senhas (como forçar troca a cada 90 dias) a menos que haja evidência real de vazamento. Pesquisas empíricas comprovaram que forçar trocas frequentes faz os usuários criarem senhas mais fracas e previsíveis.</p>
           </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
+          <div class="faq-item">
+            <h3>Por que o envio de código 2FA por SMS é considerado inseguro?</h3>
+            <p>O protocolo SMS não possui criptografia ponta a ponta e é suscetível ao golpe do SIM Swap (quando criminosos convencem a operadora de telefonia a transferir sua linha para um chip em posse deles). Aplicativos autenticadores geram os códigos localmente no processador do celular, sem depender de rede celular.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Gerenciadores de senhas em nuvem podem ser hackeados?</h3>
+            <p>Embora os servidores possam sofrer ataques, os gerenciadores sérios utilizam a arquitetura 'Zero-Knowledge' (Conhecimento Zero). O cofre é criptografado localmente no seu aparelho com a sua Senha Mestra antes de subir para a nuvem. Mesmo que os servidores sejam invadidos, os criminosos obtêm apenas um bloco ilegível de bytes criptografados.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O que é entropia de uma senha?</h3>
+            <p>Entropia é a medida matemática em bits da aleatoriedade e imprevisibilidade de uma chave criptográfica. Uma senha com 80 ou mais bits de entropia é considerada matematicamente inviolável por capacidades computacionais conhecidas na atualidade.</p>
+          </div>
+          <div class="faq-item">
+            <h3>As senhas tradicionais vão acabar com a chegada das Passkeys?</h3>
+            <p>Sim, gradualmente. As Passkeys (chaves de acesso FIDO2) utilizam biometria e criptografia de chave pública, eliminando a digitação de senhas e sendo imunes ao phishing. No entanto, senhas fortes e frases-senha ainda serão necessárias por muitos anos durante o período de transição dos serviços online.</p>
           </div>
         </div>
 
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://pages.nist.gov/800-63-3/sp800-63b.html" target="_blank" rel="noopener noreferrer">NIST Special Publication 800-63B — Digital Identity Guidelines: Authentication and Lifecycle Management</a></li>
+          <li><a href="https://www.cisa.gov/resources-tools/resources/multi-factor-authentication" target="_blank" rel="noopener noreferrer">CISA — Multi-Factor Authentication and Password Guidance</a></li>
+        </ul>
+
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-saber-se-whatsapp-foi-clonado-ou-hacker.html" class="related-card">
-              <span class="related-card-title">Como Saber se o WhatsApp Foi Clonado e Como Desconectar Hackers</span>
-            </a>
-            <a href="como-ativar-verificacao-duas-etapas-instagram-whatsapp.html" class="related-card">
-              <span class="related-card-title">Como Ativar a Verificação em Duas Etapas no WhatsApp e Instagram</span>
-            </a>
-            <a href="como-proteger-roteador-rede-local-contra-injecao-upnp.html" class="related-card">
-              <span class="related-card-title">Como Proteger o Roteador e a Rede Local Contra Injeção no UPnP</span>
-            </a>
             <a href="como-saber-se-email-e-falso-ou-golpe-phishing.html" class="related-card">
-              <span class="related-card-title">Como Saber se um E-mail é Falso ou Golpe (Phishing)</span>
+              <span class="related-card-title">Como Saber se um E-mail é Falso ou Golpe de Phishing</span>
+            </a>
+            <a href="como-saber-se-email-senha-foram-vazados-internet.html" class="related-card">
+              <span class="related-card-title">Como Saber se Seu E-mail e Senha Foram Vazados na Internet</span>
+            </a>
+            <a href="como-proteger-conta-whatsapp-contra-golpes-clonagem-sim-swap.html" class="related-card">
+              <span class="related-card-title">Como Proteger Sua Conta do WhatsApp Contra Golpes e SIM Swap</span>
+            </a>
+            <a href="como-usar-passkeys-chaves-de-acesso-substituir-senhas-seguranca.html" class="related-card">
+              <span class="related-card-title">Como Usar Passkeys (Chaves de Acesso) para Substituir Senhas com Segurança</span>
             </a>
           </div>
         </div>
@@ -238,13 +315,15 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#matematica-da-forca-bruta">Entenda a Matemática da Força Bruta: Comprimento vs Complexidade</a></li>
+          <li><a href="#metodo-das-frases-senha-passphrases">Passo 1: Dominar o Método das Frases-Senha (Passphrases)</a></li>
+          <li><a href="#uso-de-gerenciador-de-senhas">Passo 2: Utilizar um Gerenciador de Senhas Confiável</a></li>
+          <li><a href="#ativar-autenticacao-dois-fatores-2fa">Passo 3: Blindagem com Autenticação de Dois Fatores (2FA)</a></li>
+          <li><a href="#o-que-nunca-fazer-ao-criar-senhas">Passo 4: Armadilhas Comuns que Você Deve Evitar</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -252,7 +331,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>

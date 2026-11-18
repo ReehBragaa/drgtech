@@ -1,0 +1,117 @@
+{
+  "id": 176,
+  "slug": "como-resolver-tela-azul-system-service-exception-windows-11",
+  "titulo": "Como Resolver a Tela Azul SYSTEM_SERVICE_EXCEPTION no Windows 11",
+  "descricao": "Passo a passo prático para corrigir o erro de parada SYSTEM_SERVICE_EXCEPTION (0x0000003B) no Windows 11 causado por drivers corrompidos ou conflitos.",
+  "resposta_curta": "A tela azul SYSTEM_SERVICE_EXCEPTION (código de parada 0x0000003B) ocorre quando um processo em execução no modo kernel tenta executar uma rotina privilegiada sem as devidas permissões ou faz referência a um endereço inválido de memória. Na maioria dos casos, o erro é causado por drivers de placa de vídeo incompatíveis, drivers de antivírus de terceiros ou falhas em arquivos de sistema. A solução consiste em identificar o arquivo .sys causador no despejo de memória, atualizar drivers essenciais e rodar o DISM e SFC.",
+  "aplica_se": "Windows 11 e Windows 10",
+  "intro": [
+    "O código de parada SYSTEM_SERVICE_EXCEPTION (código de bugcheck 0x0000003B) é uma das telas azuis mais recorrentes no Windows 11. Essa falha se manifesta quando uma rotina em execução no espaço privilegiado de memória (kernel) transita para um manipulador de exceção que o sistema operacional não consegue tratar de forma segura. Em termos práticos, significa que um driver ou serviço tentou cruzar fronteiras de proteção de memória ou passou parâmetros corrompidos para o subsistema do Windows.",
+    "Com frequência, a própria tela azul exibe o nome do arquivo específico responsável pela interrupção logo abaixo do código de parada, como por exemplo nvlddmkm.sys (placa de vídeo NVIDIA), atikmdag.sys (placa de vídeo AMD), netio.sys (pilha de rede) ou drivers de software de proteção e anti-cheat. Compreender como rastrear esse arquivo binário permite resolver a falha de forma cirúrgica, sem reinstalações desgastantes do sistema operacional."
+  ],
+  "secoes": [
+    {
+      "id": "mapeamento-arquivos-sys",
+      "titulo": "Identificando o Driver Responsável pela Falha",
+      "blocos": [
+        { "tipo": "p", "texto": "Se a tela azul apontar um arquivo com extensão `.sys`, você já tem a pista direta sobre qual subsistema de driver precisa de atualização ou reversão:" },
+        { "tipo": "tabela", "cabecalho": ["Arquivo .SYS Citado", "Componente Responsável", "Ação Recomendada"], "linhas": [
+          ["nvlddmkm.sys", "Driver da placa de vídeo NVIDIA GeForce.", "Reinstalação limpa do driver gráfico com opção de instalação limpa."],
+          ["amdkmdag.sys / atikmdag.sys", "Driver de vídeo AMD Radeon.", "Atualização ou reversão via software AMD Adrenalin."],
+          ["netio.sys / tcpip.sys", "Pilha de rede do Windows ou antivírus com filtro de rede.", "Atualizar driver da placa de rede Ethernet/Wi-Fi e revisar antivírus."],
+          ["win32kbase.sys / win32kfull.sys", "Subsistema gráfico e de janelas do próprio Windows.", "Corrupção de arquivos do sistema. Executar rotina com DISM e SFC."],
+          ["asmtxhci.sys / iusb3xhci.sys", "Controladora de portas USB 3.0 / USB-C.", "Atualizar drivers de chipset da placa-mãe no site oficial."]
+        ]}
+      ]
+    },
+    {
+      "id": "reinstalacao-limpa-video",
+      "titulo": "Passo 1: Reinstalação Limpa de Drivers de Placa de Vídeo",
+      "blocos": [
+        { "tipo": "p", "texto": "Mais de 60% dos incidentes com SYSTEM_SERVICE_EXCEPTION estão diretamente vinculados a drivers gráficos corrompidos durante atualizações automáticas do Windows Update:" },
+        { "tipo": "passos", "itens": [
+          "Baixe o instalador do driver mais recente diretamente do portal oficial da fabricante da sua placa (NVIDIA, AMD ou Intel).",
+          "Desconecte o computador da internet (remova o cabo de rede ou desligue o Wi-Fi) para impedir que o Windows Update baixe um driver genérico automaticamente durante o processo.",
+          "Inicie o instalador oficial baixado e, ao escolher o tipo de instalação, selecione a opção **Personalizada (Avançada)**.",
+          "Marque a caixa de seleção **Executar instalação limpa** (Clean Install), que removerá configurações corrompidas e perfis antigos antes de gravar os novos arquivos.",
+          "Conclua a instalação, reinicie o computador e reconecte a internet."
+        ]}
+      ]
+    },
+    {
+      "id": "verificacao-de-arquivos-de-sistema",
+      "titulo": "Passo 2: Restaurar Arquivos de Sistema com DISM e SFC",
+      "blocos": [
+        { "tipo": "p", "texto": "Quando a falha cita arquivos como `win32kfull.sys` ou `ntoskrnl.exe`, o problema decorre de corrupção lógica nos binários centrais do Windows:" },
+        { "tipo": "passos", "itens": [
+          "Pressione `Windows + X` e abra o **Terminal (Administrador)**.",
+          "Execute a restauração de componentes com o DISM:",
+          "Aguarde a conclusão bem-sucedida e execute imediatamente o verificador de integridade:"
+        ]},
+        { "tipo": "codigo", "linguagem": "powershell", "texto": "DISM /Online /Cleanup-Image /RestoreHealth\nsfc /scannow" },
+        { "tipo": "p", "texto": "Reinicie a máquina após a confirmação de que os arquivos foram reparados com êxito." }
+      ]
+    },
+    {
+      "id": "desinstalar-softwares-conflitantes",
+      "titulo": "Passo 3: Desinstalar Antivírus e Softwares de Segurança Antigos",
+      "blocos": [
+        { "tipo": "p", "texto": "Programas antivírus de terceiros, ferramentas de virtualização antigas e sistemas de segurança bancária (como plugins de proteção de internet banking) instalam drivers de filtro que interceptam chamadas no nível de kernel do Windows. Versões desatualizadas desses programas não são compatíveis com as camadas de segurança atualizadas do Windows 11:" },
+        { "tipo": "passos", "itens": [
+          "Abra as **Configurações** do Windows 11 (`Windows + I`) e acerte em **Aplicativos** > **Aplicativos Instalados**.",
+          "Se você tiver softwares de proteção bancária (como Warsaw / Guardião) ou soluções antivírus antigas instaladas, desinstale-os temporariamente.",
+          "Mantenha ativo o **Segurança do Windows (Microsoft Defender)**, que é nativo do sistema e não gera conflitos de kernel.",
+          "Reinicie o computador e monitore se os travamentos foram eliminados."
+        ]}
+      ]
+    },
+    {
+      "id": "inspecionar-minidump-whocrashed",
+      "titulo": "Passo 4: Analisar o Arquivo Minidump para Saber o Culpado Exato",
+      "blocos": [
+        { "tipo": "p", "texto": "Quando ocorre um bugcheck, o Windows grava um pequeno arquivo de despejo na pasta `C:\\Windows\\Minidump`. Se você não conseguiu ver o nome do driver na tela azul, pode ler esse arquivo facilmente com ferramentas seguras e gratuitas:" },
+        { "tipo": "lista", "itens": [
+          "Utilize utilitários consolidados de diagnóstico como o **BlueScreenView** ou o **WhoCrashed**.",
+          "Abra o relatório gerado: o programa destacará em cor vermelha o nome exato do arquivo (como `driver_name.sys`) e a linha do módulo de falha (`Caused By Driver`).",
+          "Com esse nome em mãos, faça uma busca rápida no Explorador de Arquivos para descobrir a qual aplicativo ou hardware esse arquivo pertence."
+        ]}
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O erro SYSTEM_SERVICE_EXCEPTION pode danificar meu computador fisicamente?",
+      "r": "Não. A tela azul é justamente um mecanismo de proteção preventiva acionado pelo kernel do Windows para evitar danos físicos aos componentes ou corrupção silenciosa nos arquivos armazenados no disco rígido/SSD quando um comando anômalo é detectado."
+    },
+    {
+      "p": "Por que esse erro costuma acontecer logo após uma atualização do Windows?",
+      "r": "Grandes atualizações cumulativas do Windows 11 alteram rotinas internas do kernel. Se você tiver um driver de dispositivo antigo (como drivers de áudio Realtek, Wi-Fi ou placas de vídeo) que não foi atualizado pela fabricante para suportar a nova compilação, ele falhará ao invocar essas rotinas do sistema, gerando o bugcheck."
+    },
+    {
+      "p": "Posso resolver voltando a um Ponto de Restauração?",
+      "r": "Sim. Se a tela azul começou a ocorrer logo após instalar um programa específico ou atualizar um driver, a Restauração do Sistema (atalho rstrui.exe) é uma maneira muito eficiente de reverter os arquivos do sistema e chaves do Registro para o estado operacional de dias anteriores sem tocar nos seus documentos pessoais."
+    },
+    {
+      "p": "Como inicializar o Windows se o erro ocorrer em loop contínuo na inicialização?",
+      "r": "Se você não consegue acessar a Área de Trabalho, force o desligamento no botão liga/desliga duas vezes durante a inicialização para entrar no Ambiente de Recuperação do Windows (WinRE). Nele, vá em Solução de Problemas > Opções Avançadas > Configurações de Inicialização e escolha a opção 'Habilitar Modo de Segurança com Rede' para poder desinstalar o driver defeituoso."
+    },
+    {
+      "p": "A memória RAM pode ser a causadora de um SYSTEM_SERVICE_EXCEPTION?",
+      "r": "Sim, embora seja menos frequente do que causas de drivers. Se um bit de memória física falhar ao carregar uma instrução de driver, o kernel interpretará o dado corrompido como uma chamada de serviço inválida. Para descartar essa hipótese, execute o Diagnóstico de Memória do Windows (mdsched.exe)."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Microsoft Learn — Bug Check 0x3B SYSTEM_SERVICE_EXCEPTION",
+      "url": "https://learn.microsoft.com/pt-br/windows-hardware/drivers/debugger/bug-check-0x3b---system-service-exception"
+    },
+    {
+      "titulo": "Microsoft Learn — Solução de problemas avançada para erros de parada ou tela azul",
+      "url": "https://learn.microsoft.com/pt-br/troubleshoot/windows-client/performance/stop-error-or-blue-screen-error-issue"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [143, 155, 177, 178]
+}

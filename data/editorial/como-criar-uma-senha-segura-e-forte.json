@@ -1,0 +1,184 @@
+{
+  "id": 131,
+  "slug": "como-criar-uma-senha-segura-e-forte",
+  "titulo": "Como Criar uma Senha Segura e Forte: Guia Completo e Diretrizes NIST",
+  "descricao": "Aprenda a criar senhas fortes e inquebráveis baseadas nas diretrizes NIST: método das frases-senha (passphrases), gerenciadores e proteção contra força bruta.",
+  "resposta_curta": "Para criar uma senha verdadeiramente segura, adote o padrão recomendado pelo NIST (National Institute of Standards and Technology): utilize frases-senha longas com pelo menos 16 caracteres formadas por 4 ou mais palavras aleatórias fáceis de memorizar (ex: `Cavalo-Nuvem-Tijolo-Relogio!`), nunca reutilize a mesma senha entre sites diferentes e armazene suas credenciais em um gerenciador de senhas confiável protegido por autenticação de dois fatores (2FA).",
+  "aplica_se": "Todas as contas online, redes sociais, bancos e e-mails",
+  "intro": [
+    "Durante décadas, a maioria dos sites e sistemas corporativos impôs aos usuários regras rígidas e antiquadas de criação de senhas: exigia-se um mínimo de 8 caracteres misturando letras maiúsculas, números e símbolos especiais, além de forçar trocas obrigatórias a cada 60 ou 90 dias. O resultado prático dessa abordagem foi desastroso: as pessoas passaram a criar variações previsíveis e fáceis de esquecer (como `Mudar@123` virando `Mudar@124`), facilitando o trabalho de softwares automatizados de ataque.",
+    "Em resposta a essa realidade, o NIST (National Institute of Standards and Technology), órgão máximo de padrões tecnológicos dos Estados Unidos, reformulou integralmente suas diretrizes de identidade digital (Publicação Especial NIST SP 800-63B). A ciência criptográfica comprovou que o comprimento total da senha (entropia) é exponencialmente mais importante do que combinações confusas e curtas. Neste guia prático, ensinamos como construir frases-senha inquebráveis e como blindar sua identidade na web."
+  ],
+  "secoes": [
+    {
+      "id": "matematica-da-forca-bruta",
+      "titulo": "Entenda a Matemática da Força Bruta: Comprimento vs Complexidade",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "A tabela abaixo ilustra o tempo médio que placas de vídeo modernas dedicadas (GPUs) com ferramentas de quebra de hash (como Hashcat) levam para quebrar diferentes padrões de senha:"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Padrão da Senha",
+            "Exemplo Típico",
+            "Número de Combinações",
+            "Tempo para Quebra por Força Bruta"
+          ],
+          "linhas": [
+            [
+              "8 caracteres (letras e números)",
+              "Brasil24",
+              "Cerca de 200 bilhões",
+              "Menos de 5 minutos"
+            ],
+            [
+              "8 caracteres complexos",
+              "Br@s!l24",
+              "Cerca de 6 trilhões",
+              "Menos de 8 horas"
+            ],
+            [
+              "12 caracteres complexos",
+              "P@ss#w0rd!2026",
+              "Cerca de 470 sextilhões",
+              "Cerca de 2 a 3 anos"
+            ],
+            [
+              "18+ caracteres (Frase-senha)",
+              "Laranja-Navio-Janela-Fogo!",
+              "Mais de 100 octilhões",
+              "Milhares de séculos (impossível na prática)"
+            ]
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "sucesso",
+          "texto": "Cada caractere adicional adiciona uma barreira exponencial de cálculo para computadores invasores. Uma senha de 16 caracteres comuns é ordens de grandeza mais resistente do que uma de 8 caracteres cheia de símbolos complexos."
+        }
+      ]
+    },
+    {
+      "id": "metodo-das-frases-senha-passphrases",
+      "titulo": "Passo 1: Dominar o Método das Frases-Senha (Passphrases)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O método de frase-senha consiste em encadear palavras independentes da língua portuguesa ou termos memoráveis que não formem expressões óbvias ou provérbios populares conhecidos:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Escolha de 4 a 5 palavras não correlacionadas (evite frases conhecidas de músicas, versículos ou ditados populares).",
+            "Separe as palavras utilizando um caractere divisor amigável, como traço (`-`), ponto (`.`) ou espaço sublinhado (`_`).",
+            "Insira uma palavra com letra maiúscula ou um número significativo apenas para atender a formulários que ainda exigem esses critérios legados.",
+            "Exemplo prático de frase-senha ultra segura: `Caderno-Tigre-Nuvem-Violao.88`.",
+            "Essa sequência possui mais de 28 caracteres, é facílima de digitar no teclado do celular e absolutamente impenetrável por ataques de dicionário."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "uso-de-gerenciador-de-senhas",
+      "titulo": "Passo 2: Utilizar um Gerenciador de Senhas Confiável",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Nenhum ser humano é capaz de memorizar 80 senhas longas e distintas para cada serviço da vida digital. Tentar memorizar tudo leva à armadilha fatal de reutilizar a mesma senha em múltiplos sites:"
+        },
+        {
+          "tipo": "lista",
+          "itens": [
+            "**Bitwarden:** Solução de código aberto com auditorias públicas de segurança independentes, criptografia ponta a ponta (AES-256) e plano gratuito completo com sincronização ilimitada entre PC e celular.",
+            "**1Password / KeePassXC:** Excelentes alternativas com armazenamento local isolado ou cofres corporativos compartilhados.",
+            "**Chaves do iCloud / Google Password Manager:** Opções nativas integradas aos sistemas iOS e Android com preenchimento automático biométrico por Face ID ou impressão digital."
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Com um gerenciador, você só precisa memorizar uma única **Senha Mestra** extremamente forte (sua frase-senha principal). O aplicativo cria e preenche senhas aleatórias de 20 caracteres para todos os outros sites."
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "info",
+          "texto": "Você pode gerar combinações aleatórias de alta entropia gratuitamente utilizando a ferramenta segura do nosso portal em nosso Gerador de Senha Online."
+        }
+      ]
+    },
+    {
+      "id": "ativar-autenticacao-dois-fatores-2fa",
+      "titulo": "Passo 3: Blindagem com Autenticação de Dois Fatores (2FA)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Mesmo a senha mais forte do mundo pode ser vazada se o servidor de uma loja virtual onde você comprou sofrer uma invasão de banco de dados. O 2FA garante que a senha sozinha seja inútil para o invasor:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Ative a Verificação em Duas Etapas em todas as contas prioritárias (e-mail principal, conta Google/Apple, bancos e WhatsApp).",
+            "Dê preferência a aplicativos autenticadores baseados em códigos TOTP temporários de 30 segundos (como Google Authenticator, Microsoft Authenticator ou 2FAS) em vez de códigos enviados por SMS.",
+            "Armazene os códigos de recuperação de emergência (códigos de backup de uso único) impressos ou guardados em local físico seguro fora do celular."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-que-nunca-fazer-ao-criar-senhas",
+      "titulo": "Passo 4: Armadilhas Comuns que Você Deve Evitar",
+      "blocos": [
+        {
+          "tipo": "lista",
+          "itens": [
+            "**Nunca use informações pessoais rastreáveis:** Datas de aniversário de filhos, nomes de animais de estimação, placas de carro ou times de futebol são as primeiras palavras testadas por criminosos usando técnicas de engenharia social (OSINT).",
+            "**Evite substituições visuais óbvias:** Trocar a letra 'a' pelo número '4', 'e' por '3' ou 'o' por '0' em palavras comuns (como `P4ssw0rd`) já está mapeado em todas as tabelas de ataques de dicionário moderno.",
+            "**Não anote senhas em papéis colados no monitor ou blocos de notas abertos na Área de Trabalho:** Utilize cofres criptografados."
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O que a norma NIST SP 800-63B diz sobre troca periódica de senhas?",
+      "r": "O NIST desencoraja formalmente a obrigação de troca periódica de senhas (como forçar troca a cada 90 dias) a menos que haja evidência real de vazamento. Pesquisas empíricas comprovaram que forçar trocas frequentes faz os usuários criarem senhas mais fracas e previsíveis."
+    },
+    {
+      "p": "Por que o envio de código 2FA por SMS é considerado inseguro?",
+      "r": "O protocolo SMS não possui criptografia ponta a ponta e é suscetível ao golpe do SIM Swap (quando criminosos convencem a operadora de telefonia a transferir sua linha para um chip em posse deles). Aplicativos autenticadores geram os códigos localmente no processador do celular, sem depender de rede celular."
+    },
+    {
+      "p": "Gerenciadores de senhas em nuvem podem ser hackeados?",
+      "r": "Embora os servidores possam sofrer ataques, os gerenciadores sérios utilizam a arquitetura 'Zero-Knowledge' (Conhecimento Zero). O cofre é criptografado localmente no seu aparelho com a sua Senha Mestra antes de subir para a nuvem. Mesmo que os servidores sejam invadidos, os criminosos obtêm apenas um bloco ilegível de bytes criptografados."
+    },
+    {
+      "p": "O que é entropia de uma senha?",
+      "r": "Entropia é a medida matemática em bits da aleatoriedade e imprevisibilidade de uma chave criptográfica. Uma senha com 80 ou mais bits de entropia é considerada matematicamente inviolável por capacidades computacionais conhecidas na atualidade."
+    },
+    {
+      "p": "As senhas tradicionais vão acabar com a chegada das Passkeys?",
+      "r": "Sim, gradualmente. As Passkeys (chaves de acesso FIDO2) utilizam biometria e criptografia de chave pública, eliminando a digitação de senhas e sendo imunes ao phishing. No entanto, senhas fortes e frases-senha ainda serão necessárias por muitos anos durante o período de transição dos serviços online."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "NIST Special Publication 800-63B — Digital Identity Guidelines: Authentication and Lifecycle Management",
+      "url": "https://pages.nist.gov/800-63-3/sp800-63b.html"
+    },
+    {
+      "titulo": "CISA — Multi-Factor Authentication and Password Guidance",
+      "url": "https://www.cisa.gov/resources-tools/resources/multi-factor-authentication"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    132,
+    166,
+    165,
+    201
+  ]
+}

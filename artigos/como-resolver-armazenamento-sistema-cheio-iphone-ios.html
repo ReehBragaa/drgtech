@@ -3,29 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como Resolver o Armazenamento do Sistema Cheio no iPhone (iOS) — DRGTech</title>
-  <meta name="description" content="Para limpar os Gigabytes de 'Dados do Sistema' ocupando o iPhone, remova os dados do Safari em Ajustes > Safari > Avançado > Dados dos Sites, faça um Hard ..." />
-  <meta name="keywords" content="como resolver o armazenamento do sistema cheio no iphone (ios), tutorial celular, suporte tecnico" />
+  <title>Como Resolver Armazenamento do Sistema Cheio no iPhone (Dados do Sistema) — DRGTech</title>
+  <meta name="description" content="Guia definitivo para liberar espaço nos Dados do Sistema (antigo 'Outros') no iPhone: limpeza de cache de streaming, sincronização do iCloud e backup local." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Como Resolver o Armazenamento do Sistema Cheio no iPhone (iOS) — DRGTech" />
-  <meta property="og:description" content="Para limpar os Gigabytes de 'Dados do Sistema' ocupando o iPhone, remova os dados do Safari em Ajustes > Safari > Avançado > Dados dos Sites, faça um Hard ..." />
+  <meta property="og:title" content="Como Resolver Armazenamento do Sistema Cheio no iPhone (Dados do Sistema) — DRGTech" />
+  <meta property="og:description" content="Guia definitivo para liberar espaço nos Dados do Sistema (antigo 'Outros') no iPhone: limpeza de cache de streaming, sincronização do iCloud e backup local." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-resolver-armazenamento-sistema-cheio-iphone-ios.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Como Resolver o Armazenamento do Sistema Cheio no iPhone (iOS) — DRGTech" />
-  <meta name="twitter:description" content="Para limpar os Gigabytes de 'Dados do Sistema' ocupando o iPhone, remova os dados do Safari em Ajustes > Safari > Avançado > Dados dos Sites, faça um Hard ..." />
+  <meta name="twitter:title" content="Como Resolver Armazenamento do Sistema Cheio no iPhone (Dados do Sistema) — DRGTech" />
+  <meta name="twitter:description" content="Guia definitivo para liberar espaço nos Dados do Sistema (antigo 'Outros') no iPhone: limpeza de cache de streaming, sincronização do iCloud e backup local." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-resolver-armazenamento-sistema-cheio-iphone-ios.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Resolver Armazenamento do Sistema Cheio no iPhone (Dados do Sistema)",
+  "description": "Guia definitivo para liberar espaço nos Dados do Sistema (antigo 'Outros') no iPhone: limpeza de cache de streaming, sincronização do iCloud e backup local.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-resolver-armazenamento-sistema-cheio-iphone-ios.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,55 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Resolver o Armazenamento do Sistema Cheio no iPhone (iOS)",
+      "name": "Qual é o tamanho normal dos Dados do Sistema em um iPhone saudável?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Para limpar os Gigabytes de 'Dados do Sistema' ocupando o iPhone, remova os dados do Safari em Ajustes > Safari > Avançado > Dados dos Sites, faça um Hard Reset para expurgar logs de análise (.ips em /var/mobile/Library/Logs) e realize um backup local criptografado via Finder/iTunes para forçar a consolidação do banco de dados APFS."
+        "text": "Em condições normais de uso, a categoria Dados do Sistema varia naturalmente entre 5 GB e 12 GB. Valores nessa faixa são esperados e necessários para o funcionamento ágil do cache do processador neural e das funções do iOS."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Por que os Dados do Sistema aumentam sozinhos de repente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Geralmente ocorre após o iPhone baixar em segundo plano uma grande atualização do iOS (como do iOS 17 para o 18) que fica aguardando autorização para ser instalada durante a noite, ou durante a indexação de milhares de fotos após uma viagem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Aplicativos de 'limpeza de memória' na App Store funcionam no iPhone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. Devido à arquitetura fechada de sandboxing do iOS, nenhum aplicativo de terceiros tem permissão para vasculhar ou apagar arquivos de outros apps ou da pasta do sistema. Esses aplicativos costumam ser apenas enganosos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Desinstalar e reinstalar o Instagram e TikTok ajuda?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim, muito. Aplicativos de redes sociais com feed de vídeo contínuo acumulam gigabytes de cache que o iOS às vezes classifica sob Dados do Sistema. Desinstalar e reinstalar esvazia esses bancos de dados temporários de uma só vez."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Downloads de mapas offline e podcasts aumentam os Dados do Sistema?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Episódios baixados no Apple Podcasts ou áreas salvas para navegação offline no Apple Maps ficam alocados em caches de mídia do sistema. Acesse Ajustes > Podcasts e Ajustes > Mapas para gerenciar ou apagar conteúdos offline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Reiniciar o iPhone ajuda a diminuir esse espaço?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Um reinício simples do aparelho descarrega arquivos temporários da memória de paginação swap do sistema, frequentemente liberando entre 1 e 3 GB instantaneamente."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,7 +121,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Como Resolver o Armazenamento do Sistema Cheio no iPhone (iOS)",
+      "name": "Como Resolver Armazenamento do Sistema Cheio no iPhone (Dados do Sistema)",
       "item": "https://drgtech.com.br/artigos/como-resolver-armazenamento-sistema-cheio-iphone-ios.html"
     }
   ]
@@ -103,136 +161,188 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#celular">Celular</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Resolver o Armazenamento do Si...</span>
+        <span>Como Resolver Armazenamento do Sistema…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-green">Celular</span>
-        <h1 class="article-h1">Como Resolver o Armazenamento do Sistema Cheio no iPhone (iOS)</h1>
+        <h1 class="article-h1">Como Resolver Armazenamento do Sistema Cheio no iPhone (Dados do Sistema)</h1>
         <div class="article-intro-meta">
-          <span class="meta-item">7 min de leitura</span>
-          <span class="meta-item">Atualizado em julho de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">5 min de leitura</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> Para limpar os Gigabytes de 'Dados do Sistema' ocupando o iPhone, remova os dados do Safari em Ajustes > Safari > Avançado > Dados dos Sites, faça um Hard Reset para expurgar logs de análise (.ips em /var/mobile/Library/Logs) e realize um backup local criptografado via Finder/iTunes para forçar a consolidação do banco de dados APFS.
+        <strong>Resposta rápida:</strong> A categoria 'Dados do Sistema' (antigo 'Outros') no armazenamento do iPhone reúne caches temporários de aplicativos de streaming, logs do iOS, vozes da Siri, índices do Spotlight e arquivos de mídia em trânsito. Para reduzir drasticamente seu tamanho, sincronize o iPhone com um computador (Mac ou PC) para forçar a purgação de logs de diagnóstico, descarregue aplicativos não usados, limpe o histórico do Safari e reinicie o aparelho.
       </div>
 
       <article class="article-body" id="article-body">
+        <p>Você acessa Ajustes &gt; Geral &gt; Armazenamento do iPhone e se depara com a barra de capacidade praticamente lotada. Ao rolar até o final da lista, nota que a misteriosa categoria <strong>Dados do Sistema</strong> (chamada de 'Outros' em versões anteriores do iOS) está ocupando 20 GB, 40 GB ou até mais de metade da memória do seu celular.</p>
+        <p>Diferente dos aplicativos convencionais, os Dados do Sistema não possuem um botão direto de 'Desinstalar' ou 'Limpar'. Essa partição virtual dinâmica abriga arquivos de cache não removíveis de imediato, gravações de voz do sistema, índices de pesquisa, buffers de serviços de streaming (como Spotify, Netflix e TikTok) e arquivos de atualização pendentes. Neste guia passo a passo, ensinamos os métodos técnicos mais eficazes para forçar o iOS a limpar esses arquivos fantasmas com segurança.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> iPhone (iOS 15, 16, 17 e 18)</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Resolver o Armazenamento do Sistema Cheio no iPhone (iOS)"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Celular</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
+        <h2 id="o-que-sao-dados-do-sistema">O Que Realmente Compõe os 'Dados do Sistema' no iOS?</h2>
+        <p>A arquitetura de armazenamento do iOS classifica sob essa etiqueta qualquer dado volátil que não pertença estritamente ao binário de um aplicativo específico:</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Elemento Oculto</th><th>Como é Gerado</th><th>Como Limpar Efetivamente</th></tr></thead>
+            <tbody>
+              <tr><td>Caches de Áudio e Vídeo</td><td>Músicas e vídeos pré-carregados em streaming (Spotify, YouTube, Instagram).</td><td>Limpar caches dentro das opções de cada app ou reinstalar.</td></tr>
+              <tr><td>Histórico e Caches Web</td><td>Páginas, imagens e scripts salvos durante navegação no Safari e Chrome.</td><td>Limpar Histórico e Dados dos Sites nos Ajustes do Safari.</td></tr>
+              <tr><td>Logs de Diagnóstico do iOS</td><td>Relatórios de falhas de apps e estatísticas de telemetria.</td><td>Sincronizar o iPhone conectado via cabo a um computador.</td></tr>
+              <tr><td>Mensagens e Mídias do iMessage</td><td>Fotos e vídeos pesados com anexos sincronizados no iCloud.</td><td>Ativar a opção de apagar mensagens antigas automaticamente.</td></tr>
+            </tbody>
+          </table>
         </div>
 
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
+        <h2 id="sincronizacao-computador-purgar-logs">Passo 1: Sincronizar o iPhone com o Computador para Descarregar Logs</h2>
+        <p>Este é o segredo técnico mais eficiente e menos conhecido: quando o iPhone é conectado a um computador de confiança, o sistema operacional descarrega gigabytes de relatórios de falhas e logs de depuração acumulados:</p>
         <ol class="steps-list">
-
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">Vá em Ajustes > Safari > Avançado > Dados dos Sites e toque em 'Remover Todos os Dados'.</div>
+            <div class="step-text">Conecte o iPhone a um Mac (pelo Finder) ou a um PC com Windows (usando o app oficial Dispositivos Apple ou iTunes) através do cabo USB.</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">Verifique em Ajustes > Privacidade e Segurança > Análise e Melhorias os logs .ips acumulados.</div>
+            <div class="step-text">Desbloqueie o iPhone e toque em 'Confiar neste computador', digitando sua senha de tela.</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">Execute um Hard Reset (apertar e soltar Volume +, Volume -, e segurar o botão lateral) para forçar o expurgo de logs de crash.</div>
+            <div class="step-text">No computador, abra a janela do dispositivo e clique no botão <strong>Sincronizar</strong> (ou Fazer Backup Agora).</div>
           </li>
           <li>
             <div class="step-num">4</div>
-            <div class="step-text">Conecte o iPhone ao PC/Mac e execute um 'Backup Criptografado' no Finder ou iTunes para forçar o iOS a consolidar o armazenamento de sistema.</div>
+            <div class="step-text">Aguarde o término de todas as etapas de sincronização (passos 1 a 5 da barra de progresso superior).</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Desconecte o cabo, aguarde cerca de 2 minutos e volte em Ajustes &gt; Geral &gt; Armazenamento do iPhone para constatar a redução dos Dados do Sistema.</div>
           </li>
         </ol>
 
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <h2 id="descarregar-aplicativos-nao-usados">Passo 2: Ativar o Recurso 'Desinstalar Apps Não Usados'</h2>
+        <p>O iOS oferece um recurso inteligente que remove o executável pesado de aplicativos raramente abertos, preservando todos os seus documentos, logins e dados intactos:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Acesse <strong>Ajustes</strong> &gt; <strong>App Store</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Role até a opção <strong>Desinstalar Apps Não Usados</strong> e ative a chave seletora.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">O sistema passará a liberar espaço dinamicamente sempre que a memória estiver prestes a se esgotar, mantendo o ícone com uma pequena nuvem cinza na tela inicial para reinstalação instantânea com um toque.</div>
+          </li>
+        </ol>
+
+        <h2 id="limpeza-safari-caches-offline">Passo 3: Limpar Histórico do Safari e Dados de Navegação</h2>
+        <p>Bancos de dados locais de sites acessados (Service Workers e WebSQL) residem permanentemente nos Dados do Sistema até serem esvaziados manualmente:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Abra os <strong>Ajustes</strong> do iPhone e selecione <strong>Safari</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Role para baixo até encontrar a opção <strong>Limpar Histórico e Dados dos Sites</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Escolha o intervalo de tempo <strong>Todo o histórico</strong> e toque em <strong>Limpar Histórico</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Em seguida, toque em <strong>Avançado</strong> (no final do menu do Safari) &gt; <strong>Dados dos Sites</strong> e toque em <strong>Remover Todos os Dados dos Sites</strong>.</div>
+          </li>
+        </ol>
+
+        <h2 id="gerenciamento-anexos-mensagens">Passo 4: Excluir Anexos Grandes do App Mensagens e WhatsApp</h2>
+        <p>Vídeos em alta definição recebidos em conversas frequentemente ficam em cache duplicado nos dados do sistema:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Em <strong>Ajustes</strong> &gt; <strong>Geral</strong> &gt; <strong>Armazenamento do iPhone</strong>, verifique a seção de recomendações do iOS.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Se houver a opção <strong>Rever Anexos Grandes</strong>, toque nela e exclua vídeos e arquivos compactados que já foram salvos.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">No WhatsApp, acesse Configurações &gt; Armazenamento e Dados &gt; Gerenciar Armazenamento e exclua arquivos maiores que 5 MB de grupos antigos.</div>
+          </li>
+        </ol>
+
+        <h2 id="backup-e-restauracao-limpa">Passo 5: Solução Definitiva com Backup e Restauração</h2>
+        <p>Se os Dados do Sistema estiverem com mais de 50 GB consumidos por um bug de indexação do iOS que se recusa a esvaziar, o procedimento padrão da engenharia da Apple é fazer backup e restaurar:</p>
+        <ul>
+          <li>Faça um backup completo criptografado no computador ou no iCloud.</li>
+          <li>Vá em Ajustes &gt; Geral &gt; Transferir ou Redefinir o iPhone e selecione <strong>Apagar Conteúdo e Ajustes</strong>.</li>
+          <li>Durante a tela de inicialização ('Olá'), selecione <strong>Restaurar de um Backup do Mac/PC</strong> ou <strong>Restaurar do Backup do iCloud</strong>.</li>
+          <li>Esse processo reconstrói as partições lógicas do zero, devolvendo os Dados do Sistema para o patamar padrão de 5 a 8 GB.</li>
+        </ul>
+
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>Qual é o tamanho normal dos Dados do Sistema em um iPhone saudável?</h3>
+            <p>Em condições normais de uso, a categoria Dados do Sistema varia naturalmente entre 5 GB e 12 GB. Valores nessa faixa são esperados e necessários para o funcionamento ágil do cache do processador neural e das funções do iOS.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Por que os Dados do Sistema aumentam sozinhos de repente?</h3>
+            <p>Geralmente ocorre após o iPhone baixar em segundo plano uma grande atualização do iOS (como do iOS 17 para o 18) que fica aguardando autorização para ser instalada durante a noite, ou durante a indexação de milhares de fotos após uma viagem.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Aplicativos de 'limpeza de memória' na App Store funcionam no iPhone?</h3>
+            <p>Não. Devido à arquitetura fechada de sandboxing do iOS, nenhum aplicativo de terceiros tem permissão para vasculhar ou apagar arquivos de outros apps ou da pasta do sistema. Esses aplicativos costumam ser apenas enganosos.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Desinstalar e reinstalar o Instagram e TikTok ajuda?</h3>
+            <p>Sim, muito. Aplicativos de redes sociais com feed de vídeo contínuo acumulam gigabytes de cache que o iOS às vezes classifica sob Dados do Sistema. Desinstalar e reinstalar esvazia esses bancos de dados temporários de uma só vez.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Downloads de mapas offline e podcasts aumentam os Dados do Sistema?</h3>
+            <p>Sim. Episódios baixados no Apple Podcasts ou áreas salvas para navegação offline no Apple Maps ficam alocados em caches de mídia do sistema. Acesse Ajustes &gt; Podcasts e Ajustes &gt; Mapas para gerenciar ou apagar conteúdos offline.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Reiniciar o iPhone ajuda a diminuir esse espaço?</h3>
+            <p>Sim. Um reinício simples do aparelho descarrega arquivos temporários da memória de paginação swap do sistema, frequentemente liberando entre 1 e 3 GB instantaneamente.</p>
+          </div>
         </div>
 
-        
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://support.apple.com/pt-br/108429" target="_blank" rel="noopener noreferrer">Suporte da Apple — Como verificar o armazenamento no iPhone e iPad</a></li>
+          <li><a href="https://support.apple.com/pt-br/102670" target="_blank" rel="noopener noreferrer">Suporte da Apple — Se você precisar de mais espaço para uma atualização no iPhone</a></li>
+        </ul>
 
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
-          </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
-          </div>
-        </div>
-
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-limpar-cache-whatsapp-liberar-espaco.html" class="related-card">
-              <span class="related-card-title">Como Limpar o Cache do WhatsApp e Liberar Espaço no Celular</span>
+            <a href="como-resolver-iphone-travado-tela-logo-maca-loop-boot.html" class="related-card">
+              <span class="related-card-title">Como Resolver iPhone Travado na Maçã ou Loop de Inicialização</span>
             </a>
-            <a href="como-recuperar-mensagens-apagadas-whatsapp.html" class="related-card">
-              <span class="related-card-title">Como Recuperar Mensagens Apagadas do WhatsApp no Celular</span>
+            <a href="como-corrigir-erro-sem-servico-sim-invalido-iphone.html" class="related-card">
+              <span class="related-card-title">Como Corrigir o Erro 'Sem Serviço' ou 'SIM Inválido' no iPhone</span>
             </a>
-            <a href="como-ativar-verificacao-duas-etapas-instagram-whatsapp.html" class="related-card">
-              <span class="related-card-title">Como Ativar a Verificação em Duas Etapas no WhatsApp e Instagram</span>
+            <a href="como-recuperar-fotos-videos-apagados-lixeira-celular.html" class="related-card">
+              <span class="related-card-title">Como Recuperar Fotos e Vídeos Apagados da Lixeira do Celular</span>
             </a>
-            <a href="como-eliminar-bateria-vazando-wakelocks-google-play-services.html" class="related-card">
-              <span class="related-card-title">Como Eliminar Bateria Vazando por WakeLocks do Google Play Services</span>
+            <a href="como-resolver-erro-interface-sistema-parou-system-ui-android.html" class="related-card">
+              <span class="related-card-title">Como Resolver o Erro 'A Interface do Sistema Parou' no Android</span>
             </a>
           </div>
         </div>
@@ -242,13 +352,16 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#o-que-sao-dados-do-sistema">O Que Realmente Compõe os 'Dados do Sistema' no iOS?</a></li>
+          <li><a href="#sincronizacao-computador-purgar-logs">Passo 1: Sincronizar o iPhone com o Computador para Descarregar Logs</a></li>
+          <li><a href="#descarregar-aplicativos-nao-usados">Passo 2: Ativar o Recurso 'Desinstalar Apps Não Usados'</a></li>
+          <li><a href="#limpeza-safari-caches-offline">Passo 3: Limpar Histórico do Safari e Dados de Navegação</a></li>
+          <li><a href="#gerenciamento-anexos-mensagens">Passo 4: Excluir Anexos Grandes do App Mensagens e WhatsApp</a></li>
+          <li><a href="#backup-e-restauracao-limpa">Passo 5: Solução Definitiva com Backup e Restauração</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -256,7 +369,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>

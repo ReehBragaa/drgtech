@@ -1,0 +1,190 @@
+{
+  "id": 161,
+  "slug": "como-mudar-dns-roteador-windows-android-iphone",
+  "titulo": "Como Mudar o DNS no Roteador, Windows, Android e iPhone",
+  "descricao": "Tutorial definitivo para alterar servidores DNS no roteador e em todos os dispositivos: comparativo de velocidade (1.1.1.1 vs 8.8.8.8 vs 9.9.9.9) e DNS Privado.",
+  "resposta_curta": "Para mudar o DNS no computador com Windows 11, acesse Configurações > Rede e Internet > Propriedades do Hardware > Atribuição de Servidor DNS, mude para 'Manual' e insira os IPs dos servidores desejados (como Cloudflare 1.1.1.1 ou Google 8.8.8.8). No Android, configure em Rede e Internet > DNS Privado inserindo o hostname `one.one.one.one` ou `dns.google`. No iPhone, ajuste nas propriedades da rede Wi-Fi em 'Configurar DNS' como Manual.",
+  "aplica_se": "Windows 11/10, Android, iOS e todos os roteadores Wi-Fi",
+  "intro": [
+    "O Sistema de Nomes de Domínio (DNS) é o mecanismo central que traduz os nomes de sites que digitamos em endereços IP numéricos compreendidos pelos roteadores da internet. Por padrão, quando você contrata um plano de internet banda larga residencial ou plano móvel, seus dispositivos utilizam automaticamente os servidores DNS da sua operadora de telecomunicações.",
+    "No entanto, os servidores DNS dos provedores comerciais costumam ser lentos, frequentemente sofrem instabilidades técnicas, mantêm registros de navegação para fins comerciais e podem falhar ao aplicar rotas otimizadas. Ao substituir os servidores DNS pelos grandes resolvedores globais independentes (como Cloudflare, Google ou Quad9), você ganha menor tempo de carregamento de páginas, proteção nativa contra phishing e maior privacidade. A seguir, ensinamos o passo a passo exato para trocar o DNS no roteador da sua casa e em cada aparelho individualmente."
+  ],
+  "secoes": [
+    {
+      "id": "comparativo-melhores-dns-publicos",
+      "titulo": "Qual o Melhor DNS Público Gratuito em 2026?",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Antes de configurar, escolha o provedor de DNS que melhor atende às suas prioridades de navegação:"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Provedor DNS",
+            "IPs Primário / Secundário",
+            "Destaque Principal",
+            "Hostname DNS Privado (DoT)"
+          ],
+          "linhas": [
+            [
+              "Cloudflare (1.1.1.1)",
+              "1.1.1.1 e 1.0.0.1",
+              "Menor latência global e política rigorosa de não reter logs.",
+              "one.one.one.one"
+            ],
+            [
+              "Google Public DNS",
+              "8.8.8.8 e 8.8.4.4",
+              "Máxima estabilidade e infraestrutura de datacenters no Brasil.",
+              "dns.google"
+            ],
+            [
+              "Quad9 (Proteção Ativa)",
+              "9.9.9.9 e 149.112.112.112",
+              "Bloqueio automático de domínios com malwares e phishing.",
+              "dns.quad9.net"
+            ],
+            [
+              "AdGuard DNS (Filtro)",
+              "94.140.14.14 e 94.140.15.15",
+              "Bloqueio de anúncios intrusivos e rastreadores em nível de DNS.",
+              "dns.adguard.com"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mudar-dns-roteador-wifi",
+      "titulo": "Método 1: Trocar o DNS Diretamente no Roteador Wi-Fi (Protege a Casa Toda)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Alterar o DNS nas configurações do roteador é a abordagem mais eficiente, pois aplica os novos servidores automaticamente a todos os celulares, computadores, Smart TVs e consoles conectados à sua rede:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra o navegador e digite o endereço de IP do seu roteador (habitualmente `192.168.0.1`, `192.168.1.1` ou `192.168.15.1`).",
+            "Faça login com o usuário e senha de administrador (consulte a etiqueta na parte de baixo do aparelho se nunca alterou).",
+            "Navegue até o menu **Rede** > **LAN** ou **Configurações DHCP** (em alguns modelos fica sob WAN/Internet).",
+            "Localize os campos **Servidor DNS Primário** e **Servidor DNS Secundário**.",
+            "Substitua os números existentes pelos servidores escolhidos (por exemplo, `1.1.1.1` e `1.0.0.1`).",
+            "Clique em **Salvar** ou **Aplicar** e reinicie o roteador."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mudar-dns-windows-11",
+      "titulo": "Método 2: Trocar o DNS no Windows 11",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "No Windows 11, a Microsoft integrou o suporte nativo a DNS criptografado nas configurações centrais do sistema:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra as **Configurações** (`Windows + I`) e clique em **Rede e Internet**.",
+            "Clique na conexão ativa (**Wi-Fi** ou **Ethernet**).",
+            "Clique em **Propriedades do Hardware**.",
+            "Ao lado de 'Atribuição de servidor DNS', clique no botão **Editar**.",
+            "Altere o menu suspenso de Automático (DHCP) para **Manual** e ative a chave **IPv4**.",
+            "Insira no campo 'DNS Preferencial' o IP `1.1.1.1` e no 'DNS Alternativo' o IP `1.0.0.1`.",
+            "Se desejar ativar criptografia DoH, mude o campo 'Criptografia de DNS' para **Apenas Criptografado (DNS sobre HTTPS)**.",
+            "Clique em **Salvar**."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mudar-dns-android-privado",
+      "titulo": "Método 3: Configurar o DNS Privado no Android (DoT)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O Android utiliza a tecnologia DNS-over-TLS (DNS Privado), criptografando todas as consultas via Wi-Fi e dados móveis 4G/5G com um único ajuste:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Acesse **Configurações** > **Rede e Internet** (ou Conexões > Mais configurações de conexão).",
+            "Toque na opção **DNS Privado**.",
+            "Selecione a opção **Nome de host do provedor de DNS privado**.",
+            "Digite o hostname do serviço desejado: `one.one.one.one` (Cloudflare) ou `dns.google` (Google).",
+            "Toque em **Salvar**. Se o endereço estiver correto, o texto de status indicará que a conexão está segura e criptografada."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mudar-dns-iphone-ios",
+      "titulo": "Método 4: Trocar o DNS no iPhone e iPad (iOS)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "No iPhone, você pode definir servidores DNS específicos para a sua rede sem fio:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra os **Ajustes** e toque em **Wi-Fi**.",
+            "Toque no ícone azul de informação **(i)** ao lado do nome da sua rede conectada.",
+            "Role até o final da tela e toque em **Configurar DNS**.",
+            "Altere de Automático para **Manual**.",
+            "Toque no botão vermelho de menos para remover os servidores DNS antigos da operadora.",
+            "Toque em **Adicionar Servidor** e digite `1.1.1.1` e adicione outro com `1.0.0.1`.",
+            "Toque em **Salvar** no canto superior direito."
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "Mudar o DNS aumenta a velocidade de download de arquivos grandes?",
+      "r": "Não aumenta a taxa de transferência máxima em megabits por segundo (largura de banda), mas reduz a latência (tempo de resposta) de início de navegação. Clicar em links e abrir sites responderá de forma sensivelmente mais ágil porque o endereço IP do destino é resolvido em milissegundos."
+    },
+    {
+      "p": "Mudar o DNS pode deixar a internet mais lenta se configurado errado?",
+      "r": "Se você inserir um endereço IP de servidor DNS geograficamente muito distante ou desativado, o computador demorará vários segundos para descobrir cada site. Escolher resolvedores globais consagrados (Cloudflare ou Google) garante tempo de resposta mínimo no Brasil."
+    },
+    {
+      "p": "O que acontece se o servidor DNS que configurei cair?",
+      "r": "É exatamente por isso que configuramos sempre dois servidores: o DNS Primário e o Secundário (Alternativo). Se o primário falhar ou demorar para responder, seu sistema operacional consulta instantaneamente o secundário sem interromper sua navegação."
+    },
+    {
+      "p": "Mudar o DNS no roteador afeta o desempenho da Smart TV?",
+      "r": "Afeta positivamente. Smart TVs e consoles de videogame frequentemente utilizam requisições DNS para carregar catálogos e trailers em aplicativos como Netflix e YouTube. Resolvedores rápidos eliminam pequenas pausas ao carregar capas de vídeos."
+    },
+    {
+      "p": "O que é DNS-over-HTTPS (DoH) e DNS-over-TLS (DoT)?",
+      "r": "São tecnologias que criptografam as consultas de DNS. No modelo tradicional de 1983, as consultas são enviadas em texto puro sem segurança, permitindo que provedores de internet e espiões em Wi-Fi públicos saibam todos os sites que você visita. Com DoH/DoT, a consulta fica completamente ilegível para intermediários."
+    },
+    {
+      "p": "Como testar se o meu computador sofre com vazamento de DNS (DNS Leak)?",
+      "r": "Acesse o portal gratuito dnsleaktest.com e execute o teste estendido. A ferramenta listará os endereços IP de todos os servidores que resolveram requisições da sua máquina. Se os servidores exibidos pertencerem à Cloudflare ou Google (e não ao seu provedor local de banda larga), sua configuração está perfeitamente vedada sem vazamento."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Google Developers — Public DNS Overview and Configuration",
+      "url": "https://developers.google.com/speed/public-dns/docs/using?hl=pt-br"
+    },
+    {
+      "titulo": "Cloudflare 1.1.1.1 — The free app that makes your Internet safer",
+      "url": "https://1.1.1.1/"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    140,
+    196,
+    141,
+    194
+  ]
+}

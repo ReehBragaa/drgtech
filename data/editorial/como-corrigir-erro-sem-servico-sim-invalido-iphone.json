@@ -1,0 +1,171 @@
+{
+  "id": 149,
+  "slug": "como-corrigir-erro-sem-servico-sim-invalido-iphone",
+  "titulo": "Como Corrigir o Erro 'Sem Serviço' ou 'SIM Inválido' no iPhone",
+  "descricao": "Guia técnico para resolver problemas de rede móvel no iPhone: Sem Serviço, Buscando rede, SIM Inválido ou falha no eSIM com procedimentos oficiais da Apple.",
+  "resposta_curta": "Quando o iPhone exibe 'Sem Serviço', 'Buscando' ou 'SIM Inválido', ative o Modo Avião por 15 segundos e desative para forçar uma nova negociação de torre de celular. Se não resolver, reinicie o aparelho, verifique se há atualizações de ajustes da operadora em Ajustes > Geral > Sobre, ejete e limpe a gaveta do chip SIM físico (ou reative o perfil eSIM), teste a seleção manual de operadora e redefina os ajustes de rede.",
+  "aplica_se": "iPhone (modelos com chip físico e eSIM no iOS 15 a 18)",
+  "intro": [
+    "Ficar subitamente sem conectividade celular no iPhone — deparando-se com as mensagens 'Sem Serviço', 'Buscando...' ou o alerta vermelho de 'SIM Inválido' — impede a realização de chamadas telefônicas de emergência, recebimento de SMS de validação bancária e navegação na internet fora de redes Wi-Fi.",
+    "Esse erro pode se originar de quatro naturezas distintas: falha lógica transitória na antena do modem baseband do iPhone, chips nano-SIM físicos gastos ou com poeira acumulada nos contatos dourados, perfis de eSIM corrompidos após restauração, ou bloqueio formal de IMEI na operadora por contestação de titularidade. A seguir, detalhamos a sequência de testes recomendada pelo suporte oficial da Apple para isolar e solucionar a falha com segurança."
+  ],
+  "secoes": [
+    {
+      "id": "ciclo-de-antena-e-modo-aviao",
+      "titulo": "Passo 1: Reinicialização da Antena Celular e Modo Avião",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Ao transitar entre zonas rurais, túneis ou subsolos com baixa recepção, o modem celular do iPhone pode entrar em estado de latência na tentativa de economizar bateria:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Deslize o dedo do canto superior direito da tela para baixo para abrir a **Central de Controle**.",
+            "Toque no ícone do **Modo Avião** (símbolo de avião) para ativá-lo.",
+            "Aguarde cerca de 15 a 20 segundos para que todos os transceptores de rádio celular sejam desligados pelo sistema.",
+            "Toque novamente no ícone para desativar o Modo Avião e observe a barra de status enquanto o iPhone se reconecta à torre mais próxima."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "atualizacao-ajustes-operadora",
+      "titulo": "Passo 2: Atualizar os Ajustes da Operadora (Carrier Bundle)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Operadoras de telefonia (Claro, Vivo, TIM, etc.) enviam pacotes de configuração de rede (Carrier Settings) que atualizam tabelas de frequências de 4G/5G e pontos de acesso APN:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Conecte o iPhone a uma rede Wi-Fi estável.",
+            "Abra os **Ajustes** do iOS.",
+            "Acesse **Geral** > **Sobre**.",
+            "Aguarde cerca de 15 segundos nessa tela. Se houver uma atualização de ajustes da operadora disponível, um pop-up surgirá automaticamente na tela dizendo: 'Atualização dos Ajustes da Operadora'.",
+            "Toque no botão **Atualizar** para aplicar as novas configurações de rede."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "selecao-manual-de-rede",
+      "titulo": "Passo 3: Testar a Seleção Manual de Operadora de Rede",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Em regiões de fronteira de cobertura ou falha temporária de roaming, o iPhone pode tentar se conectar a uma antena incorreta. Forçar a busca manual restabelece o sinal:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Acesse **Ajustes** > **Celular** (ou Dados Celulares).",
+            "Toque na opção **Seleção de Rede**.",
+            "Desative a chave seletora **Automática**.",
+            "Aguarde de 30 a 60 segundos enquanto o iPhone escaneia todas as frequências disponíveis no ambiente.",
+            "Toque manualmente sobre o nome exato da sua operadora contratada (por exemplo, Claro BR, VIVO ou TIM Brasil) para forçar o registro na torre."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inspecao-fisica-chip-esim",
+      "titulo": "Passo 4: Inspeção Física do Chip SIM ou Diagnóstico do eSIM",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O contato metálico do chip nano-SIM pode sofrer oxidação ou deslocamento físico na bandeja:"
+        },
+        {
+          "tipo": "lista",
+          "itens": [
+            "**Chip Físico:** Insira a ferramenta de ejeção oficial (ou um clipe de papel desdobrado) no orifício da bandeja do SIM e pressione firmemente para ejetar. Retire o chip, limpe suavemente a superfície metálica dourada com um pano seco e macio de microfibra e reinsira a gaveta certificando-se de que fechou alinhada.",
+            "**eSIM (Chip Virtual):** Vá em Ajustes > Celular. Verifique se o seu plano celular está marcado como 'Ativado'. Se houver uma mensagem de erro no perfil eSIM, entre em contato com o canal de atendimento da sua operadora para solicitar um novo QR Code de ativação de perfil digital."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "redefinir-ajustes-de-rede-ios",
+      "titulo": "Passo 5: Redefinir os Ajustes de Rede do iPhone",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Essa etapa limpa todos os caches de roteamento celular, servidores DNS gravados e perfis de VPN que possam estar bloqueando o tráfego:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Acesse **Ajustes** > **Geral**.",
+            "Role até o final da página e toque em **Transferir ou Redefinir o iPhone**.",
+            "Toque na opção **Redefinir** na parte inferior.",
+            "Selecione com atenção a opção **Redefinir Ajustes de Rede**.",
+            "Insira o código de desbloqueio do iPhone e confirme a ação.",
+            "O iPhone será reiniciado automaticamente com as configurações de fábrica das conexões sem fio."
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "atencao",
+          "texto": "Redefinir os ajustes de rede NÃO apaga suas fotos ou mensagens, mas apagará as senhas de redes Wi-Fi salvas e configurações de VPN personalizadas, sendo necessário redigitar as senhas do seu Wi-Fi residencial."
+        }
+      ]
+    },
+    {
+      "id": "verificar-bloqueio-imei",
+      "titulo": "Passo 6: Verificar Bloqueio de IMEI ou Falha no Chip Baseband",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se após todos os passos o aparelho continuar exibindo 'Sem Serviço', abra o aplicativo Telefone e digite `*#06#`. Se a tela NÃO exibir o número de IMEI ou se em Ajustes > Geral > Sobre o campo 'Firmware do Modem' estiver em branco, o chip de modem baseband soldado na placa-mãe sofreu uma trinca de solda ou falha de hardware, exigindo reparo técnico em laboratório."
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O que significa 'SIM Não Válido' acompanhado de 'Bloqueio de Operadora'?",
+      "r": "Essa mensagem específica indica que o iPhone foi adquirido no exterior ou vinculado a um contrato de subsídio e está bloqueado por software para operar apenas na rede da operadora de origem. Você deve solicitar o desbloqueio internacional junto à operadora que vendeu o dispositivo."
+    },
+    {
+      "p": "Como saber se o meu IMEI foi bloqueado na Anatel?",
+      "r": "Acesse o site oficial Consulta Aparelho Legal (consultaaparelholegal.com.br) mantido pela Anatel e digite o número do IMEI do seu aparelho. O portal informará gratuitamente se há registros de impedimento por perda, roubo ou pendência administrativa."
+    },
+    {
+      "p": "Trocar de operadora de chip resolve o problema de 'Sem Serviço'?",
+      "r": "Se você testar o chip de um amigo de outra operadora no seu iPhone e ele funcionar normalmente, o problema reside na sua linha ou no seu chip SIM físico antigo. Basta comparecer a uma loja da sua operadora para emitir uma segunda via do chip (ou migrar para eSIM)."
+    },
+    {
+      "p": "Como configurar o roaming internacional ao viajar para fora do país?",
+      "r": "Acesse Ajustes > Celular > Opções de Dados Celulares e ative a chave 'Roaming de Dados'. Certifique-se previamente com a sua operadora de que o pacote de tráfego internacional está contratado para evitar bloqueios de autenticação."
+    },
+    {
+      "p": "O erro pode ser causado por atualização recente do iOS?",
+      "r": "Sim. Raramente, falhas durante o processo de gravação de firmware do modem podem corromper os parâmetros de rádio. Uma restauração completa via Modo DFU conectando o iPhone ao computador costuma recuperar a partição do modem."
+    },
+    {
+      "p": "O iPhone esquenta quando fica buscando rede sem parar?",
+      "r": "Sim. Quando a recepção de sinal é inexistente, o amplificador de potência de rádio da placa-mãe opera em potência máxima tentando alcançar uma torre distante, o que causa aquecimento na carcaça e consumo acelerado da bateria."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Suporte da Apple — Se você vir a mensagem Sem Serviço, Buscando ou SOS no iPhone",
+      "url": "https://support.apple.com/pt-br/102500"
+    },
+    {
+      "titulo": "Suporte da Apple — Se você vir a mensagem SIM Inválido ou Sem SIM no iPhone",
+      "url": "https://support.apple.com/pt-br/102422"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    137,
+    112,
+    141,
+    161
+  ]
+}

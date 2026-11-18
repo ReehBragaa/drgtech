@@ -4,28 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Como Resolver Wi-Fi Conectado Sem Acesso à Internet no PC e Celular — DRGTech</title>
-  <meta name="description" content="Se o Wi-Fi aparece como 'Conectado, sem internet', o problema geralmente é um conflito de endereço IP (DHCP) ou erro de gateway. Para resolver, esqueca a r..." />
-  <meta name="keywords" content="como resolver wi-fi conectado sem acesso à internet no pc e celular, tutorial internet, suporte tecnico" />
+  <meta name="description" content="Solução passo a passo para o aviso 'Wi-Fi Conectado, mas Sem Internet' no Windows e celular: falha de DHCP, conflito de IP, DNS e reinício de roteador." />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Como Resolver Wi-Fi Conectado Sem Acesso à Internet no PC e Celular — DRGTech" />
-  <meta property="og:description" content="Se o Wi-Fi aparece como 'Conectado, sem internet', o problema geralmente é um conflito de endereço IP (DHCP) ou erro de gateway. Para resolver, esqueca a r..." />
+  <meta property="og:description" content="Solução passo a passo para o aviso 'Wi-Fi Conectado, mas Sem Internet' no Windows e celular: falha de DHCP, conflito de IP, DNS e reinício de roteador." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-resolver-wifi-conectado-sem-acesso-internet-pc-celular.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Como Resolver Wi-Fi Conectado Sem Acesso à Internet no PC e Celular — DRGTech" />
-  <meta name="twitter:description" content="Se o Wi-Fi aparece como 'Conectado, sem internet', o problema geralmente é um conflito de endereço IP (DHCP) ou erro de gateway. Para resolver, esqueca a r..." />
+  <meta name="twitter:description" content="Solução passo a passo para o aviso 'Wi-Fi Conectado, mas Sem Internet' no Windows e celular: falha de DHCP, conflito de IP, DNS e reinício de roteador." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-resolver-wifi-conectado-sem-acesso-internet-pc-celular.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Resolver Wi-Fi Conectado Sem Acesso à Internet no PC e Celular",
+  "description": "Solução passo a passo para o aviso 'Wi-Fi Conectado, mas Sem Internet' no Windows e celular: falha de DHCP, conflito de IP, DNS e reinício de roteador.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-resolver-wifi-conectado-sem-acesso-internet-pc-celular.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,55 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Resolver Wi-Fi Conectado Sem Acesso à Internet no PC e Celular",
+      "name": "O que causa conflito de endereço IP na rede local?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Se o Wi-Fi aparece como 'Conectado, sem internet', o problema geralmente é um conflito de endereço IP (DHCP) ou erro de gateway. Para resolver, esqueca a rede Wi-Fi nas configurações do dispositivo e reconecte, reinicie o roteador desligando da tomada por 30 segundos, ou defina um IP estático válido nas configurações da conexão."
+        "text": "Um conflito de IP ocorre quando dois dispositivos na mesma rede (por exemplo, sua Smart TV e seu computador) recebem exatamente o mesmo número de IP do roteador. Isso trava o tráfego de ambos os aparelhos. Reiniciar o roteador reorganiza a tabela DHCP e atribui IPs exclusivos para cada um."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que significa quando o sinal do Wi-Fi está com exclamação?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O ponto de exclamação é a representação visual dos sistemas operacionais para o teste de conectividade HTTP de sonda de rede (Captive Portal Detection). Se o sistema tentar acessar servidores de verificação (como connectivitycheck.gstatic.com do Google ou captive.apple.com da Apple) e não obtiver resposta 204, ele exibe a exclamação."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Redes Wi-Fi com tela de login (hotel, aeroporto) mostram esse erro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Em redes públicas com portal de autenticação, o aparelho ficará marcado como 'sem internet' até que você abra o navegador e preencha o cadastro ou aceite os termos de uso na tela de boas-vindas do estabelecimento."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cabo de rede conectado funciona, mas o Wi-Fi fica sem internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Isso indica que o sinal da internet no roteador está perfeito, mas o módulo de rádio sem fio do roteador está sofrendo interferência severa de canais vizinhos ou travou em uma frequência congestionada. Acesse as configurações do roteador e mude a largura de canal de 40MHz para 20MHz na faixa de 2.4 GHz."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso usar a ferramenta de Solução de Problemas do Windows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Clicar com o botão direito sobre o ícone de rede e selecionar 'Diagnosticar problemas de rede' reinicia o adaptador de rede e renova o contrato DHCP automaticamente na maioria dos casos simples."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Desativar o protocolo IPv6 temporariamente pode resolver a falta de internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Em certas operadoras que sofrem instabilidade no túnel dual-stack IPv6, o computador tenta carregar rotas IPv6 inexistentes antes de recorrer ao IPv4, causando a impressão de queda total da rede. Desmarcar a caixa 'Protocolo IP Versão 6 (TCP/IPv6)' nas propriedades do adaptador de rede pode restabelecer a conexão imediata em IPv4."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -103,132 +161,183 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#internet">Internet</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Resolver Wi-Fi Conectado Sem A...</span>
+        <span>Como Resolver Wi-Fi Conectado Sem…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-purple">Internet</span>
         <h1 class="article-h1">Como Resolver Wi-Fi Conectado Sem Acesso à Internet no PC e Celular</h1>
         <div class="article-intro-meta">
-          <span class="meta-item">6 min de leitura</span>
-          <span class="meta-item">Atualizado em agosto de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">5 min de leitura</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> Se o Wi-Fi aparece como 'Conectado, sem internet', o problema geralmente é um conflito de endereço IP (DHCP) ou erro de gateway. Para resolver, esqueca a rede Wi-Fi nas configurações do dispositivo e reconecte, reinicie o roteador desligando da tomada por 30 segundos, ou defina um IP estático válido nas configurações da conexão.
+        <strong>Resposta rápida:</strong> O status 'Conectado, sem internet' indica que seu dispositivo estabeleceu conexão física de rádio com o roteador Wi-Fi com sucesso, mas o roteador não está conseguindo encaminhar o tráfego para a rede externa da operadora ou não atribuiu um endereço IP válido via DHCP. Para resolver, reinicie o roteador retirando-o da tomada por 30 segundos, renove a concessão de IP com <code>ipconfig /release</code> e <code>ipconfig /renew</code> no PC (ou use 'Esquecer rede' no celular) e verifique se o modem da operadora está com sinal de fibra sincronizado.
       </div>
 
       <article class="article-body" id="article-body">
+        <p>Você olha para a barra de tarefas do computador ou para o topo da tela do celular e o ícone de Wi-Fi está visível, mas acompanhado por um ponto de exclamação, um pequeno triângulo amarelo ou a frustrante mensagem: <strong>'Conectado, sem internet'</strong> (ou 'Sem acesso à internet'). Nenhuma página carrega, o WhatsApp não envia mensagens e os aplicativos recusam conexão.</p>
+        <p>Esse estado ambíguo confunde muitos usuários porque a palavra 'Conectado' dá a falsa impressão de que a internet deveria estar funcionando. Tecnicamente, a conexão possui duas metades independentes: a comunicação sem fio local entre o seu aparelho e o roteador (Camada 2 / Enlace) e a comunicação entre o seu roteador e os servidores da provedora de internet (Camada 3 / Rede). Estar conectado significa apenas que o sinal de rádio entre o celular e a caixinha do Wi-Fi está bom, mas a ponte para a rua caiu. A seguir, ensinamos o método oficial para restabelecer o sinal.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> Windows 11, Windows 10, Android e iPhone</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Resolver Wi-Fi Conectado Sem Acesso à Internet no PC e Celular"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Internet</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
+        <h2 id="diagnostico-luzes-modem">Passo 1: Inspecionar as Luzes Indicadoras do Modem da Operadora</h2>
+        <p>Antes de alterar configurações no computador ou celular, verifique o estado físico do modem da sua operadora (Claro, Vivo, Oi, provedor regional de fibra):</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>LED no Modem</th><th>Cor Normal</th><th>Sintoma de Problema na Operadora</th></tr></thead>
+            <tbody>
+              <tr><td>PON / Fibra / WAN</td><td>Verde ou Azul fixo</td><td>Vermelho piscando ou apagado: cabo de fibra óptica rompido ou rompimento externo de poste.</td></tr>
+              <tr><td>Internet / Online</td><td>Verde piscando rápido</td><td>Apagado ou Laranja: falta de autenticação de usuário ou bloqueio na central do provedor.</td></tr>
+              <tr><td>LAN / Ethernet</td><td>Verde fixo</td><td>Apagado: cabo de rede desconectado entre o modem e o roteador principal.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="warning-box">
+          <div class="box-content"><p>Se a luz PON ou Internet estiver vermelha ou piscando sem parar, o problema é externo na fiação do provedor e nenhuma alteração no celular resolverá; ligue para o suporte da sua operadora.</p></div>
         </div>
 
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
+        <h2 id="renovacao-ip-dhcp-windows">Passo 2: Renovar a Concessão de IP e Tratar Endereço APIPA no PC</h2>
+        <p>Se outros aparelhos da casa estão navegando normalmente e apenas o seu computador está sem internet, sua máquina pode ter recebido um endereço inválido de APIPA (iniciado em <code>169.254.x.x</code>):</p>
         <ol class="steps-list">
-
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">No dispositivo (celular ou PC), acesse as configurações de Wi-Fi, selecione a rede problemática e toque em 'Esquecer rede', conectando novamente com a senha.</div>
+            <div class="step-text">Pressione <code>Windows + X</code> e abra o <strong>Terminal (Administrador)</strong>.</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">Desconecte o cabo de energia do roteador da tomada, aguarde 30 segundos para limpar o cache de atribuição de IP (DHCP) e ligue-o novamente.</div>
+            <div class="step-text">Digite o comando abaixo para conferir seu IP atual:</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">No Windows, abra o Prompt de Comando (Admin) e execute 'netsh int ip reset' para redefinir completamente a pilha de protocolos TCP/IP.</div>
+            <div class="step-text">Se o IPv4 começar com <code>169.254</code>, o roteador falhou ao entregar um IP via DHCP.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Execute a liberação e renovação forçada digitando:</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Limpe os registros de nomes do Windows em seguida com <code>ipconfig /flushdns</code>.</div>
+          </li>
+        </ol>
+        <pre class="code-block" data-lang="powershell"><code>ipconfig
+ipconfig /release
+ipconfig /renew</code></pre>
+
+        <h2 id="esquecer-rede-celular-android-ios">Passo 3: 'Esquecer Rede' e Redefinir Parâmetros no Smartphone</h2>
+        <p>No celular Android ou iPhone, o perfil salvo da rede Wi-Fi pode ter mantido credenciais ou permissões de MAC Address travadas:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">No <strong>iPhone (iOS):</strong> Acesse Ajustes &gt; Wi-Fi, toque no ícone de informação <strong>(i)</strong> ao lado do nome da sua rede e selecione <strong>Esquecer Esta Rede</strong>. Desligue o Wi-Fi por 10 segundos, reative-o, selecione a rede e digite a senha novamente.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">No <strong>Android:</strong> Acesse Configurações &gt; Rede e Internet &gt; Internet (ou Conexões &gt; Wi-Fi). Toque no ícone de engrenagem ao lado da rede conectada e selecione <strong>Esquecer</strong> (ou Excluir). Reconecte digitando a senha.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>Verificação de Endereço MAC:</strong> Se o seu roteador tiver filtro de dispositivos, altere a opção 'Tipo de endereço MAC' de 'MAC Aleatório' para <strong>MAC do Dispositivo</strong> nas propriedades da rede do smartphone.</div>
           </li>
         </ol>
 
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <h2 id="configurar-dns-e-gateway-manual">Passo 4: Configurar IP e DNS Estático para Descartar Falha no DHCP</h2>
+        <p>Se o servidor DHCP do roteador parou de entregar endereços automáticos, você pode atribuir um IP fixo na mesma faixa da rede:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Abra as Conexões de Rede no Windows (<code>ncpa.cpl</code>).</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Abra as Propriedades do adaptador Wi-Fi &gt; duplo clique em <strong>TCP/IPv4</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Selecione 'Usar o seguinte endereço IP' e configure:</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">- Endereço IP: <code>192.168.1.150</code> (ou <code>192.168.0.150</code>, dependendo da faixa do seu roteador).</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">- Máscara de sub-rede: <code>255.255.255.0</code>.</div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-text">- Gateway padrão: <code>192.168.1.1</code> (o endereço de acesso do seu roteador).</div>
+          </li>
+          <li>
+            <div class="step-num">7</div>
+            <div class="step-text">- Servidor DNS preferencial: <code>1.1.1.1</code> e alternativo: <code>8.8.8.8</code>.</div>
+          </li>
+          <li>
+            <div class="step-num">8</div>
+            <div class="step-text">Salve as configurações e verifique se o triângulo amarelo desaparece.</div>
+          </li>
+        </ol>
+
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>O que causa conflito de endereço IP na rede local?</h3>
+            <p>Um conflito de IP ocorre quando dois dispositivos na mesma rede (por exemplo, sua Smart TV e seu computador) recebem exatamente o mesmo número de IP do roteador. Isso trava o tráfego de ambos os aparelhos. Reiniciar o roteador reorganiza a tabela DHCP e atribui IPs exclusivos para cada um.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O que significa quando o sinal do Wi-Fi está com exclamação?</h3>
+            <p>O ponto de exclamação é a representação visual dos sistemas operacionais para o teste de conectividade HTTP de sonda de rede (Captive Portal Detection). Se o sistema tentar acessar servidores de verificação (como connectivitycheck.gstatic.com do Google ou captive.apple.com da Apple) e não obtiver resposta 204, ele exibe a exclamação.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Redes Wi-Fi com tela de login (hotel, aeroporto) mostram esse erro?</h3>
+            <p>Sim. Em redes públicas com portal de autenticação, o aparelho ficará marcado como 'sem internet' até que você abra o navegador e preencha o cadastro ou aceite os termos de uso na tela de boas-vindas do estabelecimento.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Cabo de rede conectado funciona, mas o Wi-Fi fica sem internet?</h3>
+            <p>Isso indica que o sinal da internet no roteador está perfeito, mas o módulo de rádio sem fio do roteador está sofrendo interferência severa de canais vizinhos ou travou em uma frequência congestionada. Acesse as configurações do roteador e mude a largura de canal de 40MHz para 20MHz na faixa de 2.4 GHz.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Posso usar a ferramenta de Solução de Problemas do Windows?</h3>
+            <p>Sim. Clicar com o botão direito sobre o ícone de rede e selecionar 'Diagnosticar problemas de rede' reinicia o adaptador de rede e renova o contrato DHCP automaticamente na maioria dos casos simples.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Desativar o protocolo IPv6 temporariamente pode resolver a falta de internet?</h3>
+            <p>Sim. Em certas operadoras que sofrem instabilidade no túnel dual-stack IPv6, o computador tenta carregar rotas IPv6 inexistentes antes de recorrer ao IPv4, causando a impressão de queda total da rede. Desmarcar a caixa 'Protocolo IP Versão 6 (TCP/IPv6)' nas propriedades do adaptador de rede pode restabelecer a conexão imediata em IPv4.</p>
+          </div>
         </div>
 
-        
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://support.microsoft.com/pt-br/windows/corrigir-problemas-de-conex%C3%A3o-wi-fi-no-windows-9424a1f7-6a3b-65a6-4d78-7f07eee84d2c" target="_blank" rel="noopener noreferrer">Microsoft Support — Corrigir problemas de conexão Wi-Fi no Windows</a></li>
+          <li><a href="https://support.google.com/android/answer/7680439?hl=pt-BR" target="_blank" rel="noopener noreferrer">Ajuda do Google Android — Corrigir problemas de conexão com a Internet em dispositivos Android</a></li>
+        </ul>
 
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
-          </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
-          </div>
-        </div>
-
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-cancelar-assinatura-netflix-celular-pc.html" class="related-card">
-              <span class="related-card-title">Como Cancelar a Assinatura da Netflix pelo Celular e PC</span>
+            <a href="como-corrigir-erro-dns-probe-finished-nxdomain-navegador.html" class="related-card">
+              <span class="related-card-title">Como Corrigir o Erro DNS_PROBE_FINISHED_NXDOMAIN no Navegador</span>
             </a>
-            <a href="como-descobrir-senha-wifi-conectado-pc-celular.html" class="related-card">
-              <span class="related-card-title">Como Descobrir a Senha do Wi-Fi Conectado no PC e Celular</span>
+            <a href="como-resolver-erro-err-connection-timed-out-chrome-edge.html" class="related-card">
+              <span class="related-card-title">Como Resolver o Erro ERR_CONNECTION_TIMED_OUT no Navegador</span>
             </a>
-            <a href="como-mudar-senha-wifi-roteador-pelo-celular.html" class="related-card">
-              <span class="related-card-title">Como Mudar a Senha do Wi-Fi do Roteador pelo Celular</span>
+            <a href="como-mudar-dns-roteador-windows-android-iphone.html" class="related-card">
+              <span class="related-card-title">Como Mudar o DNS no Roteador, Windows, Android e iPhone</span>
             </a>
-            <a href="o-que-fazer-se-internet-cai-toda-hora-passo-a-passo.html" class="related-card">
-              <span class="related-card-title">O que Fazer se a Internet Cai Toda Hora e Passo a Passo para Resolver</span>
+            <a href="como-resolver-aviso-seguranca-fraca-wifi-celular-pc.html" class="related-card">
+              <span class="related-card-title">Como Resolver o Aviso 'Segurança Fraca' no Wi-Fi do Celular e PC</span>
             </a>
           </div>
         </div>
@@ -238,13 +347,14 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#diagnostico-luzes-modem">Passo 1: Inspecionar as Luzes Indicadoras do Modem da Operadora</a></li>
+          <li><a href="#renovacao-ip-dhcp-windows">Passo 2: Renovar a Concessão de IP e Tratar Endereço APIPA no PC</a></li>
+          <li><a href="#esquecer-rede-celular-android-ios">Passo 3: 'Esquecer Rede' e Redefinir Parâmetros no Smartphone</a></li>
+          <li><a href="#configurar-dns-e-gateway-manual">Passo 4: Configurar IP e DNS Estático para Descartar Falha no DHCP</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -252,7 +362,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>

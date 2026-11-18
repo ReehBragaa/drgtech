@@ -1,0 +1,186 @@
+{
+  "id": 138,
+  "slug": "como-resolver-erro-interface-sistema-parou-system-ui-android",
+  "titulo": "Como Resolver o Erro 'A Interface do Sistema Parou' no Android",
+  "descricao": "Solução definitiva para o travamento 'System UI parou' ou 'Interface do sistema não está respondendo' no celular Android: limpeza de cache, WebView e modo de segurança.",
+  "resposta_curta": "A mensagem 'A interface do sistema parou' (System UI has stopped) indica que o processo com.android.systemui travou ao renderizar a barra de status, os botões de navegação ou o painel de notificações. Para resolver rapidamente, desinstale as atualizações mais recentes do aplicativo 'Android System WebView' na Google Play Store, limpe o cache do app Google e da Interface do Sistema nas Configurações, e remova launchers ou temas de terceiros incompatíveis.",
+  "aplica_se": "Android 10, 11, 12, 13, 14 e 15 (Samsung, Motorola, Xiaomi, etc.)",
+  "intro": [
+    "A Interface do Sistema (processo identificado tecnicamente como com.android.systemui) é um dos componentes gráficos mais essenciais de qualquer dispositivo Android. Ela é a responsável direta pela renderização e funcionamento ininterrupto da barra de status superior (ícones de bateria, sinal e relógio), dos gestos ou botões de navegação inferiores, do painel retrátil de notificações e das telas de bloqueio.",
+    "Quando o pacote System UI sofre uma exceção de software irrecuperável, a tela do celular pisca em preto, a barra superior desaparece e a incômoda caixa de diálogo 'A interface do sistema parou' ou 'Interface do sistema não está respondendo' passa a surgir em loop contínuo a cada poucos segundos. Neste tutorial detalhado, mostramos como diagnosticar as três principais causas do problema — atualizações defeituosas do WebView, sobreposição de temas e corrupção de cache — e restaurar a estabilidade do aparelho."
+  ],
+  "secoes": [
+    {
+      "id": "causa-raiz-webview-google",
+      "titulo": "O Principal Culpado: Android System WebView e Google App",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Historicamente, mais de 80% das ondas massivas de falhas no System UI decorrem de bugs em atualizações automáticas do componente **Android System WebView** (que renderiza conteúdo web dentro de apps) ou do aplicativo central **Google**:"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Componente",
+            "Função no Android",
+            "Sintoma Típico de Falha"
+          ],
+          "linhas": [
+            [
+              "Android System WebView",
+              "Mecanismo de renderização do Chrome usado por apps do sistema.",
+              "System UI trava ao exibir notificações com conteúdo dinâmico."
+            ],
+            [
+              "Google App",
+              "Alimenta o assistente, feed de notícias e barra de busca.",
+              "Interface reinicia sempre que a tela inicial é carregada."
+            ],
+            [
+              "Temas de Terceiros / Substratum",
+              "Modificam cores e ícones da barra de status via sobreposição de APKs.",
+              "Loop de travamento após atualização de segurança do Android."
+            ],
+            [
+              "Armazenamento Esgotado",
+              "Memória flash com menos de 200 MB livres.",
+              "O banco de dados SQLite do System UI não consegue gravar estados temporários."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "desinstalar-atualizacoes-webview",
+      "titulo": "Passo 1: Desinstalar Atualizações do Android System WebView",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Restaurar o WebView para a versão original de fábrica costuma resolver o problema instantaneamente sem apagar nenhum arquivo pessoal:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra o aplicativo **Configurações** (ícone de engrenagem) no seu aparelho.",
+            "Acesse a seção **Aplicativos** (ou Apps e Notificações).",
+            "Toque no menu de três pontos no canto superior direito e selecione **Mostrar aplicativos do sistema**.",
+            "Localize e toque sobre o item **Android System WebView**.",
+            "Toque no menu de três pontos no topo da tela e selecione **Desinstalar atualizações**.",
+            "Confirme a mensagem que avisa que o aplicativo será revertido para a versão original de fábrica e reinicie o smartphone."
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "info",
+          "texto": "Em smartphones Samsung Galaxy, o navegador Samsung Internet também utiliza módulos compartilhados; mantenha-o atualizado pela Galaxy Store."
+        }
+      ]
+    },
+    {
+      "id": "limpar-cache-system-ui-e-google",
+      "titulo": "Passo 2: Limpar Cache da Interface do Sistema e do Google",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se a falha persistir, limpe os arquivos temporários armazenados na partição de cache do próprio subsistema de interface:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Nas **Configurações** > **Aplicativos**, certifique-se de que a opção de 'Mostrar apps do sistema' está ativa.",
+            "Role até encontrar **Interface do Sistema** (ou System UI).",
+            "Toque em **Armazenamento** (ou Armazenamento e Cache).",
+            "Toque no botão **Limpar Cache** (o botão Limpar Dados costuma ficar desabilitado por segurança para este app nativo).",
+            "Volte para a lista de aplicativos, localize o app **Google**, toque em **Armazenamento** e selecione **Limpar Cache** e em seguida **Gerenciar Espaço** > **Limpar Todos os Dados**."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "modo-de-seguranca-android",
+      "titulo": "Passo 3: Inicializar no Modo de Segurança para Isolar Apps Conflitantes",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se você instalou launchers personalizados (como Nova Launcher, Lawnchair), aplicativos de personalização de barra de status ou pacotes de temas, inicie em Modo de Segurança para testar sem a interferência deles:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Mantenha pressionado o botão físico Liga/Desliga até que o menu de desligamento apareça na tela.",
+            "Toque e mantenha o dedo pressionado sobre a opção **Desligar** (ou **Reiniciar**) por cerca de 3 segundos.",
+            "Uma mensagem surgirá perguntando se você deseja 'Reiniciar em modo de segurança'. Toque em **OK**.",
+            "O aparelho reiniciará exibindo o texto 'Modo de segurança' no canto inferior esquerdo da tela.",
+            "Se o erro da interface sumir completamente no Modo de Segurança, desinstale os últimos launchers e utilitários instalados antes de reiniciar normalmente."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wipe-cache-partition-recovery",
+      "titulo": "Passo 4: Limpar a Partição de Cache pelo Menu Recovery (Sem Perder Dados)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Em aparelhos de marcas como Samsung e Motorola, a partição de cache geral do sistema pode ser purgada diretamente pelo modo de recuperação de hardware:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Desligue o smartphone por completo.",
+            "Conecte o aparelho a um computador via cabo USB (necessário nas versões recentes do Android da Samsung para habilitar a combinação).",
+            "Mantenha pressionados os botões **Aumentar Volume** e **Liga/Desliga** até o logotipo aparecer na tela.",
+            "No menu de texto do Android Recovery, use as teclas de volume para navegar até a opção **Wipe cache partition** e confirme com o botão Liga/Desliga.",
+            "Selecione **Yes** para confirmar a limpeza e, em seguida, selecione **Reboot system now**."
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "sucesso",
+          "texto": "A opção Wipe Cache Partition limpa apenas arquivos temporários residuais de atualizações do Android, sem apagar nenhum contato, foto, mensagem ou aplicativo instalado."
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O erro Interface do Sistema parou apaga fotos ou contatos do celular?",
+      "r": "Não. A interface do sistema é apenas o invólucro visual que exibe a barra superior e os botões de navegação. A falha não afeta os bancos de dados do usuário, galerias de fotos ou contas configuradas no aparelho."
+    },
+    {
+      "p": "Por que esse erro é tão frequente após atualizar o sistema?",
+      "r": "Grandes atualizações de versão do Android (como do Android 13 para o 14) introduzem novas APIs para ícones e cores dinâmicas da barra de notificações. Se existirem dados residuais em cache de temas antigos que não suportam as novas bibliotecas, o processo de renderização trava."
+    },
+    {
+      "p": "O que fazer se a caixa de diálogo não deixar eu clicar nas configurações?",
+      "r": "Se o aviso 'Fechar app' surgir repetidamente a cada segundo impedindo o toque, deslize a barra de notificações rapidamente pelo topo e toque no ícone de engrenagem, ou inicie o celular no Modo de Segurança conforme explicado no Passo 3."
+    },
+    {
+      "p": "Atualizar os aplicativos na Google Play Store ajuda a prevenir a falha?",
+      "r": "Sim. Especialmente manter atualizados os pacotes Android System WebView, Google Chrome e Serviços do Google Play (Google Play Services), onde os desenvolvedores enviam patches rápidos quando uma versão defeituosa é detectada."
+    },
+    {
+      "p": "A restauração de fábrica (formatar) é sempre obrigatória?",
+      "r": "Não. Em mais de 90% dos casos, desinstalar as atualizações do Android System WebView ou executar a limpeza do Wipe Cache Partition pelo Recovery resolve a falha sem necessidade de formatação."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Ajuda do Google Android — Corrigir um app Android que não está funcionando",
+      "url": "https://support.google.com/android/answer/2668614?hl=pt-BR"
+    },
+    {
+      "titulo": "Samsung Support — O que fazer quando aparece a mensagem 'Interface do sistema parou'",
+      "url": "https://www.samsung.com/br/support/mobile-devices/o-que-fazer-quando-aparece-a-mensagem-interface-do-sistema-parou/"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    139,
+    160,
+    158,
+    137
+  ]
+}

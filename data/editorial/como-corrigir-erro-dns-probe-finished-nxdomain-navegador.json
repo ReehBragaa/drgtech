@@ -1,0 +1,202 @@
+{
+  "id": 140,
+  "slug": "como-corrigir-erro-dns-probe-finished-nxdomain-navegador",
+  "titulo": "Como Corrigir o Erro DNS_PROBE_FINISHED_NXDOMAIN no Navegador",
+  "descricao": "Guia completo para solucionar o erro DNS_PROBE_FINISHED_NXDOMAIN no Chrome e Edge: flushdns, troca para DNS público (1.1.1.1 / 8.8.8.8) e reset de Winsock.",
+  "resposta_curta": "O erro DNS_PROBE_FINISHED_NXDOMAIN ocorre quando o resolvedor DNS não consegue localizar o endereço IP numérico correspondente ao domínio solicitado (NXDOMAIN significa 'Non-Existent Domain'). Para corrigir, libere e limpe o cache DNS do sistema executando `ipconfig /flushdns` no Prompt como Administrador, redefina o catálogo de rede com `netsh winsock reset`, e configure resolvedores DNS públicos confiáveis (como Cloudflare 1.1.1.1 ou Google 8.8.8.8).",
+  "aplica_se": "Windows 11, Windows 10, macOS, Android e iOS",
+  "intro": [
+    "Ao tentar abrir um site habitual no Google Chrome, Microsoft Edge ou Firefox, a página recusa o carregamento e exibe uma tela de alerta com o código de diagnóstico **DNS_PROBE_FINISHED_NXDOMAIN**. Esse é um dos erros de rede mais comuns na navegação moderna e impede que o dispositivo estabeleça contato com o servidor de hospedagem da página.",
+    "Para entender a falha, imagine o DNS (Domain Name System) como a lista telefônica da internet: quando você digita um endereço amigável (como `drgtech.com.br`), o computador consulta um servidor DNS para descobrir o endereço IP numérico real daquele servidor. A sigla **NXDOMAIN** significa formalmente 'Non-Existent Domain' (Domínio Não Existente). Se o cache do seu computador tiver memorizado uma resposta corrompida ou se os servidores DNS do seu provedor de internet estiverem instáveis, o navegador presumirá erroneamente que o site não existe. A seguir, ensinamos o procedimento metódico para restaurar a navegação."
+  ],
+  "secoes": [
+    {
+      "id": "mecanica-resolucao-dns",
+      "titulo": "Entenda o Mecanismo da Falha NXDOMAIN",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "A resolução de nomes de domínio segue uma hierarquia bem definida. A falha ocorre quando a resposta de inexistência é interceptada ou devolvida incorretamente em uma das etapas:"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Etapa de Consulta",
+            "O Que Acontece",
+            "Possível Causa do Erro"
+          ],
+          "linhas": [
+            [
+              "Cache Local do Navegador",
+              "Chrome checa tabela interna de DNS em memória.",
+              "Cache de socket expirado ou corrompido no navegador."
+            ],
+            [
+              "Cache Local do Windows",
+              "Serviço Cliente DNS do Windows consulta tabela local.",
+              "Desligamentos súbitos ou alterações no arquivo hosts."
+            ],
+            [
+              "Roteador Wi-Fi Local",
+              "Roteador repassa consulta aos servidores do provedor.",
+              "Tabela NAT do roteador congestionada por conexões antigas."
+            ],
+            [
+              "Servidor DNS do Provedor",
+              "Operadora consulta a árvore de servidores raiz.",
+              "Instabilidade técnica temporária ou bloqueio de domínio."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "limpar-cache-dns-windows",
+      "titulo": "Passo 1: Liberar e Limpar o Cache DNS no Windows (FlushDNS)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O primeiro passo é purgar todos os registros DNS locais salvos no sistema operacional que possam estar apontando para rotas obsoletas:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Pressione as teclas `Windows + X` e selecione **Terminal (Administrador)** ou **Prompt de Comando (Admin)**.",
+            "Digite o comando abaixo e pressione Enter para descarregar o cache de nomes do Windows:",
+            "Aguarde a mensagem de confirmação: 'Liberação do Cache do DNS Resolver bem-sucedida'.",
+            "Em seguida, libere e renove o contrato de concessão de IP com o roteador:",
+            "Reinicie os adaptadores de rede executando a sequência completa."
+          ]
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "powershell",
+          "texto": "ipconfig /flushdns\nipconfig /release\nipconfig /renew"
+        }
+      ]
+    },
+    {
+      "id": "redefinir-winsock-pilha-ip",
+      "titulo": "Passo 2: Redefinir o Catálogo Winsock e a Pilha TCP/IP",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Softwares de antivírus ou VPNs antigas frequentemente instalam provedores de serviço em camadas (LSP) que travam o Winsock:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Na mesma janela administrativa do Prompt, execute os dois comandos de redefinição de fábrica da rede:",
+            "Reinicie o computador imediatamente após o término para consolidar as chaves de registro do protocolo TCP/IP."
+          ]
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "powershell",
+          "texto": "netsh winsock reset\nnetsh int ip reset"
+        }
+      ]
+    },
+    {
+      "id": "mudar-dns-publico-seguro",
+      "titulo": "Passo 3: Mudar para Servidores DNS Públicos Confiáveis",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Os servidores DNS fornecidos automaticamente por operadoras de banda larga frequentemente sofrem quedas e lentidão de resposta. Configurar resolvedores globais resolve o erro na hora:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Pressione `Windows + R`, digite `ncpa.cpl` e pressione Enter para abrir as Conexões de Rede.",
+            "Clique com o botão direito sobre o seu adaptador ativo (Wi-Fi ou Ethernet) e selecione **Propriedades**.",
+            "Dê um duplo clique sobre o item **Protocolo IP Versão 4 (TCP/IPv4)**.",
+            "Marque a opção **Usar os seguintes endereços de servidor DNS**.",
+            "Para utilizar o DNS da **Cloudflare** (foco em máxima velocidade e privacidade), insira: Primário `1.1.1.1` e Secundário `1.0.0.1`.",
+            "Para utilizar o DNS do **Google**, insira: Primário `8.8.8.8` e Secundário `8.8.4.4`.",
+            "Marque a caixa 'Validar configurações na saída' e clique em **OK**."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "limpar-cache-dns-chrome",
+      "titulo": "Passo 4: Limpar o Cache de DNS Interno do Google Chrome",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O Google Chrome mantém seu próprio repositório isolado de DNS que não é afetado pelo comando do Windows:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra uma nova aba no Google Chrome.",
+            "Copie e cole o seguinte endereço na barra de navegação: `chrome://net-internals/#dns` e pressione Enter.",
+            "Clique no botão **Clear host cache** (Limpar cache de host).",
+            "Em seguida, acesse `chrome://net-internals/#sockets` e clique no botão **Flush socket pools**.",
+            "Reinicie o navegador e tente carregar o site novamente."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "verificar-arquivo-hosts",
+      "titulo": "Passo 5: Inspecionar o Arquivo Hosts do Windows",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O arquivo `hosts` tem prioridade sobre qualquer servidor DNS. Se um malware ou programa de bloqueio tiver inserido uma linha com o endereço do site apontando para `127.0.0.1` ou `0.0.0.0`, o navegador retornará NXDOMAIN:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Pressione `Windows + R`, digite `notepad.exe C:\\Windows\\System32\\drivers\\etc\\hosts` (abra como Administrador).",
+            "Examine as linhas no final do arquivo. Linhas normais de exemplo começam com o caractere `#`.",
+            "Se você encontrar linhas contendo o nome do domínio que não abre associado a IPs locais (como `127.0.0.1 site.com`), apague essas linhas, salve o arquivo e feche o Bloco de Notas."
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O erro DNS_PROBE_FINISHED_NXDOMAIN é problema do meu PC ou do site?",
+      "r": "Pode ser de ambos. Se apenas um site específico não abre em nenhum dispositivo da sua casa (nem no 4G do celular), o domínio do site expirou, o registro de DNS do dono do site está com erro ou o servidor dele caiu. Se o site abre normalmente no 4G do celular mas falha no Wi-Fi do computador, o problema é local da sua rede ou computador."
+    },
+    {
+      "p": "Por que reiniciar o roteador Wi-Fi às vezes resolve o NXDOMAIN?",
+      "r": "Roteadores domésticos mantêm um cache de nomes simplificado na memória RAM. Quando o roteador fica ligado por semanas seguidas, esse cache pode memorizar respostas negativas de DNS. Desligá-lo da tomada por 30 segundos esvazia a memória volátil e obriga o aparelho a buscar dados limpos."
+    },
+    {
+      "p": "O uso de VPN pode causar esse erro de DNS?",
+      "r": "Sim. Se a VPN cair de forma anômala, os adaptadores virtuais de rede (TAP/TUN) podem deixar configurações residuais de DNS ativo que não respondem fora do túnel criptografado. Desative a VPN e reinicie o adaptador de rede."
+    },
+    {
+      "p": "Qual é o DNS mais rápido: Google ou Cloudflare?",
+      "r": "Em testes globais independentes de latência de resposta, o DNS da Cloudflare (1.1.1.1) costuma apresentar tempos médios de resposta de 12 a 15 ms, enquanto o Google (8.8.8.8) opera entre 18 e 25 ms. Ambos são significativamente mais rápidos e estáveis do que os servidores padrão da maioria dos provedores."
+    },
+    {
+      "p": "Esse erro tem relação com vírus ou spywares?",
+      "r": "Em alguns casos, malwares do tipo Trojan Banker alteram as configurações de DNS do computador ou do roteador (técnica conhecida como DNS Hijacking) para desviar o usuário para páginas falsas. Se o servidor malicioso for desativado pela polícia, o computador passa a acusar erro NXDOMAIN."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Google Chrome Help — Corrigir erros de conexão e páginas que não abrem",
+      "url": "https://support.google.com/chrome/answer/6098869?hl=pt-BR"
+    },
+    {
+      "titulo": "Cloudflare Docs — What is DNS and how does 1.1.1.1 work",
+      "url": "https://developers.cloudflare.com/1.1.1.1/what-is-1.1.1.1/"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    162,
+    141,
+    161,
+    196
+  ]
+}

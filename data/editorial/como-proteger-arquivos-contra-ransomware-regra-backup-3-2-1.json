@@ -1,0 +1,164 @@
+{
+  "id": 152,
+  "slug": "como-proteger-arquivos-contra-ransomware-regra-backup-3-2-1",
+  "titulo": "Como Proteger Seus Arquivos Contra Ransomware com a Regra 3-2-1",
+  "descricao": "Guia completo de defesa contra sequestro de dados e ransomware: implementação da regra de backup 3-2-1-1-0, cópias imutáveis e proteção de pastas no Windows 11.",
+  "resposta_curta": "Para proteger seus arquivos de forma definitiva contra ataques de ransomware, implemente a metodologia padrão ouro de cibersegurança: a Regra de Backup 3-2-1-1-0. Mantenha 3 cópias de dados em pelo menos 2 tipos de mídias diferentes, com 1 cópia fora do local (nuvem), 1 cópia imutável ou offline (desconectada da rede elétrica/ar-gap) e 0 erros validados em testes periódicos de restauração. No Windows 11, ative também o recurso nativo de 'Acesso a Pastas Controladas' do Microsoft Defender.",
+  "aplica_se": "Windows 11, Windows 10, servidores e armazenamento corporativo",
+  "intro": [
+    "O ransomware representa a ameaça cibernética mais destrutiva da atualidade para usuários domésticos e empresas de todos os portes. Diferente de vírus comuns que apenas exibem anúncios ou roubam senhas, os ransomwares modernos operam como armas criptográficas de extorsão: eles invadem o sistema, apagam silenciosamente as cópias de sombra do Windows (VSS), percorrem as unidades de rede compartilhadas e criptografam todos os seus documentos, fotos, bancos de dados e planilhas com cifras inquebráveis (como AES-256 e RSA-4096).",
+    "Ao final da infecção, o invasor altera o papel de parede e deposita arquivos de texto com instruções exigindo resgates milionários em criptomoedas para fornecer a chave de descriptografia. A recomendação unânime de todas as agências internacionais de cibersegurança (incluindo CISA, FBI e autoridades brasileiras) é **nunca pagar o resgate**, pois o pagamento financia o crime organizado e não garante a devolução dos dados. A única salvação garantida é possuir cópias de segurança isoladas e imutáveis. A seguir, ensinamos como estruturar essa defesa na prática."
+  ],
+  "secoes": [
+    {
+      "id": "anatomia-do-ataque-ransomware",
+      "titulo": "Como os Ransomwares Modernos Agem no Windows",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Compreender as fases de um ataque moderno explica por que um simples backup em um pendrive que fica o tempo todo espetado no computador é inútil:"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Fase do Ataque",
+            "Ação do Ransomware",
+            "Por Que Destrói Backups Comuns"
+          ],
+          "linhas": [
+            [
+              "1. Acesso e Reconhecimento",
+              "Invasão via e-mail de phishing, RDP exposto ou vulnerabilidade de software.",
+              "Mapeia todas as unidades de disco locais (C:, D:) e pastas compartilhadas na rede."
+            ],
+            [
+              "2. Destruição de Defesas",
+              "Executa comandos como `vssadmin delete shadows /all /quiet` e desativa o WinRE.",
+              "Inutiliza completamente a Restauração do Sistema nativa do Windows."
+            ],
+            [
+              "3. Criptografia em Massa",
+              "Gera uma chave única e criptografa arquivos substituindo extensões.",
+              "Se o seu HD externo de backup estiver conectado à porta USB, ele será criptografado junto."
+            ],
+            [
+              "4. Extorsão e Mensagem",
+              "Exibe a nota de resgate com prazos em contagem regressiva.",
+              "Sem um backup offline ou imutável, a perda dos dados é definitiva."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "regra-de-backup-3-2-1-1-0",
+      "titulo": "Passo 1: Implementar a Estratégia de Backup 3-2-1-1-0",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "A arquitetura de contingência recomendada por especialistas em continuidade de negócios é a evolução da regra 3-2-1 para a era do ransomware:"
+        },
+        {
+          "tipo": "lista",
+          "itens": [
+            "**3 Cópias de Dados:** Mantenha os dados originais de produção e pelo menos mais duas cópias de segurança atualizadas.",
+            "**2 Tipos Diferentes de Mídia:** Utilize suportes físicos distintos para evitar falhas sistêmicas (por exemplo, uma cópia em unidade de disco externa local e outra cópia em armazenamento em nuvem).",
+            "**1 Cópia Fora do Local (Off-site):** Armazene uma cópia em um local geograficamente distante (nuvem como Google Drive, OneDrive, Backblaze B2 ou AWS S3) para sobreviver a furtos, inundações ou incêndios.",
+            "**1 Cópia Imutável ou Offline (Air-Gapped):** Mantenha um HD externo que é conectado ao computador **apenas durante a gravação do backup e desconectado da porta USB logo em seguida**, ou utilize armazenamento em nuvem com bloqueio de exclusão (Object Lock). Cópias desconectadas não podem ser alcançadas por ransomwares que infectam a máquina.",
+            "**0 Erros em Testes de Restauração:** Realize testes práticos mensais de recuperação para garantir que os arquivos salvos não estão corrompidos e abrem perfeitamente."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acesso-pastas-controladas-windows-11",
+      "titulo": "Passo 2: Ativar o 'Acesso a Pastas Controladas' do Microsoft Defender",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O Windows 11 inclui uma barreira nativa antiransomware excelente que bloqueia qualquer aplicativo não autorizado de modificar arquivos em pastas protegidas:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra o menu Iniciar e digite **Segurança do Windows**.",
+            "Clique na seção **Proteção contra vírus e ameaças**.",
+            "Role até a seção inferior **Proteção contra ransomware** e clique no link **Gerenciar proteção contra ransomware**.",
+            "Ative a chave seletora **Acesso a pastas controladas** (Controlled Folder Access).",
+            "Clique em 'Pastas protegidas' para adicionar pastas personalizadas de trabalho além das pastas padrão (Documentos, Fotos, Vídeos, Área de Trabalho).",
+            "Se um aplicativo confiável for bloqueado ao tentar salvar um arquivo, clique em 'Permitir um aplicativo pelo Acesso a pastas controladas' para adicioná-lo à lista de exceções."
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "sucesso",
+          "texto": "Com o Acesso a Pastas Controladas ativo, mesmo que um executável malicioso de ransomware rode na máquina, o kernel do Windows interceptará a tentativa de criptografia e bloqueará a alteração em tempo real."
+        }
+      ]
+    },
+    {
+      "id": "desativar-servicos-vulneraveis-rdp",
+      "titulo": "Passo 3: Fechar Portas de Acesso Remoto (RDP e SMBv1)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Muitas infecções corporativas ocorrem porque a porta de Área de Trabalho Remota (RDP) fica exposta diretamente para a internet:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Em computadores domésticos, certifique-se de que a Área de Trabalho Remota está desativada em Configurações > Sistema > Área de Trabalho Remota.",
+            "Desative o protocolo obsoleto SMB versão 1 (utilizado historicamente por ataques como o WannaCry) executando no PowerShell administrativo:",
+            "Nunca abra a porta 3389 do seu roteador direcionada para computadores locais sem uma conexão VPN prévia."
+          ]
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "powershell",
+          "texto": "Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol -NoRestart"
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "Por que as empresas de segurança recomendam nunca pagar o resgate?",
+      "r": "Pagar o resgate não garante que os criminosos entregarão a chave descriptografadora (estatísticas globais apontam que mais de 20% das vítimas pagam e nunca recebem nada). Além disso, comprova que a vítima é rentável, tornando-a alvo prioritário para novos ataques subsequentes."
+    },
+    {
+      "p": "O que são ferramentas de descriptografia gratuitas (No More Ransom)?",
+      "r": "O projeto internacional 'No More Ransom' (nomoreransom.org), criado pela Europol e líderes de cibersegurança, reúne centenas de chaves e ferramentas de descriptografia recuperadas em operações policiais contra quadrilhas. Se você for atacado, verifique a plataforma antes de qualquer decisão."
+    },
+    {
+      "p": "O backup no OneDrive ou Google Drive protege 100% contra ransomware?",
+      "r": "Protege se a função de 'Histórico de Versões' estiver disponível. Se os arquivos criptografados sincronizarem com a nuvem sobrescrevendo as versões limpas, serviços como OneDrive e Google Drive possuem recursos para reverter a pasta inteira para o estado de horas antes da infecção."
+    },
+    {
+      "p": "Um pendrive comum serve como backup seguro?",
+      "r": "Serve como cópia offline complementar, desde que você copie os arquivos e retire imediatamente o pendrive da porta USB física do computador. Se o pendrive ficar plugado permanentemente, ele será criptografado junto com o computador."
+    },
+    {
+      "p": "Qual a diferença entre cópia de backup e sincronização em tempo real?",
+      "r": "Sincronização em tempo real (como espelhamento de pastas) replica instantaneamente exclusões e alterações: se um arquivo for corrompido ou criptografado no computador, ele será corrompido na nuvem no mesmo segundo. Um backup verdadeiro preserva versões congeladas no tempo e possui regras de retenção histórica imutáveis."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "CISA — Stop Ransomware Official Guidance and Prevention Best Practices",
+      "url": "https://www.cisa.gov/stopransomware"
+    },
+    {
+      "titulo": "Europol / No More Ransom Project — Decryption Tools and Information",
+      "url": "https://www.nomoreransom.org/pt_BR/index.html"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    131,
+    132,
+    166,
+    168
+  ]
+}

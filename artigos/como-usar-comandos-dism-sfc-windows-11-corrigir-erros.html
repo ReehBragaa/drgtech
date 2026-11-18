@@ -3,29 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como Usar os Comandos DISM e SFC no Windows 11 para Corrigir Erros — DRGTech</title>
-  <meta name="description" content="Para reparar arquivos corrompidos e imagens danificadas no Windows 11, abra o Prompt de Comando como Administrador e execute dism /online /cleanup-image /r..." />
-  <meta name="keywords" content="como usar os comandos dism e sfc no windows 11 para corrigir erros, tutorial windows, suporte tecnico" />
+  <title>Como Usar DISM e SFC no Windows 11 para Reparar Arquivos do Sistema — DRGTech</title>
+  <meta name="description" content="Guia técnico com a ordem correta para executar os comandos DISM e SFC no Windows 11, reparar o repositório de componentes e corrigir travamentos." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Como Usar os Comandos DISM e SFC no Windows 11 para Corrigir Erros — DRGTech" />
-  <meta property="og:description" content="Para reparar arquivos corrompidos e imagens danificadas no Windows 11, abra o Prompt de Comando como Administrador e execute dism /online /cleanup-image /r..." />
+  <meta property="og:title" content="Como Usar DISM e SFC no Windows 11 para Reparar Arquivos do Sistema — DRGTech" />
+  <meta property="og:description" content="Guia técnico com a ordem correta para executar os comandos DISM e SFC no Windows 11, reparar o repositório de componentes e corrigir travamentos." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-usar-comandos-dism-sfc-windows-11-corrigir-erros.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Como Usar os Comandos DISM e SFC no Windows 11 para Corrigir Erros — DRGTech" />
-  <meta name="twitter:description" content="Para reparar arquivos corrompidos e imagens danificadas no Windows 11, abra o Prompt de Comando como Administrador e execute dism /online /cleanup-image /r..." />
+  <meta name="twitter:title" content="Como Usar DISM e SFC no Windows 11 para Reparar Arquivos do Sistema — DRGTech" />
+  <meta name="twitter:description" content="Guia técnico com a ordem correta para executar os comandos DISM e SFC no Windows 11, reparar o repositório de componentes e corrigir travamentos." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-usar-comandos-dism-sfc-windows-11-corrigir-erros.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Usar DISM e SFC no Windows 11 para Reparar Arquivos do Sistema",
+  "description": "Guia técnico com a ordem correta para executar os comandos DISM e SFC no Windows 11, reparar o repositório de componentes e corrigir travamentos.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-usar-comandos-dism-sfc-windows-11-corrigir-erros.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,47 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Usar os Comandos DISM e SFC no Windows 11 para Corrigir Erros",
+      "name": "Posso executar o SFC antes do DISM?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Para reparar arquivos corrompidos e imagens danificadas no Windows 11, abra o Prompt de Comando como Administrador e execute dism /online /cleanup-image /restorehealth para reparar a imagem do sistema e, em seguida, rode sfc /scannow para substituir arquivos protegidos corrompidos."
+        "text": "Você pode executar o SFC primeiro, mas se houver corrupção na base de componentes do Windows (pasta WinSxS), o SFC não conseguirá reparar os arquivos danificados e acusará falha irrecuperável. A boa prática recomendada pela documentação oficial da Microsoft é sempre executar o DISM com o parâmetro /RestoreHealth antes do sfc /scannow para assegurar que a fonte de substituição esteja íntegra."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O DISM ou o SFC podem apagar fotos, documentos ou programas pessoais?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. Tanto o DISM quanto o SFC atuam exclusivamente na pasta C:\\Windows e nos arquivos binários do sistema operacional (como DLLs, executáveis do kernel, drivers nativos e arquivos de manifesto). Seus arquivos pessoais, pastas de usuário, fotos, documentos e programas instalados não sofrem nenhuma alteração ou exclusão."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que fazer se o SFC travar em uma porcentagem específica durante a varredura?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aguarde pelo menos 20 minutos. Se o processo realmente não avançar após esse período, reinicie o computador no Modo de Segurança com Prompt de Comando e execute o comando novamente. No Modo de Segurança, menos drivers e serviços de terceiros disputam o acesso aos arquivos protegidos do sistema."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quantas vezes por mês devo rodar o DISM e o SFC no computador?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Essas ferramentas são utilitários de diagnóstico e reparo reativo, não de manutenção rotineira obrigatória. Não há necessidade de executá-las periodicamente se o sistema estiver estável. Utilize-as após quedas súbitas de energia, travamentos frequentes ou falhas ao instalar atualizações do Windows Update."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que fazer se mesmo após o DISM e SFC o Windows 11 continuar apresentando erros?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se as ferramentas concluírem sem erros mas a falha persistir, o problema pode estar em drivers corrompidos de terceiros, setores defeituosos no disco de armazenamento (execute chkdsk C: /f /r) ou falha física em pentes de memória RAM. Caso a causa seja do sistema operacional, uma instalação de reparo in-place (executar o assistente oficial do Windows mantendo aplicativos e arquivos pessoais) resolverá a questão sem formatação."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,7 +113,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Como Usar os Comandos DISM e SFC no Windows 11 para Corrigir Erros",
+      "name": "Como Usar DISM e SFC no Windows 11 para Reparar Arquivos do Sistema",
       "item": "https://drgtech.com.br/artigos/como-usar-comandos-dism-sfc-windows-11-corrigir-erros.html"
     }
   ]
@@ -103,132 +153,164 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#windows">Windows</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Usar os Comandos DISM e SFC no...</span>
+        <span>Como Usar DISM e SFC no Windows 11…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-blue">Windows</span>
-        <h1 class="article-h1">Como Usar os Comandos DISM e SFC no Windows 11 para Corrigir Erros</h1>
+        <h1 class="article-h1">Como Usar DISM e SFC no Windows 11 para Reparar Arquivos do Sistema</h1>
         <div class="article-intro-meta">
           <span class="meta-item">7 min de leitura</span>
-          <span class="meta-item">Atualizado em agosto de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> Para reparar arquivos corrompidos e imagens danificadas no Windows 11, abra o Prompt de Comando como Administrador e execute dism /online /cleanup-image /restorehealth para reparar a imagem do sistema e, em seguida, rode sfc /scannow para substituir arquivos protegidos corrompidos.
+        <strong>Resposta rápida:</strong> Para reparar o Windows 11, abra o Terminal como Administrador e execute primeiro o DISM para restaurar a integridade da imagem de componentes com <code>DISM /Online /Cleanup-Image /RestoreHealth</code>. Em seguida, execute o Verificador de Arquivos do Sistema com <code>sfc /scannow</code>. Essa ordem é obrigatória porque o SFC depende de uma base de componentes saudável na pasta WinSxS para substituir arquivos corrompidos.
       </div>
 
       <article class="article-body" id="article-body">
+        <p>O Verificador de Arquivos do Sistema (SFC) e o Gerenciamento e Manutenção de Imagens de Implantação (DISM) são as ferramentas nativas mais poderosas da Microsoft para diagnosticar e restaurar arquivos corrompidos no Windows 11. Quando o computador apresenta lentidão inexplicável, erros ao abrir o Explorador de Arquivos, travamentos na Barra de Tarefas ou mensagens genéricas de falha de biblioteca DLL, essas duas ferramentas permitem recuperar a estabilidade operacional sem a necessidade de formatar o disco rígido ou reinstalar aplicativos do zero.</p>
+        <p>No entanto, um dos erros mais comuns cometidos por usuários e técnicos iniciantes é executar apenas o comando SFC ou executá-los na ordem invertida. O utilitário SFC substitui versões corrompidas de arquivos do sistema a partir de um repositório compactado local armazenado na pasta WinSxS (Windows Side-by-Side). Se a própria imagem do repositório WinSxS estiver danificada por quedas de energia ou atualizações interrompidas, o SFC falhará e exibirá a mensagem de que não pôde corrigir os arquivos. Por essa razão, a documentação técnica da Microsoft estabelece como mandatório reparar previamente o repositório local com o DISM antes de rodar o SFC.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> Windows 11 (todas as versões) e Windows 10</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Usar os Comandos DISM e SFC no Windows 11 para Corrigir Erros"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Windows</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
+        <h2 id="diferenca-tecnica-dism-sfc">Entenda a Função Técnica de Cada Utilitário</h2>
+        <p>Compreender o escopo de atuação de cada comando evita retrabalho e orienta o diagnóstico correto de falhas no sistema operacional Windows:</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Ferramenta</th><th>Escopo de Ação</th><th>Origem de Reparo</th><th>Tempo Médio</th></tr></thead>
+            <tbody>
+              <tr><td>DISM (Deployment Image Servicing)</td><td>Repara a imagem de recuperação do Windows e a integridade da pasta WinSxS.</td><td>Servidores do Windows Update ou mídia de instalação oficial (ISO).</td><td>10 a 25 minutos</td></tr>
+              <tr><td>SFC (System File Checker)</td><td>Compara hashes de arquivos críticos do sistema ativo com a pasta WinSxS.</td><td>Repositório local de componentes saudáveis verificado pelo DISM.</td><td>5 a 15 minutos</td></tr>
+            </tbody>
+          </table>
         </div>
+        <p>Se a pasta WinSxS contiver inconsistências lógicas causadas por desligamentos abruptos ou falhas em atualizações cumulativas anteriores, o SFC não conseguirá obter versões íntegras para substituir arquivos corrompidos em <code>C:\Windows\System32</code>. O DISM resolve esse impasse baixando componentes limpos diretamente dos servidores oficiais da Microsoft.</p>
 
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
+        <h2 id="preparativos-e-terminal-admin">Passo 1: Abrir o Terminal ou Prompt como Administrador</h2>
+        <p>Os utilitários DISM e SFC interagem diretamente com diretórios protegidos do subsistema do Windows e exigem privilégios elevados de controle de conta de usuário (UAC) para modificar binários do kernel:</p>
         <ol class="steps-list">
-
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">Abra o Menu Iniciar, digite 'cmd', clique com o botão direito sobre Prompt de Comando e escolha 'Executar como Administrador'.</div>
+            <div class="step-text">Clique com o botão direito do mouse sobre o botão Iniciar do Windows 11 ou pressione o atalho de teclado <code>Windows + X</code>.</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">Digite o comando 'dism /online /cleanup-image /restorehealth' e pressione Enter, aguardando a verificação atingir 100%.</div>
+            <div class="step-text">No menu de contexto avançado, clique sobre a opção <strong>Terminal (Administrador)</strong> ou <strong>Prompt de Comando (Admin)</strong>.</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">Após a conclusão do DISM, digite 'sfc /scannow' para verificar a integridade dos arquivos de sistema e reinicie o computador.</div>
+            <div class="step-text">Quando o Controle de Conta de Usuário (UAC) exibir a mensagem 'Deseja permitir que este aplicativo faça alterações no seu dispositivo?', selecione <strong>Sim</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Verifique se o cabeçalho da janela do console exibe explicitamente o termo 'Administrador' antes de prosseguir com qualquer digitação de comando.</div>
           </li>
         </ol>
-
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <div class="info-box">
+          <div class="box-content"><p>Certifique-se de que o computador esteja conectado à internet de forma estável durante a etapa do DISM. Caso você esteja em um ambiente corporativo com firewall restritivo ou sem acesso à rede externa, será necessário indicar uma imagem ISO oficial montada como fonte alternativa.</p></div>
         </div>
 
-        
+        <h2 id="etapa-dism-passo-a-passo">Passo 2: Diagnosticar e Reparar o Repositório com o DISM</h2>
+        <p>O DISM possui três níveis progressivos de diagnóstico. Para uma manutenção preventiva e corretiva completa, recomenda-se executar a verificação avançada e em seguida o comando de restauração completa:</p>
+        <p>Primeiramente, execute uma varredura preventiva para averiguar se há danos registrados no repositório de componentes:</p>
+        <pre class="code-block" data-lang="powershell"><code>DISM /Online /Cleanup-Image /ScanHealth</code></pre>
+        <p>Esse comando analisa todos os pacotes instalados sem realizar alterações ativas. Se o retorno indicar que 'O repositório de componentes é reparável', inicie a rotina de restauração executando a seguinte instrução:</p>
+        <pre class="code-block" data-lang="powershell"><code>DISM /Online /Cleanup-Image /RestoreHealth</code></pre>
+        <div class="warning-box">
+          <div class="box-content"><p>Durante a execução do RestoreHealth, é perfeitamente normal que a barra de progresso pare aparentemente em 20%, 40% ou 62.3% por vários minutos seguidos. Não feche a janela do terminal nem reinicie o computador durante esse procedimento, pois o Windows está descompactando pacotes de integridade pesados em segundo plano.</p></div>
+        </div>
+        <p>Aguarde pacientemente até visualizar a mensagem de confirmação final: <strong>'A operação de restauração foi concluída com êxito. A operação foi concluída com êxito.'</strong></p>
 
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
+        <h2 id="etapa-sfc-passo-a-passo">Passo 3: Executar a Varredura do SFC (System File Checker)</h2>
+        <p>Com o repositório de componentes devidamente limpo e reparado pelo DISM, você pode rodar o Verificador de Arquivos do Sistema na mesma janela administrativa aberta:</p>
+        <pre class="code-block" data-lang="powershell"><code>sfc /scannow</code></pre>
+        <p>O utilitário iniciará uma checagem de integridade detalhada em todas as pastas protegidas do sistema operacional. Ao final do processamento, você receberá um dos quatro diagnósticos documentados pela Microsoft:</p>
+        <ul>
+          <li><strong>'A Proteção de Recursos do Windows não encontrou nenhuma violação de integridade':</strong> O sistema operacional está perfeitamente saudável e não há arquivos corrompidos.</li>
+          <li><strong>'A Proteção de Recursos do Windows encontrou arquivos corrompidos e os reparou com êxito':</strong> As falhas foram sanadas com sucesso utilizando a base de componentes que acabamos de validar com o DISM. Reinicie o computador para consolidar as alterações.</li>
+          <li><strong>'A Proteção de Recursos do Windows encontrou arquivos corrompidos, mas não pôde corrigir alguns deles':</strong> Indica falhas persistentes graves em bibliotecas em uso contínuo. Consulte a seção de inspeção de logs CBS abaixo.</li>
+          <li><strong>'A Proteção de Recursos do Windows não pôde executar a operação solicitada':</strong> Ocorre habitualmente quando o serviço do Instalador de Módulos está desativado ou ao rodar sem permissões de Administrador.</li>
+        </ul>
+
+        <h2 id="como-inspecionar-logs-cbs">Passo 4: Como Inspecionar os Resultados no Arquivo CBS.log</h2>
+        <p>O utilitário SFC armazena o histórico detalhado de todas as suas operações no arquivo de log do sistema localizado em <code>C:\Windows\Logs\CBS\CBS.log</code>. Como esse arquivo registra eventos de diversos outros componentes do Windows, você pode filtrar unicamente as entradas geradas pelo SFC gerando um relatório limpo na sua Área de Trabalho:</p>
+        <pre class="code-block" data-lang="powershell"><code>findstr /c:&quot;[SR]&quot; %windir%\Logs\CBS\CBS.log &gt; &quot;%userprofile%\Desktop\sfcdetails.txt&quot;</code></pre>
+        <p>Abra o arquivo <code>sfcdetails.txt</code> criado na sua Área de Trabalho com o Bloco de Notas para verificar os nomes exatos de arquivos DLL ou SYS que foram reparados pelo comando e identificar eventuais pendências.</p>
+
+        <h2 id="solucao-offline-quando-dism-falha">Solução Alternativa: Executar o DISM Offline com Mídia de Instalação</h2>
+        <p>Se o comando <code>RestoreHealth</code> falhar com o código de erro <code>0x800f081f</code> ('Os arquivos de origem não puderam ser encontrados'), significa que o cliente do Windows Update local não conseguiu baixar os arquivos necessários da nuvem. A solução oficial consiste em montar uma imagem ISO oficial do Windows 11 e apontar o arquivo <code>install.wim</code> como fonte confiável de reparo:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Baixe o arquivo ISO oficial do Windows 11 no site da Microsoft e dê um duplo clique para montá-lo no sistema (anote a letra da unidade virtual criada, como por exemplo <code>E:</code>).</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Abra o Prompt de Comando como Administrador e execute o comando abaixo, substituindo a letra <code>E:</code> pela letra correspondente à sua unidade montada:</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Certifique-se de que o arquivo de instalação se chama <code>install.wim</code> dentro da pasta <code>sources</code> da mídia montada.</div>
+          </li>
+        </ol>
+        <pre class="code-block" data-lang="powershell"><code>DISM /Online /Cleanup-Image /RestoreHealth /Source:WIM:E:\sources\install.wim:1 /LimitAccess</code></pre>
+        <p>O parâmetro <code>/LimitAccess</code> impede que o DISM tente recorrer aos servidores externos do Windows Update, forçando o uso estrito dos arquivos limpos contidos na mídia de instalação oficial.</p>
+
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>Posso executar o SFC antes do DISM?</h3>
+            <p>Você pode executar o SFC primeiro, mas se houver corrupção na base de componentes do Windows (pasta WinSxS), o SFC não conseguirá reparar os arquivos danificados e acusará falha irrecuperável. A boa prática recomendada pela documentação oficial da Microsoft é sempre executar o DISM com o parâmetro /RestoreHealth antes do sfc /scannow para assegurar que a fonte de substituição esteja íntegra.</p>
           </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
+          <div class="faq-item">
+            <h3>O DISM ou o SFC podem apagar fotos, documentos ou programas pessoais?</h3>
+            <p>Não. Tanto o DISM quanto o SFC atuam exclusivamente na pasta C:\Windows e nos arquivos binários do sistema operacional (como DLLs, executáveis do kernel, drivers nativos e arquivos de manifesto). Seus arquivos pessoais, pastas de usuário, fotos, documentos e programas instalados não sofrem nenhuma alteração ou exclusão.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O que fazer se o SFC travar em uma porcentagem específica durante a varredura?</h3>
+            <p>Aguarde pelo menos 20 minutos. Se o processo realmente não avançar após esse período, reinicie o computador no Modo de Segurança com Prompt de Comando e execute o comando novamente. No Modo de Segurança, menos drivers e serviços de terceiros disputam o acesso aos arquivos protegidos do sistema.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Quantas vezes por mês devo rodar o DISM e o SFC no computador?</h3>
+            <p>Essas ferramentas são utilitários de diagnóstico e reparo reativo, não de manutenção rotineira obrigatória. Não há necessidade de executá-las periodicamente se o sistema estiver estável. Utilize-as após quedas súbitas de energia, travamentos frequentes ou falhas ao instalar atualizações do Windows Update.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O que fazer se mesmo após o DISM e SFC o Windows 11 continuar apresentando erros?</h3>
+            <p>Se as ferramentas concluírem sem erros mas a falha persistir, o problema pode estar em drivers corrompidos de terceiros, setores defeituosos no disco de armazenamento (execute chkdsk C: /f /r) ou falha física em pentes de memória RAM. Caso a causa seja do sistema operacional, uma instalação de reparo in-place (executar o assistente oficial do Windows mantendo aplicativos e arquivos pessoais) resolverá a questão sem formatação.</p>
           </div>
         </div>
 
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://support.microsoft.com/pt-br/topic/use-a-ferramenta-verificador-de-arquivos-do-sistema-para-reparar-arquivos-de-sistema-ausentes-ou-corrompidos-79aa8600-479b-4e35-1281-de5794e72167" target="_blank" rel="noopener noreferrer">Microsoft Learn — Use a ferramenta Verificador de Arquivos do Sistema para reparar arquivos de sistema ausentes ou corrompidos</a></li>
+          <li><a href="https://learn.microsoft.com/pt-br/windows-hardware/manufacture/desktop/repair-a-windows-image" target="_blank" rel="noopener noreferrer">Microsoft Learn — Reparar uma imagem do Windows usando DISM</a></li>
+        </ul>
+
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-tirar-print-screen-notebook-windows.html" class="related-card">
-              <span class="related-card-title">Como Tirar Print Screen no Notebook Windows 10 e 11</span>
+            <a href="como-corrigir-tela-azul-whea-uncorrectable-error-windows-11.html" class="related-card">
+              <span class="related-card-title">Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11</span>
             </a>
-            <a href="como-corrigir-perfil-temporario-temp-user-profile-service-windows-11.html" class="related-card">
-              <span class="related-card-title">Como Corrigir Perfil Temporário e Erro no User Profile Service (Windows 11)</span>
+            <a href="como-resolver-tela-azul-system-service-exception-windows-11.html" class="related-card">
+              <span class="related-card-title">Como Resolver a Tela Azul SYSTEM_SERVICE_EXCEPTION no Windows 11</span>
             </a>
-            <a href="por-que-computador-fica-lento-passo-a-passo-resolver.html" class="related-card">
-              <span class="related-card-title">Por que o Computador Fica Lento e Passo a Passo para Resolver</span>
+            <a href="como-resolver-erro-critical-process-died-boot-windows-11.html" class="related-card">
+              <span class="related-card-title">Como Resolver o Erro CRITICAL_PROCESS_DIED no Boot do Windows 11</span>
             </a>
-            <a href="como-corrigir-erro-0x80070005-permissao-negada-windows-update.html" class="related-card">
-              <span class="related-card-title">Como Corrigir o Erro 0x80070005 de Permissão Negada no Windows Update</span>
+            <a href="como-resolver-uso-disco-100-porcento-sysmain-wmi-provider-host.html" class="related-card">
+              <span class="related-card-title">Como Resolver Uso de Disco em 100% no Windows 11 com SysMain e WMI</span>
             </a>
           </div>
         </div>
@@ -238,13 +320,16 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#diferenca-tecnica-dism-sfc">Entenda a Função Técnica de Cada Utilitário</a></li>
+          <li><a href="#preparativos-e-terminal-admin">Passo 1: Abrir o Terminal ou Prompt como Administrador</a></li>
+          <li><a href="#etapa-dism-passo-a-passo">Passo 2: Diagnosticar e Reparar o Repositório com o DISM</a></li>
+          <li><a href="#etapa-sfc-passo-a-passo">Passo 3: Executar a Varredura do SFC (System File Checker)</a></li>
+          <li><a href="#como-inspecionar-logs-cbs">Passo 4: Como Inspecionar os Resultados no Arquivo CBS.log</a></li>
+          <li><a href="#solucao-offline-quando-dism-falha">Solução Alternativa: Executar o DISM Offline com Mídia de Instalação</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -252,7 +337,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>

@@ -1,0 +1,171 @@
+{
+  "id": 165,
+  "slug": "como-proteger-conta-whatsapp-contra-golpes-clonagem-sim-swap",
+  "titulo": "Como Proteger Sua Conta do WhatsApp Contra Golpes e SIM Swap",
+  "descricao": "Guia definitivo para blindar o WhatsApp: ativação do PIN de 2 etapas, proteção contra clonagem por SMS, prevenção de SIM Swap e recuperação de conta.",
+  "resposta_curta": "Para blindar sua conta do WhatsApp contra invasões e clonagem, ative imediatamente a confirmação em duas etapas configurando um PIN numérico secreto de 6 dígitos em Configurações > Conta > Confirmação em duas etapas e cadastre um e-mail de recuperação. Nunca informe códigos de 6 dígitos recebidos por SMS a ninguém, ative o bloqueio do app por biometria e configure Passkeys para autenticação direta.",
+  "aplica_se": "WhatsApp no Android e iPhone (iOS)",
+  "intro": [
+    "O WhatsApp tornou-se o aplicativo central da vida profissional e pessoal dos brasileiros. Justamente por concentrar comunicações de trabalho, contatos familiares e histórico financeiro, a plataforma é o alvo prioritário de quadrilhas especializadas em extorsão, golpes de falso pedido de dinheiro e sequestro de contas.",
+    "Muitos usuários acreditam que a 'clonagem' de WhatsApp decorre de softwares espiões complexos instalados à distância, mas a esmagadora maioria dos incidentes ocorre através de métodos de engenharia social (como convencer a vítima a fornecer o código SMS sob pretextos falsos de atualização cadastral) ou através do golpe do **SIM Swap** (quando o golpista desvia a linha telefônica na operadora). Neste guia completo, ensinamos as configurações definitivas para tornar sua conta matematicamente imune a essas ameaças."
+  ],
+  "secoes": [
+    {
+      "id": "diferenca-clonagem-sms-vs-sim-swap",
+      "titulo": "Entenda os Dois Maiores Golpes Aplicados no WhatsApp",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Saber como os criminosos operam é a melhor defesa para não cair nas armadilhas comuns:"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Modalidade do Golpe",
+            "Como os Golpistas Agem",
+            "O Que Impede o Golpe"
+          ],
+          "linhas": [
+            [
+              "Golpe do Código SMS (Engenharia Social)",
+              "Ligam ou mandam mensagem fingindo ser de hotéis, sites de vendas ou suporte, pedindo um código de 6 dígitos enviado por SMS.",
+              "Regra de ouro: nunca ditar ou repassar códigos SMS de verificação para terceiros."
+            ],
+            [
+              "Golpe do SIM Swap (Troca de Chip)",
+              "O criminoso usa dados vazados da vítima para convencer um atendente da operadora de celular a transferir o número para um chip virgem.",
+              "A Confirmação em Duas Etapas (PIN interno do WhatsApp)."
+            ],
+            [
+              "Clonagem de Perfil com Foto Falsa",
+              "O golpista não invade o app: ele apenas cria uma conta nova com outro número, copia sua foto de perfil pública e pede dinheiro a parentes.",
+              "Ocultar foto de perfil para contatos e avisar familiares."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ativar-confirmacao-duas-etapas",
+      "titulo": "Passo 1: Ativar a Confirmação em Duas Etapas (O PIN Secreto)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Esta é a configuração mais importante de todo o aplicativo. Mesmo que um criminoso consiga desviar o seu chip telefônico através de um atendente da operadora, ele não conseguirá entrar no WhatsApp sem este código numérico:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra o **WhatsApp** e acesse as **Configurações** (no Android, três pontos no topo direito > Configurações; no iPhone, aba Configurações no canto inferior direito).",
+            "Toque na opção **Conta**.",
+            "Selecione **Confirmação em duas etapas**.",
+            "Toque no botão **Ativar** (ou Configurar PIN).",
+            "Crie um código PIN secreto de **6 dígitos** memorável (não utilize sequências óbvias como 123456 ou seu ano de nascimento).",
+            "Confirme o código digitando-o novamente.",
+            "Insira obrigatoriamente um **endereço de e-mail de recuperação** confiável (caso você esqueça o PIN no futuro, este será o único meio oficial para redefini-lo sem perder suas conversas)."
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "sucesso",
+          "texto": "O WhatsApp solicitará a digitação desse PIN esporadicamente para garantir que você não o esqueça. Trate esse código com o mesmo segredo da senha do seu banco."
+        }
+      ]
+    },
+    {
+      "id": "configurar-passkeys-chaves-acesso",
+      "titulo": "Passo 2: Configurar Chaves de Acesso (Passkeys) no WhatsApp",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "As versões recentes do WhatsApp suportam o padrão de segurança Passkeys, permitindo autenticar a conta com biometria facial ou digital, dispensando SMS:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Em **Configurações** > **Conta**, toque em **Chaves de acesso** (Passkeys).",
+            "Toque em **Criar uma chave de acesso**.",
+            "Confirme o vínculo da sua chave com o Gerenciador de Credenciais do Google ou Chaves do iCloud usando sua impressão digital ou Face ID.",
+            "Com a Passkey ativada, mesmo que a rede celular sofra instabilidade, o seu aparelho valida a titularidade por criptografia local de hardware."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bloqueio-por-biometria-e-privacidade",
+      "titulo": "Passo 3: Ativar o Bloqueio por Biometria e Blindar a Foto de Perfil",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Evite que pessoas que peguem seu celular desbloqueado acessem suas mensagens e impeça criminosos de usarem sua foto em perfis falsos:"
+        },
+        {
+          "tipo": "lista",
+          "itens": [
+            "**Bloqueio por Impressão Digital / Face ID:** Acesse Configurações > Privacidade > Bloqueio por biometria (ou Bloqueio de tela no iPhone) e ative a opção para exigir autenticação 'Imediatamente'.",
+            "**Ocultar Foto de Perfil de Desconhecidos:** Acesse Configurações > Privacidade > **Foto do perfil** e altere para **Meus contatos** (ou 'Meus contatos, exceto...'). Isso impede que golpistas baixem sua foto em alta resolução para criar contas falsas com outros números."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "procedimento-de-emergencia-conta-invadida",
+      "titulo": "Passo 4: O Que Fazer se a Sua Conta Já Foi Invadida",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se um golpista conseguiu assumir o controle do seu WhatsApp, aja rapidamente para derrubar o acesso dele:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Tente fazer login novamente no WhatsApp no seu celular digitando seu número de telefone e solicitando o código SMS. Assim que você entra com o código SMS, o criminoso é desconectado instantaneamente da sessão dele.",
+            "Se o criminoso tiver cadastrado um PIN de confirmação em duas etapas que você não sabe, o app pedirá esse PIN. Você precisará aguardar 7 dias para redefinir o PIN, mas durante esse período de espera o criminoso também fica totalmente bloqueado de enviar mensagens.",
+            "Envie um e-mail urgente para o suporte oficial do WhatsApp no endereço `support@whatsapp.com` com o assunto: **'Perdido/Roubado: Desative minha conta'** e no corpo do e-mail insira seu número em formato internacional (ex: `+55 11 99999-9999`). Isso desativa a conta imediatamente nos servidores da empresa."
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O WhatsApp Web pode ser usado para espionar conversas?",
+      "r": "Sim, se alguém teve acesso físico ao seu celular desbloqueado por alguns segundos para escanear o QR Code. Para verificar e expulsar invasores, abra o WhatsApp, acesse 'Aparelhos conectados', examine a lista de navegadores ativos e toque em 'Desconectar' em qualquer sessão suspeita."
+    },
+    {
+      "p": "Como se proteger contra o golpe do SIM Swap na operadora?",
+      "r": "Ligue para a central de atendimento da sua operadora móvel (Claro, Vivo, TIM) e solicite a criação de uma senha verbal de segurança adicional para atendimento humano e exija que qualquer troca de chip presencial seja feita exclusivamente com biometria facial em loja oficial."
+    },
+    {
+      "p": "O que fazer se um parente cair no golpe da foto falsa e fizer um Pix?",
+      "r": "A vítima que realizou o pagamento deve acionar imediatamente o Mecanismo Especial de Devolução (MED) pelo aplicativo do próprio banco por onde enviou o Pix, informando que foi vítima de golpe de falsidade ideológica. O banco receptor efetuará o bloqueio cautelar dos fundos se a comunicação for rápida."
+    },
+    {
+      "p": "O WhatsApp envia mensagens pelo chat pedindo códigos?",
+      "r": "Nunca. O WhatsApp possui canais oficiais verificados (marcados com selo verde autêntico), mas NUNCA solicita códigos de validação por mensagens de texto ou chamadas de voz."
+    },
+    {
+      "p": "O backup de conversas no Google Drive ou iCloud é seguro?",
+      "r": "Para máxima privacidade, ative o 'Backup criptografado de ponta a ponta' em Configurações > Conversas > Backup de conversas. Sem essa chave, nem mesmo o Google ou a Apple conseguem ler suas mensagens nos servidores de nuvem."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Central de Ajuda do WhatsApp — Como manter sua conta segura",
+      "url": "https://faq.whatsapp.com/1131652977717250/"
+    },
+    {
+      "titulo": "Central de Ajuda do WhatsApp — Contas roubadas e procedimentos de recuperação",
+      "url": "https://faq.whatsapp.com/1131750047788390/"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    131,
+    132,
+    166,
+    201
+  ]
+}

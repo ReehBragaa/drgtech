@@ -1,0 +1,168 @@
+{
+  "id": 132,
+  "slug": "como-saber-se-email-e-falso-ou-golpe-phishing",
+  "titulo": "Como Saber se um E-mail é Falso ou Golpe de Phishing",
+  "descricao": "Guia prático para identificar e-mails fraudulentos e phishing: inspeção de cabeçalhos SPF/DKIM/DMARC, URLs camufladas e engenharia social.",
+  "resposta_curta": "Para identificar se um e-mail é falso, verifique o endereço do remetente real (o domínio após a @ e não apenas o nome de exibição), desconfie de mensagens que exigem urgência imediata ou ameaçam bloqueio de conta bancária, passe o cursor do mouse sobre links sem clicar para inspecionar a URL real de destino e confira os registros de autenticação SPF, DKIM e DMARC no cabeçalho original da mensagem.",
+  "aplica_se": "Gmail, Outlook, Yahoo e clientes corporativos de e-mail",
+  "intro": [
+    "O phishing por correio eletrônico continua sendo o vetor de ataque número um utilizado por cibercriminosos no mundo inteiro para invadir computadores corporativos, roubar credenciais bancárias e sequestrar dados de usuários comuns. Se antigamente os e-mails fraudulentos eram fáceis de identificar por conter erros grotescos de português e layouts deformados, hoje em dia as quadrilhas utilizam ferramentas de inteligência artificial generativa e clonam fielmente os logotipos, tipografias e templates oficiais de grandes bancos e empresas.",
+    "Apesar da aparência visual convincente, a infraestrutura da internet possui assinaturas criptográficas e protocolos de transporte que golpistas não conseguem falsificar sem deixar rastros evidentes. Saber onde olhar no aplicativo de e-mail permite desmascarar a fraude em menos de trinta segundos. Neste guia completo, ensinamos os passos práticos para analisar a autenticidade de mensagens suspeitas."
+  ],
+  "secoes": [
+    {
+      "id": "anatomia-do-golpe-phishing",
+      "titulo": "Os Três Gatilhos Psicológicos Mais Usados em Golpes",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Criminosos digitais exploram reações emocionais imediatas para impedir que a vítima raciocine criticamente antes de clicar em links perigosos:"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Gatilho Emocional",
+            "Exemplo de Assunto do E-mail",
+            "Mecanismo de Manipulação"
+          ],
+          "linhas": [
+            [
+              "Falsa Urgência / Medo",
+              "'Sua conta será cancelada em 2 horas' ou 'Aviso de bloqueio judicial'",
+              "Induz o pânico para que a vítima clique imediatamente sem analisar o remetente."
+            ],
+            [
+              "Curiosidade / Ganância",
+              "'Você recebeu uma transferência via Pix desconhecida' ou 'Cupom de R$ 500'",
+              "Estimula o clique rápido na expectativa de obter vantagem financeira."
+            ],
+            [
+              "Autoridade / Compliance",
+              "'Notificação de cobrança da Receita Federal' ou 'Boleto em atraso'",
+              "Usa símbolos oficiais e brasões governamentais para forçar o download de anexos com vírus."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inspecionar-remetente-real",
+      "titulo": "Passo 1: Inspecionar o Endereço de E-mail Real (Display Name Spoofing)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O erro mais comum cometido por usuários é confiar apenas no nome que aparece no topo da mensagem. Qualquer pessoa pode configurar seu nome de exibição como 'Banco do Brasil', mas o endereço real após o `@` revela a fraude:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Passe o mouse ou toque sobre o nome do remetente no topo da mensagem para expandir o endereço completo.",
+            "Verifique o domínio exato: e-mails legítimos de grandes instituições utilizam estritamente seus domínios proprietários (como `@bb.com.br` ou `@mercadolivre.com.br`).",
+            "Desconfie de remetentes que utilizam provedores públicos gratuitos (como `@gmail.com`, `@outlook.com` ou `@bol.com.br`) se apresentando como departamentos jurídicos ou de suporte de multinacionais.",
+            "Atenção para ataques de Typosquatting (troca sutil de letras): por exemplo, `contato@bancod0brasil.com.br` (com o número zero no lugar da letra O) ou `suporte@itau-seguranca-atualizacao.com`."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "checagem-segura-de-links",
+      "titulo": "Passo 2: Inspecionar Links sem Clicar (Hovering de URL)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O texto visível de um botão ou link em HTML pode dizer 'Clique aqui para acessar seu banco', enquanto o link real escondido por trás aponta para um servidor malicioso:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "No computador, posicione o cursor do mouse sobre o botão ou link suspeito **sem clicar**.",
+            "Observe o canto inferior esquerdo da tela do seu navegador ou programa de e-mail: o endereço real completo de destino será exibido em uma barra flutuante cinza.",
+            "No celular, toque e mantenha o dedo pressionado sobre o link por 2 segundos até surgir o menu de contexto com a URL real antes de abrir.",
+            "Identifique o domínio raiz (apex domain): certifique-se de que o endereço termina exatamente com o domínio oficial antes da primeira barra de diretório (`/`)."
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "atencao",
+          "texto": "Se a URL utilizar encurtadores de links (como bit.ly, tinyurl ou is.gd) em mensagens bancárias, trate a comunicação como fraude imediata. Bancos oficiais nunca utilizam encurtadores gratuitos em alertas de segurança."
+        }
+      ]
+    },
+    {
+      "id": "inspecionar-cabecalhos-spf-dkim-dmarc",
+      "titulo": "Passo 3: Conferir os Registros Criptográficos SPF, DKIM e DMARC",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Para ter certeza matemática de que o e-mail não foi forjado por servidores falsos na internet, consulte o cabeçalho técnico da mensagem:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "No **Gmail Web:** Abra o e-mail, clique no menu de três pontos ao lado do botão Responder e selecione **Mostrar original**.",
+            "No painel superior do relatório original, o Google exibirá o resumo das três verificações criptográficas:",
+            "- **SPF (Sender Policy Framework):** Deve constar como **PASS** (indica que o IP do servidor que enviou tem autorização da empresa).",
+            "- **DKIM (DomainKeys Identified Mail):** Deve constar como **PASS** (indica que a mensagem tem assinatura digital válida e não foi alterada no caminho).",
+            "- **DMARC:** Deve constar como **PASS**.",
+            "Se o SPF ou o DMARC constarem como **FAIL** ou **SOFTFAIL**, o e-mail foi falsificado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o-que-fazer-se-clicou-no-golpe",
+      "titulo": "Passo 4: Procedimento de Emergência Caso Tenha Clicado ou Dado Senha",
+      "blocos": [
+        {
+          "tipo": "lista",
+          "itens": [
+            "**Se digitou senhas em página falsa:** Acesse imediatamente o site oficial digitando o endereço diretamente no navegador e altere a senha da sua conta e de todas as outras contas que compartilhavam a mesma credencial.",
+            "**Se abriu anexos executáveis (arquivos .exe, .zip, .bat ou documentos do Office com macros):** Desconecte o computador da internet (remova o cabo de rede ou desligue o Wi-Fi) para interromper a comunicação de trojans e execute uma varredura completa offline com o Microsoft Defender.",
+            "**Se digitou dados de cartão de crédito:** Abra o aplicativo do seu banco no celular e efetue o bloqueio temporário do cartão físico e a exclusão imediata do cartão virtual."
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "Um e-mail enviado de dentro do domínio oficial da empresa pode ser golpe?",
+      "r": "Sim. Se um funcionário da empresa tiver sua conta de e-mail corporativo invadida por criminosos (comprometimento de conta corporativa - BEC), o invasor poderá disparar e-mails maliciosos a partir da caixa de correio legítima. Suspeite sempre de alterações repentinas de contas bancárias para pagamento de fornecedores."
+    },
+    {
+      "p": "Arquivos em formato PDF podem conter vírus?",
+      "r": "Sim. Arquivos PDF modernos suportam scripts embutidos (JavaScript), links externos maliciosos e podem explorar falhas de corrupção de memória em leitores de PDF desatualizados para executar códigos ocultos na máquina."
+    },
+    {
+      "p": "Os filtros anti-spam das caixas de entrada pegam 100% dos golpes?",
+      "r": "Não. Embora filtros de inteligência artificial de serviços como Gmail e Microsoft 365 bloqueiem mais de 99% dos spams em massa, ataques direcionados e campanhas recém-lançadas de dia zero (zero-hour phishing) conseguem transitar até a caixa de entrada antes de serem catalogados."
+    },
+    {
+      "p": "O cadeado verde de HTTPS no site prova que a página não é golpe?",
+      "r": "Não. O cadeado HTTPS prova unicamente que a conexão entre seu navegador e aquele servidor é criptografada. Cibercriminosos registram domínios falsos com certificados SSL gratuitos emitidos automaticamente para dar falsa impressão de legitimidade às páginas de phishing."
+    },
+    {
+      "p": "Como denunciar e-mails falsos?",
+      "r": "No próprio cliente de e-mail, clique no menu de opções da mensagem e selecione 'Denunciar phishing' (ou Denunciar tentativa de golpe). Isso envia a amostra para a equipe de cibersegurança do provedor de e-mail para alimentar os filtros de proteção de todos os usuários da plataforma."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "CISA — Recognizing and Avoiding Email Scams (Phishing)",
+      "url": "https://www.cisa.gov/news-events/news/recognizing-and-avoiding-email-scams"
+    },
+    {
+      "titulo": "Google Workspace Admin Help — Autenticação de e-mail com SPF, DKIM e DMARC",
+      "url": "https://support.google.com/a/answer/33786?hl=pt-BR"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    131,
+    166,
+    165,
+    152
+  ]
+}

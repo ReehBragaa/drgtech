@@ -3,29 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como Proteger Seus Arquivos Contra Ransomware (Regra de Backup 3-2-1) — DRGTech</title>
-  <meta name="description" content="Para blindar seus documentos contra ataques de ransomware (sequestro de dados por criptografia maliciosa), aplique a regra de backup 3-2-1: mantenha 3 cópi..." />
-  <meta name="keywords" content="como proteger seus arquivos contra ransomware (regra de backup 3-2-1), tutorial segurança, suporte tecnico" />
+  <title>Como Proteger Seus Arquivos Contra Ransomware com a Regra 3-2-1 — DRGTech</title>
+  <meta name="description" content="Guia completo de defesa contra sequestro de dados e ransomware: implementação da regra de backup 3-2-1-1-0, cópias imutáveis e proteção de pastas no Windows 11." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Como Proteger Seus Arquivos Contra Ransomware (Regra de Backup 3-2-1) — DRGTech" />
-  <meta property="og:description" content="Para blindar seus documentos contra ataques de ransomware (sequestro de dados por criptografia maliciosa), aplique a regra de backup 3-2-1: mantenha 3 cópi..." />
+  <meta property="og:title" content="Como Proteger Seus Arquivos Contra Ransomware com a Regra 3-2-1 — DRGTech" />
+  <meta property="og:description" content="Guia completo de defesa contra sequestro de dados e ransomware: implementação da regra de backup 3-2-1-1-0, cópias imutáveis e proteção de pastas no Windows 11." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-proteger-arquivos-contra-ransomware-regra-backup-3-2-1.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Como Proteger Seus Arquivos Contra Ransomware (Regra de Backup 3-2-1) — DRGTech" />
-  <meta name="twitter:description" content="Para blindar seus documentos contra ataques de ransomware (sequestro de dados por criptografia maliciosa), aplique a regra de backup 3-2-1: mantenha 3 cópi..." />
+  <meta name="twitter:title" content="Como Proteger Seus Arquivos Contra Ransomware com a Regra 3-2-1 — DRGTech" />
+  <meta name="twitter:description" content="Guia completo de defesa contra sequestro de dados e ransomware: implementação da regra de backup 3-2-1-1-0, cópias imutáveis e proteção de pastas no Windows 11." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-proteger-arquivos-contra-ransomware-regra-backup-3-2-1.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Proteger Seus Arquivos Contra Ransomware com a Regra 3-2-1",
+  "description": "Guia completo de defesa contra sequestro de dados e ransomware: implementação da regra de backup 3-2-1-1-0, cópias imutáveis e proteção de pastas no Windows 11.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-proteger-arquivos-contra-ransomware-regra-backup-3-2-1.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,47 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Proteger Seus Arquivos Contra Ransomware (Regra de Backup 3-2-1)",
+      "name": "Por que as empresas de segurança recomendam nunca pagar o resgate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Para blindar seus documentos contra ataques de ransomware (sequestro de dados por criptografia maliciosa), aplique a regra de backup 3-2-1: mantenha 3 cópias dos seus dados em 2 mídias diferentes (HD externo e nuvem) com 1 cópia mantida totalmente offline (air-gapped) e ative a Proteção Contra Ransomware no Windows Defender."
+        "text": "Pagar o resgate não garante que os criminosos entregarão a chave descriptografadora (estatísticas globais apontam que mais de 20% das vítimas pagam e nunca recebem nada). Além disso, comprova que a vítima é rentável, tornando-a alvo prioritário para novos ataques subsequentes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que são ferramentas de descriptografia gratuitas (No More Ransom)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O projeto internacional 'No More Ransom' (nomoreransom.org), criado pela Europol e líderes de cibersegurança, reúne centenas de chaves e ferramentas de descriptografia recuperadas em operações policiais contra quadrilhas. Se você for atacado, verifique a plataforma antes de qualquer decisão."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O backup no OneDrive ou Google Drive protege 100% contra ransomware?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Protege se a função de 'Histórico de Versões' estiver disponível. Se os arquivos criptografados sincronizarem com a nuvem sobrescrevendo as versões limpas, serviços como OneDrive e Google Drive possuem recursos para reverter a pasta inteira para o estado de horas antes da infecção."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Um pendrive comum serve como backup seguro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Serve como cópia offline complementar, desde que você copie os arquivos e retire imediatamente o pendrive da porta USB física do computador. Se o pendrive ficar plugado permanentemente, ele será criptografado junto com o computador."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual a diferença entre cópia de backup e sincronização em tempo real?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sincronização em tempo real (como espelhamento de pastas) replica instantaneamente exclusões e alterações: se um arquivo for corrompido ou criptografado no computador, ele será corrompido na nuvem no mesmo segundo. Um backup verdadeiro preserva versões congeladas no tempo e possui regras de retenção histórica imutáveis."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,7 +113,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Como Proteger Seus Arquivos Contra Ransomware (Regra de Backup 3-2-1)",
+      "name": "Como Proteger Seus Arquivos Contra Ransomware com a Regra 3-2-1",
       "item": "https://drgtech.com.br/artigos/como-proteger-arquivos-contra-ransomware-regra-backup-3-2-1.html"
     }
   ]
@@ -103,132 +153,155 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#seguranca">Segurança</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Proteger Seus Arquivos Contra ...</span>
+        <span>Como Proteger Seus Arquivos Contra…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-red">Segurança</span>
-        <h1 class="article-h1">Como Proteger Seus Arquivos Contra Ransomware (Regra de Backup 3-2-1)</h1>
+        <h1 class="article-h1">Como Proteger Seus Arquivos Contra Ransomware com a Regra 3-2-1</h1>
         <div class="article-intro-meta">
-          <span class="meta-item">8 min de leitura</span>
-          <span class="meta-item">Atualizado em agosto de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">5 min de leitura</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> Para blindar seus documentos contra ataques de ransomware (sequestro de dados por criptografia maliciosa), aplique a regra de backup 3-2-1: mantenha 3 cópias dos seus dados em 2 mídias diferentes (HD externo e nuvem) com 1 cópia mantida totalmente offline (air-gapped) e ative a Proteção Contra Ransomware no Windows Defender.
+        <strong>Resposta rápida:</strong> Para proteger seus arquivos de forma definitiva contra ataques de ransomware, implemente a metodologia padrão ouro de cibersegurança: a Regra de Backup 3-2-1-1-0. Mantenha 3 cópias de dados em pelo menos 2 tipos de mídias diferentes, com 1 cópia fora do local (nuvem), 1 cópia imutável ou offline (desconectada da rede elétrica/ar-gap) e 0 erros validados em testes periódicos de restauração. No Windows 11, ative também o recurso nativo de 'Acesso a Pastas Controladas' do Microsoft Defender.
       </div>
 
       <article class="article-body" id="article-body">
+        <p>O ransomware representa a ameaça cibernética mais destrutiva da atualidade para usuários domésticos e empresas de todos os portes. Diferente de vírus comuns que apenas exibem anúncios ou roubam senhas, os ransomwares modernos operam como armas criptográficas de extorsão: eles invadem o sistema, apagam silenciosamente as cópias de sombra do Windows (VSS), percorrem as unidades de rede compartilhadas e criptografam todos os seus documentos, fotos, bancos de dados e planilhas com cifras inquebráveis (como AES-256 e RSA-4096).</p>
+        <p>Ao final da infecção, o invasor altera o papel de parede e deposita arquivos de texto com instruções exigindo resgates milionários em criptomoedas para fornecer a chave de descriptografia. A recomendação unânime de todas as agências internacionais de cibersegurança (incluindo CISA, FBI e autoridades brasileiras) é <strong>nunca pagar o resgate</strong>, pois o pagamento financia o crime organizado e não garante a devolução dos dados. A única salvação garantida é possuir cópias de segurança isoladas e imutáveis. A seguir, ensinamos como estruturar essa defesa na prática.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> Windows 11, Windows 10, servidores e armazenamento corporativo</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Proteger Seus Arquivos Contra Ransomware (Regra de Backup 3-2-1)"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Segurança</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
+        <h2 id="anatomia-do-ataque-ransomware">Como os Ransomwares Modernos Agem no Windows</h2>
+        <p>Compreender as fases de um ataque moderno explica por que um simples backup em um pendrive que fica o tempo todo espetado no computador é inútil:</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Fase do Ataque</th><th>Ação do Ransomware</th><th>Por Que Destrói Backups Comuns</th></tr></thead>
+            <tbody>
+              <tr><td>1. Acesso e Reconhecimento</td><td>Invasão via e-mail de phishing, RDP exposto ou vulnerabilidade de software.</td><td>Mapeia todas as unidades de disco locais (C:, D:) e pastas compartilhadas na rede.</td></tr>
+              <tr><td>2. Destruição de Defesas</td><td>Executa comandos como <code>vssadmin delete shadows /all /quiet</code> e desativa o WinRE.</td><td>Inutiliza completamente a Restauração do Sistema nativa do Windows.</td></tr>
+              <tr><td>3. Criptografia em Massa</td><td>Gera uma chave única e criptografa arquivos substituindo extensões.</td><td>Se o seu HD externo de backup estiver conectado à porta USB, ele será criptografado junto.</td></tr>
+              <tr><td>4. Extorsão e Mensagem</td><td>Exibe a nota de resgate com prazos em contagem regressiva.</td><td>Sem um backup offline ou imutável, a perda dos dados é definitiva.</td></tr>
+            </tbody>
+          </table>
         </div>
 
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
-        <ol class="steps-list">
+        <h2 id="regra-de-backup-3-2-1-1-0">Passo 1: Implementar a Estratégia de Backup 3-2-1-1-0</h2>
+        <p>A arquitetura de contingência recomendada por especialistas em continuidade de negócios é a evolução da regra 3-2-1 para a era do ransomware:</p>
+        <ul>
+          <li><strong>3 Cópias de Dados:</strong> Mantenha os dados originais de produção e pelo menos mais duas cópias de segurança atualizadas.</li>
+          <li><strong>2 Tipos Diferentes de Mídia:</strong> Utilize suportes físicos distintos para evitar falhas sistêmicas (por exemplo, uma cópia em unidade de disco externa local e outra cópia em armazenamento em nuvem).</li>
+          <li><strong>1 Cópia Fora do Local (Off-site):</strong> Armazene uma cópia em um local geograficamente distante (nuvem como Google Drive, OneDrive, Backblaze B2 ou AWS S3) para sobreviver a furtos, inundações ou incêndios.</li>
+          <li><strong>1 Cópia Imutável ou Offline (Air-Gapped):</strong> Mantenha um HD externo que é conectado ao computador <strong>apenas durante a gravação do backup e desconectado da porta USB logo em seguida</strong>, ou utilize armazenamento em nuvem com bloqueio de exclusão (Object Lock). Cópias desconectadas não podem ser alcançadas por ransomwares que infectam a máquina.</li>
+          <li><strong>0 Erros em Testes de Restauração:</strong> Realize testes práticos mensais de recuperação para garantir que os arquivos salvos não estão corrompidos e abrem perfeitamente.</li>
+        </ul>
 
+        <h2 id="acesso-pastas-controladas-windows-11">Passo 2: Ativar o 'Acesso a Pastas Controladas' do Microsoft Defender</h2>
+        <p>O Windows 11 inclui uma barreira nativa antiransomware excelente que bloqueia qualquer aplicativo não autorizado de modificar arquivos em pastas protegidas:</p>
+        <ol class="steps-list">
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">Mantenha 3 cópias dos seus arquivos importantes: a cópia de trabalho no computador, uma cópia em um HD externo/pendrive e uma cópia na nuvem (OneDrive/Google Drive).</div>
+            <div class="step-text">Abra o menu Iniciar e digite <strong>Segurança do Windows</strong>.</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">Mantenha a cópia do HD externo desconectada do computador quando não estiver fazendo o backup (backup offline/air-gapped impede infecção cruzada).</div>
+            <div class="step-text">Clique na seção <strong>Proteção contra vírus e ameaças</strong>.</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">Abra a Segurança do Windows, vá em 'Proteção contra vírus e ameaças' > 'Gerenciar proteção contra ransomware' e ative o 'Acesso a pastas controladas'.</div>
+            <div class="step-text">Role até a seção inferior <strong>Proteção contra ransomware</strong> e clique no link <strong>Gerenciar proteção contra ransomware</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Ative a chave seletora <strong>Acesso a pastas controladas</strong> (Controlled Folder Access).</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Clique em 'Pastas protegidas' para adicionar pastas personalizadas de trabalho além das pastas padrão (Documentos, Fotos, Vídeos, Área de Trabalho).</div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-text">Se um aplicativo confiável for bloqueado ao tentar salvar um arquivo, clique em 'Permitir um aplicativo pelo Acesso a pastas controladas' para adicioná-lo à lista de exceções.</div>
           </li>
         </ol>
-
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <div class="success-box">
+          <div class="box-content"><p>Com o Acesso a Pastas Controladas ativo, mesmo que um executável malicioso de ransomware rode na máquina, o kernel do Windows interceptará a tentativa de criptografia e bloqueará a alteração em tempo real.</p></div>
         </div>
 
-        
+        <h2 id="desativar-servicos-vulneraveis-rdp">Passo 3: Fechar Portas de Acesso Remoto (RDP e SMBv1)</h2>
+        <p>Muitas infecções corporativas ocorrem porque a porta de Área de Trabalho Remota (RDP) fica exposta diretamente para a internet:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Em computadores domésticos, certifique-se de que a Área de Trabalho Remota está desativada em Configurações &gt; Sistema &gt; Área de Trabalho Remota.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Desative o protocolo obsoleto SMB versão 1 (utilizado historicamente por ataques como o WannaCry) executando no PowerShell administrativo:</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Nunca abra a porta 3389 do seu roteador direcionada para computadores locais sem uma conexão VPN prévia.</div>
+          </li>
+        </ol>
+        <pre class="code-block" data-lang="powershell"><code>Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol -NoRestart</code></pre>
 
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>Por que as empresas de segurança recomendam nunca pagar o resgate?</h3>
+            <p>Pagar o resgate não garante que os criminosos entregarão a chave descriptografadora (estatísticas globais apontam que mais de 20% das vítimas pagam e nunca recebem nada). Além disso, comprova que a vítima é rentável, tornando-a alvo prioritário para novos ataques subsequentes.</p>
           </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
+          <div class="faq-item">
+            <h3>O que são ferramentas de descriptografia gratuitas (No More Ransom)?</h3>
+            <p>O projeto internacional 'No More Ransom' (nomoreransom.org), criado pela Europol e líderes de cibersegurança, reúne centenas de chaves e ferramentas de descriptografia recuperadas em operações policiais contra quadrilhas. Se você for atacado, verifique a plataforma antes de qualquer decisão.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O backup no OneDrive ou Google Drive protege 100% contra ransomware?</h3>
+            <p>Protege se a função de 'Histórico de Versões' estiver disponível. Se os arquivos criptografados sincronizarem com a nuvem sobrescrevendo as versões limpas, serviços como OneDrive e Google Drive possuem recursos para reverter a pasta inteira para o estado de horas antes da infecção.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Um pendrive comum serve como backup seguro?</h3>
+            <p>Serve como cópia offline complementar, desde que você copie os arquivos e retire imediatamente o pendrive da porta USB física do computador. Se o pendrive ficar plugado permanentemente, ele será criptografado junto com o computador.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Qual a diferença entre cópia de backup e sincronização em tempo real?</h3>
+            <p>Sincronização em tempo real (como espelhamento de pastas) replica instantaneamente exclusões e alterações: se um arquivo for corrompido ou criptografado no computador, ele será corrompido na nuvem no mesmo segundo. Um backup verdadeiro preserva versões congeladas no tempo e possui regras de retenção histórica imutáveis.</p>
           </div>
         </div>
 
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://www.cisa.gov/stopransomware" target="_blank" rel="noopener noreferrer">CISA — Stop Ransomware Official Guidance and Prevention Best Practices</a></li>
+          <li><a href="https://www.nomoreransom.org/pt_BR/index.html" target="_blank" rel="noopener noreferrer">Europol / No More Ransom Project — Decryption Tools and Information</a></li>
+        </ul>
+
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-saber-se-whatsapp-foi-clonado-ou-hacker.html" class="related-card">
-              <span class="related-card-title">Como Saber se o WhatsApp Foi Clonado e Como Desconectar Hackers</span>
-            </a>
-            <a href="como-ativar-verificacao-duas-etapas-instagram-whatsapp.html" class="related-card">
-              <span class="related-card-title">Como Ativar a Verificação em Duas Etapas no WhatsApp e Instagram</span>
-            </a>
-            <a href="como-proteger-roteador-rede-local-contra-injecao-upnp.html" class="related-card">
-              <span class="related-card-title">Como Proteger o Roteador e a Rede Local Contra Injeção no UPnP</span>
-            </a>
             <a href="como-criar-uma-senha-segura-e-forte.html" class="related-card">
-              <span class="related-card-title">Como Criar uma Senha Segura e Forte Passo a Passo</span>
+              <span class="related-card-title">Como Criar uma Senha Segura e Forte: Guia Completo e Diretrizes NIST</span>
+            </a>
+            <a href="como-saber-se-email-e-falso-ou-golpe-phishing.html" class="related-card">
+              <span class="related-card-title">Como Saber se um E-mail é Falso ou Golpe de Phishing</span>
+            </a>
+            <a href="como-saber-se-email-senha-foram-vazados-internet.html" class="related-card">
+              <span class="related-card-title">Como Saber se Seu E-mail e Senha Foram Vazados na Internet</span>
+            </a>
+            <a href="analise-tecnica-zero-day-cve-2026-68820-afd-sys-windows.html" class="related-card">
+              <span class="related-card-title">Análise Técnica do Zero-Day CVE-2026-68820 no afd.sys do Windows</span>
             </a>
           </div>
         </div>
@@ -238,13 +311,14 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#anatomia-do-ataque-ransomware">Como os Ransomwares Modernos Agem no Windows</a></li>
+          <li><a href="#regra-de-backup-3-2-1-1-0">Passo 1: Implementar a Estratégia de Backup 3-2-1-1-0</a></li>
+          <li><a href="#acesso-pastas-controladas-windows-11">Passo 2: Ativar o 'Acesso a Pastas Controladas' do Microsoft Defender</a></li>
+          <li><a href="#desativar-servicos-vulneraveis-rdp">Passo 3: Fechar Portas de Acesso Remoto (RDP e SMBv1)</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -252,7 +326,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>

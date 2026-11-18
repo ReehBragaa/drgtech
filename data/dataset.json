@@ -1590,7 +1590,7 @@
     "slug": "como-criar-pendrive-resgate-criptografado-backup-emergencia",
     "keyword_principal": "Como Criar um Pendrive de Resgate Criptografado para Backup de Emergência",
     "categoria": "seguranca",
-    "resposta_curta": "Criar uma cópia de segurança em pendrive criptografado garante que seus documentos mais sensíveis fiquem protegidos contra vazamentos em caso de perda do dispositivo físico. No Windows, utilize o BitDrive ou a ferramenta gratuita VeraCrypt para proteger a unidade.",
+    "resposta_curta": "Criar uma cópia de segurança em pendrive criptografado garante que seus documentos mais sensíveis fiquem protegidos contra vazamentos em caso de perda do dispositivo físico. No Windows, utilize o BitLocker To Go ou a ferramenta gratuita VeraCrypt para proteger a unidade.",
     "passo_a_passo": [
       "Conecte o pendrive ao computador, abra o Meu Computador, clique com o botão direito na unidade e selecione 'Ligar BitLocker'.",
       "Defina uma senha forte para desbloqueio do pendrive e salve a chave de recuperação em local seguro.",

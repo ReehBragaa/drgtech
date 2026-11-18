@@ -1,0 +1,183 @@
+{
+  "id": 196,
+  "slug": "como-configurar-dns-sobre-https-doh-chrome-firefox-edge",
+  "titulo": "Como Configurar DNS sobre HTTPS (DoH) no Chrome, Edge e Firefox",
+  "descricao": "Guia técnico para ativar DNS over HTTPS (DoH) no navegador e no Windows 11: criptografia de consultas DNS contra espionagem de operadoras e Wi-Fi público.",
+  "resposta_curta": "O DNS sobre HTTPS (DoH, RFC 8484) encapsula todas as consultas de nomes de sites dentro de pacotes criptografados TLS através da porta HTTPS padrão (porta 443), impedindo que provedores de internet ou invasores em redes Wi-Fi públicas espionem seu histórico de navegação. Para ativar no Google Chrome ou Edge, acesse Configurações > Privacidade e Segurança > Segurança, ative a opção 'Usar DNS seguro' e selecione um provedor como Cloudflare ou Google. No Firefox, habilite a 'Proteção Máxima' em Privacidade e Segurança.",
+  "aplica_se": "Google Chrome, Microsoft Edge, Mozilla Firefox e Windows 11",
+  "intro": [
+    "Desde a criação da arquitetura da internet em 1983, o protocolo DNS tradicional opera através de pacotes UDP na porta 53 sem nenhuma criptografia. Isso significa que mesmo quando você acessa um site protegido por cadeado HTTPS (como um banco ou loja virtual), o seu provedor de internet, o administrador da rede Wi-Fi do café ou qualquer intermediário na rota consegue ler em texto puro o nome exato de cada domínio que você consulta.",
+    "Para eliminar essa grave brecha histórica de privacidade e combater ataques de redirecionamento malicioso (DNS Spoofing), a indústria padronizou o **DNS sobre HTTPS** (DoH - RFC 8484). Com o DoH ativado, as consultas de resolução de nomes são transmitidas como tráfego HTTPS comum criptografado com certificados TLS modernos, misturando-se com o restante do tráfego web seguro e tornando sua navegação completamente blindada contra monitoramento externo. A seguir, ensinamos o passo a passo para habilitar o recurso no Chrome, Edge, Firefox e de forma global no Windows 11."
+  ],
+  "secoes": [
+    {
+      "id": "diferenca-dns-tradicional-vs-doh",
+      "titulo": "Como o DoH Protege a Sua Privacidade na Prática",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "A comparação entre o modelo antigo e o protocolo DoH evidencia o salto de segurança para o usuário comum:"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Critério de Segurança",
+            "DNS Convencional (Porta 53)",
+            "DNS sobre HTTPS (DoH - Porta 443)"
+          ],
+          "linhas": [
+            [
+              "Criptografia de Dados",
+              "Nenhuma. Pacotes enviados em texto puro aberto.",
+              "Criptografia ponta a ponta com TLS 1.3."
+            ],
+            [
+              "Visibilidade do Provedor (ISP)",
+              "Seu provedor registra cada site que você digita.",
+              "O provedor só enxerga tráfego HTTPS genérico para o resolvedor."
+            ],
+            [
+              "Vulnerabilidade a Redirecionamento",
+              "Alta. Suscetível a ataques Man-in-the-Middle e spoofing.",
+              "Blindado contra adulteração de respostas por assinatura criptográfica."
+            ],
+            [
+              "Bloqueio e Censura Indevida",
+              "Fácil. Provedores aplicam bloqueios de DNS arbitrários.",
+              "Impossível de filtrar sem derrubar todo o tráfego HTTPS."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "configurar-doh-google-chrome",
+      "titulo": "Passo 1: Ativar DNS sobre HTTPS no Google Chrome",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "No Google Chrome para computador ou Android, o recurso é habilitado nas opções de segurança:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra o **Google Chrome** e clique no menu de três pontos no canto superior direito.",
+            "Selecione **Configurações** e clique em **Privacidade e segurança** na barra lateral esquerda.",
+            "Clique na opção **Segurança**.",
+            "Role para baixo até a seção 'Avançado' e localize a opção **Usar DNS seguro**.",
+            "Ative a chave seletora e marque a opção **Com** (Personalizado).",
+            "No menu suspenso, escolha um resolvedor confiável: selecione **Cloudflare (1.1.1.1)** ou **Google (Public DNS)**.",
+            "Feche o navegador e reabra para aplicar a criptografia imediata."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "configurar-doh-microsoft-edge",
+      "titulo": "Passo 2: Ativar DNS sobre HTTPS no Microsoft Edge",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "No Microsoft Edge, o procedimento segue a mesma arquitetura Chromium:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra o **Microsoft Edge**, clique nos três pontos e selecione **Configurações**.",
+            "No menu lateral, selecione **Privacidade, pesquisa e serviços**.",
+            "Role até a seção 'Segurança' e localize **Usar DNS seguro para especificar como pesquisar o endereço de rede para sites**.",
+            "Marque a opção **Escolher um provedor de serviços**.",
+            "Clique na caixa de seleção e escolha **Cloudflare (1.1.1.1)** ou **Google (Public DNS)**."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "configurar-doh-mozilla-firefox",
+      "titulo": "Passo 3: Ativar DNS sobre HTTPS no Mozilla Firefox (Proteção Máxima)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O Firefox possui uma das implementações mais rigorosas de DoH do mercado, permitindo forçar o modo estrito:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra o **Firefox**, clique no menu de três barras e selecione **Configurações**.",
+            "Acesse a aba **Privacidade e Segurança** no menu lateral.",
+            "Role até a seção **DNS sobre HTTPS**.",
+            "Selecione o nível de proteção **Proteção Máxima** (o Firefox usará sempre o DoH e avisará caso haja falhas no provedor criptografado em vez de recorrer ao DNS aberto desprotegido).",
+            "No campo 'Escolher provedor', selecione **Cloudflare** ou **NextDNS**."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "doh-nativo-windows-11",
+      "titulo": "Passo 4: Habilitar DoH Global no Windows 11 (Para Todos os Apps)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O Windows 11 suporta DoH nativo em nível de sistema operacional, protegendo até mesmo aplicativos sem navegador (jogos, clientes de e-mail, terminal):"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Acesse **Configurações** (`Windows + I`) > **Rede e Internet**.",
+            "Clique na sua conexão ativa (**Wi-Fi** ou **Ethernet**) > **Propriedades do Hardware**.",
+            "Ao lado de 'Atribuição de servidor DNS', clique em **Editar**.",
+            "Selecione **Manual** e ative o **IPv4**.",
+            "Em DNS Preferencial digite `1.1.1.1` e mude 'Criptografia de DNS preferencial' para **Apenas Criptografado (DNS sobre HTTPS)**.",
+            "Em DNS Alternativo digite `1.0.0.1` e defina também como **Apenas Criptografado (DNS sobre HTTPS)**.",
+            "Clique em Salvar. O Windows 11 passará a criptografar 100% das requisições de todos os softwares."
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O DoH substitui completamente a necessidade de uma VPN?",
+      "r": "Não. O DoH criptografa apenas as consultas de nomes de domínio (DNS). O tráfego de dados do seu navegador para o site de destino continua utilizando seu endereço IP público real. Uma VPN oculta tanto o DNS quanto o seu endereço IP, roteando todo o tráfego por um túnel criptografado separado."
+    },
+    {
+      "p": "Como testar se o meu DNS sobre HTTPS está realmente funcionando?",
+      "r": "Acesse a ferramenta oficial de teste de navegação da Cloudflare em `1.1.1.1/help` ou o site `browserleaks.com/dns`. O relatório indicará se você está utilizando 'Using DNS over HTTPS (DoH)' com status 'Yes'."
+    },
+    {
+      "p": "O DoH pode causar lentidão na abertura de sites?",
+      "r": "Na maioria dos casos, a diferença de tempo é imperceptível (frações de milissegundos adicionais para a negociação TLS inicial, que é então mantida aberta via conexões persistentes HTTP/2 e HTTP/3)."
+    },
+    {
+      "p": "Empresas e escolas podem bloquear o uso de DoH?",
+      "r": "Sim. Redes corporativas frequentemente bloqueiam os IPs de resolvedores DoH conhecidos ou aplicam certificados de inspeção profunda para poder filtrar conteúdos maliciosos em computadores corporativos da empresa."
+    },
+    {
+      "p": "O que é ECH (Encrypted Client Hello) e qual a relação com o DoH?",
+      "r": "O ECH é a peça complementar do DoH. Enquanto o DoH criptografa a consulta de nomes, o ECH criptografa o cabeçalho SNI (Server Name Indication) na primeira conexão TLS, impedindo que o provedor descubra o site mesmo inspecionando o aperto de mão inicial."
+    },
+    {
+      "p": "Qual a diferença entre DoH (porta 443) e DoT (porta 853)?",
+      "r": "DoT (DNS-over-TLS) roda exclusivamente na porta 853 e é muito utilizado no recurso de DNS Privado nativo do Android. Já o DoH roda na porta HTTPS 443 padrão. A grande vantagem do DoH é que ele trafega indistinguível do tráfego web seguro comum, tornando quase impossível para firewalls restritivos ou hotéis bloquearem suas consultas."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "IETF RFC 8484 — DNS Queries over HTTPS (DoH)",
+      "url": "https://datatracker.ietf.org/doc/html/rfc8484"
+    },
+    {
+      "titulo": "Mozilla Support — DNS over HTTPS (DoH) no Firefox",
+      "url": "https://support.mozilla.org/pt-BR/kb/dns-sobre-https-doh-firefox"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    140,
+    161,
+    162,
+    194
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "id": 162,
+  "slug": "como-resolver-erro-err-connection-timed-out-chrome-edge",
+  "titulo": "Como Resolver o Erro ERR_CONNECTION_TIMED_OUT no Navegador",
+  "descricao": "Guia prático para solucionar o erro ERR_CONNECTION_TIMED_OUT no Chrome e Edge: tempo limite de conexão esgotado, ajuste de MTU e firewall.",
+  "resposta_curta": "O erro ERR_CONNECTION_TIMED_OUT indica que o navegador tentou estabelecer comunicação com o servidor de destino, mas não recebeu nenhuma resposta dentro do tempo limite tolerado (o aperto de mão TCP SYN não foi completado). Para resolver, reinicie o roteador de internet, desative temporariamente firewalls ou antivírus de terceiros com filtro de rede, limpe o cache SSL no Painel de Controle e reduza o valor de MTU da placa de rede caso esteja em conexões com sobrecarga de encapsulamento.",
+  "aplica_se": "Windows 11, Windows 10, Mac e celulares",
+  "intro": [
+    "A mensagem **ERR_CONNECTION_TIMED_OUT** (Tempo de Conexão Esgotado) é uma das respostas mais clássicas de falha de comunicação na web. Ela indica que o seu computador conseguiu resolver o nome do domínio para um endereço IP válido, enviou os pacotes iniciais de solicitação de conexão (pacote TCP SYN), mas o servidor remoto simplesmente não respondeu com a confirmação (SYN-ACK) antes que o cronômetro de segurança do navegador expirasse.",
+    "Ao contrário de erros de página não encontrada (como o 404), o timed out indica um bloqueio físico ou lógico no trajeto: ou o servidor de destino está fora do ar/sobrecarregado, ou existe um dispositivo intermediário (como o firewall local, um proxy mal configurado, a tabela de rotas da sua operadora ou o roteador Wi-Fi) descartando silenciosamente os pacotes de dados. A seguir, detalhamos a sequência técnica para rastrear o ponto de estrangulamento e reestabelecer o acesso."
+  ],
+  "secoes": [
+    {
+      "id": "anatomia-do-aperto-de-mao-tcp",
+      "titulo": "Entenda o Mecanismo Técnico do Timeout de Conexão",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Para que qualquer página web segura carregue via HTTP/HTTPS, o navegador e o servidor precisam concluir com sucesso o 'Three-Way Handshake' do protocolo TCP:"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Fase TCP",
+            "Ação do Cliente / Servidor",
+            "O Que Dá Erro no Timeout"
+          ],
+          "linhas": [
+            [
+              "1. SYN (Sincronização)",
+              "Seu computador envia um pacote solicitando abertura de canal de dados.",
+              "O pacote sai do seu PC, mas é bloqueado por firewall ou descartado na rota."
+            ],
+            [
+              "2. SYN-ACK (Confirmação)",
+              "O servidor responde aceitando a conexão e alocando portas.",
+              "O servidor está sobrecarregado (DDoS) ou sua operadora perdeu a rota reversa."
+            ],
+            [
+              "3. ACK (Reconhecimento)",
+              "Seu computador confirma e inicia o tráfego de páginas.",
+              "Se o passo 2 não ocorrer em até 20–30 segundos, o navegador dispara ERR_CONNECTION_TIMED_OUT."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reiniciar-roteador-purgar-nat",
+      "titulo": "Passo 1: Ciclo Elétrico do Roteador para Limpar a Tabela NAT",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Roteadores Wi-Fi domésticos possuem processadores e memórias limitadas. Quando dezenas de aparelhos celulares e computadores abrem conexões simultâneas, a tabela NAT (Network Address Translation) satura:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Desconecte a fonte de alimentação do roteador e do modem da tomada elétrica.",
+            "Aguarde obrigatoriamente pelo menos **30 segundos** para que todos os capacitores da placa do roteador descarreguem por completo, limpando a memória volátil.",
+            "Ligue o modem primeiro e aguarde as luzes de conexão (PON/DSL/WAN) estabilizarem.",
+            "Em seguida, ligue o roteador Wi-Fi e aguarde 2 minutos até que todos os dispositivos se reconectem.",
+            "Tente abrir o site novamente no navegador."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "limpar-estado-ssl-windows",
+      "titulo": "Passo 2: Limpar o Estado SSL e Configurações de Proxy no Windows",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Certificados de criptografia SSL desatualizados ou proxies corporativos fantasmas podem interceptar e congelar chamadas HTTPS:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Pressione `Windows + R`, digite `inetcpl.cpl` e pressione Enter para abrir as **Propriedades de Internet**.",
+            "Acesse a aba **Conteúdo** e clique no botão **Limpar estado SSL**. Uma mensagem de confirmação 'O cache SSL foi limpo com êxito' será exibida.",
+            "Em seguida, acesse a aba **Conexões** e clique no botão **Configurações da LAN**.",
+            "Certifique-se de que a opção **Detectar automaticamente as configurações** está marcada.",
+            "Desmarque impreterivelmente a opção **Usar um servidor proxy para a rede local** caso ela esteja ativada sem o seu consentimento.",
+            "Clique em OK e em Aplicar."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ajuste-tamanho-mtu-placa-rede",
+      "titulo": "Passo 3: Ajustar o Tamanho do MTU (Maximum Transmission Unit)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se o valor de MTU (Unidade Máxima de Transmissão) da sua placa de rede for maior do que o suportado pela infraestrutura da sua operadora (comum em conexões PPPoE com encapsulamento de fibra), os pacotes sofrerão fragmentação excessiva e serão descartados:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra o Prompt de Comando como Administrador.",
+            "Consulte os valores atuais de MTU das suas placas digitando:",
+            "Se o valor estiver em 1500 mas sua conexão exigir cabeçalhos PPPoE extras, reduza o MTU para 1472 ou 1450 com o comando:",
+            "Substitua 'Wi-Fi' pelo nome exato da sua interface ativa indicada na listagem anterior."
+          ]
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "powershell",
+          "texto": "netsh interface ipv4 show subinterfaces\nnetsh interface ipv4 set subinterface \"Wi-Fi\" mtu=1472 store=persistent"
+        }
+      ]
+    },
+    {
+      "id": "teste-ping-traceroute-diagnostico",
+      "titulo": "Passo 4: Isolar a Rota com os Utilitários Ping e Traceroute",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Para ter certeza absoluta se o problema é da sua máquina ou da internet externa, execute um teste de rastreamento de saltos no console:"
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "powershell",
+          "texto": "tracert drgtech.com.br"
+        },
+        {
+          "tipo": "p",
+          "texto": "Observe os resultados: se os asteriscos `* * * Esgotado o tempo limite do pedido` surgirem logo no primeiro salto (salto 1), o problema é na comunicação com seu próprio roteador. Se os saltos avançarem normalmente por 8 a 10 roteadores da sua operadora e falharem apenas no destino final, o servidor do site está indisponível na origem."
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O erro ERR_CONNECTION_TIMED_OUT pode ser culpa do próprio site?",
+      "r": "Sim. Se o servidor do site sofreu uma queda de energia, está passando por manutenção emergencial ou recebendo um volume de acessos simultâneos superior ao que suporta, ele deixará de responder às requisições, gerando o erro de timeout para todos os visitantes do mundo."
+    },
+    {
+      "p": "Como testar se o site está fora do ar apenas para mim ou para todos?",
+      "r": "Acesse ferramentas gratuitas de diagnóstico externo como o 'Down For Everyone Or Just Me' (downforeveryoneorjustme.com) ou 'IsItDownRightNow'. Esses serviços tentam acessar o site a partir de datacenters neutros e informam se a falha é generalizada ou local."
+    },
+    {
+      "p": "Antivírus de terceiros podem causar o erro de tempo esgotado?",
+      "r": "Sim. Módulos de proteção web de antivírus inspecionam o tráfego de pacotes na camada de rede. Se o módulo travar ou tiver regras desatualizadas, ele retém os pacotes de rede sem liberá-los para o navegador, forçando o estouro do cronômetro."
+    },
+    {
+      "p": "O que significa o código correspondente ERR_TIMED_OUT no celular?",
+      "r": "É exatamente a mesma falha do computador. No celular, experimente alternar entre Wi-Fi e dados móveis (4G/5G). Se o site abrir nos dados móveis, o problema reside na rota da sua banda larga doméstica."
+    },
+    {
+      "p": "Mudar o DNS resolve o erro de tempo de conexão esgotado?",
+      "r": "Geralmente não de forma direta, pois o timed out ocorre após a resolução do IP. Porém, se o DNS anterior apontava para um IP de CDN antigo e desativado do site, trocar para o DNS do Google (8.8.8.8) ou Cloudflare (1.1.1.1) entregará o endereço IP operacional mais recente."
+    },
+    {
+      "p": "Navegação anônima ou desativar extensões ajuda a testar timeouts?",
+      "r": "Sim. Abra uma janela anônima (Ctrl + Shift + N) que desativa extensões por padrão. Se o site carregar na janela anônima, alguma extensão instalada (bloqueadores de anúncios agressivos ou proxies de extensões) está interceptando e travando a conexão TCP."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Microsoft Learn — Solucionar problemas de conectividade TCP/IP",
+      "url": "https://learn.microsoft.com/pt-br/troubleshoot/windows-server/networking/troubleshoot-tcp-ip-connectivity"
+    },
+    {
+      "titulo": "Google Chrome Developers — Network Error Codes and Timeouts",
+      "url": "https://source.chromium.org/chromium/chromium/src/+/main:net/base/net_error_list.h"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    140,
+    141,
+    161,
+    196
+  ]
+}

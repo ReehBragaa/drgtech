@@ -3,29 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como Resolver o Erro 'ERR_CONNECTION_TIMED_OUT' no Navegador — DRGTech</title>
-  <meta name="description" content="O erro ERR_CONNECTION_TIMED_OUT ocorre quando o navegador envia uma solicitação de acesso a um site, mas o servidor de destino não responde dentro do tempo..." />
-  <meta name="keywords" content="como resolver o erro 'err_connection_timed_out' no navegador, tutorial internet, suporte tecnico" />
+  <title>Como Resolver o Erro ERR_CONNECTION_TIMED_OUT no Navegador — DRGTech</title>
+  <meta name="description" content="Guia prático para solucionar o erro ERR_CONNECTION_TIMED_OUT no Chrome e Edge: tempo limite de conexão esgotado, ajuste de MTU e firewall." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Como Resolver o Erro 'ERR_CONNECTION_TIMED_OUT' no Navegador — DRGTech" />
-  <meta property="og:description" content="O erro ERR_CONNECTION_TIMED_OUT ocorre quando o navegador envia uma solicitação de acesso a um site, mas o servidor de destino não responde dentro do tempo..." />
+  <meta property="og:title" content="Como Resolver o Erro ERR_CONNECTION_TIMED_OUT no Navegador — DRGTech" />
+  <meta property="og:description" content="Guia prático para solucionar o erro ERR_CONNECTION_TIMED_OUT no Chrome e Edge: tempo limite de conexão esgotado, ajuste de MTU e firewall." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-resolver-erro-err-connection-timed-out-chrome-edge.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Como Resolver o Erro 'ERR_CONNECTION_TIMED_OUT' no Navegador — DRGTech" />
-  <meta name="twitter:description" content="O erro ERR_CONNECTION_TIMED_OUT ocorre quando o navegador envia uma solicitação de acesso a um site, mas o servidor de destino não responde dentro do tempo..." />
+  <meta name="twitter:title" content="Como Resolver o Erro ERR_CONNECTION_TIMED_OUT no Navegador — DRGTech" />
+  <meta name="twitter:description" content="Guia prático para solucionar o erro ERR_CONNECTION_TIMED_OUT no Chrome e Edge: tempo limite de conexão esgotado, ajuste de MTU e firewall." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-resolver-erro-err-connection-timed-out-chrome-edge.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Resolver o Erro ERR_CONNECTION_TIMED_OUT no Navegador",
+  "description": "Guia prático para solucionar o erro ERR_CONNECTION_TIMED_OUT no Chrome e Edge: tempo limite de conexão esgotado, ajuste de MTU e firewall.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-resolver-erro-err-connection-timed-out-chrome-edge.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,55 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Resolver o Erro 'ERR_CONNECTION_TIMED_OUT' no Navegador",
+      "name": "O erro ERR_CONNECTION_TIMED_OUT pode ser culpa do próprio site?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "O erro ERR_CONNECTION_TIMED_OUT ocorre quando o navegador envia uma solicitação de acesso a um site, mas o servidor de destino não responde dentro do tempo limite. Para corrigir no Chrome ou Edge, limpe os dados de navegação e o cache de DNS do navegador (chrome://net-internals/#dns), desative proxies e VPNs ativas e redefina a pilha de rede no Prompt de Comando com 'netsh winsock reset'."
+        "text": "Sim. Se o servidor do site sofreu uma queda de energia, está passando por manutenção emergencial ou recebendo um volume de acessos simultâneos superior ao que suporta, ele deixará de responder às requisições, gerando o erro de timeout para todos os visitantes do mundo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como testar se o site está fora do ar apenas para mim ou para todos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Acesse ferramentas gratuitas de diagnóstico externo como o 'Down For Everyone Or Just Me' (downforeveryoneorjustme.com) ou 'IsItDownRightNow'. Esses serviços tentam acessar o site a partir de datacenters neutros e informam se a falha é generalizada ou local."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Antivírus de terceiros podem causar o erro de tempo esgotado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Módulos de proteção web de antivírus inspecionam o tráfego de pacotes na camada de rede. Se o módulo travar ou tiver regras desatualizadas, ele retém os pacotes de rede sem liberá-los para o navegador, forçando o estouro do cronômetro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que significa o código correspondente ERR_TIMED_OUT no celular?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "É exatamente a mesma falha do computador. No celular, experimente alternar entre Wi-Fi e dados móveis (4G/5G). Se o site abrir nos dados móveis, o problema reside na rota da sua banda larga doméstica."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mudar o DNS resolve o erro de tempo de conexão esgotado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Geralmente não de forma direta, pois o timed out ocorre após a resolução do IP. Porém, se o DNS anterior apontava para um IP de CDN antigo e desativado do site, trocar para o DNS do Google (8.8.8.8) ou Cloudflare (1.1.1.1) entregará o endereço IP operacional mais recente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Navegação anônima ou desativar extensões ajuda a testar timeouts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Abra uma janela anônima (Ctrl + Shift + N) que desativa extensões por padrão. Se o site carregar na janela anônima, alguma extensão instalada (bloqueadores de anúncios agressivos ou proxies de extensões) está interceptando e travando a conexão TCP."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,7 +121,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Como Resolver o Erro 'ERR_CONNECTION_TIMED_OUT' no Navegador",
+      "name": "Como Resolver o Erro ERR_CONNECTION_TIMED_OUT no Navegador",
       "item": "https://drgtech.com.br/artigos/como-resolver-erro-err-connection-timed-out-chrome-edge.html"
     }
   ]
@@ -103,132 +161,180 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#internet">Internet</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Resolver o Erro 'ERR_CONNECTIO...</span>
+        <span>Como Resolver o Erro…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-purple">Internet</span>
-        <h1 class="article-h1">Como Resolver o Erro 'ERR_CONNECTION_TIMED_OUT' no Navegador</h1>
+        <h1 class="article-h1">Como Resolver o Erro ERR_CONNECTION_TIMED_OUT no Navegador</h1>
         <div class="article-intro-meta">
-          <span class="meta-item">7 min de leitura</span>
-          <span class="meta-item">Atualizado em agosto de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">5 min de leitura</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> O erro ERR_CONNECTION_TIMED_OUT ocorre quando o navegador envia uma solicitação de acesso a um site, mas o servidor de destino não responde dentro do tempo limite. Para corrigir no Chrome ou Edge, limpe os dados de navegação e o cache de DNS do navegador (chrome://net-internals/#dns), desative proxies e VPNs ativas e redefina a pilha de rede no Prompt de Comando com 'netsh winsock reset'.
+        <strong>Resposta rápida:</strong> O erro ERR_CONNECTION_TIMED_OUT indica que o navegador tentou estabelecer comunicação com o servidor de destino, mas não recebeu nenhuma resposta dentro do tempo limite tolerado (o aperto de mão TCP SYN não foi completado). Para resolver, reinicie o roteador de internet, desative temporariamente firewalls ou antivírus de terceiros com filtro de rede, limpe o cache SSL no Painel de Controle e reduza o valor de MTU da placa de rede caso esteja em conexões com sobrecarga de encapsulamento.
       </div>
 
       <article class="article-body" id="article-body">
+        <p>A mensagem <strong>ERR_CONNECTION_TIMED_OUT</strong> (Tempo de Conexão Esgotado) é uma das respostas mais clássicas de falha de comunicação na web. Ela indica que o seu computador conseguiu resolver o nome do domínio para um endereço IP válido, enviou os pacotes iniciais de solicitação de conexão (pacote TCP SYN), mas o servidor remoto simplesmente não respondeu com a confirmação (SYN-ACK) antes que o cronômetro de segurança do navegador expirasse.</p>
+        <p>Ao contrário de erros de página não encontrada (como o 404), o timed out indica um bloqueio físico ou lógico no trajeto: ou o servidor de destino está fora do ar/sobrecarregado, ou existe um dispositivo intermediário (como o firewall local, um proxy mal configurado, a tabela de rotas da sua operadora ou o roteador Wi-Fi) descartando silenciosamente os pacotes de dados. A seguir, detalhamos a sequência técnica para rastrear o ponto de estrangulamento e reestabelecer o acesso.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> Windows 11, Windows 10, Mac e celulares</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Resolver o Erro 'ERR_CONNECTION_TIMED_OUT' no Navegador"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Internet</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
+        <h2 id="anatomia-do-aperto-de-mao-tcp">Entenda o Mecanismo Técnico do Timeout de Conexão</h2>
+        <p>Para que qualquer página web segura carregue via HTTP/HTTPS, o navegador e o servidor precisam concluir com sucesso o 'Three-Way Handshake' do protocolo TCP:</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Fase TCP</th><th>Ação do Cliente / Servidor</th><th>O Que Dá Erro no Timeout</th></tr></thead>
+            <tbody>
+              <tr><td>1. SYN (Sincronização)</td><td>Seu computador envia um pacote solicitando abertura de canal de dados.</td><td>O pacote sai do seu PC, mas é bloqueado por firewall ou descartado na rota.</td></tr>
+              <tr><td>2. SYN-ACK (Confirmação)</td><td>O servidor responde aceitando a conexão e alocando portas.</td><td>O servidor está sobrecarregado (DDoS) ou sua operadora perdeu a rota reversa.</td></tr>
+              <tr><td>3. ACK (Reconhecimento)</td><td>Seu computador confirma e inicia o tráfego de páginas.</td><td>Se o passo 2 não ocorrer em até 20–30 segundos, o navegador dispara ERR_CONNECTION_TIMED_OUT.</td></tr>
+            </tbody>
+          </table>
         </div>
 
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
+        <h2 id="reiniciar-roteador-purgar-nat">Passo 1: Ciclo Elétrico do Roteador para Limpar a Tabela NAT</h2>
+        <p>Roteadores Wi-Fi domésticos possuem processadores e memórias limitadas. Quando dezenas de aparelhos celulares e computadores abrem conexões simultâneas, a tabela NAT (Network Address Translation) satura:</p>
         <ol class="steps-list">
-
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">No Google Chrome, digite 'chrome://net-internals/#dns' na barra de endereços e clique no botão 'Clear host cache'.</div>
+            <div class="step-text">Desconecte a fonte de alimentação do roteador e do modem da tomada elétrica.</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">Pressione Win + R, digite 'inetcpl.cpl' para abrir as Propriedades de Internet, vá na aba Conexões > Configurações da LAN e desmarque a opção 'Usar um servidor proxy para a rede LAN'.</div>
+            <div class="step-text">Aguarde obrigatoriamente pelo menos <strong>30 segundos</strong> para que todos os capacitores da placa do roteador descarreguem por completo, limpando a memória volátil.</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">Abra o Prompt de Comando como Administrador e execute 'ipconfig /flushdns' e 'netsh winsock reset', reiniciando o computador em seguida.</div>
+            <div class="step-text">Ligue o modem primeiro e aguarde as luzes de conexão (PON/DSL/WAN) estabilizarem.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Em seguida, ligue o roteador Wi-Fi e aguarde 2 minutos até que todos os dispositivos se reconectem.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Tente abrir o site novamente no navegador.</div>
           </li>
         </ol>
 
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <h2 id="limpar-estado-ssl-windows">Passo 2: Limpar o Estado SSL e Configurações de Proxy no Windows</h2>
+        <p>Certificados de criptografia SSL desatualizados ou proxies corporativos fantasmas podem interceptar e congelar chamadas HTTPS:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Pressione <code>Windows + R</code>, digite <code>inetcpl.cpl</code> e pressione Enter para abrir as <strong>Propriedades de Internet</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Acesse a aba <strong>Conteúdo</strong> e clique no botão <strong>Limpar estado SSL</strong>. Uma mensagem de confirmação 'O cache SSL foi limpo com êxito' será exibida.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Em seguida, acesse a aba <strong>Conexões</strong> e clique no botão <strong>Configurações da LAN</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Certifique-se de que a opção <strong>Detectar automaticamente as configurações</strong> está marcada.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Desmarque impreterivelmente a opção <strong>Usar um servidor proxy para a rede local</strong> caso ela esteja ativada sem o seu consentimento.</div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-text">Clique em OK e em Aplicar.</div>
+          </li>
+        </ol>
+
+        <h2 id="ajuste-tamanho-mtu-placa-rede">Passo 3: Ajustar o Tamanho do MTU (Maximum Transmission Unit)</h2>
+        <p>Se o valor de MTU (Unidade Máxima de Transmissão) da sua placa de rede for maior do que o suportado pela infraestrutura da sua operadora (comum em conexões PPPoE com encapsulamento de fibra), os pacotes sofrerão fragmentação excessiva e serão descartados:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Abra o Prompt de Comando como Administrador.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Consulte os valores atuais de MTU das suas placas digitando:</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Se o valor estiver em 1500 mas sua conexão exigir cabeçalhos PPPoE extras, reduza o MTU para 1472 ou 1450 com o comando:</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Substitua 'Wi-Fi' pelo nome exato da sua interface ativa indicada na listagem anterior.</div>
+          </li>
+        </ol>
+        <pre class="code-block" data-lang="powershell"><code>netsh interface ipv4 show subinterfaces
+netsh interface ipv4 set subinterface &quot;Wi-Fi&quot; mtu=1472 store=persistent</code></pre>
+
+        <h2 id="teste-ping-traceroute-diagnostico">Passo 4: Isolar a Rota com os Utilitários Ping e Traceroute</h2>
+        <p>Para ter certeza absoluta se o problema é da sua máquina ou da internet externa, execute um teste de rastreamento de saltos no console:</p>
+        <pre class="code-block" data-lang="powershell"><code>tracert drgtech.com.br</code></pre>
+        <p>Observe os resultados: se os asteriscos <code>* * * Esgotado o tempo limite do pedido</code> surgirem logo no primeiro salto (salto 1), o problema é na comunicação com seu próprio roteador. Se os saltos avançarem normalmente por 8 a 10 roteadores da sua operadora e falharem apenas no destino final, o servidor do site está indisponível na origem.</p>
+
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>O erro ERR_CONNECTION_TIMED_OUT pode ser culpa do próprio site?</h3>
+            <p>Sim. Se o servidor do site sofreu uma queda de energia, está passando por manutenção emergencial ou recebendo um volume de acessos simultâneos superior ao que suporta, ele deixará de responder às requisições, gerando o erro de timeout para todos os visitantes do mundo.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Como testar se o site está fora do ar apenas para mim ou para todos?</h3>
+            <p>Acesse ferramentas gratuitas de diagnóstico externo como o 'Down For Everyone Or Just Me' (downforeveryoneorjustme.com) ou 'IsItDownRightNow'. Esses serviços tentam acessar o site a partir de datacenters neutros e informam se a falha é generalizada ou local.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Antivírus de terceiros podem causar o erro de tempo esgotado?</h3>
+            <p>Sim. Módulos de proteção web de antivírus inspecionam o tráfego de pacotes na camada de rede. Se o módulo travar ou tiver regras desatualizadas, ele retém os pacotes de rede sem liberá-los para o navegador, forçando o estouro do cronômetro.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O que significa o código correspondente ERR_TIMED_OUT no celular?</h3>
+            <p>É exatamente a mesma falha do computador. No celular, experimente alternar entre Wi-Fi e dados móveis (4G/5G). Se o site abrir nos dados móveis, o problema reside na rota da sua banda larga doméstica.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Mudar o DNS resolve o erro de tempo de conexão esgotado?</h3>
+            <p>Geralmente não de forma direta, pois o timed out ocorre após a resolução do IP. Porém, se o DNS anterior apontava para um IP de CDN antigo e desativado do site, trocar para o DNS do Google (8.8.8.8) ou Cloudflare (1.1.1.1) entregará o endereço IP operacional mais recente.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Navegação anônima ou desativar extensões ajuda a testar timeouts?</h3>
+            <p>Sim. Abra uma janela anônima (Ctrl + Shift + N) que desativa extensões por padrão. Se o site carregar na janela anônima, alguma extensão instalada (bloqueadores de anúncios agressivos ou proxies de extensões) está interceptando e travando a conexão TCP.</p>
+          </div>
         </div>
 
-        
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://learn.microsoft.com/pt-br/troubleshoot/windows-server/networking/troubleshoot-tcp-ip-connectivity" target="_blank" rel="noopener noreferrer">Microsoft Learn — Solucionar problemas de conectividade TCP/IP</a></li>
+          <li><a href="https://source.chromium.org/chromium/chromium/src/+/main:net/base/net_error_list.h" target="_blank" rel="noopener noreferrer">Google Chrome Developers — Network Error Codes and Timeouts</a></li>
+        </ul>
 
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
-          </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
-          </div>
-        </div>
-
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-cancelar-assinatura-netflix-celular-pc.html" class="related-card">
-              <span class="related-card-title">Como Cancelar a Assinatura da Netflix pelo Celular e PC</span>
-            </a>
-            <a href="como-descobrir-senha-wifi-conectado-pc-celular.html" class="related-card">
-              <span class="related-card-title">Como Descobrir a Senha do Wi-Fi Conectado no PC e Celular</span>
-            </a>
-            <a href="o-que-fazer-se-internet-cai-toda-hora-passo-a-passo.html" class="related-card">
-              <span class="related-card-title">O que Fazer se a Internet Cai Toda Hora e Passo a Passo para Resolver</span>
-            </a>
             <a href="como-corrigir-erro-dns-probe-finished-nxdomain-navegador.html" class="related-card">
-              <span class="related-card-title">Como Corrigir o Erro 'DNS_PROBE_FINISHED_NXDOMAIN' no Navegador</span>
+              <span class="related-card-title">Como Corrigir o Erro DNS_PROBE_FINISHED_NXDOMAIN no Navegador</span>
+            </a>
+            <a href="como-resolver-wifi-conectado-sem-acesso-internet-pc-celular.html" class="related-card">
+              <span class="related-card-title">Como Resolver Wi-Fi Conectado Sem Acesso à Internet no PC e Celular</span>
+            </a>
+            <a href="como-mudar-dns-roteador-windows-android-iphone.html" class="related-card">
+              <span class="related-card-title">Como Mudar o DNS no Roteador, Windows, Android e iPhone</span>
+            </a>
+            <a href="como-configurar-dns-sobre-https-doh-chrome-firefox-edge.html" class="related-card">
+              <span class="related-card-title">Como Configurar DNS sobre HTTPS (DoH) no Chrome, Edge e Firefox</span>
             </a>
           </div>
         </div>
@@ -238,13 +344,15 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#anatomia-do-aperto-de-mao-tcp">Entenda o Mecanismo Técnico do Timeout de Conexão</a></li>
+          <li><a href="#reiniciar-roteador-purgar-nat">Passo 1: Ciclo Elétrico do Roteador para Limpar a Tabela NAT</a></li>
+          <li><a href="#limpar-estado-ssl-windows">Passo 2: Limpar o Estado SSL e Configurações de Proxy no Windows</a></li>
+          <li><a href="#ajuste-tamanho-mtu-placa-rede">Passo 3: Ajustar o Tamanho do MTU (Maximum Transmission Unit)</a></li>
+          <li><a href="#teste-ping-traceroute-diagnostico">Passo 4: Isolar a Rota com os Utilitários Ping e Traceroute</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -252,7 +360,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>

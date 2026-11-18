@@ -1,0 +1,137 @@
+{
+  "id": 158,
+  "slug": "como-recuperar-fotos-videos-apagados-lixeira-celular",
+  "titulo": "Como Recuperar Fotos e Vídeos Apagados da Lixeira do Celular",
+  "descricao": "Guia completo para recuperar mídias excluídas no Android e iPhone: pasta Apagados Recentes, backups na nuvem (Google Fotos/iCloud) e mitos de apps milagrosos.",
+  "resposta_curta": "Para recuperar fotos e vídeos excluídos, verifique primeiro a pasta 'Lixeira' ou 'Apagados Recentemente' na Galeria do celular, onde os arquivos permanecem salvos por 30 a 60 dias. Se a lixeira já foi esvaziada, consulte a lixeira da nuvem no Google Fotos (photos.google.com) ou no iCloud Fotos (icloud.com). Evite instalar aplicativos milagrosos no próprio celular, pois gravar novos dados sobrescreve as células de memória onde as fotos estavam alocadas.",
+  "aplica_se": "Android (Samsung, Motorola, Xiaomi) e iPhone (iOS)",
+  "intro": [
+    "Apagar acidentalmente uma foto de família insubstituível, um vídeo de viagem ou o comprovante de um pagamento bancário importante é uma das experiências mais desesperadoras que podem acontecer no uso do celular. Diante do pânico, muitos usuários recorrem impulsivamente à instalação de aplicativos duvidosos que prometem milagres mas que acabam piorando a situação ao sobrescrever o espaço livre da memória flash.",
+    "Tanto o sistema operacional Android quanto o iOS possuem camadas nativas de proteção projetadas justamente para evitar a exclusão imediata definitiva de mídias. Mesmo quando você esvazia a lixeira principal do aplicativo de galeria, cópias em segundo plano sincronizadas com o Google Fotos, OneDrive ou iCloud frequentemente continuam intactas nas nuvens associadas à sua conta. A seguir, detalhamos o passo a passo seguro para resgatar seus arquivos sem colocar sua privacidade em risco."
+  ],
+  "secoes": [
+    {
+      "id": "lixeira-nativa-iphone-android",
+      "titulo": "Passo 1: Verificar a Pasta 'Apagados Recentemente' da Galeria",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Quase todos os sistemas operacionais modernos não apagam arquivos de mídia de imediato; eles os movem para uma pasta de quarentena temporária:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "**No iPhone (iOS):** Abra o app Fotos, toque na aba **Álbuns**, role até a seção 'Mais Itens' e toque em **Apagados** (requer Face ID/Touch ID para abrir). Selecione as fotos desejadas e toque em **Recuperar**.",
+            "**Na Samsung (One UI):** Abra a Galeria, toque no menu de três linhas no canto inferior direito, selecione **Lixeira**, toque em 'Editar', marque as fotos e selecione **Restaurar**.",
+            "**Na Motorola / Xiaomi / Google Pixel:** Abra o Google Fotos, toque na aba **Biblioteca** ou **Coleções** e selecione **Lixeira**."
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "info",
+          "texto": "Os arquivos permanecem na lixeira nativa por até 30 dias (no iOS e Samsung) ou 60 dias (no Google Fotos com backup ativado) antes de serem purgados de forma permanente."
+        }
+      ]
+    },
+    {
+      "id": "recuperar-nuvem-google-icloud",
+      "titulo": "Passo 2: Recuperar Direto pelos Portais Web da Nuvem",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se o seu celular foi formatado, roubado ou a galeria local foi esvaziada, acesse o repositório central da nuvem usando um navegador de internet no computador:"
+        },
+        {
+          "tipo": "lista",
+          "itens": [
+            "**Google Fotos Web:** Acesse `photos.google.com` com a mesma conta Google logada no celular. Verifique na aba principal e depois clique na aba **Lixeira** na barra lateral esquerda. Fotos excluídas do aparelho às vezes continuam salvas na nuvem caso a sincronização de exclusão não tenha sido transmitida.",
+            "**iCloud Fotos Web:** Acesse `icloud.com/photos` com seu Apple ID e senha. No menu lateral, clique em **Apagados Recentemente** para visualizar e restaurar as mídias para a biblioteca.",
+            "**OneDrive / Samsung Cloud:** Se você possui um celular Samsung com integração ao OneDrive da Microsoft, acesse `onedrive.live.com` e consulte a lixeira do seu armazenamento corporativo ou pessoal.",
+            "**Google Drive / Lixeira Geral:** Documentos e fotos compartilhadas em pastas do Drive permanecem por 30 dias em `drive.google.com/drive/trash`."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "perigo-sobrescrita-memoria",
+      "titulo": "Passo 3: A Regra de Ouro Contra a Sobrescrita de Memória",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se as fotos foram de fato esvaziadas de todas as lixeiras e nuvens, o sucesso de qualquer procedimento técnico de recuperação de baixo nível depende de não gravar nada novo no aparelho:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Coloque o celular imediatamente em **Modo Avião** para impedir que mensagens de WhatsApp com fotos e vídeos cheguem em segundo plano.",
+            "Não baixe novos aplicativos, não tire novas fotos nem grave vídeos.",
+            "Nas memórias flash modernas com criptografia por arquivo (FBE - File-Based Encryption) presentes no Android e iPhone, quando um arquivo é purgado permanentemente, a chave criptográfica é destruída. Se novos blocos de dados forem gravados por cima das células de memória, a recuperação torna-se matematicamente impossível."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "softwares-computador-vs-apps-celular",
+      "titulo": "Passo 4: Usar Softwares de Computador em Vez de Aplicativos no Celular",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Nunca instale apps de recuperação diretamente no smartphone afetado, pois o próprio ato de baixar o app sobrescreve o espaço livre onde as fotos deletadas residiam:"
+        },
+        {
+          "tipo": "lista",
+          "itens": [
+            "Conecte o smartphone via cabo USB ao computador em modo MTP ou depuração.",
+            "Utilize softwares consolidados de varredura profunda no computador (como Disk Drill ou Recuva para cartões MicroSD externos).",
+            "Para cartões de memória SD, remova o cartão do celular e utilize um leitor USB dedicado no computador para rodar ferramentas forenses de código aberto como o **PhotoRec / TestDisk**, que leem blocos RAW sem alterar a tabela de arquivos."
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "Aplicativos grátis na Play Store que prometem recuperar fotos funcionam?",
+      "r": "A grande maioria desses aplicativos apenas vasculha a pasta de miniaturas de cache (thumbnails) de imagens que você já tem no celular ou que viu em navegadores, exibindo-as em baixa resolução como se fossem fotos recuperadas. Eles não conseguem contornar a criptografia de blocos apagados."
+    },
+    {
+      "p": "O WhatsApp possui backup próprio de fotos?",
+      "r": "Sim. Se você apagar uma foto da galeria, ela ainda pode estar preservada dentro da conversa do WhatsApp caso você não tenha excluído a mensagem. Acesse os Dados do Contato > Mídias, links e docs para verificar e baixar novamente para o celular."
+    },
+    {
+      "p": "É possível recuperar fotos apagadas há mais de 1 ano?",
+      "r": "Sem um backup prévio feito na nuvem ou em um computador, é praticamente impossível. Após 30 a 60 dias nas lixeiras, os sistemas operacionais executam rotinas de limpeza profunda (comando TRIM em memórias flash) que liberam e limpam definitivamente os setores de armazenamento."
+    },
+    {
+      "p": "Fotos apagadas de pasta segura (como a Pasta Segura da Samsung) têm lixeira?",
+      "r": "Sim. A Pasta Segura possui sua própria Lixeira independente. Abra a Pasta Segura, acesse a Galeria interna, toque nos três pontos e selecione Lixeira para recuperar arquivos excluídos dentro do ambiente protegido."
+    },
+    {
+      "p": "Como funciona a ferramenta de código aberto PhotoRec?",
+      "r": "O PhotoRec é uma ferramenta forense independente de sistema operacional que analisa cabeçalhos binários de arquivos de imagem (como magic bytes de JPEG e PNG) diretamente no setor físico do disco, sendo extremamente eficaz para recuperar cartões de memória MicroSD formatados acidentalmente."
+    },
+    {
+      "p": "Como me proteger contra perda definitiva de fotos no futuro?",
+      "r": "Ative o backup automático do Google Fotos ou do iCloud Fotos em resolução original. Para máxima segurança profissional, adote a regra de backup 3-2-1: mantenha seus arquivos no celular, uma cópia sincronizada na nuvem e uma cópia física mensal transferida para um computador ou HD externo."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Ajuda do Google Fotos — Encontrar fotos e vídeos excluídos ou restaurá-los",
+      "url": "https://support.google.com/photos/answer/6128858?hl=pt-BR"
+    },
+    {
+      "titulo": "Suporte da Apple — Se você não encontrar fotos ou vídeos no app Fotos",
+      "url": "https://support.apple.com/pt-br/102558"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    112,
+    137,
+    138,
+    152
+  ]
+}

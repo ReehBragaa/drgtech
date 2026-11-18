@@ -1,0 +1,193 @@
+{
+  "id": 177,
+  "slug": "como-resolver-erro-critical-process-died-boot-windows-11",
+  "titulo": "Como Resolver o Erro CRITICAL_PROCESS_DIED no Boot do Windows 11",
+  "descricao": "Guia completo para solucionar o erro de parada Critical Process Died (0x000000EF) no Windows 11: reparo de inicialização, BCD, drivers e WinRE.",
+  "resposta_curta": "O erro CRITICAL_PROCESS_DIED (código 0x000000EF) ocorre quando um processo vital do kernel do Windows (como csrss.exe, wininit.exe ou services.exe) é encerrado de forma anômala. Para corrigir quando o sistema não inicia, acesse o Ambiente de Recuperação (WinRE), abra o Prompt de Comando e execute o reparo de inicialização com `bootrec /fixmbr`, `bootrec /rebuildbcd`, seguido por `sfc /scannow /offbootdir=C:\\ /offwindir=C:\\windows` e desinstalação de atualizações problemáticas recentes.",
+  "aplica_se": "Windows 11 e Windows 10 em UEFI/GPT",
+  "intro": [
+    "O código de bugcheck CRITICAL_PROCESS_DIED (identificador hexadecimal 0x000000EF) é um dos erros de tela azul mais severos do ecossistema Windows. Ele não decorre de travamentos em aplicativos comuns de usuário (como navegadores ou editores de texto), mas sim do encerramento inesperado de um dos processos nucleares do sistema operacional sem os quais o kernel não consegue manter a integridade básica da sessão.",
+    "Entre esses processos críticos protegidos estão o Gerenciador de Sessão (smss.exe), o Subsistema de Tempo de Execução Cliente-Servidor (csrss.exe), a Inicialização do Windows (wininit.exe) ou o Gerenciador de Logon (winlogon.exe). Se um driver de dispositivo corrompido, uma falha de leitura em setores defeituosos do SSD ou uma infecção por rootkit forçar o encerramento forçado de qualquer um desses executáveis, o Windows paralisa o processador para evitar danos irreparáveis à estrutura de arquivos. Neste guia passo a passo, demonstramos como restaurar o boot do sistema diretamente pelo console de recuperação."
+  ],
+  "secoes": [
+    {
+      "id": "processos-criticos-envolvidos",
+      "titulo": "Quais Processos Provocam o Bugcheck 0xEF?",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "No modelo de segurança do Windows, certos processos são marcados com o atributo de processo crítico no subsistema de gerenciamento de objetos do kernel. A tabela abaixo lista os principais executáveis cujo encerramento aciona essa tela azul:"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Processo",
+            "Função no Sistema",
+            "Causa Comum de Falha"
+          ],
+          "linhas": [
+            [
+              "csrss.exe",
+              "Subsistema Win32, gerencia janelas e consoles.",
+              "Injeção de DLLs incompatíveis ou corrupção de arquivos do sistema."
+            ],
+            [
+              "smss.exe",
+              "Gerenciador de Sessão, cria subsistemas e variáveis de ambiente.",
+              "Problemas no registro do sistema ou setores defeituosos no SSD/HD."
+            ],
+            [
+              "wininit.exe",
+              "Inicializa o subsistema de segurança LSASS e Service Control Manager.",
+              "Drivers de antivírus ou filtros de segurança corrompidos."
+            ],
+            [
+              "services.exe",
+              "Controlador central de serviços e drivers automáticos.",
+              "Falha de driver de terceiros com privilégio SYSTEM."
+            ],
+            [
+              "lsass.exe",
+              "Serviço de autenticação de segurança local.",
+              "Corrupção de credenciais ou conflitos com softwares corporativos."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acessar-winre",
+      "titulo": "Passo 1: Acessar o Ambiente de Recuperação (WinRE)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se o computador estiver preso em loop de inicialização exibindo a tela azul antes de carregar a Área de Trabalho, você precisará acionar o console de recuperação de emergência:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Pressione o botão liga/desliga do computador para ligá-lo. Assim que o logotipo do fabricante aparecer com o círculo de carregamento, mantenha o botão liga/desliga pressionado por 5 a 10 segundos para forçar o desligamento.",
+            "Repita esse procedimento de desligamento forçado por duas vezes consecutivas.",
+            "Na terceira inicialização, o Windows detectará a anomalia e exibirá a mensagem 'Preparando Reparo Automático' seguida por 'Diagnosticando o computador'.",
+            "Na tela azul com o título 'Reparo Automático', clique no botão **Opções avançadas**.",
+            "Navegue até **Solução de Problemas** e selecione **Opções avançadas**."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reparo-offline-sfc-dism",
+      "titulo": "Passo 2: Executar Reparo Offline de Arquivos do Sistema via Prompt",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Como o Windows não está iniciando, o comando SFC tradicional não funcionará diretamente sem parâmetros offline, pois ele tentará verificar a partição virtual RAM temporária (disco X:) em vez do seu sistema real:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Na tela de Opções Avançadas do WinRE, clique em **Prompt de Comando**.",
+            "Identifique a letra da partição onde o Windows está instalado digitando `bcdedit | findstr /i osdevice` e anotando a unidade (habitualmente `C:` ou `D:` no ambiente de recuperação).",
+            "Execute a varredura offline apontando a pasta do Windows correta:",
+            "Aguarde a finalização da verificação e substituição de arquivos corrompidos."
+          ]
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "powershell",
+          "texto": "sfc /scannow /offbootdir=C:\\ /offwindir=C:\\windows"
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "info",
+          "texto": "Se a sua partição do Windows for a letra D: dentro do WinRE, altere o comando para /offbootdir=D:\\ /offwindir=D:\\windows."
+        }
+      ]
+    },
+    {
+      "id": "reparo-de-inicializacao-bcd",
+      "titulo": "Passo 3: Reconstruir os Registros de Inicialização (BCD e MBR)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se ponteiros corrompidos nos arquivos BCD (Boot Configuration Data) impedirem o carregamento dos drivers essenciais no arranque, execute a sequência padrão de reconstrução no console:"
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "powershell",
+          "texto": "bootrec /fixmbr\nbootrec /fixboot\nbootrec /rebuildbcd"
+        },
+        {
+          "tipo": "p",
+          "texto": "Se o comando `bootrec /fixboot` retornar 'Acesso negado' em sistemas modernos UEFI, execute os comandos de atribuição de volume na partição EFI oculta ou utilize o utilitário nativo `bcdboot` para recriar os arquivos de boot limpos:"
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "powershell",
+          "texto": "bcdboot C:\\Windows /s C: /f ALL"
+        }
+      ]
+    },
+    {
+      "id": "desinstalar-atualizacoes-recentes",
+      "titulo": "Passo 4: Desinstalar Atualizações Recentes do Windows",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se o erro Critical Process Died surgiu imediatamente após uma atualização cumulativa do Windows Update, a causa é incompatibilidade de pacotes com drivers legados instalados na placa-mãe:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Volte ao menu principal de Opções Avançadas do WinRE.",
+            "Selecione **Desinstalar Atualizações**.",
+            "Clique primeiro em **Desinstalar a atualização de qualidade mais recente** (pacotes cumulativos mensais de correção).",
+            "Aguarde o processo de reversão e tente reiniciar normalmente.",
+            "Se a falha persistir, repita o processo e escolha **Desinstalar a atualização de recursos mais recente** (grandes versões anuais do sistema)."
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O que significa o código de parada 0x000000EF?",
+      "r": "O código 0x000000EF é a representação numérica formal de CRITICAL_PROCESS_DIED. Ele indica especificamente que um thread pertencente a um processo vital do sistema operacional foi abortado inesperadamente, impedindo a continuidade segura da operação do kernel."
+    },
+    {
+      "p": "Posso perder meus arquivos pessoais com o erro Critical Process Died?",
+      "r": "O erro em si não apaga documentos, fotos ou planilhas armazenadas nas suas pastas de usuário. No entanto, se o desligamento ocorreu no exato momento em que um arquivo estava sendo gravado, esse arquivo específico pode sofrer corrupção. O disco e suas partições permanecem intactos."
+    },
+    {
+      "p": "O que fazer se o Prompt de Comando do WinRE pedir a senha do BitLocker?",
+      "r": "Se o seu SSD estiver criptografado pelo BitLocker, você precisará inserir a chave de recuperação numérica de 48 dígitos. Você pode consultá-la acessando a página oficial account.microsoft.com/devices/recoverykey através de qualquer outro celular ou computador conectado à mesma conta Microsoft."
+    },
+    {
+      "p": "Modo de Segurança funciona quando ocorre Critical Process Died?",
+      "r": "Em cerca de metade dos casos, sim. Como o Modo de Segurança carrega apenas drivers genéricos essenciais da Microsoft e bloqueia serviços de inicialização de terceiros, se o causador for um driver conflitante, o sistema conseguirá inicializar no Modo de Segurança, permitindo desinstalar o programa problemático."
+    },
+    {
+      "p": "Quando a restauração ou formatação do PC se torna necessária?",
+      "r": "Se você executou o reparo de arquivos offline com o SFC, reconstruiu a partição de boot com o bcdboot e reverteu atualizações, mas a máquina continua caindo no erro 0xEF antes do logon, o Registro do Windows (arquivos SAM e SYSTEM na pasta config) sofreu corrupção estrutural irrecuperável. Nesse cenário, utilize a opção 'Restaurar o PC' mantendo seus arquivos pessoais."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Microsoft Learn — Bug Check 0xEF CRITICAL_PROCESS_DIED",
+      "url": "https://learn.microsoft.com/pt-br/windows-hardware/drivers/debugger/bug-check-0xef---critical-process-died"
+    },
+    {
+      "titulo": "Microsoft Learn — Como solucionar problemas de inicialização do Windows",
+      "url": "https://learn.microsoft.com/pt-br/troubleshoot/windows-client/performance/windows-boot-issues-troubleshooting"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    143,
+    155,
+    176,
+    178
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "id": 155,
+  "slug": "como-corrigir-tela-azul-whea-uncorrectable-error-windows-11",
+  "titulo": "Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11",
+  "descricao": "Guia técnico para diagnosticar e solucionar o erro de parada WHEA Uncorrectable Error (0x00000124) no Windows 11: causas de hardware, voltagem e BIOS.",
+  "resposta_curta": "O erro de tela azul WHEA_UNCORRECTABLE_ERROR (código de parada 0x00000124) indica uma falha de hardware irrecuperável detectada pela arquitetura WHEA (Windows Hardware Error Architecture). As causas mais frequentes envolvem superaquecimento do processador, instabilidades de voltagem decorrentes de overclock, firmware de BIOS desatualizado ou falha física no SSD NVMe. Para resolver, restaure as configurações padrão da BIOS, monitore temperaturas e atualize os drivers de chipset e firmware de armazenamento.",
+  "aplica_se": "Windows 11 e Windows 10 em processadores Intel e AMD",
+  "intro": [
+    "Diferente da maior parte das telas azuis causadas por drivers de software corrompidos ou incompatibilidade pontual de programas de terceiros, o código de parada WHEA_UNCORRECTABLE_ERROR (bugcheck 0x00000124) possui uma natureza estritamente associada a componentes de hardware. A sigla WHEA significa Windows Hardware Error Architecture, um subsistema introduzido pela Microsoft para monitorar e consolidar diagnósticos físicos de processadores, barramentos de alta velocidade PCI Express e memória através de registradores de Machine Check Exception (MCE) integrados diretamente aos núcleos da CPU.",
+    "Quando esse erro ocorre, o processador ou o barramento PCIe comunicou ao kernel do Windows que ocorreu um erro crítico que não pôde ser corrigido pelo circuito interno de paridade e tolerância a falhas. Para evitar corrupção em cascata dos seus dados no disco de armazenamento, o sistema operacional interrompe o funcionamento de maneira imediata. Neste guia prático, apresentamos a sequência metódica de testes para isolar a causa exata sem a necessidade de trocar peças desnecessariamente."
+  ],
+  "secoes": [
+    {
+      "id": "principais-causas-whea",
+      "titulo": "Causas Físicas e Lógicas do Erro 0x00000124",
+      "blocos": [
+        { "tipo": "p", "texto": "A arquitetura de erro de hardware do Windows aciona essa tela azul principalmente sob quatro circunstâncias bem documentadas:" },
+        { "tipo": "tabela", "cabecalho": ["Origem da Falha", "Comportamento Típico", "Solução Recomendada"], "linhas": [
+          ["Instabilidade de Overclock ou Undervolt", "Tela azul repentina sob carga de jogos ou renderização 3D pesada.", "Resetar frequências e tensões de CPU e memória na BIOS/UEFI."],
+          ["Superaquecimento de CPU ou Placa-Mãe", "Computador desliga ou exibe BSOD após alguns minutos de uso intenso.", "Troca de pasta térmica, limpeza de radiadores e ventoinhas."],
+          ["Degradação ou superaquecimento de SSD NVMe", "Travamento súbito do sistema com LED de atividade do disco aceso sem resposta.", "Atualização de firmware de SSD e verificação de integridade SMART."],
+          ["Firmware de BIOS desatualizado", "Incompatibilidade de microcódigo com novas revisões de processadores.", "Instalação da versão mais recente da BIOS disponibilizada pela fabricante."]
+        ]},
+        { "tipo": "p", "texto": "Em computadores recém-montados ou que receberam upgrades de processador recente, a desatualização de microcódigo da BIOS é uma das causas mais recorrentes de relatos deste erro." }
+      ]
+    },
+    {
+      "id": "redefinir-bios-overclock",
+      "titulo": "Passo 1: Desativar Overclock e Redefinir a BIOS/UEFI para os Padrões",
+      "blocos": [
+        { "tipo": "p", "texto": "A causa mais comum de erros WHEA em computadores desktop é a configuração instável de tensões (Vcore), frequências elevadas na CPU ou perfis de memória XMP/EXPO com temporizações excessivamente agressivas:" },
+        { "tipo": "passos", "itens": [
+          "Reinicie o computador e pressione repetidamente a tecla de acesso à BIOS (habitualmente Del, F2 ou F12, dependendo da fabricante da placa-mãe).",
+          "Navegue até o menu de encerramento ou opções de performance e selecione **Load Optimized Defaults** (Carregar Padrões Otimizados) ou **Restore Defaults**.",
+          "Desative temporariamente perfis de aceleração de memória como **XMP (Extreme Memory Profile)** ou **AMD EXPO** para rodar os pentes de memória RAM em suas frequências nativas padrão JEDEC.",
+          "Pressione a tecla **F10** para salvar as alterações e reiniciar o computador normalmente para testar a estabilidade."
+        ]},
+        { "tipo": "aviso", "nivel": "info", "texto": "Se a tela azul cessar após essa etapa, a instabilidade residia na taxa de alimentação elétrica do processador ou na sincronização dos pentes de memória sob frequências aceleradas fora do padrão." }
+      ]
+    },
+    {
+      "id": "monitoramento-de-temperaturas",
+      "titulo": "Passo 2: Monitorar Temperaturas de Operação da CPU",
+      "blocos": [
+        { "tipo": "p", "texto": "Se a bomba do water cooler falhar, o bloco estiver mal encaixado com pressão insuficiente ou a pasta térmica tiver ressecado com o tempo, a temperatura dos núcleos pode atingir 100°C instantaneamente ao abrir um jogo ou renderizador, acionando o circuito de proteção térmica via WHEA:" },
+        { "tipo": "lista", "itens": [
+          "Utilize utilitários consolidados de monitoramento de hardware (como HWMonitor, HWiNFO ou o próprio software utilitário da placa-mãe) para checar as temperaturas em repouso e sob carga.",
+          "Em repouso (Desktop sem aplicativos abertos), a CPU deve operar entre 35°C e 50°C.",
+          "Sob estresse máximo contínuo, a temperatura não deve ultrapassar de forma constante 85°C a 90°C (dependendo das especificações do fabricante do chip).",
+          "Se você notar picos imediatos para 95°C a 105°C acompanhados do congelamento do sistema, desligue o equipamento e efetue a manutenção física no sistema de refrigeração e pasta térmica."
+        ]}
+      ]
+    },
+    {
+      "id": "diagnostico-de-ssd-nvme",
+      "titulo": "Passo 3: Verificar a Saúde e Firmware do SSD NVMe",
+      "blocos": [
+        { "tipo": "p", "texto": "Controladoras de SSDs PCIe NVMe defeituosas ou que sofrem estrangulamento térmico (thermal throttling) severo frequentemente perdem a comunicação temporária com as pistas PCIe da placa-mãe, resultando em erro WHEA:" },
+        { "tipo": "passos", "itens": [
+          "Baixe o painel de gerenciamento oficial da marca do seu SSD (como Samsung Magician, Kingston SSD Manager, Crucial Storage Executive ou Western Digital Dashboard).",
+          "Verifique se há atualizações de firmware pendentes para a unidade de armazenamento instalada e aplique-as conforme instruído pela fabricante.",
+          "Inspecione a tabela SMART de integridade em busca de atributos críticos como 'Critical Warning', 'Media and Data Integrity Errors' ou 'Available Spare' reduzido.",
+          "No Prompt de Comando como Administrador, execute uma verificação lógica na partição do sistema operacional com o comando `chkdsk C: /f /r` e confirme o agendamento para o próximo reinício."
+        ]}
+      ]
+    },
+    {
+      "id": "atualizar-microcodigo-bios",
+      "titulo": "Passo 4: Atualizar a BIOS da Placa-Mãe",
+      "blocos": [
+        { "tipo": "p", "texto": "Fabricantes de processadores lançam atualizações periódicas de microcódigo para corrigir falhas de estabilidade na regulação de tensão e compatibilidade de barramentos PCIe. Essas correções são incorporadas pelas marcas de placas-mãe (ASUS, Gigabyte, MSI, ASRock) nas atualizações de BIOS:" },
+        { "tipo": "passos", "itens": [
+          "Pressione as teclas `Windows + R`, digite `msinfo32` e pressione Enter para abrir as Informações do Sistema.",
+          "Localize os campos 'Fabricante da Placa-Base', 'Produto Base' e 'Versão/Data do BIOS'.",
+          "Acesse a página oficial de suporte do fabricante da sua placa-mãe e compare o número da sua versão instalada com as versões recentes disponibilizadas para download.",
+          "Siga rigorosamente as instruções do fabricante para instalar a atualização de BIOS (utilizando pendrive formatado em FAT32 e ferramentas como Q-Flash ou EZ Flash na própria interface da placa)."
+        ]},
+        { "tipo": "aviso", "nivel": "atencao", "texto": "Nunca desligue o computador da tomada nem interrompa o processo durante uma atualização de BIOS, pois isso pode corromper a memória flash da placa-mãe de forma irreversível sem equipamento especializado." }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O erro WHEA_UNCORRECTABLE_ERROR pode ser causado por vírus ou malware?",
+      "r": "É extremamente improvável. Esse erro é gerado diretamente por interrupções físicas de hardware (Machine Check Exceptions) disparadas pelos registradores da CPU e dos barramentos da placa-mãe. Vírus comuns não possuem a capacidade de forçar essa exceção específica, a menos que atuem como mineradores ocultos que causem superaquecimento extremo e imediato das peças."
+    },
+    {
+      "p": "Reinstalar o Windows 11 resolve o WHEA Uncorrectable Error?",
+      "r": "Na grande maioria dos casos, não. Como a origem da falha está ligada a tensões elétricas instáveis, superaquecimento, firmware desatualizado ou defeito físico em componentes de hardware (como processador, pentes de memória ou SSDs), uma simples formatação não resolverá o problema se a causa física subjacente não for tratada."
+    },
+    {
+      "p": "O que significa o parâmetro Arg1 com valor 0x0 ou 0x4 no dump de memória?",
+      "r": "No relatório de despejo de memória da tela azul WHEA, o primeiro parâmetro (Arg1) indica o tipo de fonte de erro. O valor 0x0 aponta para uma Machine Check Exception disparada pelo processador; o valor 0x4 indica um erro de porta ou dispositivo de barramento PCI Express (frequentemente a placa de vídeo ou o SSD NVMe)."
+    },
+    {
+      "p": "A fonte de alimentação (PSU) pode causar erro WHEA no computador?",
+      "r": "Sim. Se a fonte de alimentação for de baixa qualidade ou estiver com capacitores degradados na linha de 12V, ela pode sofrer quedas súbitas de tensão (vDroop) quando o processador ou a placa de vídeo exigem pico de corrente elétrica, desestabilizando os circuitos da CPU e forçando o erro WHEA."
+    },
+    {
+      "p": "Quando devo acionar a garantia do processador ou placa-mãe?",
+      "r": "Se você redefiniu as configurações da BIOS, removeu qualquer overclock ou perfil XMP, confirmou que as temperaturas operacionais estão seguras (abaixo de 80°C) e atualizou todos os firmwares, mas o erro continua se manifestando mesmo em tarefas leves, é o momento de acionar a garantia do processador, da placa-mãe ou do SSD com o fabricante."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Microsoft Learn — Bug Check 0x124 WHEA_UNCORRECTABLE_ERROR",
+      "url": "https://learn.microsoft.com/pt-br/windows-hardware/drivers/debugger/bug-check-0x124---whea-uncorrectable-error"
+    },
+    {
+      "titulo": "Intel — Como solucionar o erro WHEA_UNCORRECTABLE_ERROR em processadores",
+      "url": "https://www.intel.com.br/content/www/br/pt/support/articles/000028083/processors.html"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [143, 176, 178, 135]
+}

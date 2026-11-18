@@ -4,28 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Como Resolver a Tela Azul MEMORY_MANAGEMENT no Windows 11 — DRGTech</title>
-  <meta name="description" content="O código de parada MEMORY_MANAGEMENT surge quando ocorre um erro crítico na alocação de memória RAM ou no arquivo de paginação (pagefile.sys). Para reparar..." />
-  <meta name="keywords" content="como resolver a tela azul memory_management no windows 11, tutorial windows, suporte tecnico" />
+  <meta name="description" content="Guia técnico para diagnosticar e solucionar o erro MEMORY_MANAGEMENT (0x0000001A) no Windows 11: teste de pentes de memória RAM e integridade de arquivo de paginação." />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Como Resolver a Tela Azul MEMORY_MANAGEMENT no Windows 11 — DRGTech" />
-  <meta property="og:description" content="O código de parada MEMORY_MANAGEMENT surge quando ocorre um erro crítico na alocação de memória RAM ou no arquivo de paginação (pagefile.sys). Para reparar..." />
+  <meta property="og:description" content="Guia técnico para diagnosticar e solucionar o erro MEMORY_MANAGEMENT (0x0000001A) no Windows 11: teste de pentes de memória RAM e integridade de arquivo de paginação." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-resolver-tela-azul-memory-management-windows-11.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Como Resolver a Tela Azul MEMORY_MANAGEMENT no Windows 11 — DRGTech" />
-  <meta name="twitter:description" content="O código de parada MEMORY_MANAGEMENT surge quando ocorre um erro crítico na alocação de memória RAM ou no arquivo de paginação (pagefile.sys). Para reparar..." />
+  <meta name="twitter:description" content="Guia técnico para diagnosticar e solucionar o erro MEMORY_MANAGEMENT (0x0000001A) no Windows 11: teste de pentes de memória RAM e integridade de arquivo de paginação." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-resolver-tela-azul-memory-management-windows-11.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Resolver a Tela Azul MEMORY_MANAGEMENT no Windows 11",
+  "description": "Guia técnico para diagnosticar e solucionar o erro MEMORY_MANAGEMENT (0x0000001A) no Windows 11: teste de pentes de memória RAM e integridade de arquivo de paginação.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-resolver-tela-azul-memory-management-windows-11.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,47 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Resolver a Tela Azul MEMORY_MANAGEMENT no Windows 11",
+      "name": "O erro MEMORY_MANAGEMENT pode ser causado por SSD ou HD defeituoso?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "O código de parada MEMORY_MANAGEMENT surge quando ocorre um erro crítico na alocação de memória RAM ou no arquivo de paginação (pagefile.sys). Para reparar, execute a ferramenta Diagnóstico de Memória do Windows (mdsched.exe) e teste os módulos de memória RAM instalados no computador."
+        "text": "Sim. Como a memória virtual depende diretamente do arquivo pagefile.sys gravado no SSD ou disco rígido, se o disco tiver setores defeituosos (bad blocks) no local onde o arquivo de paginação está alocado, a leitura da memória falhará, gerando a tela azul 0x1A com o subcódigo 0x3451."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Memória RAM suja pode gerar esse erro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Com certeza. Poeira acumulada nos slots da placa-mãe ou oxidação nos contatos dourados dos módulos de RAM aumentam a resistência elétrica e introduzem ruído nos sinais de alta frequência da memória, causando corrupção esporádica de bits de dados."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso misturar pentes de memória de marcas ou frequências diferentes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não é recomendável. Misturar memórias de fabricantes distintos, com latências (CL) e chips de memória diferentes frequentemente causa incompatibilidade de sincronismo de temporização no controlador de memória da CPU, resultando em travamentos periódicos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O comando sfc /scannow ajuda a resolver o Memory Management?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ajuda caso a causa seja a corrupção de arquivos de sistema ou drivers essenciais que operam no gerenciamento de memória. Execute o sfc /scannow e o dism /online /cleanup-image /restorehealth como medida complementar de software."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual a melhor ferramenta para testar memória além do Windows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A ferramenta de padrão ouro na indústria técnica é o MemTest86 (versão inicializável via pendrive da PassMark). Ele executa 13 algoritmos de teste matemático durante vários ciclos para detectar até mesmo falhas intermitentes que ocorrem apenas sob aquecimento prolongado."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -103,132 +153,213 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#windows">Windows</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Resolver a Tela Azul MEMORY_MA...</span>
+        <span>Como Resolver a Tela Azul…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-blue">Windows</span>
         <h1 class="article-h1">Como Resolver a Tela Azul MEMORY_MANAGEMENT no Windows 11</h1>
         <div class="article-intro-meta">
-          <span class="meta-item">7 min de leitura</span>
-          <span class="meta-item">Atualizado em outubro de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">6 min de leitura</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> O código de parada MEMORY_MANAGEMENT surge quando ocorre um erro crítico na alocação de memória RAM ou no arquivo de paginação (pagefile.sys). Para reparar, execute a ferramenta Diagnóstico de Memória do Windows (mdsched.exe) e teste os módulos de memória RAM instalados no computador.
+        <strong>Resposta rápida:</strong> A tela azul MEMORY_MANAGEMENT (código 0x0000001A) indica que o gerenciador de memória do Windows detectou uma corrupção severa nas estruturas de controle de paginação ou alocação de RAM física. Para resolver, execute o Diagnóstico de Memória do Windows (<code>mdsched.exe</code>) para identificar defeitos nos pentes de memória, redefina o arquivo de paginação (pagefile.sys), atualize os drivers de chipset, investigue pools de drivers com o Driver Verifier e desative perfis XMP/EXPO de aceleração de RAM na BIOS.
       </div>
 
       <article class="article-body" id="article-body">
+        <p>O gerenciador de memória do Windows é responsável por mapear endereços de memória virtual dos programas para endereços de memória física (RAM) e gerenciar a troca contínua de páginas com o arquivo pagefile.sys no disco de armazenamento. Quando o kernel detecta uma inconsistência lógica que não pode ser reconciliada (como contadores de descritores de página corrompidos, listas de quadros livres violadas ou bits invertidos em endereços físicos de memória), ele aciona a tela azul de parada MEMORY_MANAGEMENT (código 0x0000001A).</p>
+        <p>Embora muitos usuários associem esse erro exclusivamente a defeito físico irreversível na memória RAM, uma parcela expressiva das ocorrências decorre de problemas lógicos tratáveis, como drivers de vídeo gravando em áreas de memória de outros processos, arquivo de paginação corrompido em SSDs sobrecarregados ou tensões elétricas instáveis na placa-mãe. Neste artigo técnico, mostramos como separar falhas de software de defeitos reais de hardware e como interpretar os códigos de subdiagnóstico do kernel.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> Windows 11 e Windows 10</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Resolver a Tela Azul MEMORY_MANAGEMENT no Windows 11"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Windows</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
+        <h2 id="subcodigos-parametro-1-memoria">Entendendo os Subcódigos do Parâmetro 1 (Arg1)</h2>
+        <p>Ao abrir o arquivo de despejo de memória minidump com o WinDbg ou BlueScreenView, o primeiro parâmetro (Arg1) indica a causa exata identificada pelo subsistema de memória do kernel NT:</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Código Arg1</th><th>Significado Técnico</th><th>Causa Mais Provável</th></tr></thead>
+            <tbody>
+              <tr><td>0x41792</td><td>Uma tabela de páginas do processo foi corrompida.</td><td>Defeito de hardware em pente de RAM ou driver corrompendo pool.</td></tr>
+              <tr><td>0x41284</td><td>Uma lista de páginas modificadas foi corrompida.</td><td>Instabilidade de tensão no controlador de memória da CPU (IMC).</td></tr>
+              <tr><td>0x41287</td><td>A contagem de referências de uma página tornou-se inconsistente.</td><td>Driver de dispositivo sobrescrevendo ponteiros de memória alheia.</td></tr>
+              <tr><td>0x61941</td><td>Falha de proteção em nível de decodificação de página.</td><td>Incompatibilidade severa de perfil de overclock XMP/EXPO.</td></tr>
+              <tr><td>0x3451</td><td>Falha de E/S ao ler uma página do disco no arquivo de paginação.</td><td>Setores defeituosos ou falha de comunicação no SSD/HD.</td></tr>
+            </tbody>
+          </table>
         </div>
 
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
+        <h2 id="diagnostico-memoria-windows">Passo 1: Executar o Diagnóstico de Memória do Windows (mdsched)</h2>
+        <p>O Windows inclui uma ferramenta integrada de diagnóstico que testa os módulos físicos de RAM antes do carregamento do sistema operacional, sem a interferência de drivers de terceiros:</p>
         <ol class="steps-list">
-
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">Pressione Win + R, digite 'mdsched.exe' e selecione 'Reiniciar agora e verificar se há problemas'. Aguarde o teste completo durante o boot.</div>
+            <div class="step-text">Pressione as teclas <code>Windows + R</code>, digite <code>mdsched.exe</code> e pressione Enter.</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">Abra as Configurações do Sistema > Sobre > Configurações Avançadas do Sistema > Desempenho > Avançado e redefina a Memória Virtual para 'Tamanho gerenciado pelo sistema'.</div>
+            <div class="step-text">Na janela que se abrir, clique na opção <strong>Reiniciar agora e verificar se há problemas (recomendado)</strong>.</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">Desligue o computador, retire os pentes de memória RAM e limpe os contatos metálicos com uma borracha escolar branca para remover oxidação.</div>
+            <div class="step-text">O computador será reiniciado imediatamente na Ferramenta de Diagnóstico de Memória do Windows, executando uma série de testes de leitura e escrita em blocos.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Pressione a tecla <strong>F1</strong> para acessar as opções avançadas e selecione a combinação de teste <strong>Estendida</strong> com cache ativado para uma checagem rigorosa.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Aguarde o término dos testes (pode levar de 15 a 45 minutos). O computador reiniciará automaticamente no Windows.</div>
+          </li>
+        </ol>
+        <p>Se a ferramenta acusar qualquer erro em tela durante o teste, um ou mais pentes de memória RAM estão com defeito físico em células semicondutoras ou mal encaixados no slot da placa-mãe.</p>
+
+        <h2 id="redefinir-arquivo-paginacao">Passo 2: Limpar e Redefinir o Arquivo de Paginação (pagefile.sys)</h2>
+        <p>Se o arquivo de paginação no disco contiver setores corrompidos ou tiver sido dimensionado de forma fragmentada por programas de otimização, o gerenciador de memória falhará ao descarregar dados da RAM para o disco:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Pressione <code>Windows + R</code>, digite <code>sysdm.cpl</code> e pressione Enter para abrir as Propriedades do Sistema.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Acesse a aba <strong>Avançado</strong> e, na seção 'Desempenho', clique no botão <strong>Configurações</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Na nova janela, clique na aba <strong>Avançado</strong> e, na seção 'Memória virtual', clique em <strong>Alterar</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Desmarque a opção 'Gerenciar automaticamente o tamanho do arquivo de paginação de todas as unidades'.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Selecione a unidade C:, marque a opção <strong>Sem arquivo de paginação</strong> e clique no botão <strong>Definir</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-text">Reinicie o computador para que o arquivo corrompido seja purgado do disco.</div>
+          </li>
+          <li>
+            <div class="step-num">7</div>
+            <div class="step-text">Após o reinício, retorne à mesma tela e marque novamente a opção <strong>Gerenciar automaticamente o tamanho do arquivo de paginação</strong>, clicando em OK e reiniciando mais uma vez.</div>
           </li>
         </ol>
 
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <h2 id="desativar-xmp-expo">Passo 3: Desativar Perfis de Overclock XMP / AMD EXPO</h2>
+        <p>Muitas memórias modernas de alta velocidade são vendidas com frequências como 3200MHz, 3600MHz, 6000MHz ou superiores, que operam sob overclock de fábrica através de perfis Intel XMP ou AMD EXPO. Se o controlador de memória integrado da CPU (IMC) não conseguir manter a estabilidade térmica com essas tensões, ocorrerá o bugcheck 0x1A:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Acesse a BIOS/UEFI do computador pressionando <strong>Del</strong> ou <strong>F2</strong> na inicialização.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Localize a configuração de memória (geralmente sob as abas Ai Tweaker, OC ou Overclocking).</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Mude o perfil XMP/EXPO de 'Enabled' para <strong>Disabled</strong> ou <strong>Auto</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Pressione <strong>F10</strong> para salvar e inicializar.</div>
+          </li>
+        </ol>
+
+        <h2 id="driver-verifier-diagnostico">Passo 4: Rastrear Drivers Conflitantes com o Driver Verifier</h2>
+        <p>Se a memória RAM física estiver saudável mas a tela azul persistir, um driver de dispositivo está gravando ilegalmente em pools de memória reservados para outros componentes. O utilitário nativo Driver Verifier monitora essas violações:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Pressione <code>Windows + R</code>, digite <code>verifier.exe</code> e execute como Administrador.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Selecione <strong>Criar configurações padrão</strong> e clique em Avançar.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Escolha <strong>Selecionar drivers de uma lista</strong> e ordene a lista por 'Provedor'.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Marque todos os drivers que NÃO sejam da Microsoft (drivers de placa de vídeo, placas de som, periféricos e antivírus).</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Clique em Concluir e reinicie o computador para iniciar a monitoração intensiva.</div>
+          </li>
+        </ol>
+        <div class="warning-box">
+          <div class="box-content"><p>Caso o computador apresente tela azul no boot indicando o driver culpado, entre no Modo de Segurança e execute <code>verifier /reset</code> no Prompt para desativar o monitoramento antes de desinstalar o driver defeituoso.</p></div>
         </div>
 
-        
+        <h2 id="teste-individual-pentes">Passo 5: Teste Físico e Limpeza dos Contatos dos Pentes de RAM</h2>
+        <p>Se os testes de software apontaram erros de memória e você possui mais de um pente instalado, isole qual deles é o culpado:</p>
+        <ul>
+          <li>Desligue o computador da tomada e descarregue a eletricidade estática do corpo tocando em uma superfície metálica sem pintura.</li>
+          <li>Remova todos os pentes de memória e deixe apenas um único módulo conectado no slot primário (consulte o manual da placa-mãe, habitualmente o slot A2).</li>
+          <li>Limpe cuidadosamente os contatos dourados do pente com uma borracha branca escolar limpa e remova resíduos com pincel seco.</li>
+          <li>Ligue o computador e use normalmente. Se o erro não se repetir após alguns dias, teste o segundo pente no mesmo slot para confirmar o defeito.</li>
+        </ul>
 
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>O erro MEMORY_MANAGEMENT pode ser causado por SSD ou HD defeituoso?</h3>
+            <p>Sim. Como a memória virtual depende diretamente do arquivo pagefile.sys gravado no SSD ou disco rígido, se o disco tiver setores defeituosos (bad blocks) no local onde o arquivo de paginação está alocado, a leitura da memória falhará, gerando a tela azul 0x1A com o subcódigo 0x3451.</p>
           </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
+          <div class="faq-item">
+            <h3>Memória RAM suja pode gerar esse erro?</h3>
+            <p>Com certeza. Poeira acumulada nos slots da placa-mãe ou oxidação nos contatos dourados dos módulos de RAM aumentam a resistência elétrica e introduzem ruído nos sinais de alta frequência da memória, causando corrupção esporádica de bits de dados.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Posso misturar pentes de memória de marcas ou frequências diferentes?</h3>
+            <p>Não é recomendável. Misturar memórias de fabricantes distintos, com latências (CL) e chips de memória diferentes frequentemente causa incompatibilidade de sincronismo de temporização no controlador de memória da CPU, resultando em travamentos periódicos.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O comando sfc /scannow ajuda a resolver o Memory Management?</h3>
+            <p>Ajuda caso a causa seja a corrupção de arquivos de sistema ou drivers essenciais que operam no gerenciamento de memória. Execute o sfc /scannow e o dism /online /cleanup-image /restorehealth como medida complementar de software.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Qual a melhor ferramenta para testar memória além do Windows?</h3>
+            <p>A ferramenta de padrão ouro na indústria técnica é o MemTest86 (versão inicializável via pendrive da PassMark). Ele executa 13 algoritmos de teste matemático durante vários ciclos para detectar até mesmo falhas intermitentes que ocorrem apenas sob aquecimento prolongado.</p>
           </div>
         </div>
 
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://learn.microsoft.com/pt-br/windows-hardware/drivers/debugger/bug-check-0x1a---memory-management" target="_blank" rel="noopener noreferrer">Microsoft Learn — Bug Check 0x1A MEMORY_MANAGEMENT</a></li>
+          <li><a href="https://support.microsoft.com/pt-br/windows/diagnosticar-problemas-de-mem%C3%B3ria-do-computador-86ef5693-a44d-487d-8fb0-4ddf311c9703" target="_blank" rel="noopener noreferrer">Microsoft Support — Como diagnosticar problemas de memória no Windows</a></li>
+        </ul>
+
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-tirar-print-screen-notebook-windows.html" class="related-card">
-              <span class="related-card-title">Como Tirar Print Screen no Notebook Windows 10 e 11</span>
-            </a>
-            <a href="como-formatar-notebook-windows-10-restaurar-fabrica.html" class="related-card">
-              <span class="related-card-title">Como Formatar o Notebook Windows 10 e Restaurar de Fábrica</span>
-            </a>
-            <a href="como-corrigir-processo-system-consumindo-muita-memoria-ram.html" class="related-card">
-              <span class="related-card-title">Como Corrigir o Processo System Consumindo Muita Memória RAM no Windows</span>
+            <a href="como-usar-comandos-dism-sfc-windows-11-corrigir-erros.html" class="related-card">
+              <span class="related-card-title">Como Usar DISM e SFC no Windows 11 para Reparar Arquivos do Sistema</span>
             </a>
             <a href="como-corrigir-tela-azul-whea-uncorrectable-error-windows-11.html" class="related-card">
               <span class="related-card-title">Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11</span>
+            </a>
+            <a href="como-resolver-tela-azul-system-service-exception-windows-11.html" class="related-card">
+              <span class="related-card-title">Como Resolver a Tela Azul SYSTEM_SERVICE_EXCEPTION no Windows 11</span>
+            </a>
+            <a href="como-resolver-erro-critical-process-died-boot-windows-11.html" class="related-card">
+              <span class="related-card-title">Como Resolver o Erro CRITICAL_PROCESS_DIED no Boot do Windows 11</span>
             </a>
           </div>
         </div>
@@ -238,13 +369,16 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#subcodigos-parametro-1-memoria">Entendendo os Subcódigos do Parâmetro 1 (Arg1)</a></li>
+          <li><a href="#diagnostico-memoria-windows">Passo 1: Executar o Diagnóstico de Memória do Windows (mdsched)</a></li>
+          <li><a href="#redefinir-arquivo-paginacao">Passo 2: Limpar e Redefinir o Arquivo de Paginação (pagefile.sys)</a></li>
+          <li><a href="#desativar-xmp-expo">Passo 3: Desativar Perfis de Overclock XMP / AMD EXPO</a></li>
+          <li><a href="#driver-verifier-diagnostico">Passo 4: Rastrear Drivers Conflitantes com o Driver Verifier</a></li>
+          <li><a href="#teste-individual-pentes">Passo 5: Teste Físico e Limpeza dos Contatos dos Pentes de RAM</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -252,7 +386,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>

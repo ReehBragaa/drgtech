@@ -1,0 +1,193 @@
+{
+  "id": 135,
+  "slug": "como-corrigir-tela-azul-dpc-watchdog-violation-windows-11",
+  "titulo": "Como Corrigir a Tela Azul DPC_WATCHDOG_VIOLATION no Windows 11",
+  "descricao": "Solução completa para o erro DPC Watchdog Violation (0x00000133) no Windows 11: atualização de driver SATA AHCI, SSD e firmware.",
+  "resposta_curta": "A tela azul DPC_WATCHDOG_VIOLATION (código de parada 0x00000133) ocorre quando o temporizador 'cão de guarda' (watchdog) do Windows detecta que uma Chamada de Procedimento Adiada (DPC) ou uma rotina de serviço de interrupção (ISR) de um driver permaneceu em execução por tempo excessivo em nível de IRQL elevado. A causa mais comum é um driver de controladora de armazenamento SATA/NVMe desatualizado (como iaStorA.sys) ou firmware de SSD antigo. Para resolver, altere o driver da controladora SATA para o controlador padrão da Microsoft e atualize o firmware do SSD.",
+  "aplica_se": "Windows 11 e Windows 10",
+  "intro": [
+    "O subsistema do Windows utiliza um mecanismo inteligente chamado DPC (Deferred Procedure Call) para permitir que os drivers de dispositivos adiem tarefas mais longas de processamento sem bloquear o processador em níveis de interrupção de hardware imediatos. Para garantir que nenhum driver monopolize a CPU indefinidamente, o Windows possui um temporizador sentinela chamado Watchdog.",
+    "Se um driver permanecer ocupado executando uma rotina DPC por mais tempo do que o limite seguro estabelecido pelo kernel (geralmente acima de alguns milissegundos sem devolver o controle da fila), o Watchdog interrompe o sistema com o código de parada DPC_WATCHDOG_VIOLATION (0x00000133). Isso impede que a máquina congele de maneira irresponsiva sem gerar relatórios de diagnóstico. A seguir, detalhamos como resolver essa falha que historicamente afeta controladoras de armazenamento e placas sem fio."
+  ],
+  "secoes": [
+    {
+      "id": "parametros-bugcheck-133",
+      "titulo": "Entendendo os Parâmetros do Bug Check 0x133",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "A tela azul DPC_WATCHDOG_VIOLATION possui dois modos operacionais principais descritos no primeiro parâmetro (Arg1) do despejo de memória minidump:"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Parâmetro Arg1",
+            "Diagnóstico Técnico",
+            "Causa Típica"
+          ],
+          "linhas": [
+            [
+              "0x00000000",
+              "Um único DPC executou além do limite de tempo máximo permitido continuamente.",
+              "Driver gráfico (GPU) ou driver de rede travado em laço fechado."
+            ],
+            [
+              "0x00000001",
+              "O tempo cumulativo de processamento de DPCs superou o teto aceitável de sistema.",
+              "Driver de controladora de armazenamento (SATA/NVMe) com alta latência de I/O."
+            ]
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Identificar se o seu sistema acionou o código 0x0 ou 0x1 ajuda a direcionar a atenção para a placa de vídeo ou para o SSD."
+        }
+      ]
+    },
+    {
+      "id": "trocar-driver-sata-ahci",
+      "titulo": "Passo 1: Substituir o Driver da Controladora SATA AHCI pelo Driver Nativo",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Em mais de 70% dos casos de DPC Watchdog Violation, a causa raiz é o driver de armazenamento da Intel (como `iaStorA.sys` ou `iaStorAVC.sys` do pacote Intel Rapid Storage Technology) que não consegue sincronizar adequadamente comandos de energia com SSDs modernos. A solução comprovada pela comunidade técnica é alternar para o driver padrão AHCI nativo da Microsoft:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Pressione as teclas `Windows + X` e selecione **Gerenciador de Dispositivos**.",
+            "Expanda a categoria **Controladores IDE ATA/ATAPI**.",
+            "Clique com o botão direito sobre a controladora listada (por exemplo, 'Intel(R) Chipset SATA/PCIe RST Premium Controller' ou similar) e selecione **Atualizar driver**.",
+            "Escolha a opção **Procurar drivers no meu computador**.",
+            "Em seguida, clique em **Permitir que eu escolha em uma lista de drivers disponíveis em meu computador**.",
+            "Selecione na lista a opção **Controlador AHCI SATA padrão** (Standard SATA AHCI Controller) e clique em **Avançar**.",
+            "Conclua a instalação e reinicie o computador imediatamente quando solicitado."
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "sucesso",
+          "texto": "O driver AHCI padrão fornecido nativamente pela Microsoft possui alta estabilidade e compatibilidade universal com todos os SSDs e placas-mãe do mercado."
+        }
+      ]
+    },
+    {
+      "id": "atualizar-firmware-ssd",
+      "titulo": "Passo 2: Atualizar o Firmware da Unidade SSD",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "SSDs com versões primitivas de firmware frequentemente entram em estados de economia de energia agressivos (LPM - Link Power Management) e demoram para acordar ao receber comandos de leitura, estourando o tempo limite do Watchdog:"
+        },
+        {
+          "tipo": "lista",
+          "itens": [
+            "Identifique o modelo exato do seu SSD abrindo o Gerenciador de Dispositivos na seção 'Unidades de disco'.",
+            "Baixe o utilitário oficial correspondente ao fabricante (Samsung Magician, Crucial Storage Executive, Kingston SSD Manager ou Western Digital Dashboard).",
+            "Verifique no painel do aplicativo se há avisos de nova versão de firmware e aplique a atualização seguindo rigorosamente as instruções da fabricante.",
+            "Reinicie o computador após a atualização do firmware."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "desativar-inicializacao-rapida",
+      "titulo": "Passo 3: Desativar a Inicialização Rápida do Windows",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "A Inicialização Rápida (Fast Startup) do Windows coloca os drivers em um estado de hibernação híbrida em vez de um desligamento limpo. Isso pode fazer com que drivers de rede ou armazenamento carreguem em estado inconsistente ao religar a máquina:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Pressione `Windows + R`, digite `powercfg.cpl` e pressione Enter para abrir as Opções de Energia.",
+            "No menu lateral esquerdo, clique em **Escolher a função dos botões de energia**.",
+            "Clique no link superior **Alterar configurações não disponíveis no momento** (requer privilégios de administrador).",
+            "Na seção 'Configurações de desligamento' na parte inferior, desmarque a caixa **Ligar inicialização rápida (recomendado)**.",
+            "Clique em **Salvar alterações** e reinicie o computador."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gerenciamento-energia-pcie",
+      "titulo": "Passo 4: Ajustar o Gerenciamento de Energia do PCI Express",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O recurso de economia de energia Link State Power Management da porta PCIe pode tentar suspender conexões com SSDs NVMe de alta velocidade, causando travamentos temporizados:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "No menu `powercfg.cpl`, clique em **Alterar configurações do plano** ao lado do seu plano de energia ativo.",
+            "Clique em **Alterar configurações de energia avançadas**.",
+            "Expanda o item **PCI Express** e em seguida **Gerenciamento de Energia do Estado do Link**.",
+            "Altere a configuração para **Desativado** (tanto na bateria quanto na tomada, se for notebook).",
+            "Clique em Aplicar e em OK."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "verificar-drivers-de-rede",
+      "titulo": "Passo 5: Atualizar Drivers de Placas de Rede Wi-Fi e Ethernet",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Outro módulo frequente associado ao bugcheck 0x133 é o driver de adaptador Wi-Fi ou Ethernet (como drivers Realtek ou Intel Killer Networking):"
+        },
+        {
+          "tipo": "lista",
+          "itens": [
+            "Acesse o site oficial da fabricante da sua placa-mãe ou do seu notebook na página de suporte e downloads.",
+            "Baixe a versão mais recente dos drivers de LAN (Ethernet) e WLAN (Wi-Fi).",
+            "Evite utilizar utilitários genéricos de terceiros de atualização de drivers; utilize exclusivamente os instaladores oficiais do fabricante."
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O que é um DPC no Windows?",
+      "r": "DPC significa Deferred Procedure Call (Chamada de Procedimento Adiada). É uma fila de tarefas no kernel do Windows onde drivers colocam trabalhos de processamento mais longos logo após responderem a uma interrupção imediata de hardware, evitando travar a CPU."
+    },
+    {
+      "p": "O erro DPC Watchdog Violation pode queimar o processador ou placa de vídeo?",
+      "r": "Não. Trata-se de uma exceção temporizada de software no kernel. A tela azul é disparada exatamente para proteger o computador de travar sem capacidade de resposta, não havendo risco de dano térmico ou elétrico direto."
+    },
+    {
+      "p": "Por que esse erro é tão comum após conectar um SSD novo?",
+      "r": "Porque muitos SSDs recentes utilizam comandos avançados de protocolo NVMe ou SATA que exigem atualização de firmware ou drivers compatíveis com a controladora do chipset da placa-mãe. Se o driver antigo congelar a resposta de I/O, o Watchdog dispara o erro."
+    },
+    {
+      "p": "Como saber qual driver específico causou a violação DPC?",
+      "r": "Você pode analisar o arquivo minidump em C:\\Windows\\Minidump usando a ferramenta gratuita BlueScreenView ou WhoCrashed. O parâmetro 1 (Arg1) com valor 0x0 aponta para uma rotina individual de driver que estourou o tempo limite; o nome do arquivo problemático aparecerá na coluna 'Caused By Driver'."
+    },
+    {
+      "p": "Desativar o Watchdog é uma boa ideia?",
+      "r": "Não. O temporizador Watchdog é um componente de segurança nuclear do kernel NT do Windows e não deve ser desativado. Corrigir o driver que está demorando excessivamente é a única abordagem tecnicamente correta e duradoura."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Microsoft Learn — Bug Check 0x133 DPC_WATCHDOG_VIOLATION",
+      "url": "https://learn.microsoft.com/pt-br/windows-hardware/drivers/debugger/bug-check-0x133---dpc-watchdog-violation"
+    },
+    {
+      "titulo": "Microsoft Learn — Visão geral de chamadas de procedimento adiadas (DPCs)",
+      "url": "https://learn.microsoft.com/pt-br/windows-hardware/drivers/kernel/introduction-to-dpcs"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    143,
+    155,
+    176,
+    178
+  ]
+}

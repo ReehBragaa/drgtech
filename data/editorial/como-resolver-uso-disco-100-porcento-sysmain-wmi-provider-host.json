@@ -1,0 +1,171 @@
+{
+  "id": 154,
+  "slug": "como-resolver-uso-disco-100-porcento-sysmain-wmi-provider-host",
+  "titulo": "Como Resolver Uso de Disco em 100% no Windows 11 com SysMain e WMI",
+  "descricao": "Guia prático para solucionar o travamento de disco em 100% no Windows 11: desativação segura do SysMain, reparo do WMI Provider Host e diagnóstico de SSD.",
+  "resposta_curta": "O problema de uso de disco em 100% no Windows 11 ocorre com frequência quando o serviço SysMain (antigo SuperFetch) indexa agressivamente aplicativos em segundo plano ou quando o processo WMI Provider Host (WmiPrvSE.exe) entra em loop consumindo I/O devido a chamadas defeituosas de softwares de terceiros. Para resolver, desative temporariamente o serviço SysMain no console `services.msc`, rastreie processos clientes no Visualizador de Eventos, reinicie o repositório WMI com `net stop winmgmt` e `winmgmt /resetrepository`, e verifique a integridade do disco com `chkdsk C: /f`.",
+  "aplica_se": "Windows 11 e Windows 10 em SSDs e HDs",
+  "intro": [
+    "Abrir o Gerenciador de Tarefas do Windows e se deparar com a coluna de Disco marcando 100% de uso de forma ininterrupta, mesmo sem nenhum aplicativo pesado em execução, é um dos problemas mais comuns e irritantes relatados no Windows 11. Essa condição faz com que o ponteiro do mouse congele, navegadores demorem minutos para abrir e o computador pareça completamente paralisado.",
+    "Nas versões modernas do sistema operacional, os dois maiores culpados por esse consumo descontrolado de operações de entrada e saída (I/O) são o serviço **SysMain** (conhecido antigamente como SuperFetch) e o subsistema **WMI Provider Host** (`WmiPrvSE.exe`). Embora ambos tenham sido criados pela Microsoft com finalidades legítimas de otimização e instrumentação, falhas de sincronização com certos controladores de SSD e programas mal programados podem colocá-los em loops contínuos. A seguir, apresentamos a sequência metódica para restaurar o desempenho normal."
+  ],
+  "secoes": [
+    {
+      "id": "desativar-sysmain-seguro",
+      "titulo": "Passo 1: Desativar o Serviço SysMain (SuperFetch) Corretamente",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O SysMain analisa os horários e padrões em que você abre programas para pré-carregá-los na memória RAM. Em discos rígidos mecânicos lentos ou SSDs SATA com DRAM cache pequena, esse pré-carregamento constante estrangula a fila de transferência do disco:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Pressione as teclas `Windows + R`, digite `services.msc` e pressione Enter para abrir o console de Serviços do Windows.",
+            "Role a lista de serviços até localizar o item chamado **SysMain**.",
+            "Dê um duplo clique sobre ele para abrir a janela de propriedades.",
+            "No campo 'Tipo de inicialização', altere a opção para **Desativado**.",
+            "Na seção 'Status do serviço', clique no botão **Parar** e em seguida em **OK**.",
+            "Abra o Gerenciador de Tarefas (`Ctrl + Shift + Esc`) e observe se o indicador de uso de disco diminui imediatamente para valores abaixo de 5%."
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "info",
+          "texto": "Em computadores com SSDs NVMe modernos de alta velocidade, desativar o SysMain não causa nenhuma perda perceptível de desempenho e elimina completamente o pico de leitura de inicialização."
+        }
+      ]
+    },
+    {
+      "id": "rastrear-wmi-event-viewer",
+      "titulo": "Passo 2: Identificar Qual Aplicativo Está Causando Loop no WMI",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O processo `WmiPrvSE.exe` não gera consultas por vontade própria; ele é apenas o executor. Se ele está usando 100% de CPU ou disco, algum software instalado está enviando consultas com erro. Para descobrir o culpado exato:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Pressione `Windows + X` e abra o **Visualizador de Eventos**.",
+            "No menu superior, clique em **Exibir** e marque **Mostrar Logs Analíticos e de Depuração**.",
+            "Navegue na árvore lateral até: **Logs de Aplicativos e Serviços** > **Microsoft** > **Windows** > **WMI-Activity** > **Operational**.",
+            "Procure por eventos marcados como **Erro** com a **ID do Evento 5858**.",
+            "Selecione o evento e, no painel inferior, anote o valor numérico indicado no campo **ClientProcessId** (por exemplo, `ClientProcessId = 4120`).",
+            "Abra o Gerenciador de Tarefas, vá na aba **Detalhes**, ordene pela coluna **PID** e encontre o aplicativo com esse número (frequentemente softwares de iluminação RGB, antivírus desatualizados ou utilitários de placa-mãe)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reparar-wmi-provider-host",
+      "titulo": "Passo 3: Redefinir e Reparar o Repositório WMI",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se a base de dados do WMI estiver corrompida, ela deve ser reconstruída pelo console administrativo:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra o Terminal como Administrador (`Windows + X` > Terminal Admin).",
+            "Pare temporariamente o serviço de gerenciamento do Windows:",
+            "Redefina o repositório WMI para o estado limpo de fábrica:",
+            "Reinicie o serviço e verifique a integridade da base:"
+          ]
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "powershell",
+          "texto": "net stop winmgmt\nwinmgmt /resetrepository\nwinmgmt /verifyrepository"
+        },
+        {
+          "tipo": "p",
+          "texto": "Se o retorno for 'O repositório do WMI é consistente', as tabelas de consulta foram reconstruídas com sucesso."
+        }
+      ]
+    },
+    {
+      "id": "desativar-telemetria-pesada",
+      "titulo": "Passo 4: Desativar o Serviço de Rastreamento de Diagnóstico",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O serviço Connected User Experiences and Telemetry coleta logs de uso em segundo plano para envio à Microsoft e frequentemente causa picos de I/O em discos rígidos:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "No console `services.msc`, localize o serviço **Experiências do Usuário Conectado e Telemetria** (Connected User Experiences and Telemetry).",
+            "Dê um duplo clique, defina o 'Tipo de inicialização' como **Desativado** e clique em **Parar**.",
+            "Clique em OK para confirmar."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "verificar-saude-disco-chkdsk",
+      "titulo": "Passo 5: Verificar Danos Físicos e Setores Defeituosos com CHKDSK",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se mesmo após desativar esses serviços o disco continuar cravado em 100%, o controlador do armazenamento pode estar lutando repetidamente para ler setores danificados:"
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "powershell",
+          "texto": "chkdsk C: /f /r"
+        },
+        {
+          "tipo": "p",
+          "texto": "Pressione a letra `S` para confirmar o agendamento da checagem para a próxima inicialização e reinicie o computador. O Windows analisará e isolará blocos defeituosos automaticamente."
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "Desativar o SysMain é prejudicial para o Windows 11?",
+      "r": "Não. O SysMain é apenas um mecanismo de conveniência que pré-carrega arquivos na memória com base nos seus hábitos. Desativá-lo é uma prática amplamente recomendada por técnicos de suporte da Microsoft para sistemas que apresentam lentidão em operações de disco."
+    },
+    {
+      "p": "Por que o WMI Provider Host consome tanta CPU e disco às vezes?",
+      "r": "O WMI em si não é o gerador do trabalho, ele apenas atende a pedidos. Quando ele consome 100% de recursos, quase sempre há um aplicativo de terceiros (como softwares de controle de iluminação RGB, drivers desatualizados de notebook ou antivírus corrompido) bombardeando o sistema com centenas de consultas WMI por segundo."
+    },
+    {
+      "p": "O Windows Search pode causar 100% de uso de disco?",
+      "r": "Sim. O serviço Windows Search indexa arquivos para buscas rápidas. Se você tiver pastas com milhões de arquivos pequenos ou repositórios de código no disco, desative a indexação nessas pastas específicas nas Opções de Indexação do Windows."
+    },
+    {
+      "p": "Como saber se o meu disco está fisicamente condenado?",
+      "r": "Baixe a ferramenta gratuita CrystalDiskInfo. Se o status de saúde da unidade indicar 'Alerta' (em amarelo) com contadores de 'Setores Realocados' ou 'Eventos de Realocação' aumentando a cada dia, o disco está sofrendo degradação física irreversível e deve ser substituído com urgência após backup."
+    },
+    {
+      "p": "Mudar o plano de energia pode ajudar?",
+      "r": "Em alguns modelos de notebook com SSDs SATA, habilitar o plano de energia 'Alto Desempenho' impede que o disco entre e saia repetidamente de estados de hibernação profunda da porta SATA (LPM), eliminando pequenas pausas e travamentos intermitentes de resposta."
+    },
+    {
+      "p": "O Monitor de Recursos (resmon) ajuda a identificar o arquivo exato que trava o disco?",
+      "r": "Sim. Pressione Windows + R, digite resmon e pressione Enter. Na aba Disco, expanda a seção 'Atividade do Disco' e ordene pela coluna 'Total (B/s)'. O utilitário listará os caminhos absolutos dos arquivos que estão sendo lidos ou gravados em tempo real, permitindo identificar se é um arquivo de log temporário, um banco de dados local ou uma varredura de antivírus."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Microsoft Support — Solucionar problemas de alto uso de recursos do WMI",
+      "url": "https://learn.microsoft.com/pt-br/troubleshoot/windows-server/system-run-levels-and-service-startup/wmi-high-cpu-usage-troubleshooting"
+    },
+    {
+      "titulo": "Microsoft Community — Alto uso de disco pelo SysMain no Windows 11",
+      "url": "https://answers.microsoft.com/pt-br/windows/forum/all/100-de-uso-de-disco-no-windows-11-sysmain/5a4d46cf-369b-43ad-8d3e-95d4695b77ee"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    143,
+    155,
+    176,
+    178
+  ]
+}

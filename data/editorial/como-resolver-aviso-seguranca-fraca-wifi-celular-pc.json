@@ -1,0 +1,185 @@
+{
+  "id": 194,
+  "slug": "como-resolver-aviso-seguranca-fraca-wifi-celular-pc",
+  "titulo": "Como Resolver o Aviso 'Segurança Fraca' no Wi-Fi do Celular e PC",
+  "descricao": "Guia completo para corrigir o alerta 'Segurança Fraca' no iPhone e Windows: migração de WPA/WPA2 (TKIP) para WPA2-AES (CCMP) ou WPA3 e desativação do WPS.",
+  "resposta_curta": "O aviso 'Segurança Fraca' surge no iPhone, Android e Windows 11 quando a sua rede Wi-Fi está utilizando protocolos de criptografia legados considerados vulneráveis, como WEP ou WPA/WPA2 com criptografia TKIP. Para solucionar definitivamente, acesse a página de administração do seu roteador Wi-Fi (192.168.0.1 ou 192.168.1.1), localize as configurações de Segurança Sem Fio e altere o modo para WPA2-Personal (AES) ou modo de transição WPA2/WPA3, desativando também a função WPS.",
+  "aplica_se": "iPhone (iOS 14 a 18), Android e Windows 11/10",
+  "intro": [
+    "Ao conectar seu celular iPhone, smartphone Android ou computador com Windows 11 à rede Wi-Fi da sua própria residência ou escritório, você percebe um alerta amarelo sob o nome da rede exibindo a mensagem: **'Segurança Fraca'** (ou 'Weak Security'). O sistema operacional complementa avisando que o padrão utilizado não é seguro e recomenda reconfigurar o roteador.",
+    "Esse aviso não significa que o seu aparelho foi hackeado ou que a sua senha foi descoberta. Trata-se de uma recomendação proativa de segurança introduzida pelas desenvolvedoras de sistemas operacionais para forçar o abandono de tecnologias de criptografia sem fio obsoletas dos anos 2000, como o WEP e o WPA com algoritmo TKIP, que podem ser quebradas por ferramentas automatizadas em poucos minutos. A seguir, ensinamos como atualizar as configurações do seu roteador para o padrão WPA2-AES ou WPA3, eliminando o aviso para sempre."
+  ],
+  "secoes": [
+    {
+      "id": "diferenca-protocolos-seguranca-wifi",
+      "titulo": "Entenda os Protocolos de Criptografia Wi-Fi",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "A evolução da segurança de redes sem fio substituiu algoritmos frágeis por cifras criptográficas modernas de nível militar:"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Protocolo Wi-Fi",
+            "Algoritmo de Cifra",
+            "Nível de Segurança",
+            "Gera Aviso de Segurança Fraca?"
+          ],
+          "linhas": [
+            [
+              "WEP (Wired Equivalent Privacy)",
+              "RC4 (estático)",
+              "Quebrado em minutos com ferramentas públicas.",
+              "Sim, alerta crítico de insegurança."
+            ],
+            [
+              "WPA (v1) ou WPA2 com TKIP",
+              "TKIP (Temporal Key Integrity)",
+              "Vulnerável a ataques de reinjeção e quebra de chave.",
+              "Sim, gera o aviso 'Segurança Fraca'."
+            ],
+            [
+              "WPA2-PSK (AES / CCMP)",
+              "AES-128 (Moderno)",
+              "Padrão ouro de estabilidade e ampla compatibilidade.",
+              "Não. Considerado perfeitamente seguro."
+            ],
+            [
+              "WPA3-Personal (SAE)",
+              "AES-256 e Dragonfly handshake",
+              "Mais moderno padrão de proteção contra dicionário e escuta.",
+              "Não. Segurança máxima da indústria."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acessar-painel-roteador",
+      "titulo": "Passo 1: Fazer Login no Painel de Administração do Roteador",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Para alterar o tipo de criptografia, você precisará acessar a interface web interna do seu roteador sem fio:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Conecte um computador ou celular à rede Wi-Fi (ou utilize um cabo de rede conectado à porta LAN).",
+            "Abra o navegador de internet e digite o endereço do Gateway Padrão: habitualmente `192.168.0.1`, `192.168.1.1` ou `192.168.15.1` (no Windows, confirme o IP digitando `ipconfig` no CMD e checando o campo Gateway Padrão).",
+            "Insira o nome de usuário e a senha de administração do roteador (se nunca alterou, consulte a etiqueta física na parte inferior do aparelho).",
+            "Faça login para abrir o painel principal de controle."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alterar-criptografia-wpa2-aes",
+      "titulo": "Passo 2: Configurar a Criptografia para WPA2-AES ou WPA3",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Dentro do menu de configurações do roteador, localize a seção de proteção sem fio:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Acesse o menu **Sem Fio** (Wireless ou Wi-Fi) e entre em **Segurança Sem Fio** (Wireless Security).",
+            "Se o roteador for dual-band (com redes 2.4 GHz e 5 GHz separadas), execute esta etapa em ambas as frequências.",
+            "No campo 'Modo de Segurança' (Security Mode), selecione **WPA2-PSK** ou **WPA2-Personal** (ou WPA2/WPA3 Personal se o seu roteador for moderno).",
+            "No campo 'Tipo de Criptografia' ou 'Cifra' (Encryption/Cipher), selecione obrigatoriamente **AES** ou **CCMP** (NUNCA selecione TKIP ou Automático/TKIP+AES).",
+            "Clique no botão **Salvar** ou **Aplicar**."
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "sucesso",
+          "texto": "Ao selecionar WPA2-PSK com cifra estrita AES, você elimina a vulnerabilidade TKIP e garante a máxima taxa de transferência de dados suportada pelo padrão Wi-Fi 5 e Wi-Fi 6."
+        }
+      ]
+    },
+    {
+      "id": "desativar-wps-vulnerabilidade",
+      "titulo": "Passo 3: Desativar a Função WPS (Wi-Fi Protected Setup)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O WPS é um recurso antigo criado para conectar impressoras ou celulares apertando um botão ou digitando um PIN de 8 dígitos. Ele possui uma falha grave de concepção matemática que permite a invasores descobrir a senha do seu Wi-Fi por força bruta:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "No painel do roteador, localize a aba **WPS** ou **Wi-Fi Protected Setup**.",
+            "Altere o status da função de Habilitado para **Desativado** (Disabled).",
+            "Salve as alterações e reinicie o roteador."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reconectar-aparelhos-esquecer-rede",
+      "titulo": "Passo 4: Esquecer a Rede nos Dispositivos e Reconectar",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Como os parâmetros de criptografia foram alterados no roteador, o iPhone ou computador pode tentar conectar com o perfil antigo em cache:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Acesse os ajustes de Wi-Fi do seu iPhone ou Windows, toque no nome da sua rede e selecione **Esquecer Esta Rede**.",
+            "Desligue o Wi-Fi do aparelho por 5 segundos e ligue novamente.",
+            "Toque sobre o nome do seu Wi-Fi, digite a senha e conecte-se.",
+            "Observe que o aviso 'Segurança Fraca' terá desaparecido completamente."
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "Mudar para WPA2-AES vai desconectar aparelhos antigos da casa?",
+      "r": "Aparelhos fabricados a partir de 2006 já suportam nativamente WPA2-AES. Dispositivos muito antigos de Internet das Coisas (como certas lâmpadas inteligentes ou impressoras de 2010) podem exigir suporte a 2.4 GHz, mas praticamente todos suportam AES sem problemas."
+    },
+    {
+      "p": "O que é o modo de transição WPA2/WPA3?",
+      "r": "É um modo híbrido compatível oferecido por roteadores modernos Wi-Fi 6. Ele permite que aparelhos novos (como iPhones e computadores recentes) se conectem usando a criptografia máxima WPA3, enquanto aparelhos mais antigos continuam se conectando em WPA2-AES sem quebrar a rede."
+    },
+    {
+      "p": "O aviso de Segurança Fraca gasta mais bateria no celular?",
+      "r": "Não. O aviso é apenas um alerta informativo visual do sistema operacional e não consome recursos adicionais de bateria ou processamento."
+    },
+    {
+      "p": "Se eu não trocar a configuração, alguém pode roubar meus dados?",
+      "r": "Em redes com TKIP ou WEP, um invasor no alcance do sinal Wi-Fi (na rua ou prédio vizinho) com um notebook e ferramentas de captura de pacotes pode injetar tráfego e desautenticar aparelhos. A migração para WPA2-AES neutraliza esses ataques."
+    },
+    {
+      "p": "Por que meu roteador novo veio de fábrica com TKIP ativado?",
+      "r": "Muitas fabricantes mantinham o modo misto 'WPA/WPA2 Auto' ou 'TKIP+AES' ativado por padrão por razões de retrocompatibilidade com produtos obsoletos. Hoje em dia, configurar apenas AES é a melhor prática recomendada pela Wi-Fi Alliance."
+    },
+    {
+      "p": "O que foram os ataques KRACK e FragAttacks contra redes Wi-Fi antigas?",
+      "r": "KRACK (Key Reinstallation Attack) e FragAttacks foram vulnerabilidades críticas descobertas no protocolo WPA2 com TKIP que permitiam a invasores interceptar e reinjetar pacotes em redes sem fio. Roteadores e sistemas que utilizam WPA2-AES e WPA3 com patches atualizados contêm mitigações nativas contra essas brechas."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Suporte da Apple — Ajustes recomendados para roteadores e pontos de acesso Wi-Fi",
+      "url": "https://support.apple.com/pt-br/102766"
+    },
+    {
+      "titulo": "Wi-Fi Alliance — Security Guidelines and WPA3 Specification",
+      "url": "https://www.wi-fi.org/discover-wi-fi/security"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    141,
+    161,
+    196,
+    131
+  ]
+}

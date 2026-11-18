@@ -4,28 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Como Resolver a Tela Azul SYSTEM_SERVICE_EXCEPTION no Windows 11 — DRGTech</title>
-  <meta name="description" content="A tela azul SYSTEM_SERVICE_EXCEPTION (BSOD) ocorre devido a conflitos de drivers desatualizados, corrupção no sistema de arquivos ou incompatibilidade de s..." />
-  <meta name="keywords" content="como resolver a tela azul system_service_exception no windows 11, tutorial windows, suporte tecnico" />
+  <meta name="description" content="Passo a passo prático para corrigir o erro de parada SYSTEM_SERVICE_EXCEPTION (0x0000003B) no Windows 11 causado por drivers corrompidos ou conflitos." />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Como Resolver a Tela Azul SYSTEM_SERVICE_EXCEPTION no Windows 11 — DRGTech" />
-  <meta property="og:description" content="A tela azul SYSTEM_SERVICE_EXCEPTION (BSOD) ocorre devido a conflitos de drivers desatualizados, corrupção no sistema de arquivos ou incompatibilidade de s..." />
+  <meta property="og:description" content="Passo a passo prático para corrigir o erro de parada SYSTEM_SERVICE_EXCEPTION (0x0000003B) no Windows 11 causado por drivers corrompidos ou conflitos." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-resolver-tela-azul-system-service-exception-windows-11.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Como Resolver a Tela Azul SYSTEM_SERVICE_EXCEPTION no Windows 11 — DRGTech" />
-  <meta name="twitter:description" content="A tela azul SYSTEM_SERVICE_EXCEPTION (BSOD) ocorre devido a conflitos de drivers desatualizados, corrupção no sistema de arquivos ou incompatibilidade de s..." />
+  <meta name="twitter:description" content="Passo a passo prático para corrigir o erro de parada SYSTEM_SERVICE_EXCEPTION (0x0000003B) no Windows 11 causado por drivers corrompidos ou conflitos." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-resolver-tela-azul-system-service-exception-windows-11.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Resolver a Tela Azul SYSTEM_SERVICE_EXCEPTION no Windows 11",
+  "description": "Passo a passo prático para corrigir o erro de parada SYSTEM_SERVICE_EXCEPTION (0x0000003B) no Windows 11 causado por drivers corrompidos ou conflitos.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-resolver-tela-azul-system-service-exception-windows-11.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,47 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Resolver a Tela Azul SYSTEM_SERVICE_EXCEPTION no Windows 11",
+      "name": "O erro SYSTEM_SERVICE_EXCEPTION pode danificar meu computador fisicamente?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A tela azul SYSTEM_SERVICE_EXCEPTION (BSOD) ocorre devido a conflitos de drivers desatualizados, corrupção no sistema de arquivos ou incompatibilidade de software antivírus. Para resolver, execute sfc /scannow no Prompt de Comando (Admin), atualize os drivers de vídeo e chipset e verifique o arquivo de minidump em C:\\Windows\\Minidump."
+        "text": "Não. A tela azul é justamente um mecanismo de proteção preventiva acionado pelo kernel do Windows para evitar danos físicos aos componentes ou corrupção silenciosa nos arquivos armazenados no disco rígido/SSD quando um comando anômalo é detectado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Por que esse erro costuma acontecer logo após uma atualização do Windows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Grandes atualizações cumulativas do Windows 11 alteram rotinas internas do kernel. Se você tiver um driver de dispositivo antigo (como drivers de áudio Realtek, Wi-Fi ou placas de vídeo) que não foi atualizado pela fabricante para suportar a nova compilação, ele falhará ao invocar essas rotinas do sistema, gerando o bugcheck."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso resolver voltando a um Ponto de Restauração?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Se a tela azul começou a ocorrer logo após instalar um programa específico ou atualizar um driver, a Restauração do Sistema (atalho rstrui.exe) é uma maneira muito eficiente de reverter os arquivos do sistema e chaves do Registro para o estado operacional de dias anteriores sem tocar nos seus documentos pessoais."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como inicializar o Windows se o erro ocorrer em loop contínuo na inicialização?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se você não consegue acessar a Área de Trabalho, force o desligamento no botão liga/desliga duas vezes durante a inicialização para entrar no Ambiente de Recuperação do Windows (WinRE). Nele, vá em Solução de Problemas > Opções Avançadas > Configurações de Inicialização e escolha a opção 'Habilitar Modo de Segurança com Rede' para poder desinstalar o driver defeituoso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A memória RAM pode ser a causadora de um SYSTEM_SERVICE_EXCEPTION?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim, embora seja menos frequente do que causas de drivers. Se um bit de memória física falhar ao carregar uma instrução de driver, o kernel interpretará o dado corrompido como uma chamada de serviço inválida. Para descartar essa hipótese, execute o Diagnóstico de Memória do Windows (mdsched.exe)."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -103,132 +153,170 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#windows">Windows</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Resolver a Tela Azul SYSTEM_SE...</span>
+        <span>Como Resolver a Tela Azul…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-blue">Windows</span>
         <h1 class="article-h1">Como Resolver a Tela Azul SYSTEM_SERVICE_EXCEPTION no Windows 11</h1>
         <div class="article-intro-meta">
-          <span class="meta-item">8 min de leitura</span>
-          <span class="meta-item">Atualizado em outubro de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">5 min de leitura</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> A tela azul SYSTEM_SERVICE_EXCEPTION (BSOD) ocorre devido a conflitos de drivers desatualizados, corrupção no sistema de arquivos ou incompatibilidade de software antivírus. Para resolver, execute sfc /scannow no Prompt de Comando (Admin), atualize os drivers de vídeo e chipset e verifique o arquivo de minidump em C:\Windows\Minidump.
+        <strong>Resposta rápida:</strong> A tela azul SYSTEM_SERVICE_EXCEPTION (código de parada 0x0000003B) ocorre quando um processo em execução no modo kernel tenta executar uma rotina privilegiada sem as devidas permissões ou faz referência a um endereço inválido de memória. Na maioria dos casos, o erro é causado por drivers de placa de vídeo incompatíveis, drivers de antivírus de terceiros ou falhas em arquivos de sistema. A solução consiste em identificar o arquivo .sys causador no despejo de memória, atualizar drivers essenciais e rodar o DISM e SFC.
       </div>
 
       <article class="article-body" id="article-body">
+        <p>O código de parada SYSTEM_SERVICE_EXCEPTION (código de bugcheck 0x0000003B) é uma das telas azuis mais recorrentes no Windows 11. Essa falha se manifesta quando uma rotina em execução no espaço privilegiado de memória (kernel) transita para um manipulador de exceção que o sistema operacional não consegue tratar de forma segura. Em termos práticos, significa que um driver ou serviço tentou cruzar fronteiras de proteção de memória ou passou parâmetros corrompidos para o subsistema do Windows.</p>
+        <p>Com frequência, a própria tela azul exibe o nome do arquivo específico responsável pela interrupção logo abaixo do código de parada, como por exemplo nvlddmkm.sys (placa de vídeo NVIDIA), atikmdag.sys (placa de vídeo AMD), netio.sys (pilha de rede) ou drivers de software de proteção e anti-cheat. Compreender como rastrear esse arquivo binário permite resolver a falha de forma cirúrgica, sem reinstalações desgastantes do sistema operacional.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> Windows 11 e Windows 10</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Resolver a Tela Azul SYSTEM_SERVICE_EXCEPTION no Windows 11"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Windows</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
+        <h2 id="mapeamento-arquivos-sys">Identificando o Driver Responsável pela Falha</h2>
+        <p>Se a tela azul apontar um arquivo com extensão <code>.sys</code>, você já tem a pista direta sobre qual subsistema de driver precisa de atualização ou reversão:</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Arquivo .SYS Citado</th><th>Componente Responsável</th><th>Ação Recomendada</th></tr></thead>
+            <tbody>
+              <tr><td>nvlddmkm.sys</td><td>Driver da placa de vídeo NVIDIA GeForce.</td><td>Reinstalação limpa do driver gráfico com opção de instalação limpa.</td></tr>
+              <tr><td>amdkmdag.sys / atikmdag.sys</td><td>Driver de vídeo AMD Radeon.</td><td>Atualização ou reversão via software AMD Adrenalin.</td></tr>
+              <tr><td>netio.sys / tcpip.sys</td><td>Pilha de rede do Windows ou antivírus com filtro de rede.</td><td>Atualizar driver da placa de rede Ethernet/Wi-Fi e revisar antivírus.</td></tr>
+              <tr><td>win32kbase.sys / win32kfull.sys</td><td>Subsistema gráfico e de janelas do próprio Windows.</td><td>Corrupção de arquivos do sistema. Executar rotina com DISM e SFC.</td></tr>
+              <tr><td>asmtxhci.sys / iusb3xhci.sys</td><td>Controladora de portas USB 3.0 / USB-C.</td><td>Atualizar drivers de chipset da placa-mãe no site oficial.</td></tr>
+            </tbody>
+          </table>
         </div>
 
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
+        <h2 id="reinstalacao-limpa-video">Passo 1: Reinstalação Limpa de Drivers de Placa de Vídeo</h2>
+        <p>Mais de 60% dos incidentes com SYSTEM_SERVICE_EXCEPTION estão diretamente vinculados a drivers gráficos corrompidos durante atualizações automáticas do Windows Update:</p>
         <ol class="steps-list">
-
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">Abra o Menu Iniciar, digite 'cmd', clique com o botão direito e escolha 'Executar como Administrador'. Execute o comando 'sfc /scannow' e aguarde a reparação.</div>
+            <div class="step-text">Baixe o instalador do driver mais recente diretamente do portal oficial da fabricante da sua placa (NVIDIA, AMD ou Intel).</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">Abra o Gerenciador de Dispositivos (Win + X), expanda 'Adaptadores de vídeo' e selecione 'Atualizar driver' para corrigir falhas de renderização gráfica.</div>
+            <div class="step-text">Desconecte o computador da internet (remova o cabo de rede ou desligue o Wi-Fi) para impedir que o Windows Update baixe um driver genérico automaticamente durante o processo.</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">Reinicie o Windows em Modo de Segurança caso a tela azul continue ocorrendo em loop, permitindo desinstalar os softwares recentemente instalados.</div>
+            <div class="step-text">Inicie o instalador oficial baixado e, ao escolher o tipo de instalação, selecione a opção <strong>Personalizada (Avançada)</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Marque a caixa de seleção <strong>Executar instalação limpa</strong> (Clean Install), que removerá configurações corrompidas e perfis antigos antes de gravar os novos arquivos.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Conclua a instalação, reinicie o computador e reconecte a internet.</div>
           </li>
         </ol>
 
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <h2 id="verificacao-de-arquivos-de-sistema">Passo 2: Restaurar Arquivos de Sistema com DISM e SFC</h2>
+        <p>Quando a falha cita arquivos como <code>win32kfull.sys</code> ou <code>ntoskrnl.exe</code>, o problema decorre de corrupção lógica nos binários centrais do Windows:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Pressione <code>Windows + X</code> e abra o <strong>Terminal (Administrador)</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Execute a restauração de componentes com o DISM:</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Aguarde a conclusão bem-sucedida e execute imediatamente o verificador de integridade:</div>
+          </li>
+        </ol>
+        <pre class="code-block" data-lang="powershell"><code>DISM /Online /Cleanup-Image /RestoreHealth
+sfc /scannow</code></pre>
+        <p>Reinicie a máquina após a confirmação de que os arquivos foram reparados com êxito.</p>
+
+        <h2 id="desinstalar-softwares-conflitantes">Passo 3: Desinstalar Antivírus e Softwares de Segurança Antigos</h2>
+        <p>Programas antivírus de terceiros, ferramentas de virtualização antigas e sistemas de segurança bancária (como plugins de proteção de internet banking) instalam drivers de filtro que interceptam chamadas no nível de kernel do Windows. Versões desatualizadas desses programas não são compatíveis com as camadas de segurança atualizadas do Windows 11:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Abra as <strong>Configurações</strong> do Windows 11 (<code>Windows + I</code>) e acerte em <strong>Aplicativos</strong> &gt; <strong>Aplicativos Instalados</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Se você tiver softwares de proteção bancária (como Warsaw / Guardião) ou soluções antivírus antigas instaladas, desinstale-os temporariamente.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Mantenha ativo o <strong>Segurança do Windows (Microsoft Defender)</strong>, que é nativo do sistema e não gera conflitos de kernel.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Reinicie o computador e monitore se os travamentos foram eliminados.</div>
+          </li>
+        </ol>
+
+        <h2 id="inspecionar-minidump-whocrashed">Passo 4: Analisar o Arquivo Minidump para Saber o Culpado Exato</h2>
+        <p>Quando ocorre um bugcheck, o Windows grava um pequeno arquivo de despejo na pasta <code>C:\Windows\Minidump</code>. Se você não conseguiu ver o nome do driver na tela azul, pode ler esse arquivo facilmente com ferramentas seguras e gratuitas:</p>
+        <ul>
+          <li>Utilize utilitários consolidados de diagnóstico como o <strong>BlueScreenView</strong> ou o <strong>WhoCrashed</strong>.</li>
+          <li>Abra o relatório gerado: o programa destacará em cor vermelha o nome exato do arquivo (como <code>driver_name.sys</code>) e a linha do módulo de falha (<code>Caused By Driver</code>).</li>
+          <li>Com esse nome em mãos, faça uma busca rápida no Explorador de Arquivos para descobrir a qual aplicativo ou hardware esse arquivo pertence.</li>
+        </ul>
+
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>O erro SYSTEM_SERVICE_EXCEPTION pode danificar meu computador fisicamente?</h3>
+            <p>Não. A tela azul é justamente um mecanismo de proteção preventiva acionado pelo kernel do Windows para evitar danos físicos aos componentes ou corrupção silenciosa nos arquivos armazenados no disco rígido/SSD quando um comando anômalo é detectado.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Por que esse erro costuma acontecer logo após uma atualização do Windows?</h3>
+            <p>Grandes atualizações cumulativas do Windows 11 alteram rotinas internas do kernel. Se você tiver um driver de dispositivo antigo (como drivers de áudio Realtek, Wi-Fi ou placas de vídeo) que não foi atualizado pela fabricante para suportar a nova compilação, ele falhará ao invocar essas rotinas do sistema, gerando o bugcheck.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Posso resolver voltando a um Ponto de Restauração?</h3>
+            <p>Sim. Se a tela azul começou a ocorrer logo após instalar um programa específico ou atualizar um driver, a Restauração do Sistema (atalho rstrui.exe) é uma maneira muito eficiente de reverter os arquivos do sistema e chaves do Registro para o estado operacional de dias anteriores sem tocar nos seus documentos pessoais.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Como inicializar o Windows se o erro ocorrer em loop contínuo na inicialização?</h3>
+            <p>Se você não consegue acessar a Área de Trabalho, force o desligamento no botão liga/desliga duas vezes durante a inicialização para entrar no Ambiente de Recuperação do Windows (WinRE). Nele, vá em Solução de Problemas &gt; Opções Avançadas &gt; Configurações de Inicialização e escolha a opção 'Habilitar Modo de Segurança com Rede' para poder desinstalar o driver defeituoso.</p>
+          </div>
+          <div class="faq-item">
+            <h3>A memória RAM pode ser a causadora de um SYSTEM_SERVICE_EXCEPTION?</h3>
+            <p>Sim, embora seja menos frequente do que causas de drivers. Se um bit de memória física falhar ao carregar uma instrução de driver, o kernel interpretará o dado corrompido como uma chamada de serviço inválida. Para descartar essa hipótese, execute o Diagnóstico de Memória do Windows (mdsched.exe).</p>
+          </div>
         </div>
 
-        
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://learn.microsoft.com/pt-br/windows-hardware/drivers/debugger/bug-check-0x3b---system-service-exception" target="_blank" rel="noopener noreferrer">Microsoft Learn — Bug Check 0x3B SYSTEM_SERVICE_EXCEPTION</a></li>
+          <li><a href="https://learn.microsoft.com/pt-br/troubleshoot/windows-client/performance/stop-error-or-blue-screen-error-issue" target="_blank" rel="noopener noreferrer">Microsoft Learn — Solução de problemas avançada para erros de parada ou tela azul</a></li>
+        </ul>
 
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
-          </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
-          </div>
-        </div>
-
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-tirar-print-screen-notebook-windows.html" class="related-card">
-              <span class="related-card-title">Como Tirar Print Screen no Notebook Windows 10 e 11</span>
-            </a>
-            <a href="como-corrigir-perfil-temporario-temp-user-profile-service-windows-11.html" class="related-card">
-              <span class="related-card-title">Como Corrigir Perfil Temporário e Erro no User Profile Service (Windows 11)</span>
-            </a>
             <a href="como-usar-comandos-dism-sfc-windows-11-corrigir-erros.html" class="related-card">
-              <span class="related-card-title">Como Usar os Comandos DISM e SFC no Windows 11 para Corrigir Erros</span>
+              <span class="related-card-title">Como Usar DISM e SFC no Windows 11 para Reparar Arquivos do Sistema</span>
             </a>
             <a href="como-corrigir-tela-azul-whea-uncorrectable-error-windows-11.html" class="related-card">
               <span class="related-card-title">Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11</span>
+            </a>
+            <a href="como-resolver-erro-critical-process-died-boot-windows-11.html" class="related-card">
+              <span class="related-card-title">Como Resolver o Erro CRITICAL_PROCESS_DIED no Boot do Windows 11</span>
+            </a>
+            <a href="como-resolver-tela-azul-memory-management-windows-11.html" class="related-card">
+              <span class="related-card-title">Como Resolver a Tela Azul MEMORY_MANAGEMENT no Windows 11</span>
             </a>
           </div>
         </div>
@@ -238,13 +326,15 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#mapeamento-arquivos-sys">Identificando o Driver Responsável pela Falha</a></li>
+          <li><a href="#reinstalacao-limpa-video">Passo 1: Reinstalação Limpa de Drivers de Placa de Vídeo</a></li>
+          <li><a href="#verificacao-de-arquivos-de-sistema">Passo 2: Restaurar Arquivos de Sistema com DISM e SFC</a></li>
+          <li><a href="#desinstalar-softwares-conflitantes">Passo 3: Desinstalar Antivírus e Softwares de Segurança Antigos</a></li>
+          <li><a href="#inspecionar-minidump-whocrashed">Passo 4: Analisar o Arquivo Minidump para Saber o Culpado Exato</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -252,7 +342,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>

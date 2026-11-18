@@ -4,28 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Como Mudar o DNS no Roteador, Windows, Android e iPhone — DRGTech</title>
-  <meta name="description" content="Alterar os servidores DNS padrão da sua operadora para servidores públicos rápidos (como Cloudflare 1.1.1.1 ou Google 8.8.8.8) reduz o tempo de resposta de..." />
-  <meta name="keywords" content="como mudar o dns no roteador, windows, android e iphone, tutorial internet, suporte tecnico" />
+  <meta name="description" content="Tutorial definitivo para alterar servidores DNS no roteador e em todos os dispositivos: comparativo de velocidade (1.1.1.1 vs 8.8.8.8 vs 9.9.9.9) e DNS Privado." />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Como Mudar o DNS no Roteador, Windows, Android e iPhone — DRGTech" />
-  <meta property="og:description" content="Alterar os servidores DNS padrão da sua operadora para servidores públicos rápidos (como Cloudflare 1.1.1.1 ou Google 8.8.8.8) reduz o tempo de resposta de..." />
+  <meta property="og:description" content="Tutorial definitivo para alterar servidores DNS no roteador e em todos os dispositivos: comparativo de velocidade (1.1.1.1 vs 8.8.8.8 vs 9.9.9.9) e DNS Privado." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-mudar-dns-roteador-windows-android-iphone.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Como Mudar o DNS no Roteador, Windows, Android e iPhone — DRGTech" />
-  <meta name="twitter:description" content="Alterar os servidores DNS padrão da sua operadora para servidores públicos rápidos (como Cloudflare 1.1.1.1 ou Google 8.8.8.8) reduz o tempo de resposta de..." />
+  <meta name="twitter:description" content="Tutorial definitivo para alterar servidores DNS no roteador e em todos os dispositivos: comparativo de velocidade (1.1.1.1 vs 8.8.8.8 vs 9.9.9.9) e DNS Privado." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-mudar-dns-roteador-windows-android-iphone.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Mudar o DNS no Roteador, Windows, Android e iPhone",
+  "description": "Tutorial definitivo para alterar servidores DNS no roteador e em todos os dispositivos: comparativo de velocidade (1.1.1.1 vs 8.8.8.8 vs 9.9.9.9) e DNS Privado.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-mudar-dns-roteador-windows-android-iphone.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,55 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Mudar o DNS no Roteador, Windows, Android e iPhone",
+      "name": "Mudar o DNS aumenta a velocidade de download de arquivos grandes?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Alterar os servidores DNS padrão da sua operadora para servidores públicos rápidos (como Cloudflare 1.1.1.1 ou Google 8.8.8.8) reduz o tempo de resposta de sites e melhora a velocidade da navegação. A alteração pode ser feita nas conexões de rede (ncpa.cpl) no Windows, em Ajustes > Wi-Fi no iOS, em Configurações > DNS Privado no Android ou no painel administrativo do roteador."
+        "text": "Não aumenta a taxa de transferência máxima em megabits por segundo (largura de banda), mas reduz a latência (tempo de resposta) de início de navegação. Clicar em links e abrir sites responderá de forma sensivelmente mais ágil porque o endereço IP do destino é resolvido em milissegundos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mudar o DNS pode deixar a internet mais lenta se configurado errado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se você inserir um endereço IP de servidor DNS geograficamente muito distante ou desativado, o computador demorará vários segundos para descobrir cada site. Escolher resolvedores globais consagrados (Cloudflare ou Google) garante tempo de resposta mínimo no Brasil."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que acontece se o servidor DNS que configurei cair?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "É exatamente por isso que configuramos sempre dois servidores: o DNS Primário e o Secundário (Alternativo). Se o primário falhar ou demorar para responder, seu sistema operacional consulta instantaneamente o secundário sem interromper sua navegação."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mudar o DNS no roteador afeta o desempenho da Smart TV?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Afeta positivamente. Smart TVs e consoles de videogame frequentemente utilizam requisições DNS para carregar catálogos e trailers em aplicativos como Netflix e YouTube. Resolvedores rápidos eliminam pequenas pausas ao carregar capas de vídeos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que é DNS-over-HTTPS (DoH) e DNS-over-TLS (DoT)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "São tecnologias que criptografam as consultas de DNS. No modelo tradicional de 1983, as consultas são enviadas em texto puro sem segurança, permitindo que provedores de internet e espiões em Wi-Fi públicos saibam todos os sites que você visita. Com DoH/DoT, a consulta fica completamente ilegível para intermediários."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como testar se o meu computador sofre com vazamento de DNS (DNS Leak)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Acesse o portal gratuito dnsleaktest.com e execute o teste estendido. A ferramenta listará os endereços IP de todos os servidores que resolveram requisições da sua máquina. Se os servidores exibidos pertencerem à Cloudflare ou Google (e não ao seu provedor local de banda larga), sua configuração está perfeitamente vedada sem vazamento."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -103,132 +161,223 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#internet">Internet</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Mudar o DNS no Roteador, Windo...</span>
+        <span>Como Mudar o DNS no Roteador, Windows,…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-purple">Internet</span>
         <h1 class="article-h1">Como Mudar o DNS no Roteador, Windows, Android e iPhone</h1>
         <div class="article-intro-meta">
-          <span class="meta-item">7 min de leitura</span>
-          <span class="meta-item">Atualizado em agosto de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">5 min de leitura</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> Alterar os servidores DNS padrão da sua operadora para servidores públicos rápidos (como Cloudflare 1.1.1.1 ou Google 8.8.8.8) reduz o tempo de resposta de sites e melhora a velocidade da navegação. A alteração pode ser feita nas conexões de rede (ncpa.cpl) no Windows, em Ajustes > Wi-Fi no iOS, em Configurações > DNS Privado no Android ou no painel administrativo do roteador.
+        <strong>Resposta rápida:</strong> Para mudar o DNS no computador com Windows 11, acesse Configurações &gt; Rede e Internet &gt; Propriedades do Hardware &gt; Atribuição de Servidor DNS, mude para 'Manual' e insira os IPs dos servidores desejados (como Cloudflare 1.1.1.1 ou Google 8.8.8.8). No Android, configure em Rede e Internet &gt; DNS Privado inserindo o hostname <code>one.one.one.one</code> ou <code>dns.google</code>. No iPhone, ajuste nas propriedades da rede Wi-Fi em 'Configurar DNS' como Manual.
       </div>
 
       <article class="article-body" id="article-body">
+        <p>O Sistema de Nomes de Domínio (DNS) é o mecanismo central que traduz os nomes de sites que digitamos em endereços IP numéricos compreendidos pelos roteadores da internet. Por padrão, quando você contrata um plano de internet banda larga residencial ou plano móvel, seus dispositivos utilizam automaticamente os servidores DNS da sua operadora de telecomunicações.</p>
+        <p>No entanto, os servidores DNS dos provedores comerciais costumam ser lentos, frequentemente sofrem instabilidades técnicas, mantêm registros de navegação para fins comerciais e podem falhar ao aplicar rotas otimizadas. Ao substituir os servidores DNS pelos grandes resolvedores globais independentes (como Cloudflare, Google ou Quad9), você ganha menor tempo de carregamento de páginas, proteção nativa contra phishing e maior privacidade. A seguir, ensinamos o passo a passo exato para trocar o DNS no roteador da sua casa e em cada aparelho individualmente.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> Windows 11/10, Android, iOS e todos os roteadores Wi-Fi</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Mudar o DNS no Roteador, Windows, Android e iPhone"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Internet</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
+        <h2 id="comparativo-melhores-dns-publicos">Qual o Melhor DNS Público Gratuito em 2026?</h2>
+        <p>Antes de configurar, escolha o provedor de DNS que melhor atende às suas prioridades de navegação:</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Provedor DNS</th><th>IPs Primário / Secundário</th><th>Destaque Principal</th><th>Hostname DNS Privado (DoT)</th></tr></thead>
+            <tbody>
+              <tr><td>Cloudflare (1.1.1.1)</td><td>1.1.1.1 e 1.0.0.1</td><td>Menor latência global e política rigorosa de não reter logs.</td><td>one.one.one.one</td></tr>
+              <tr><td>Google Public DNS</td><td>8.8.8.8 e 8.8.4.4</td><td>Máxima estabilidade e infraestrutura de datacenters no Brasil.</td><td>dns.google</td></tr>
+              <tr><td>Quad9 (Proteção Ativa)</td><td>9.9.9.9 e 149.112.112.112</td><td>Bloqueio automático de domínios com malwares e phishing.</td><td>dns.quad9.net</td></tr>
+              <tr><td>AdGuard DNS (Filtro)</td><td>94.140.14.14 e 94.140.15.15</td><td>Bloqueio de anúncios intrusivos e rastreadores em nível de DNS.</td><td>dns.adguard.com</td></tr>
+            </tbody>
+          </table>
         </div>
 
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
+        <h2 id="mudar-dns-roteador-wifi">Método 1: Trocar o DNS Diretamente no Roteador Wi-Fi (Protege a Casa Toda)</h2>
+        <p>Alterar o DNS nas configurações do roteador é a abordagem mais eficiente, pois aplica os novos servidores automaticamente a todos os celulares, computadores, Smart TVs e consoles conectados à sua rede:</p>
         <ol class="steps-list">
-
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">No Windows: Pressione Win + R, digite 'ncpa.cpl', abra as Propriedades da sua conexão, clique em 'Protocolo IP Versão 4 (TCP/IPv4)' e defina os servidores DNS para 1.1.1.1 (Primário) e 1.0.0.1 (Secundário).</div>
+            <div class="step-text">Abra o navegador e digite o endereço de IP do seu roteador (habitualmente <code>192.168.0.1</code>, <code>192.168.1.1</code> ou <code>192.168.15.1</code>).</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">No Android: Vá em Configurações > Conexões > Mais configurações de conexão > DNS Privado e insira o nome de host 'one.one.one.one' ou 'dns.google'.</div>
+            <div class="step-text">Faça login com o usuário e senha de administrador (consulte a etiqueta na parte de baixo do aparelho se nunca alterou).</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">No iPhone: Vá em Ajustes > Wi-Fi, toque no botão 'i' ao lado da rede, selecione 'Configurar DNS' > 'Manual' e insira 1.1.1.1 e 1.0.0.1.</div>
+            <div class="step-text">Navegue até o menu <strong>Rede</strong> &gt; <strong>LAN</strong> ou <strong>Configurações DHCP</strong> (em alguns modelos fica sob WAN/Internet).</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Localize os campos <strong>Servidor DNS Primário</strong> e <strong>Servidor DNS Secundário</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Substitua os números existentes pelos servidores escolhidos (por exemplo, <code>1.1.1.1</code> e <code>1.0.0.1</code>).</div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-text">Clique em <strong>Salvar</strong> ou <strong>Aplicar</strong> e reinicie o roteador.</div>
           </li>
         </ol>
 
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <h2 id="mudar-dns-windows-11">Método 2: Trocar o DNS no Windows 11</h2>
+        <p>No Windows 11, a Microsoft integrou o suporte nativo a DNS criptografado nas configurações centrais do sistema:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Abra as <strong>Configurações</strong> (<code>Windows + I</code>) e clique em <strong>Rede e Internet</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Clique na conexão ativa (<strong>Wi-Fi</strong> ou <strong>Ethernet</strong>).</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Clique em <strong>Propriedades do Hardware</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Ao lado de 'Atribuição de servidor DNS', clique no botão <strong>Editar</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Altere o menu suspenso de Automático (DHCP) para <strong>Manual</strong> e ative a chave <strong>IPv4</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-text">Insira no campo 'DNS Preferencial' o IP <code>1.1.1.1</code> e no 'DNS Alternativo' o IP <code>1.0.0.1</code>.</div>
+          </li>
+          <li>
+            <div class="step-num">7</div>
+            <div class="step-text">Se desejar ativar criptografia DoH, mude o campo 'Criptografia de DNS' para <strong>Apenas Criptografado (DNS sobre HTTPS)</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">8</div>
+            <div class="step-text">Clique em <strong>Salvar</strong>.</div>
+          </li>
+        </ol>
+
+        <h2 id="mudar-dns-android-privado">Método 3: Configurar o DNS Privado no Android (DoT)</h2>
+        <p>O Android utiliza a tecnologia DNS-over-TLS (DNS Privado), criptografando todas as consultas via Wi-Fi e dados móveis 4G/5G com um único ajuste:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Acesse <strong>Configurações</strong> &gt; <strong>Rede e Internet</strong> (ou Conexões &gt; Mais configurações de conexão).</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Toque na opção <strong>DNS Privado</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Selecione a opção <strong>Nome de host do provedor de DNS privado</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Digite o hostname do serviço desejado: <code>one.one.one.one</code> (Cloudflare) ou <code>dns.google</code> (Google).</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Toque em <strong>Salvar</strong>. Se o endereço estiver correto, o texto de status indicará que a conexão está segura e criptografada.</div>
+          </li>
+        </ol>
+
+        <h2 id="mudar-dns-iphone-ios">Método 4: Trocar o DNS no iPhone e iPad (iOS)</h2>
+        <p>No iPhone, você pode definir servidores DNS específicos para a sua rede sem fio:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Abra os <strong>Ajustes</strong> e toque em <strong>Wi-Fi</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Toque no ícone azul de informação <strong>(i)</strong> ao lado do nome da sua rede conectada.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Role até o final da tela e toque em <strong>Configurar DNS</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Altere de Automático para <strong>Manual</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Toque no botão vermelho de menos para remover os servidores DNS antigos da operadora.</div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-text">Toque em <strong>Adicionar Servidor</strong> e digite <code>1.1.1.1</code> e adicione outro com <code>1.0.0.1</code>.</div>
+          </li>
+          <li>
+            <div class="step-num">7</div>
+            <div class="step-text">Toque em <strong>Salvar</strong> no canto superior direito.</div>
+          </li>
+        </ol>
+
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>Mudar o DNS aumenta a velocidade de download de arquivos grandes?</h3>
+            <p>Não aumenta a taxa de transferência máxima em megabits por segundo (largura de banda), mas reduz a latência (tempo de resposta) de início de navegação. Clicar em links e abrir sites responderá de forma sensivelmente mais ágil porque o endereço IP do destino é resolvido em milissegundos.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Mudar o DNS pode deixar a internet mais lenta se configurado errado?</h3>
+            <p>Se você inserir um endereço IP de servidor DNS geograficamente muito distante ou desativado, o computador demorará vários segundos para descobrir cada site. Escolher resolvedores globais consagrados (Cloudflare ou Google) garante tempo de resposta mínimo no Brasil.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O que acontece se o servidor DNS que configurei cair?</h3>
+            <p>É exatamente por isso que configuramos sempre dois servidores: o DNS Primário e o Secundário (Alternativo). Se o primário falhar ou demorar para responder, seu sistema operacional consulta instantaneamente o secundário sem interromper sua navegação.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Mudar o DNS no roteador afeta o desempenho da Smart TV?</h3>
+            <p>Afeta positivamente. Smart TVs e consoles de videogame frequentemente utilizam requisições DNS para carregar catálogos e trailers em aplicativos como Netflix e YouTube. Resolvedores rápidos eliminam pequenas pausas ao carregar capas de vídeos.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O que é DNS-over-HTTPS (DoH) e DNS-over-TLS (DoT)?</h3>
+            <p>São tecnologias que criptografam as consultas de DNS. No modelo tradicional de 1983, as consultas são enviadas em texto puro sem segurança, permitindo que provedores de internet e espiões em Wi-Fi públicos saibam todos os sites que você visita. Com DoH/DoT, a consulta fica completamente ilegível para intermediários.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Como testar se o meu computador sofre com vazamento de DNS (DNS Leak)?</h3>
+            <p>Acesse o portal gratuito dnsleaktest.com e execute o teste estendido. A ferramenta listará os endereços IP de todos os servidores que resolveram requisições da sua máquina. Se os servidores exibidos pertencerem à Cloudflare ou Google (e não ao seu provedor local de banda larga), sua configuração está perfeitamente vedada sem vazamento.</p>
+          </div>
         </div>
 
-        
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://developers.google.com/speed/public-dns/docs/using?hl=pt-br" target="_blank" rel="noopener noreferrer">Google Developers — Public DNS Overview and Configuration</a></li>
+          <li><a href="https://1.1.1.1/" target="_blank" rel="noopener noreferrer">Cloudflare 1.1.1.1 — The free app that makes your Internet safer</a></li>
+        </ul>
 
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
-          </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
-          </div>
-        </div>
-
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-cancelar-assinatura-netflix-celular-pc.html" class="related-card">
-              <span class="related-card-title">Como Cancelar a Assinatura da Netflix pelo Celular e PC</span>
-            </a>
-            <a href="como-descobrir-senha-wifi-conectado-pc-celular.html" class="related-card">
-              <span class="related-card-title">Como Descobrir a Senha do Wi-Fi Conectado no PC e Celular</span>
-            </a>
-            <a href="como-corrigir-vazamento-dns-ipv6-leak-protecao-rede.html" class="related-card">
-              <span class="related-card-title">Como Corrigir Vazamento de DNS por IPv6 (IPv6 Leak) e Proteger a Rede</span>
-            </a>
             <a href="como-corrigir-erro-dns-probe-finished-nxdomain-navegador.html" class="related-card">
-              <span class="related-card-title">Como Corrigir o Erro 'DNS_PROBE_FINISHED_NXDOMAIN' no Navegador</span>
+              <span class="related-card-title">Como Corrigir o Erro DNS_PROBE_FINISHED_NXDOMAIN no Navegador</span>
+            </a>
+            <a href="como-configurar-dns-sobre-https-doh-chrome-firefox-edge.html" class="related-card">
+              <span class="related-card-title">Como Configurar DNS sobre HTTPS (DoH) no Chrome, Edge e Firefox</span>
+            </a>
+            <a href="como-resolver-wifi-conectado-sem-acesso-internet-pc-celular.html" class="related-card">
+              <span class="related-card-title">Como Resolver Wi-Fi Conectado Sem Acesso à Internet no PC e Celular</span>
+            </a>
+            <a href="como-resolver-aviso-seguranca-fraca-wifi-celular-pc.html" class="related-card">
+              <span class="related-card-title">Como Resolver o Aviso 'Segurança Fraca' no Wi-Fi do Celular e PC</span>
             </a>
           </div>
         </div>
@@ -238,13 +387,15 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#comparativo-melhores-dns-publicos">Qual o Melhor DNS Público Gratuito em 2026?</a></li>
+          <li><a href="#mudar-dns-roteador-wifi">Método 1: Trocar o DNS Diretamente no Roteador Wi-Fi (Protege a Casa Toda)</a></li>
+          <li><a href="#mudar-dns-windows-11">Método 2: Trocar o DNS no Windows 11</a></li>
+          <li><a href="#mudar-dns-android-privado">Método 3: Configurar o DNS Privado no Android (DoT)</a></li>
+          <li><a href="#mudar-dns-iphone-ios">Método 4: Trocar o DNS no iPhone e iPad (iOS)</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -252,7 +403,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>

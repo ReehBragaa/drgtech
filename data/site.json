@@ -1,0 +1,28 @@
+{
+  "siteName": "DRGTech",
+  "siteUrl": "https://drgtech.com.br",
+  "adsenseClient": "ca-pub-6942071950167193",
+  "editor": {
+    "nome": "Renato Braga",
+    "papel": "Editor responsável pelo DRGTech",
+    "email": "contato@drgtech.com.br"
+  },
+  "lastReview": "novembro de 2026",
+  "staticAprovados": [
+    "bateria-celular-acaba-rapido",
+    "celular-travando-lento-android",
+    "impressora-offline-windows",
+    "pendrive-boot-recuperacao-windows",
+    "remover-virus-computador-gratis",
+    "wifi-caindo-como-resolver"
+  ],
+  "paginasUtilitarias": [
+    "index.html",
+    "sobre.html",
+    "contato.html",
+    "privacidade.html",
+    "termos.html",
+    "politica-editorial.html",
+    "gerador-de-senha.html"
+  ]
+}

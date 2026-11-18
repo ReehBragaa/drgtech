@@ -3,29 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como Corrigir o Erro 'DNS_PROBE_FINISHED_NXDOMAIN' no Navegador — DRGTech</title>
-  <meta name="description" content="O erro DNS_PROBE_FINISHED_NXDOMAIN ocorre quando o servidor DNS não consegue traduzir o nome do domínio para um IP válido. Para resolver no Windows, abra o..." />
-  <meta name="keywords" content="como corrigir o erro 'dns_probe_finished_nxdomain' no navegador, tutorial internet, suporte tecnico" />
+  <title>Como Corrigir o Erro DNS_PROBE_FINISHED_NXDOMAIN no Navegador — DRGTech</title>
+  <meta name="description" content="Guia completo para solucionar o erro DNS_PROBE_FINISHED_NXDOMAIN no Chrome e Edge: flushdns, troca para DNS público (1.1.1.1 / 8.8.8.8) e reset de Winsock." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Como Corrigir o Erro 'DNS_PROBE_FINISHED_NXDOMAIN' no Navegador — DRGTech" />
-  <meta property="og:description" content="O erro DNS_PROBE_FINISHED_NXDOMAIN ocorre quando o servidor DNS não consegue traduzir o nome do domínio para um IP válido. Para resolver no Windows, abra o..." />
+  <meta property="og:title" content="Como Corrigir o Erro DNS_PROBE_FINISHED_NXDOMAIN no Navegador — DRGTech" />
+  <meta property="og:description" content="Guia completo para solucionar o erro DNS_PROBE_FINISHED_NXDOMAIN no Chrome e Edge: flushdns, troca para DNS público (1.1.1.1 / 8.8.8.8) e reset de Winsock." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-corrigir-erro-dns-probe-finished-nxdomain-navegador.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Como Corrigir o Erro 'DNS_PROBE_FINISHED_NXDOMAIN' no Navegador — DRGTech" />
-  <meta name="twitter:description" content="O erro DNS_PROBE_FINISHED_NXDOMAIN ocorre quando o servidor DNS não consegue traduzir o nome do domínio para um IP válido. Para resolver no Windows, abra o..." />
+  <meta name="twitter:title" content="Como Corrigir o Erro DNS_PROBE_FINISHED_NXDOMAIN no Navegador — DRGTech" />
+  <meta name="twitter:description" content="Guia completo para solucionar o erro DNS_PROBE_FINISHED_NXDOMAIN no Chrome e Edge: flushdns, troca para DNS público (1.1.1.1 / 8.8.8.8) e reset de Winsock." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-corrigir-erro-dns-probe-finished-nxdomain-navegador.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Corrigir o Erro DNS_PROBE_FINISHED_NXDOMAIN no Navegador",
+  "description": "Guia completo para solucionar o erro DNS_PROBE_FINISHED_NXDOMAIN no Chrome e Edge: flushdns, troca para DNS público (1.1.1.1 / 8.8.8.8) e reset de Winsock.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-corrigir-erro-dns-probe-finished-nxdomain-navegador.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,47 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Corrigir o Erro 'DNS_PROBE_FINISHED_NXDOMAIN' no Navegador",
+      "name": "O erro DNS_PROBE_FINISHED_NXDOMAIN é problema do meu PC ou do site?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "O erro DNS_PROBE_FINISHED_NXDOMAIN ocorre quando o servidor DNS não consegue traduzir o nome do domínio para um IP válido. Para resolver no Windows, abra o Prompt de Comando (Admin), execute 'ipconfig /flushdns', 'netsh winsock reset' e altere os servidores DNS da placa de rede para Cloudflare (1.1.1.1 e 1.0.0.1) ou Google (8.8.8.8)."
+        "text": "Pode ser de ambos. Se apenas um site específico não abre em nenhum dispositivo da sua casa (nem no 4G do celular), o domínio do site expirou, o registro de DNS do dono do site está com erro ou o servidor dele caiu. Se o site abre normalmente no 4G do celular mas falha no Wi-Fi do computador, o problema é local da sua rede ou computador."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Por que reiniciar o roteador Wi-Fi às vezes resolve o NXDOMAIN?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Roteadores domésticos mantêm um cache de nomes simplificado na memória RAM. Quando o roteador fica ligado por semanas seguidas, esse cache pode memorizar respostas negativas de DNS. Desligá-lo da tomada por 30 segundos esvazia a memória volátil e obriga o aparelho a buscar dados limpos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O uso de VPN pode causar esse erro de DNS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Se a VPN cair de forma anômala, os adaptadores virtuais de rede (TAP/TUN) podem deixar configurações residuais de DNS ativo que não respondem fora do túnel criptografado. Desative a VPN e reinicie o adaptador de rede."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual é o DNS mais rápido: Google ou Cloudflare?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Em testes globais independentes de latência de resposta, o DNS da Cloudflare (1.1.1.1) costuma apresentar tempos médios de resposta de 12 a 15 ms, enquanto o Google (8.8.8.8) opera entre 18 e 25 ms. Ambos são significativamente mais rápidos e estáveis do que os servidores padrão da maioria dos provedores."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Esse erro tem relação com vírus ou spywares?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Em alguns casos, malwares do tipo Trojan Banker alteram as configurações de DNS do computador ou do roteador (técnica conhecida como DNS Hijacking) para desviar o usuário para páginas falsas. Se o servidor malicioso for desativado pela polícia, o computador passa a acusar erro NXDOMAIN."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,7 +113,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Como Corrigir o Erro 'DNS_PROBE_FINISHED_NXDOMAIN' no Navegador",
+      "name": "Como Corrigir o Erro DNS_PROBE_FINISHED_NXDOMAIN no Navegador",
       "item": "https://drgtech.com.br/artigos/como-corrigir-erro-dns-probe-finished-nxdomain-navegador.html"
     }
   ]
@@ -103,132 +153,213 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#internet">Internet</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Corrigir o Erro 'DNS_PROBE_FIN...</span>
+        <span>Como Corrigir o Erro…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-purple">Internet</span>
-        <h1 class="article-h1">Como Corrigir o Erro 'DNS_PROBE_FINISHED_NXDOMAIN' no Navegador</h1>
+        <h1 class="article-h1">Como Corrigir o Erro DNS_PROBE_FINISHED_NXDOMAIN no Navegador</h1>
         <div class="article-intro-meta">
-          <span class="meta-item">7 min de leitura</span>
-          <span class="meta-item">Atualizado em agosto de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">5 min de leitura</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> O erro DNS_PROBE_FINISHED_NXDOMAIN ocorre quando o servidor DNS não consegue traduzir o nome do domínio para um IP válido. Para resolver no Windows, abra o Prompt de Comando (Admin), execute 'ipconfig /flushdns', 'netsh winsock reset' e altere os servidores DNS da placa de rede para Cloudflare (1.1.1.1 e 1.0.0.1) ou Google (8.8.8.8).
+        <strong>Resposta rápida:</strong> O erro DNS_PROBE_FINISHED_NXDOMAIN ocorre quando o resolvedor DNS não consegue localizar o endereço IP numérico correspondente ao domínio solicitado (NXDOMAIN significa 'Non-Existent Domain'). Para corrigir, libere e limpe o cache DNS do sistema executando <code>ipconfig /flushdns</code> no Prompt como Administrador, redefina o catálogo de rede com <code>netsh winsock reset</code>, e configure resolvedores DNS públicos confiáveis (como Cloudflare 1.1.1.1 ou Google 8.8.8.8).
       </div>
 
       <article class="article-body" id="article-body">
+        <p>Ao tentar abrir um site habitual no Google Chrome, Microsoft Edge ou Firefox, a página recusa o carregamento e exibe uma tela de alerta com o código de diagnóstico <strong>DNS_PROBE_FINISHED_NXDOMAIN</strong>. Esse é um dos erros de rede mais comuns na navegação moderna e impede que o dispositivo estabeleça contato com o servidor de hospedagem da página.</p>
+        <p>Para entender a falha, imagine o DNS (Domain Name System) como a lista telefônica da internet: quando você digita um endereço amigável (como <code>drgtech.com.br</code>), o computador consulta um servidor DNS para descobrir o endereço IP numérico real daquele servidor. A sigla <strong>NXDOMAIN</strong> significa formalmente 'Non-Existent Domain' (Domínio Não Existente). Se o cache do seu computador tiver memorizado uma resposta corrompida ou se os servidores DNS do seu provedor de internet estiverem instáveis, o navegador presumirá erroneamente que o site não existe. A seguir, ensinamos o procedimento metódico para restaurar a navegação.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> Windows 11, Windows 10, macOS, Android e iOS</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Corrigir o Erro 'DNS_PROBE_FINISHED_NXDOMAIN' no Navegador"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Internet</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
+        <h2 id="mecanica-resolucao-dns">Entenda o Mecanismo da Falha NXDOMAIN</h2>
+        <p>A resolução de nomes de domínio segue uma hierarquia bem definida. A falha ocorre quando a resposta de inexistência é interceptada ou devolvida incorretamente em uma das etapas:</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Etapa de Consulta</th><th>O Que Acontece</th><th>Possível Causa do Erro</th></tr></thead>
+            <tbody>
+              <tr><td>Cache Local do Navegador</td><td>Chrome checa tabela interna de DNS em memória.</td><td>Cache de socket expirado ou corrompido no navegador.</td></tr>
+              <tr><td>Cache Local do Windows</td><td>Serviço Cliente DNS do Windows consulta tabela local.</td><td>Desligamentos súbitos ou alterações no arquivo hosts.</td></tr>
+              <tr><td>Roteador Wi-Fi Local</td><td>Roteador repassa consulta aos servidores do provedor.</td><td>Tabela NAT do roteador congestionada por conexões antigas.</td></tr>
+              <tr><td>Servidor DNS do Provedor</td><td>Operadora consulta a árvore de servidores raiz.</td><td>Instabilidade técnica temporária ou bloqueio de domínio.</td></tr>
+            </tbody>
+          </table>
         </div>
 
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
+        <h2 id="limpar-cache-dns-windows">Passo 1: Liberar e Limpar o Cache DNS no Windows (FlushDNS)</h2>
+        <p>O primeiro passo é purgar todos os registros DNS locais salvos no sistema operacional que possam estar apontando para rotas obsoletas:</p>
         <ol class="steps-list">
-
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">Abra o Prompt de Comando como Administrador e execute os comandos: 'ipconfig /flushdns', 'ipconfig /release', 'ipconfig /renew' e 'netsh winsock reset'.</div>
+            <div class="step-text">Pressione as teclas <code>Windows + X</code> e selecione <strong>Terminal (Administrador)</strong> ou <strong>Prompt de Comando (Admin)</strong>.</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">Pressione Win + R, digite 'ncpa.cpl', clique com botão direito na sua conexão de rede e abra 'Propriedades'.</div>
+            <div class="step-text">Digite o comando abaixo e pressione Enter para descarregar o cache de nomes do Windows:</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">Selecione 'Protocolo IP Versão 4 (TCP/IPv4)', marque 'Usar os seguintes endereços de servidor DNS' e insira 1.1.1.1 (DNS Preferencial) e 1.0.0.1 (DNS Alternativo).</div>
+            <div class="step-text">Aguarde a mensagem de confirmação: 'Liberação do Cache do DNS Resolver bem-sucedida'.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Em seguida, libere e renove o contrato de concessão de IP com o roteador:</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Reinicie os adaptadores de rede executando a sequência completa.</div>
+          </li>
+        </ol>
+        <pre class="code-block" data-lang="powershell"><code>ipconfig /flushdns
+ipconfig /release
+ipconfig /renew</code></pre>
+
+        <h2 id="redefinir-winsock-pilha-ip">Passo 2: Redefinir o Catálogo Winsock e a Pilha TCP/IP</h2>
+        <p>Softwares de antivírus ou VPNs antigas frequentemente instalam provedores de serviço em camadas (LSP) que travam o Winsock:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Na mesma janela administrativa do Prompt, execute os dois comandos de redefinição de fábrica da rede:</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Reinicie o computador imediatamente após o término para consolidar as chaves de registro do protocolo TCP/IP.</div>
+          </li>
+        </ol>
+        <pre class="code-block" data-lang="powershell"><code>netsh winsock reset
+netsh int ip reset</code></pre>
+
+        <h2 id="mudar-dns-publico-seguro">Passo 3: Mudar para Servidores DNS Públicos Confiáveis</h2>
+        <p>Os servidores DNS fornecidos automaticamente por operadoras de banda larga frequentemente sofrem quedas e lentidão de resposta. Configurar resolvedores globais resolve o erro na hora:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Pressione <code>Windows + R</code>, digite <code>ncpa.cpl</code> e pressione Enter para abrir as Conexões de Rede.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Clique com o botão direito sobre o seu adaptador ativo (Wi-Fi ou Ethernet) e selecione <strong>Propriedades</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Dê um duplo clique sobre o item <strong>Protocolo IP Versão 4 (TCP/IPv4)</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Marque a opção <strong>Usar os seguintes endereços de servidor DNS</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Para utilizar o DNS da <strong>Cloudflare</strong> (foco em máxima velocidade e privacidade), insira: Primário <code>1.1.1.1</code> e Secundário <code>1.0.0.1</code>.</div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-text">Para utilizar o DNS do <strong>Google</strong>, insira: Primário <code>8.8.8.8</code> e Secundário <code>8.8.4.4</code>.</div>
+          </li>
+          <li>
+            <div class="step-num">7</div>
+            <div class="step-text">Marque a caixa 'Validar configurações na saída' e clique em <strong>OK</strong>.</div>
           </li>
         </ol>
 
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <h2 id="limpar-cache-dns-chrome">Passo 4: Limpar o Cache de DNS Interno do Google Chrome</h2>
+        <p>O Google Chrome mantém seu próprio repositório isolado de DNS que não é afetado pelo comando do Windows:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Abra uma nova aba no Google Chrome.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Copie e cole o seguinte endereço na barra de navegação: <code>chrome://net-internals/#dns</code> e pressione Enter.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Clique no botão <strong>Clear host cache</strong> (Limpar cache de host).</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Em seguida, acesse <code>chrome://net-internals/#sockets</code> e clique no botão <strong>Flush socket pools</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Reinicie o navegador e tente carregar o site novamente.</div>
+          </li>
+        </ol>
+
+        <h2 id="verificar-arquivo-hosts">Passo 5: Inspecionar o Arquivo Hosts do Windows</h2>
+        <p>O arquivo <code>hosts</code> tem prioridade sobre qualquer servidor DNS. Se um malware ou programa de bloqueio tiver inserido uma linha com o endereço do site apontando para <code>127.0.0.1</code> ou <code>0.0.0.0</code>, o navegador retornará NXDOMAIN:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Pressione <code>Windows + R</code>, digite <code>notepad.exe C:\Windows\System32\drivers\etc\hosts</code> (abra como Administrador).</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Examine as linhas no final do arquivo. Linhas normais de exemplo começam com o caractere <code>#</code>.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Se você encontrar linhas contendo o nome do domínio que não abre associado a IPs locais (como <code>127.0.0.1 site.com</code>), apague essas linhas, salve o arquivo e feche o Bloco de Notas.</div>
+          </li>
+        </ol>
+
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>O erro DNS_PROBE_FINISHED_NXDOMAIN é problema do meu PC ou do site?</h3>
+            <p>Pode ser de ambos. Se apenas um site específico não abre em nenhum dispositivo da sua casa (nem no 4G do celular), o domínio do site expirou, o registro de DNS do dono do site está com erro ou o servidor dele caiu. Se o site abre normalmente no 4G do celular mas falha no Wi-Fi do computador, o problema é local da sua rede ou computador.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Por que reiniciar o roteador Wi-Fi às vezes resolve o NXDOMAIN?</h3>
+            <p>Roteadores domésticos mantêm um cache de nomes simplificado na memória RAM. Quando o roteador fica ligado por semanas seguidas, esse cache pode memorizar respostas negativas de DNS. Desligá-lo da tomada por 30 segundos esvazia a memória volátil e obriga o aparelho a buscar dados limpos.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O uso de VPN pode causar esse erro de DNS?</h3>
+            <p>Sim. Se a VPN cair de forma anômala, os adaptadores virtuais de rede (TAP/TUN) podem deixar configurações residuais de DNS ativo que não respondem fora do túnel criptografado. Desative a VPN e reinicie o adaptador de rede.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Qual é o DNS mais rápido: Google ou Cloudflare?</h3>
+            <p>Em testes globais independentes de latência de resposta, o DNS da Cloudflare (1.1.1.1) costuma apresentar tempos médios de resposta de 12 a 15 ms, enquanto o Google (8.8.8.8) opera entre 18 e 25 ms. Ambos são significativamente mais rápidos e estáveis do que os servidores padrão da maioria dos provedores.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Esse erro tem relação com vírus ou spywares?</h3>
+            <p>Em alguns casos, malwares do tipo Trojan Banker alteram as configurações de DNS do computador ou do roteador (técnica conhecida como DNS Hijacking) para desviar o usuário para páginas falsas. Se o servidor malicioso for desativado pela polícia, o computador passa a acusar erro NXDOMAIN.</p>
+          </div>
         </div>
 
-        
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://support.google.com/chrome/answer/6098869?hl=pt-BR" target="_blank" rel="noopener noreferrer">Google Chrome Help — Corrigir erros de conexão e páginas que não abrem</a></li>
+          <li><a href="https://developers.cloudflare.com/1.1.1.1/what-is-1.1.1.1/" target="_blank" rel="noopener noreferrer">Cloudflare Docs — What is DNS and how does 1.1.1.1 work</a></li>
+        </ul>
 
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
-          </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
-          </div>
-        </div>
-
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-cancelar-assinatura-netflix-celular-pc.html" class="related-card">
-              <span class="related-card-title">Como Cancelar a Assinatura da Netflix pelo Celular e PC</span>
+            <a href="como-resolver-erro-err-connection-timed-out-chrome-edge.html" class="related-card">
+              <span class="related-card-title">Como Resolver o Erro ERR_CONNECTION_TIMED_OUT no Navegador</span>
             </a>
-            <a href="como-descobrir-senha-wifi-conectado-pc-celular.html" class="related-card">
-              <span class="related-card-title">Como Descobrir a Senha do Wi-Fi Conectado no PC e Celular</span>
+            <a href="como-resolver-wifi-conectado-sem-acesso-internet-pc-celular.html" class="related-card">
+              <span class="related-card-title">Como Resolver Wi-Fi Conectado Sem Acesso à Internet no PC e Celular</span>
             </a>
-            <a href="como-corrigir-vazamento-dns-ipv6-leak-protecao-rede.html" class="related-card">
-              <span class="related-card-title">Como Corrigir Vazamento de DNS por IPv6 (IPv6 Leak) e Proteger a Rede</span>
+            <a href="como-mudar-dns-roteador-windows-android-iphone.html" class="related-card">
+              <span class="related-card-title">Como Mudar o DNS no Roteador, Windows, Android e iPhone</span>
             </a>
-            <a href="o-que-fazer-se-internet-cai-toda-hora-passo-a-passo.html" class="related-card">
-              <span class="related-card-title">O que Fazer se a Internet Cai Toda Hora e Passo a Passo para Resolver</span>
+            <a href="como-configurar-dns-sobre-https-doh-chrome-firefox-edge.html" class="related-card">
+              <span class="related-card-title">Como Configurar DNS sobre HTTPS (DoH) no Chrome, Edge e Firefox</span>
             </a>
           </div>
         </div>
@@ -238,13 +369,16 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#mecanica-resolucao-dns">Entenda o Mecanismo da Falha NXDOMAIN</a></li>
+          <li><a href="#limpar-cache-dns-windows">Passo 1: Liberar e Limpar o Cache DNS no Windows (FlushDNS)</a></li>
+          <li><a href="#redefinir-winsock-pilha-ip">Passo 2: Redefinir o Catálogo Winsock e a Pilha TCP/IP</a></li>
+          <li><a href="#mudar-dns-publico-seguro">Passo 3: Mudar para Servidores DNS Públicos Confiáveis</a></li>
+          <li><a href="#limpar-cache-dns-chrome">Passo 4: Limpar o Cache de DNS Interno do Google Chrome</a></li>
+          <li><a href="#verificar-arquivo-hosts">Passo 5: Inspecionar o Arquivo Hosts do Windows</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -252,7 +386,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>

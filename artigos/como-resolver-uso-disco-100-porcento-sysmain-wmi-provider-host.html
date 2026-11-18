@@ -3,29 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como Resolver o Uso de Disco em 100% pelo Serviço SysMain e WMI — DRGTech</title>
-  <meta name="description" content="O uso contínuo de disco em 100% no Gerenciador de Tarefas reduz drasticamente a velocidade do PC. Para resolver, abra o Gerenciador de Serviços (services.m..." />
-  <meta name="keywords" content="como resolver o uso de disco em 100% pelo serviço sysmain e wmi, tutorial windows, suporte tecnico" />
+  <title>Como Resolver Uso de Disco em 100% no Windows 11 com SysMain e WMI — DRGTech</title>
+  <meta name="description" content="Guia prático para solucionar o travamento de disco em 100% no Windows 11: desativação segura do SysMain, reparo do WMI Provider Host e diagnóstico de SSD." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Como Resolver o Uso de Disco em 100% pelo Serviço SysMain e WMI — DRGTech" />
-  <meta property="og:description" content="O uso contínuo de disco em 100% no Gerenciador de Tarefas reduz drasticamente a velocidade do PC. Para resolver, abra o Gerenciador de Serviços (services.m..." />
+  <meta property="og:title" content="Como Resolver Uso de Disco em 100% no Windows 11 com SysMain e WMI — DRGTech" />
+  <meta property="og:description" content="Guia prático para solucionar o travamento de disco em 100% no Windows 11: desativação segura do SysMain, reparo do WMI Provider Host e diagnóstico de SSD." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-resolver-uso-disco-100-porcento-sysmain-wmi-provider-host.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Como Resolver o Uso de Disco em 100% pelo Serviço SysMain e WMI — DRGTech" />
-  <meta name="twitter:description" content="O uso contínuo de disco em 100% no Gerenciador de Tarefas reduz drasticamente a velocidade do PC. Para resolver, abra o Gerenciador de Serviços (services.m..." />
+  <meta name="twitter:title" content="Como Resolver Uso de Disco em 100% no Windows 11 com SysMain e WMI — DRGTech" />
+  <meta name="twitter:description" content="Guia prático para solucionar o travamento de disco em 100% no Windows 11: desativação segura do SysMain, reparo do WMI Provider Host e diagnóstico de SSD." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-resolver-uso-disco-100-porcento-sysmain-wmi-provider-host.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Resolver Uso de Disco em 100% no Windows 11 com SysMain e WMI",
+  "description": "Guia prático para solucionar o travamento de disco em 100% no Windows 11: desativação segura do SysMain, reparo do WMI Provider Host e diagnóstico de SSD.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-resolver-uso-disco-100-porcento-sysmain-wmi-provider-host.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,55 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Resolver o Uso de Disco em 100% pelo Serviço SysMain e WMI",
+      "name": "Desativar o SysMain é prejudicial para o Windows 11?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "O uso contínuo de disco em 100% no Gerenciador de Tarefas reduz drasticamente a velocidade do PC. Para resolver, abra o Gerenciador de Serviços (services.msc), localize os serviços 'SysMain' (Superfetch) e 'Pesquisa do Windows' (Windows Search), desative a inicialização automática e limpe os arquivos de cache da pasta Prefetch."
+        "text": "Não. O SysMain é apenas um mecanismo de conveniência que pré-carrega arquivos na memória com base nos seus hábitos. Desativá-lo é uma prática amplamente recomendada por técnicos de suporte da Microsoft para sistemas que apresentam lentidão em operações de disco."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Por que o WMI Provider Host consome tanta CPU e disco às vezes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O WMI em si não é o gerador do trabalho, ele apenas atende a pedidos. Quando ele consome 100% de recursos, quase sempre há um aplicativo de terceiros (como softwares de controle de iluminação RGB, drivers desatualizados de notebook ou antivírus corrompido) bombardeando o sistema com centenas de consultas WMI por segundo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O Windows Search pode causar 100% de uso de disco?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. O serviço Windows Search indexa arquivos para buscas rápidas. Se você tiver pastas com milhões de arquivos pequenos ou repositórios de código no disco, desative a indexação nessas pastas específicas nas Opções de Indexação do Windows."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como saber se o meu disco está fisicamente condenado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Baixe a ferramenta gratuita CrystalDiskInfo. Se o status de saúde da unidade indicar 'Alerta' (em amarelo) com contadores de 'Setores Realocados' ou 'Eventos de Realocação' aumentando a cada dia, o disco está sofrendo degradação física irreversível e deve ser substituído com urgência após backup."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mudar o plano de energia pode ajudar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Em alguns modelos de notebook com SSDs SATA, habilitar o plano de energia 'Alto Desempenho' impede que o disco entre e saia repetidamente de estados de hibernação profunda da porta SATA (LPM), eliminando pequenas pausas e travamentos intermitentes de resposta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O Monitor de Recursos (resmon) ajuda a identificar o arquivo exato que trava o disco?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Pressione Windows + R, digite resmon e pressione Enter. Na aba Disco, expanda a seção 'Atividade do Disco' e ordene pela coluna 'Total (B/s)'. O utilitário listará os caminhos absolutos dos arquivos que estão sendo lidos ou gravados em tempo real, permitindo identificar se é um arquivo de log temporário, um banco de dados local ou uma varredura de antivírus."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,7 +121,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Como Resolver o Uso de Disco em 100% pelo Serviço SysMain e WMI",
+      "name": "Como Resolver Uso de Disco em 100% no Windows 11 com SysMain e WMI",
       "item": "https://drgtech.com.br/artigos/como-resolver-uso-disco-100-porcento-sysmain-wmi-provider-host.html"
     }
   ]
@@ -103,132 +161,193 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#windows">Windows</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Resolver o Uso de Disco em 100...</span>
+        <span>Como Resolver Uso de Disco em 100% no…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-blue">Windows</span>
-        <h1 class="article-h1">Como Resolver o Uso de Disco em 100% pelo Serviço SysMain e WMI</h1>
+        <h1 class="article-h1">Como Resolver Uso de Disco em 100% no Windows 11 com SysMain e WMI</h1>
         <div class="article-intro-meta">
-          <span class="meta-item">8 min de leitura</span>
-          <span class="meta-item">Atualizado em agosto de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">5 min de leitura</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> O uso contínuo de disco em 100% no Gerenciador de Tarefas reduz drasticamente a velocidade do PC. Para resolver, abra o Gerenciador de Serviços (services.msc), localize os serviços 'SysMain' (Superfetch) e 'Pesquisa do Windows' (Windows Search), desative a inicialização automática e limpe os arquivos de cache da pasta Prefetch.
+        <strong>Resposta rápida:</strong> O problema de uso de disco em 100% no Windows 11 ocorre com frequência quando o serviço SysMain (antigo SuperFetch) indexa agressivamente aplicativos em segundo plano ou quando o processo WMI Provider Host (WmiPrvSE.exe) entra em loop consumindo I/O devido a chamadas defeituosas de softwares de terceiros. Para resolver, desative temporariamente o serviço SysMain no console <code>services.msc</code>, rastreie processos clientes no Visualizador de Eventos, reinicie o repositório WMI com <code>net stop winmgmt</code> e <code>winmgmt /resetrepository</code>, e verifique a integridade do disco com <code>chkdsk C: /f</code>.
       </div>
 
       <article class="article-body" id="article-body">
+        <p>Abrir o Gerenciador de Tarefas do Windows e se deparar com a coluna de Disco marcando 100% de uso de forma ininterrupta, mesmo sem nenhum aplicativo pesado em execução, é um dos problemas mais comuns e irritantes relatados no Windows 11. Essa condição faz com que o ponteiro do mouse congele, navegadores demorem minutos para abrir e o computador pareça completamente paralisado.</p>
+        <p>Nas versões modernas do sistema operacional, os dois maiores culpados por esse consumo descontrolado de operações de entrada e saída (I/O) são o serviço <strong>SysMain</strong> (conhecido antigamente como SuperFetch) e o subsistema <strong>WMI Provider Host</strong> (<code>WmiPrvSE.exe</code>). Embora ambos tenham sido criados pela Microsoft com finalidades legítimas de otimização e instrumentação, falhas de sincronização com certos controladores de SSD e programas mal programados podem colocá-los em loops contínuos. A seguir, apresentamos a sequência metódica para restaurar o desempenho normal.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> Windows 11 e Windows 10 em SSDs e HDs</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Resolver o Uso de Disco em 100% pelo Serviço SysMain e WMI"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Windows</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
-        </div>
-
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
+        <h2 id="desativar-sysmain-seguro">Passo 1: Desativar o Serviço SysMain (SuperFetch) Corretamente</h2>
+        <p>O SysMain analisa os horários e padrões em que você abre programas para pré-carregá-los na memória RAM. Em discos rígidos mecânicos lentos ou SSDs SATA com DRAM cache pequena, esse pré-carregamento constante estrangula a fila de transferência do disco:</p>
         <ol class="steps-list">
-
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">Pressione Win + R, digite 'services.msc', localize o serviço 'SysMain', clique em Propriedades, altere o Tipo de Inicialização para 'Desativado' e clique no botão Parar.</div>
+            <div class="step-text">Pressione as teclas <code>Windows + R</code>, digite <code>services.msc</code> e pressione Enter para abrir o console de Serviços do Windows.</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">No mesmo menu de serviços, localize 'Pesquisa do Windows' (Windows Search) e mude o tipo de inicialização para 'Manual'.</div>
+            <div class="step-text">Role a lista de serviços até localizar o item chamado <strong>SysMain</strong>.</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">Pressione Win + R, digite 'prefetch', selecione todos os arquivos temporários da pasta e apague-os para liberar as filas de I/O do disco.</div>
+            <div class="step-text">Dê um duplo clique sobre ele para abrir a janela de propriedades.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">No campo 'Tipo de inicialização', altere a opção para <strong>Desativado</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Na seção 'Status do serviço', clique no botão <strong>Parar</strong> e em seguida em <strong>OK</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-text">Abra o Gerenciador de Tarefas (<code>Ctrl + Shift + Esc</code>) e observe se o indicador de uso de disco diminui imediatamente para valores abaixo de 5%.</div>
+          </li>
+        </ol>
+        <div class="info-box">
+          <div class="box-content"><p>Em computadores com SSDs NVMe modernos de alta velocidade, desativar o SysMain não causa nenhuma perda perceptível de desempenho e elimina completamente o pico de leitura de inicialização.</p></div>
+        </div>
+
+        <h2 id="rastrear-wmi-event-viewer">Passo 2: Identificar Qual Aplicativo Está Causando Loop no WMI</h2>
+        <p>O processo <code>WmiPrvSE.exe</code> não gera consultas por vontade própria; ele é apenas o executor. Se ele está usando 100% de CPU ou disco, algum software instalado está enviando consultas com erro. Para descobrir o culpado exato:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Pressione <code>Windows + X</code> e abra o <strong>Visualizador de Eventos</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">No menu superior, clique em <strong>Exibir</strong> e marque <strong>Mostrar Logs Analíticos e de Depuração</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Navegue na árvore lateral até: <strong>Logs de Aplicativos e Serviços</strong> &gt; <strong>Microsoft</strong> &gt; <strong>Windows</strong> &gt; <strong>WMI-Activity</strong> &gt; <strong>Operational</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Procure por eventos marcados como <strong>Erro</strong> com a <strong>ID do Evento 5858</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Selecione o evento e, no painel inferior, anote o valor numérico indicado no campo <strong>ClientProcessId</strong> (por exemplo, <code>ClientProcessId = 4120</code>).</div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-text">Abra o Gerenciador de Tarefas, vá na aba <strong>Detalhes</strong>, ordene pela coluna <strong>PID</strong> e encontre o aplicativo com esse número (frequentemente softwares de iluminação RGB, antivírus desatualizados ou utilitários de placa-mãe).</div>
           </li>
         </ol>
 
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <h2 id="reparar-wmi-provider-host">Passo 3: Redefinir e Reparar o Repositório WMI</h2>
+        <p>Se a base de dados do WMI estiver corrompida, ela deve ser reconstruída pelo console administrativo:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Abra o Terminal como Administrador (<code>Windows + X</code> &gt; Terminal Admin).</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Pare temporariamente o serviço de gerenciamento do Windows:</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Redefina o repositório WMI para o estado limpo de fábrica:</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Reinicie o serviço e verifique a integridade da base:</div>
+          </li>
+        </ol>
+        <pre class="code-block" data-lang="powershell"><code>net stop winmgmt
+winmgmt /resetrepository
+winmgmt /verifyrepository</code></pre>
+        <p>Se o retorno for 'O repositório do WMI é consistente', as tabelas de consulta foram reconstruídas com sucesso.</p>
+
+        <h2 id="desativar-telemetria-pesada">Passo 4: Desativar o Serviço de Rastreamento de Diagnóstico</h2>
+        <p>O serviço Connected User Experiences and Telemetry coleta logs de uso em segundo plano para envio à Microsoft e frequentemente causa picos de I/O em discos rígidos:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">No console <code>services.msc</code>, localize o serviço <strong>Experiências do Usuário Conectado e Telemetria</strong> (Connected User Experiences and Telemetry).</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Dê um duplo clique, defina o 'Tipo de inicialização' como <strong>Desativado</strong> e clique em <strong>Parar</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Clique em OK para confirmar.</div>
+          </li>
+        </ol>
+
+        <h2 id="verificar-saude-disco-chkdsk">Passo 5: Verificar Danos Físicos e Setores Defeituosos com CHKDSK</h2>
+        <p>Se mesmo após desativar esses serviços o disco continuar cravado em 100%, o controlador do armazenamento pode estar lutando repetidamente para ler setores danificados:</p>
+        <pre class="code-block" data-lang="powershell"><code>chkdsk C: /f /r</code></pre>
+        <p>Pressione a letra <code>S</code> para confirmar o agendamento da checagem para a próxima inicialização e reinicie o computador. O Windows analisará e isolará blocos defeituosos automaticamente.</p>
+
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>Desativar o SysMain é prejudicial para o Windows 11?</h3>
+            <p>Não. O SysMain é apenas um mecanismo de conveniência que pré-carrega arquivos na memória com base nos seus hábitos. Desativá-lo é uma prática amplamente recomendada por técnicos de suporte da Microsoft para sistemas que apresentam lentidão em operações de disco.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Por que o WMI Provider Host consome tanta CPU e disco às vezes?</h3>
+            <p>O WMI em si não é o gerador do trabalho, ele apenas atende a pedidos. Quando ele consome 100% de recursos, quase sempre há um aplicativo de terceiros (como softwares de controle de iluminação RGB, drivers desatualizados de notebook ou antivírus corrompido) bombardeando o sistema com centenas de consultas WMI por segundo.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O Windows Search pode causar 100% de uso de disco?</h3>
+            <p>Sim. O serviço Windows Search indexa arquivos para buscas rápidas. Se você tiver pastas com milhões de arquivos pequenos ou repositórios de código no disco, desative a indexação nessas pastas específicas nas Opções de Indexação do Windows.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Como saber se o meu disco está fisicamente condenado?</h3>
+            <p>Baixe a ferramenta gratuita CrystalDiskInfo. Se o status de saúde da unidade indicar 'Alerta' (em amarelo) com contadores de 'Setores Realocados' ou 'Eventos de Realocação' aumentando a cada dia, o disco está sofrendo degradação física irreversível e deve ser substituído com urgência após backup.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Mudar o plano de energia pode ajudar?</h3>
+            <p>Em alguns modelos de notebook com SSDs SATA, habilitar o plano de energia 'Alto Desempenho' impede que o disco entre e saia repetidamente de estados de hibernação profunda da porta SATA (LPM), eliminando pequenas pausas e travamentos intermitentes de resposta.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O Monitor de Recursos (resmon) ajuda a identificar o arquivo exato que trava o disco?</h3>
+            <p>Sim. Pressione Windows + R, digite resmon e pressione Enter. Na aba Disco, expanda a seção 'Atividade do Disco' e ordene pela coluna 'Total (B/s)'. O utilitário listará os caminhos absolutos dos arquivos que estão sendo lidos ou gravados em tempo real, permitindo identificar se é um arquivo de log temporário, um banco de dados local ou uma varredura de antivírus.</p>
+          </div>
         </div>
 
-        
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://learn.microsoft.com/pt-br/troubleshoot/windows-server/system-run-levels-and-service-startup/wmi-high-cpu-usage-troubleshooting" target="_blank" rel="noopener noreferrer">Microsoft Support — Solucionar problemas de alto uso de recursos do WMI</a></li>
+          <li><a href="https://answers.microsoft.com/pt-br/windows/forum/all/100-de-uso-de-disco-no-windows-11-sysmain/5a4d46cf-369b-43ad-8d3e-95d4695b77ee" target="_blank" rel="noopener noreferrer">Microsoft Community — Alto uso de disco pelo SysMain no Windows 11</a></li>
+        </ul>
 
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
-          </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
-          </div>
-        </div>
-
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-tirar-print-screen-notebook-windows.html" class="related-card">
-              <span class="related-card-title">Como Tirar Print Screen no Notebook Windows 10 e 11</span>
+            <a href="como-usar-comandos-dism-sfc-windows-11-corrigir-erros.html" class="related-card">
+              <span class="related-card-title">Como Usar DISM e SFC no Windows 11 para Reparar Arquivos do Sistema</span>
             </a>
-            <a href="como-desativar-antivirus-windows-defender-temporariamente.html" class="related-card">
-              <span class="related-card-title">Como Desativar o Windows Defender Antivirus Temporariamente</span>
+            <a href="como-corrigir-tela-azul-whea-uncorrectable-error-windows-11.html" class="related-card">
+              <span class="related-card-title">Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11</span>
             </a>
-            <a href="gestao-avancada-armazenamento-liberacao-memoria-smartphones.html" class="related-card">
-              <span class="related-card-title">Gestão Avançada de Armazenamento e Liberação de Memória em Smartphones</span>
+            <a href="como-resolver-tela-azul-system-service-exception-windows-11.html" class="related-card">
+              <span class="related-card-title">Como Resolver a Tela Azul SYSTEM_SERVICE_EXCEPTION no Windows 11</span>
             </a>
-            <a href="como-corrigir-processo-system-consumindo-muita-memoria-ram.html" class="related-card">
-              <span class="related-card-title">Como Corrigir o Processo System Consumindo Muita Memória RAM no Windows</span>
+            <a href="como-resolver-tela-azul-memory-management-windows-11.html" class="related-card">
+              <span class="related-card-title">Como Resolver a Tela Azul MEMORY_MANAGEMENT no Windows 11</span>
             </a>
           </div>
         </div>
@@ -238,13 +357,15 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#desativar-sysmain-seguro">Passo 1: Desativar o Serviço SysMain (SuperFetch) Corretamente</a></li>
+          <li><a href="#rastrear-wmi-event-viewer">Passo 2: Identificar Qual Aplicativo Está Causando Loop no WMI</a></li>
+          <li><a href="#reparar-wmi-provider-host">Passo 3: Redefinir e Reparar o Repositório WMI</a></li>
+          <li><a href="#desativar-telemetria-pesada">Passo 4: Desativar o Serviço de Rastreamento de Diagnóstico</a></li>
+          <li><a href="#verificar-saude-disco-chkdsk">Passo 5: Verificar Danos Físicos e Setores Defeituosos com CHKDSK</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -252,7 +373,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>

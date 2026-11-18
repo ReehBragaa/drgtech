@@ -1,0 +1,127 @@
+{
+  "id": 143,
+  "slug": "como-usar-comandos-dism-sfc-windows-11-corrigir-erros",
+  "titulo": "Como Usar DISM e SFC no Windows 11 para Reparar Arquivos do Sistema",
+  "descricao": "Guia técnico com a ordem correta para executar os comandos DISM e SFC no Windows 11, reparar o repositório de componentes e corrigir travamentos.",
+  "resposta_curta": "Para reparar o Windows 11, abra o Terminal como Administrador e execute primeiro o DISM para restaurar a integridade da imagem de componentes com `DISM /Online /Cleanup-Image /RestoreHealth`. Em seguida, execute o Verificador de Arquivos do Sistema com `sfc /scannow`. Essa ordem é obrigatória porque o SFC depende de uma base de componentes saudável na pasta WinSxS para substituir arquivos corrompidos.",
+  "aplica_se": "Windows 11 (todas as versões) e Windows 10",
+  "intro": [
+    "O Verificador de Arquivos do Sistema (SFC) e o Gerenciamento e Manutenção de Imagens de Implantação (DISM) são as ferramentas nativas mais poderosas da Microsoft para diagnosticar e restaurar arquivos corrompidos no Windows 11. Quando o computador apresenta lentidão inexplicável, erros ao abrir o Explorador de Arquivos, travamentos na Barra de Tarefas ou mensagens genéricas de falha de biblioteca DLL, essas duas ferramentas permitem recuperar a estabilidade operacional sem a necessidade de formatar o disco rígido ou reinstalar aplicativos do zero.",
+    "No entanto, um dos erros mais comuns cometidos por usuários e técnicos iniciantes é executar apenas o comando SFC ou executá-los na ordem invertida. O utilitário SFC substitui versões corrompidas de arquivos do sistema a partir de um repositório compactado local armazenado na pasta WinSxS (Windows Side-by-Side). Se a própria imagem do repositório WinSxS estiver danificada por quedas de energia ou atualizações interrompidas, o SFC falhará e exibirá a mensagem de que não pôde corrigir os arquivos. Por essa razão, a documentação técnica da Microsoft estabelece como mandatório reparar previamente o repositório local com o DISM antes de rodar o SFC."
+  ],
+  "secoes": [
+    {
+      "id": "diferenca-tecnica-dism-sfc",
+      "titulo": "Entenda a Função Técnica de Cada Utilitário",
+      "blocos": [
+        { "tipo": "p", "texto": "Compreender o escopo de atuação de cada comando evita retrabalho e orienta o diagnóstico correto de falhas no sistema operacional Windows:" },
+        { "tipo": "tabela", "cabecalho": ["Ferramenta", "Escopo de Ação", "Origem de Reparo", "Tempo Médio"], "linhas": [
+          ["DISM (Deployment Image Servicing)", "Repara a imagem de recuperação do Windows e a integridade da pasta WinSxS.", "Servidores do Windows Update ou mídia de instalação oficial (ISO).", "10 a 25 minutos"],
+          ["SFC (System File Checker)", "Compara hashes de arquivos críticos do sistema ativo com a pasta WinSxS.", "Repositório local de componentes saudáveis verificado pelo DISM.", "5 a 15 minutos"]
+        ]},
+        { "tipo": "p", "texto": "Se a pasta WinSxS contiver inconsistências lógicas causadas por desligamentos abruptos ou falhas em atualizações cumulativas anteriores, o SFC não conseguirá obter versões íntegras para substituir arquivos corrompidos em `C:\\Windows\\System32`. O DISM resolve esse impasse baixando componentes limpos diretamente dos servidores oficiais da Microsoft." }
+      ]
+    },
+    {
+      "id": "preparativos-e-terminal-admin",
+      "titulo": "Passo 1: Abrir o Terminal ou Prompt como Administrador",
+      "blocos": [
+        { "tipo": "p", "texto": "Os utilitários DISM e SFC interagem diretamente com diretórios protegidos do subsistema do Windows e exigem privilégios elevados de controle de conta de usuário (UAC) para modificar binários do kernel:" },
+        { "tipo": "passos", "itens": [
+          "Clique com o botão direito do mouse sobre o botão Iniciar do Windows 11 ou pressione o atalho de teclado `Windows + X`.",
+          "No menu de contexto avançado, clique sobre a opção **Terminal (Administrador)** ou **Prompt de Comando (Admin)**.",
+          "Quando o Controle de Conta de Usuário (UAC) exibir a mensagem 'Deseja permitir que este aplicativo faça alterações no seu dispositivo?', selecione **Sim**.",
+          "Verifique se o cabeçalho da janela do console exibe explicitamente o termo 'Administrador' antes de prosseguir com qualquer digitação de comando."
+        ]},
+        { "tipo": "aviso", "nivel": "info", "texto": "Certifique-se de que o computador esteja conectado à internet de forma estável durante a etapa do DISM. Caso você esteja em um ambiente corporativo com firewall restritivo ou sem acesso à rede externa, será necessário indicar uma imagem ISO oficial montada como fonte alternativa." }
+      ]
+    },
+    {
+      "id": "etapa-dism-passo-a-passo",
+      "titulo": "Passo 2: Diagnosticar e Reparar o Repositório com o DISM",
+      "blocos": [
+        { "tipo": "p", "texto": "O DISM possui três níveis progressivos de diagnóstico. Para uma manutenção preventiva e corretiva completa, recomenda-se executar a verificação avançada e em seguida o comando de restauração completa:" },
+        { "tipo": "p", "texto": "Primeiramente, execute uma varredura preventiva para averiguar se há danos registrados no repositório de componentes:" },
+        { "tipo": "codigo", "linguagem": "powershell", "texto": "DISM /Online /Cleanup-Image /ScanHealth" },
+        { "tipo": "p", "texto": "Esse comando analisa todos os pacotes instalados sem realizar alterações ativas. Se o retorno indicar que 'O repositório de componentes é reparável', inicie a rotina de restauração executando a seguinte instrução:" },
+        { "tipo": "codigo", "linguagem": "powershell", "texto": "DISM /Online /Cleanup-Image /RestoreHealth" },
+        { "tipo": "aviso", "nivel": "atencao", "texto": "Durante a execução do RestoreHealth, é perfeitamente normal que a barra de progresso pare aparentemente em 20%, 40% ou 62.3% por vários minutos seguidos. Não feche a janela do terminal nem reinicie o computador durante esse procedimento, pois o Windows está descompactando pacotes de integridade pesados em segundo plano." },
+        { "tipo": "p", "texto": "Aguarde pacientemente até visualizar a mensagem de confirmação final: **'A operação de restauração foi concluída com êxito. A operação foi concluída com êxito.'**" }
+      ]
+    },
+    {
+      "id": "etapa-sfc-passo-a-passo",
+      "titulo": "Passo 3: Executar a Varredura do SFC (System File Checker)",
+      "blocos": [
+        { "tipo": "p", "texto": "Com o repositório de componentes devidamente limpo e reparado pelo DISM, você pode rodar o Verificador de Arquivos do Sistema na mesma janela administrativa aberta:" },
+        { "tipo": "codigo", "linguagem": "powershell", "texto": "sfc /scannow" },
+        { "tipo": "p", "texto": "O utilitário iniciará uma checagem de integridade detalhada em todas as pastas protegidas do sistema operacional. Ao final do processamento, você receberá um dos quatro diagnósticos documentados pela Microsoft:" },
+        { "tipo": "lista", "itens": [
+          "**'A Proteção de Recursos do Windows não encontrou nenhuma violação de integridade':** O sistema operacional está perfeitamente saudável e não há arquivos corrompidos.",
+          "**'A Proteção de Recursos do Windows encontrou arquivos corrompidos e os reparou com êxito':** As falhas foram sanadas com sucesso utilizando a base de componentes que acabamos de validar com o DISM. Reinicie o computador para consolidar as alterações.",
+          "**'A Proteção de Recursos do Windows encontrou arquivos corrompidos, mas não pôde corrigir alguns deles':** Indica falhas persistentes graves em bibliotecas em uso contínuo. Consulte a seção de inspeção de logs CBS abaixo.",
+          "**'A Proteção de Recursos do Windows não pôde executar a operação solicitada':** Ocorre habitualmente quando o serviço do Instalador de Módulos está desativado ou ao rodar sem permissões de Administrador."
+        ]}
+      ]
+    },
+    {
+      "id": "como-inspecionar-logs-cbs",
+      "titulo": "Passo 4: Como Inspecionar os Resultados no Arquivo CBS.log",
+      "blocos": [
+        { "tipo": "p", "texto": "O utilitário SFC armazena o histórico detalhado de todas as suas operações no arquivo de log do sistema localizado em `C:\\Windows\\Logs\\CBS\\CBS.log`. Como esse arquivo registra eventos de diversos outros componentes do Windows, você pode filtrar unicamente as entradas geradas pelo SFC gerando um relatório limpo na sua Área de Trabalho:" },
+        { "tipo": "codigo", "linguagem": "powershell", "texto": "findstr /c:\"[SR]\" %windir%\\Logs\\CBS\\CBS.log > \"%userprofile%\\Desktop\\sfcdetails.txt\"" },
+        { "tipo": "p", "texto": "Abra o arquivo `sfcdetails.txt` criado na sua Área de Trabalho com o Bloco de Notas para verificar os nomes exatos de arquivos DLL ou SYS que foram reparados pelo comando e identificar eventuais pendências." }
+      ]
+    },
+    {
+      "id": "solucao-offline-quando-dism-falha",
+      "titulo": "Solução Alternativa: Executar o DISM Offline com Mídia de Instalação",
+      "blocos": [
+        { "tipo": "p", "texto": "Se o comando `RestoreHealth` falhar com o código de erro `0x800f081f` ('Os arquivos de origem não puderam ser encontrados'), significa que o cliente do Windows Update local não conseguiu baixar os arquivos necessários da nuvem. A solução oficial consiste em montar uma imagem ISO oficial do Windows 11 e apontar o arquivo `install.wim` como fonte confiável de reparo:" },
+        { "tipo": "passos", "itens": [
+          "Baixe o arquivo ISO oficial do Windows 11 no site da Microsoft e dê um duplo clique para montá-lo no sistema (anote a letra da unidade virtual criada, como por exemplo `E:`).",
+          "Abra o Prompt de Comando como Administrador e execute o comando abaixo, substituindo a letra `E:` pela letra correspondente à sua unidade montada:",
+          "Certifique-se de que o arquivo de instalação se chama `install.wim` dentro da pasta `sources` da mídia montada."
+        ]},
+        { "tipo": "codigo", "linguagem": "powershell", "texto": "DISM /Online /Cleanup-Image /RestoreHealth /Source:WIM:E:\\sources\\install.wim:1 /LimitAccess" },
+        { "tipo": "p", "texto": "O parâmetro `/LimitAccess` impede que o DISM tente recorrer aos servidores externos do Windows Update, forçando o uso estrito dos arquivos limpos contidos na mídia de instalação oficial." }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "Posso executar o SFC antes do DISM?",
+      "r": "Você pode executar o SFC primeiro, mas se houver corrupção na base de componentes do Windows (pasta WinSxS), o SFC não conseguirá reparar os arquivos danificados e acusará falha irrecuperável. A boa prática recomendada pela documentação oficial da Microsoft é sempre executar o DISM com o parâmetro /RestoreHealth antes do sfc /scannow para assegurar que a fonte de substituição esteja íntegra."
+    },
+    {
+      "p": "O DISM ou o SFC podem apagar fotos, documentos ou programas pessoais?",
+      "r": "Não. Tanto o DISM quanto o SFC atuam exclusivamente na pasta C:\\Windows e nos arquivos binários do sistema operacional (como DLLs, executáveis do kernel, drivers nativos e arquivos de manifesto). Seus arquivos pessoais, pastas de usuário, fotos, documentos e programas instalados não sofrem nenhuma alteração ou exclusão."
+    },
+    {
+      "p": "O que fazer se o SFC travar em uma porcentagem específica durante a varredura?",
+      "r": "Aguarde pelo menos 20 minutos. Se o processo realmente não avançar após esse período, reinicie o computador no Modo de Segurança com Prompt de Comando e execute o comando novamente. No Modo de Segurança, menos drivers e serviços de terceiros disputam o acesso aos arquivos protegidos do sistema."
+    },
+    {
+      "p": "Quantas vezes por mês devo rodar o DISM e o SFC no computador?",
+      "r": "Essas ferramentas são utilitários de diagnóstico e reparo reativo, não de manutenção rotineira obrigatória. Não há necessidade de executá-las periodicamente se o sistema estiver estável. Utilize-as após quedas súbitas de energia, travamentos frequentes ou falhas ao instalar atualizações do Windows Update."
+    },
+    {
+      "p": "O que fazer se mesmo após o DISM e SFC o Windows 11 continuar apresentando erros?",
+      "r": "Se as ferramentas concluírem sem erros mas a falha persistir, o problema pode estar em drivers corrompidos de terceiros, setores defeituosos no disco de armazenamento (execute chkdsk C: /f /r) ou falha física em pentes de memória RAM. Caso a causa seja do sistema operacional, uma instalação de reparo in-place (executar o assistente oficial do Windows mantendo aplicativos e arquivos pessoais) resolverá a questão sem formatação."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Microsoft Learn — Use a ferramenta Verificador de Arquivos do Sistema para reparar arquivos de sistema ausentes ou corrompidos",
+      "url": "https://support.microsoft.com/pt-br/topic/use-a-ferramenta-verificador-de-arquivos-do-sistema-para-reparar-arquivos-de-sistema-ausentes-ou-corrompidos-79aa8600-479b-4e35-1281-de5794e72167"
+    },
+    {
+      "titulo": "Microsoft Learn — Reparar uma imagem do Windows usando DISM",
+      "url": "https://learn.microsoft.com/pt-br/windows-hardware/manufacture/desktop/repair-a-windows-image"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [155, 176, 177, 154]
+}

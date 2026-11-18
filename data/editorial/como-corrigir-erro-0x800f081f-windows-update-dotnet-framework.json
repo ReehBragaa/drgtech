@@ -1,0 +1,177 @@
+{
+  "id": 153,
+  "slug": "como-corrigir-erro-0x800f081f-windows-update-dotnet-framework",
+  "titulo": "Como Corrigir o Erro 0x800F081F no Windows Update e .NET Framework",
+  "descricao": "Guia passo a passo para solucionar o erro 0x800F081F no Windows 11 e 10: reparo de fontes do DISM, ativação do .NET Framework 3.5 e limpeza de cache.",
+  "resposta_curta": "O erro 0x800F081F ('CBS_E_SOURCE_NOT_FOUND') indica que o Windows Update ou o DISM não conseguiram localizar os arquivos binários de origem necessários para instalar uma atualização cumulativa ou ativar o recurso .NET Framework 3.5. Para resolver, monte uma imagem ISO oficial do Windows 11, execute o comando de reparo apontando o arquivo install.wim com `DISM /Online /Cleanup-Image /RestoreHealth /Source:WIM:X:\\sources\\install.wim:1 /LimitAccess` ou ative o .NET com o comando `DISM /Online /Enable-Feature /FeatureName:NetFx3 /All /Source:X:\\sources\\sxs /LimitAccess`.",
+  "aplica_se": "Windows 11 e Windows 10",
+  "intro": [
+    "O código de erro 0x800F081F é uma das mensagens mais frustrantes do ecossistema de manutenção do Windows. Na arquitetura do subsistema CBS (Component Based Servicing), esse código traduz-se tecnicamente como CBS_E_SOURCE_NOT_FOUND. Ele ocorre quando o instalador do sistema operacional precisa compilar ou atualizar um pacote de componentes, mas os arquivos binários de referência na pasta de armazenamento WinSxS estão corrompidos, ausentes ou inacessíveis.",
+    "Esse erro manifesta-se tipicamente em dois momentos cruciais: durante a tentativa de instalação de atualizações de segurança cumulativas através do Windows Update ou quando o usuário tenta habilitar recursos legados essenciais, como o .NET Framework 3.5 (necessário para executar softwares profissionais de engenharia, sistemas contábeis e jogos clássicos). A seguir, apresentamos o procedimento técnico oficial para contornar a falha utilizando fontes locais e mídias de instalação limpas."
+  ],
+  "secoes": [
+    {
+      "id": "entenda-origem-0x800f081f",
+      "titulo": "Por que o Erro CBS_E_SOURCE_NOT_FOUND Acontece?",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Quando você comanda a instalação de um recurso no Windows, o sistema operacional segue uma ordem estrita de busca de arquivos:"
+        },
+        {
+          "tipo": "lista",
+          "itens": [
+            "**1. Repositório local WinSxS:** O Windows primeiro verifica se os arquivos compactados necessários já residem na pasta `C:\\Windows\\WinSxS`.",
+            "**2. Servidores do Windows Update:** Se não encontrar localmente, o sistema faz requisições HTTPS para os servidores centrais da Microsoft.",
+            "**3. Políticas de Grupo (WSUS/GPO):** Em computadores de empresas gerenciados por domínio corporativo, políticas de rede podem bloquear o acesso ao Windows Update público e falhar caso o servidor WSUS interno não contenha os pacotes opcionais."
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Se a conexão com o Windows Update falhar ou se o repositório local tiver sofrido corrupção de manifesto, o instalador desiste e cospe o código 0x800F081F."
+        }
+      ]
+    },
+    {
+      "id": "ativar-dotnet-com-iso",
+      "titulo": "Solução 1: Ativar o .NET Framework 3.5 Apontando a Pasta SxS da ISO",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se o erro 0x800F081F ocorreu ao tentar ativar o .NET Framework 3.5 pelo Painel de Controle, a maneira mais confiável e à prova de falhas é utilizar a pasta de componentes da mídia ISO oficial:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Baixe o arquivo ISO oficial do Windows 11 diretamente no site da Microsoft.",
+            "Dê um duplo clique no arquivo ISO baixado para montá-lo como uma unidade virtual no Explorador de Arquivos (por exemplo, unidade `E:`).",
+            "Abra o Prompt de Comando como Administrador (`Windows + X` > Terminal / Prompt Admin).",
+            "Execute o comando abaixo, substituindo a letra `E:` pela letra correspondente à sua unidade montada:",
+            "Aguarde a barra de progresso atingir 100%. Você verá a mensagem: 'A operação foi concluída com êxito'."
+          ]
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "powershell",
+          "texto": "DISM /Online /Enable-Feature /FeatureName:NetFx3 /All /Source:E:\\sources\\sxs /LimitAccess"
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "sucesso",
+          "texto": "A pasta sources\\sxs da imagem de instalação contém todos os binários originais necessários do .NET Framework 2.0 e 3.5, dispensando qualquer download pela internet."
+        }
+      ]
+    },
+    {
+      "id": "ajuste-politica-grupo-wsus",
+      "titulo": "Solução 2: Configurar a Política de Grupo para Recursos Opcionais (GPO)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Em máquinas corporativas ou versões Windows Pro/Enterprise conectadas a servidores WSUS, uma diretiva de grupo pode impedir o download de componentes opcionais:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Pressione `Windows + R`, digite `gpedit.msc` e pressione Enter.",
+            "Navegue até: **Configuração do Computador** > **Modelos Administrativos** > **Sistema**.",
+            "No painel direito, localize a política: **Especificar configurações para a instalação e reparo de componentes opcionais**.",
+            "Dê um duplo clique, marque a opção **Habilitado** e marque a caixa de seleção: **Fazer contato diretamente com o Windows Update para baixar conteúdo de reparo em vez do WSUS**.",
+            "Clique em Aplicar, OK e feche o editor."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reparo-windows-update-dism-wim",
+      "titulo": "Solução 3: Reparar o Repositório do Windows Update com Imagem WIM",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se o erro 0x800F081F impede a instalação de atualizações cumulativas de segurança, você deve usar o DISM para regenerar o repositório de componentes utilizando o arquivo `install.wim` da ISO montada:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Com a ISO do Windows montada (supondo a letra `E:`), descubra o índice da sua edição do Windows (Home, Pro) executando:",
+            "Anote o número do índice da sua versão (habitualmente índice 1 para Home ou 6 para Pro).",
+            "Execute o comando de restauração completa apontando o índice correspondente:"
+          ]
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "powershell",
+          "texto": "dism /Get-WimInfo /WimFile:E:\\sources\\install.wim\nDISM /Online /Cleanup-Image /RestoreHealth /Source:WIM:E:\\sources\\install.wim:1 /LimitAccess"
+        },
+        {
+          "tipo": "p",
+          "texto": "Após a conclusão com êxito, rode o verificador de arquivos: `sfc /scannow` e reinicie o computador."
+        }
+      ]
+    },
+    {
+      "id": "limpeza-cache-windows-update",
+      "titulo": "Solução 4: Redefinir os Componentes de Download do Windows Update",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Arquivos temporários corrompidos na pasta de distribuição de software podem travar as tentativas subsequentes de atualização. Redefina a pasta SoftwareDistribution com estes comandos em lote no Prompt Administrativo:"
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "powershell",
+          "texto": "net stop wuauserv\nnet stop cryptSvc\nnet stop bits\nnet stop msiserver\nren C:\\Windows\\SoftwareDistribution SoftwareDistribution.old\nren C:\\Windows\\System32\\catroot2 catroot2.old\nnet start wuauserv\nnet start cryptSvc\nnet start bits\nnet start msiserver"
+        },
+        {
+          "tipo": "p",
+          "texto": "Abra as Configurações do Windows (`Windows + I`), acesse o Windows Update e clique em **Verificar se há atualizações** para recomeçar o processo do zero."
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O que significa o parâmetro /LimitAccess no comando DISM?",
+      "r": "O parâmetro /LimitAccess instrui o DISM a não tentar se conectar ao Windows Update na nuvem nem a servidores WSUS locais, forçando a ferramenta a buscar estritamente os arquivos da pasta ou imagem WIM especificada no parâmetro /Source."
+    },
+    {
+      "p": "E se na minha ISO o arquivo for install.esd em vez de install.wim?",
+      "r": "Se a mídia foi criada pela Ferramenta de Criação de Mídia (Media Creation Tool), o arquivo se chamará install.esd. Basta alterar a sintaxe do comando de /Source:WIM:E:\\sources\\install.wim:1 para /Source:ESD:E:\\sources\\install.esd:1."
+    },
+    {
+      "p": "É seguro apagar a pasta SoftwareDistribution.old depois?",
+      "r": "Sim. A pasta renomeada SoftwareDistribution.old contém apenas os instaladores e históricos temporários antigos. Depois de confirmar que o Windows Update voltou a funcionar e instalou as atualizações com sucesso, você pode excluí-la com segurança para liberar espaço em disco."
+    },
+    {
+      "p": "Por que as empresas costumam sofrer mais com o erro 0x800F081F?",
+      "r": "Em ambientes corporativos, administradores frequentemente configuram Políticas de Grupo (GPO) que direcionam os computadores para servidores internos WSUS que não têm os pacotes do .NET 3.5 aprovados. A solução é habilitar a política de grupo 'Especificar configurações para a instalação e reparo de componentes opcionais' apontando diretamente para o Windows Update da Microsoft."
+    },
+    {
+      "p": "O .NET Framework 3.5 ainda é necessário no Windows 11?",
+      "r": "O Windows 11 já vem com versões modernas (.NET 4.8 e .NET 8/9) nativamente ativadas. No entanto, aplicativos legados desenvolvidos entre 2005 e 2015 exigem especificamente os binários do .NET 2.0 e 3.5 e não conseguem executar sem que esse recurso opcional esteja habilitado."
+    },
+    {
+      "p": "Como verificar se a ISO baixada é da mesma compilação do meu Windows?",
+      "r": "Para evitar erros de incompatibilidade de versão durante o reparo com o DISM, abra o Prompt e digite winver para verificar sua compilação exata (por exemplo, Build 22631). Em seguida, inspecione a ISO montada com o comando dism /Get-WimInfo /WimFile:E:\\sources\\install.wim /index:1 e confira se o número da ServicePack Build coincide ou é superior ao instalado."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Microsoft Learn — Erro do Windows Update 0x800F081F",
+      "url": "https://learn.microsoft.com/pt-br/troubleshoot/windows-client/deployment/error-0x800f081f-install-features-on-demand"
+    },
+    {
+      "titulo": "Microsoft Learn — Implantar o .NET Framework 3.5 usando o DISM",
+      "url": "https://learn.microsoft.com/pt-br/windows-hardware/manufacture/desktop/deploy-net-framework-35-by-using-deployment-image-servicing-and-management--dism"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    143,
+    155,
+    176,
+    154
+  ]
+}

@@ -1,141 +1,134 @@
 /* ============================================
-   DRGTech — Programmatic SEO Engine v2.0
-   - Dynamic SSG Generation
-   - Schema.org FAQPage + BreadcrumbList JSON-LD
-   - Feedback Widget (Useful? 👍 / 👎)
-   - "Ainda tem dúvidas?" Interactive Form Box
-   - Internal Interlinking Widget ("Teia de Aranha")
-   - Clean Canonicals & IndexNow Integration
+   DRGTech — Gerador de artigos v3.0 (editorial)
+
+   Regras desta versão (ver docs/ADSENSE_COMPLIANCE.md):
+   - Artigo PUBLICADO  = entrada do dataset.json que tem arquivo em
+     data/editorial/<slug>.json. Indexável, com anúncios, no sitemap.
+   - Artigo RASCUNHO   = entrada sem arquivo editorial. Página curta com
+     noindex, SEM script de anúncios e FORA do sitemap.
+   - Não existe mais texto-modelo comum a todos os artigos.
+   - Não existe mais formulário/feedback que não faça nada de verdade.
    ============================================ */
 
 const fs = require('fs');
 const path = require('path');
+const { countEditorial } = require('./count_words');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const DATASET_PATH = path.join(ROOT_DIR, 'data', 'dataset.json');
+const EDITORIAL_DIR = path.join(ROOT_DIR, 'data', 'editorial');
 const ARTICLES_DIR = path.join(ROOT_DIR, 'artigos');
+const SITE = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'data', 'site.json'), 'utf-8'));
 
-const SITE_URL = 'https://drgtech.com.br';
-const ADSENSE_CLIENT = 'ca-pub-6942071950167193';
+const SITE_URL = SITE.siteUrl;
+const ADSENSE_CLIENT = SITE.adsenseClient;
+const EDITOR = SITE.editor;
+const TODAY_ISO = new Date().toISOString().slice(0, 10);
 
 const CAT_LABELS = {
-  windows: { name: 'Windows', badgeClass: 'badge-blue', cardCatClass: 'cat-windows', icon: '💻' },
-  celular: { name: 'Celular', badgeClass: 'badge-green', cardCatClass: 'cat-android', icon: '📱' },
-  internet: { name: 'Internet', badgeClass: 'badge-purple', cardCatClass: 'cat-wifi', icon: '🌐' },
-  seguranca: { name: 'Segurança', badgeClass: 'badge-red', cardCatClass: 'cat-seguranca', icon: '🛡️' }
+  windows: { name: 'Windows', badgeClass: 'badge-blue', cardCatClass: 'cat-windows', icon: '💻', iconClass: 'icon-blue' },
+  celular: { name: 'Celular', badgeClass: 'badge-green', cardCatClass: 'cat-android', icon: '📱', iconClass: 'icon-green' },
+  internet: { name: 'Internet', badgeClass: 'badge-purple', cardCatClass: 'cat-wifi', icon: '🌐', iconClass: 'icon-purple' },
+  seguranca: { name: 'Segurança', badgeClass: 'badge-red', cardCatClass: 'cat-seguranca', icon: '🛡️', iconClass: 'icon-red' }
 };
 
-function generateHTML(item, datasetMap) {
-  const catInfo = CAT_LABELS[item.categoria] || CAT_LABELS.windows;
-  const canonicalUrl = `${SITE_URL}/artigos/${item.slug}.html`;
+const BOX_CLASS = { info: 'info-box', dica: 'tip-box', atencao: 'warning-box', sucesso: 'success-box' };
 
-  // 1. Schema.org FAQPage
-  const schemaFAQ = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [{
-      "@type": "Question",
-      "name": item.keyword_principal,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.resposta_curta
-      }
-    }]
-  };
+/* ---------- utilitários de texto ---------- */
 
-  // 2. Schema.org BreadcrumbList
-  const schemaBreadcrumb = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Início",
-        "item": `${SITE_URL}/`
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": catInfo.name,
-        "item": `${SITE_URL}/#${item.categoria}`
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": item.keyword_principal,
-        "item": canonicalUrl
-      }
-    ]
-  };
+function esc(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
 
-  // Build steps list
-  const stepsListHTML = item.passo_a_passo.map((step, idx) => `
-          <li>
+// Texto puro -> HTML seguro. Só converte `código` e **negrito**.
+function inline(text) {
+  let s = esc(text);
+  s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  return s;
+}
+
+function truncate(s, n) {
+  const t = String(s || '').trim();
+  if (t.length <= n) return t;
+  return t.slice(0, n - 1).replace(/\s+\S*$/, '') + '…';
+}
+
+/* ---------- blocos de conteúdo ---------- */
+
+function renderBlock(b) {
+  switch (b.tipo) {
+    case 'p':
+      return `        <p>${inline(b.texto)}</p>`;
+    case 'lista':
+      return `        <ul>\n${(b.itens || []).map(i => `          <li>${inline(i)}</li>`).join('\n')}\n        </ul>`;
+    case 'passos':
+      return `        <ol class="steps-list">\n${(b.itens || []).map((i, idx) => `          <li>
             <div class="step-num">${idx + 1}</div>
-            <div class="step-text">${step}</div>
-          </li>`).join('');
+            <div class="step-text">${inline(i)}</div>
+          </li>`).join('\n')}\n        </ol>`;
+    case 'codigo':
+      return `        <pre class="code-block"${b.linguagem ? ` data-lang="${esc(b.linguagem)}"` : ''}><code>${esc(b.texto)}</code></pre>`;
+    case 'aviso': {
+      const cls = BOX_CLASS[b.nivel] || BOX_CLASS.info;
+      return `        <div class="${cls}">
+          <div class="box-content"><p>${inline(b.texto)}</p></div>
+        </div>`;
+    }
+    case 'tabela':
+      return `        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr>${(b.cabecalho || []).map(c => `<th>${inline(c)}</th>`).join('')}</tr></thead>
+            <tbody>
+${(b.linhas || []).map(l => `              <tr>${l.map(c => `<td>${inline(c)}</td>`).join('')}</tr>`).join('\n')}
+            </tbody>
+          </table>
+        </div>`;
+    default:
+      return '';
+  }
+}
 
-  // Build Related Articles ("Teia de Aranha" Internal Linking)
-  const relatedIDs = item.duvidas_relacionadas || [];
-  const relatedCardsHTML = relatedIDs.map(relId => {
-    const relItem = datasetMap.get(relId);
-    if (!relItem) return '';
-    return `
-            <a href="${relItem.slug}.html" class="related-card">
-              <span class="related-card-title">${relItem.keyword_principal}</span>
-            </a>`;
-  }).join('');
+/* ---------- partes comuns da página ---------- */
 
-  // Optional Product / Tool Affiliate Recommendation Block
-  const affiliateBlockHTML = item.produto_recomendado ? `
-        <div class="affiliate-box">
-          <div class="affiliate-badge">Recomendação DRGTech</div>
-          <h3>${item.produto_recomendado.titulo}</h3>
-          <p>${item.produto_recomendado.descricao}</p>
-          <a href="${item.produto_recomendado.link}" target="_blank" rel="nofollow noopener" class="affiliate-btn">
-            ${item.produto_recomendado.texto_botao || 'Verificar Oferta Recomendada →'}
-          </a>
-        </div>` : '';
-
-  return `<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+function headHTML({ title, description, canonicalUrl, robots, withAds, jsonLd, ogType }) {
+  const adsBlock = withAds
+    ? `  <!-- Google AdSense: somente em artigos editoriais aprovados -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}" crossorigin="anonymous"></script>`
+    : `  <!-- Sem anúncios nesta página; meta de verificação da conta AdSense -->
+  <meta name="google-adsense-account" content="${ADSENSE_CLIENT}" />`;
+  const ld = (jsonLd || []).map(o => `  <script type="application/ld+json">\n${JSON.stringify(o, null, 2)}\n  </script>`).join('\n');
+  return `<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${item.keyword_principal} — DRGTech</title>
-  <meta name="description" content="${item.resposta_curta.slice(0, 155)}..." />
-  <meta name="keywords" content="${item.keyword_principal.toLowerCase()}, tutorial ${catInfo.name.toLowerCase()}, suporte tecnico" />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="${item.keyword_principal} — DRGTech" />
-  <meta property="og:description" content="${item.resposta_curta}" />
-  <meta property="og:type" content="article" />
+  <title>${esc(title)} — DRGTech</title>
+  <meta name="description" content="${esc(description)}" />
+  <meta name="robots" content="${robots}" />
+  <meta property="og:title" content="${esc(title)} — DRGTech" />
+  <meta property="og:description" content="${esc(description)}" />
+  <meta property="og:type" content="${ogType || 'article'}" />
   <meta property="og:url" content="${canonicalUrl}" />
   <meta property="og:image" content="${SITE_URL}/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="${item.keyword_principal} — DRGTech" />
-  <meta name="twitter:description" content="${item.resposta_curta}" />
+  <meta name="twitter:title" content="${esc(title)} — DRGTech" />
+  <meta name="twitter:description" content="${esc(description)}" />
   <meta name="twitter:image" content="${SITE_URL}/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
-  <!-- Clean Canonical URL -->
   <link rel="canonical" href="${canonicalUrl}" />
   <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
-  <script type="application/ld+json">
-${JSON.stringify(schemaFAQ, null, 2)}
-  </script>
-  <!-- Schema.org BreadcrumbList -->
-  <script type="application/ld+json">
-${JSON.stringify(schemaBreadcrumb, null, 2)}
-  </script>
-</head>
-<body>
-  <div id="progress-bar"></div>
+${adsBlock}
+${ld}
+</head>`;
+}
+
+function headerHTML(item, catInfo) {
+  return `  <div id="progress-bar"></div>
 
   <header class="site-header">
     <div class="header-inner">
@@ -157,7 +150,126 @@ ${JSON.stringify(schemaBreadcrumb, null, 2)}
     <nav class="mobile-nav" id="mobile-nav">
       <a href="../index.html" class="nav-link">← Voltar ao início</a>
     </nav>
-  </header>
+  </header>`;
+}
+
+function footerHTML() {
+  return `  <footer class="site-footer">
+    <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
+      <p><a href="../index.html">← Voltar ao início</a></p>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Voltar ao topo">↑</button>
+  <script src="../js/main.js"></script>`;
+}
+
+/* ---------- página editorial (publicada) ---------- */
+
+function renderEditorial(item, ed, publishedBySlugId) {
+  const catInfo = CAT_LABELS[item.categoria] || CAT_LABELS.windows;
+  const canonicalUrl = `${SITE_URL}/artigos/${item.slug}.html`;
+  const titulo = ed.titulo || item.keyword_principal;
+  const palavras = countEditorial(ed);
+  const readTime = `${Math.max(3, Math.round(palavras / 200))} min de leitura`;
+  const publicado = ed.publicado_iso || TODAY_ISO;
+  const atualizado = ed.atualizado_iso || publicado;
+
+  const faq = ed.faq || [];
+  const fontes = ed.fontes || [];
+
+  const schemaArticle = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: titulo,
+    description: ed.descricao,
+    inLanguage: 'pt-BR',
+    datePublished: publicado,
+    dateModified: atualizado,
+    mainEntityOfPage: canonicalUrl,
+    image: `${SITE_URL}/img/og-preview.png`,
+    author: { '@type': 'Person', name: EDITOR.nome, url: `${SITE_URL}/sobre.html` },
+    publisher: { '@type': 'Organization', name: SITE.siteName, url: SITE_URL }
+  };
+  const schemaFAQ = faq.length ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map(f => ({ '@type': 'Question', name: f.p, acceptedAnswer: { '@type': 'Answer', text: f.r } }))
+  } : null;
+  const schemaBreadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: catInfo.name, item: `${SITE_URL}/#${item.categoria}` },
+      { '@type': 'ListItem', position: 3, name: titulo, item: canonicalUrl }
+    ]
+  };
+
+  const sectionsHTML = (ed.secoes || []).map(sec => `
+        <h2 id="${esc(sec.id)}">${esc(sec.titulo)}</h2>
+${(sec.blocos || []).map(renderBlock).join('\n')}`).join('\n');
+
+  const faqHTML = faq.length ? `
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+${faq.map(f => `          <div class="faq-item">
+            <h3>${esc(f.p)}</h3>
+            <p>${inline(f.r)}</p>
+          </div>`).join('\n')}
+        </div>` : '';
+
+  const fontesHTML = fontes.length ? `
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+${fontes.map(s => `          <li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.titulo)}</a></li>`).join('\n')}
+        </ul>` : '';
+
+  // Relacionados: apenas artigos publicados
+  let relIds = (ed.relacionados || []).filter(id => publishedBySlugId.byId.has(id) && id !== item.id);
+  if (relIds.length < 2) {
+    publishedBySlugId.list.forEach(p => {
+      if (relIds.length < 3 && p.item.id !== item.id && p.item.categoria === item.categoria && !relIds.includes(p.item.id)) relIds.push(p.item.id);
+    });
+  }
+  const relatedHTML = relIds.length ? `
+        <div class="divider"></div>
+        <div class="related-articles">
+          <h2>Leia também</h2>
+          <div class="related-grid">
+${relIds.map(id => {
+    const r = publishedBySlugId.byId.get(id);
+    return `            <a href="${r.item.slug}.html" class="related-card">
+              <span class="related-card-title">${esc(r.ed.titulo || r.item.keyword_principal)}</span>
+            </a>`;
+  }).join('\n')}
+          </div>
+        </div>` : '';
+
+  const toc = [
+    ...(ed.secoes || []).map(s => ({ id: s.id, t: s.titulo })),
+    ...(faq.length ? [{ id: 'perguntas-frequentes', t: 'Perguntas frequentes' }] : []),
+    ...(fontes.length ? [{ id: 'fontes', t: 'Fontes consultadas' }] : [])
+  ];
+
+  const appliesHTML = ed.aplica_se
+    ? `\n        <p class="applies-to"><strong>Aplica-se a:</strong> ${inline(ed.aplica_se)}</p>` : '';
+
+  return `<!DOCTYPE html>
+<html lang="pt-BR">
+${headHTML({
+    title: titulo,
+    description: ed.descricao,
+    canonicalUrl,
+    robots: 'index, follow',
+    withAds: true,
+    jsonLd: [schemaArticle, schemaFAQ, schemaBreadcrumb].filter(Boolean)
+  })}
+<body>
+${headerHTML(item, catInfo)}
 
   <div class="article-page-wrapper">
     <main>
@@ -167,243 +279,201 @@ ${JSON.stringify(schemaBreadcrumb, null, 2)}
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#${item.categoria}">${catInfo.name}</a>
         <span class="breadcrumb-sep">›</span>
-        <span>${item.keyword_principal.slice(0, 35)}...</span>
+        <span>${esc(truncate(titulo, 40))}</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge ${catInfo.badgeClass}">${catInfo.name}</span>
-        <h1 class="article-h1">${item.keyword_principal}</h1>
+        <h1 class="article-h1">${esc(titulo)}</h1>
         <div class="article-intro-meta">
-          <span class="meta-item">${item.read_time || '5 min de leitura'}</span>
-          <span class="meta-item">Atualizado em ${item.updated_at || 'julho de 2026'}</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">${readTime}</span>
+          <span class="meta-item">Atualizado em ${esc(ed.atualizado || SITE.lastReview)}</span>
+          <span class="meta-item">Por <a href="../sobre.html">${esc(EDITOR.nome)}</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> ${item.resposta_curta}
+        <strong>Resposta rápida:</strong> ${inline(ed.resposta_curta)}
       </div>
 
       <article class="article-body" id="article-body">
+${(ed.intro || []).map(p => `        <p>${inline(p)}</p>`).join('\n')}${appliesHTML}
+${sectionsHTML}
+${faqHTML}
+${fontesHTML}
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"${item.keyword_principal}"</strong> costuma afetar usuários no dia a dia em ambientes <strong>${catInfo.name}</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
-        </div>
-
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
-        <ol class="steps-list">
-${stepsListHTML}
-        </ol>
-
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
-        </div>
-
-        ${affiliateBlockHTML}
-
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
-          </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
-          </div>
-        </div>
-
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <div class="author-box">
+          <div class="author-avatar">${esc(EDITOR.nome.charAt(0))}</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
+            <h4>${esc(EDITOR.nome)}</h4>
+            <p>${esc(EDITOR.papel)}. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:${esc(EDITOR.email)}">${esc(EDITOR.email)}</a>.</p>
           </div>
         </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
-        <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
-          <div class="related-grid">
-${relatedCardsHTML}
-          </div>
-        </div>
+${relatedHTML}
 
       </article>
     </main>
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+${toc.map(t => `          <li><a href="#${esc(t.id)}">${esc(t.t)}</a></li>`).join('\n')}
         </ul>
       </div>
     </aside>
   </div>
 
-  <footer class="site-footer">
-    <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
-      <p><a href="../index.html">← Voltar ao início</a></p>
-    </div>
-  </footer>
-
-  <button id="scroll-top" aria-label="Voltar ao topo">↑</button>
-  <script src="../js/main.js"></script>
+${footerHTML()}
 </body>
 </html>`;
 }
 
-function run() {
-  console.log('🚀 Starting Programmatic SEO Engine v2.0...');
+/* ---------- página de rascunho (noindex, sem anúncios) ---------- */
 
-  if (!fs.existsSync(DATASET_PATH)) {
-    console.error('❌ Error: dataset.json not found at ' + DATASET_PATH);
-    return;
-  }
+function renderDraft(item) {
+  const catInfo = CAT_LABELS[item.categoria] || CAT_LABELS.windows;
+  const canonicalUrl = `${SITE_URL}/artigos/${item.slug}.html`;
+  const steps = (item.passo_a_passo || []).map((s, i) => `          <li>
+            <div class="step-num">${i + 1}</div>
+            <div class="step-text">${inline(s)}</div>
+          </li>`).join('\n');
+
+  return `<!DOCTYPE html>
+<html lang="pt-BR">
+${headHTML({
+    title: item.keyword_principal,
+    description: truncate(item.resposta_curta, 155),
+    canonicalUrl,
+    robots: 'noindex, follow',
+    withAds: false,
+    jsonLd: []
+  })}
+<body>
+${headerHTML(item, catInfo)}
+
+  <div class="article-page-wrapper">
+    <main>
+      <header class="article-header">
+        <span class="article-badge ${catInfo.badgeClass}">${catInfo.name}</span>
+        <h1 class="article-h1">${esc(item.keyword_principal)}</h1>
+      </header>
+
+      <div class="warning-box">
+        <div class="box-content"><p><strong>Guia resumido, em revisão.</strong> Esta página é uma versão curta e ainda não passou pela nossa revisão editorial completa. As informações podem estar incompletas ou desatualizadas. Consulte a documentação oficial do fabricante antes de alterar configurações do sistema.</p></div>
+      </div>
+
+      <div class="article-intro">
+        <strong>Resumo:</strong> ${inline(item.resposta_curta)}
+      </div>
+
+      <article class="article-body" id="article-body">
+        <h2 id="passos">Passos resumidos</h2>
+        <ol class="steps-list">
+${steps}
+        </ol>
+        <p><a href="../index.html">← Ver os guias completos</a></p>
+      </article>
+    </main>
+  </div>
+
+${footerHTML()}
+</body>
+</html>`;
+}
+
+/* ---------- execução ---------- */
+
+function loadEditorial() {
+  const map = new Map();
+  if (!fs.existsSync(EDITORIAL_DIR)) return map;
+  fs.readdirSync(EDITORIAL_DIR).filter(f => f.endsWith('.json')).forEach(f => {
+    try {
+      const ed = JSON.parse(fs.readFileSync(path.join(EDITORIAL_DIR, f), 'utf-8'));
+      map.set(f.replace(/\.json$/, ''), ed);
+    } catch (e) {
+      console.error(`❌ JSON inválido em data/editorial/${f}: ${e.message}`);
+    }
+  });
+  return map;
+}
+
+function run() {
+  console.log('🚀 Gerador DRGTech v3.0 (editorial)');
 
   const dataset = JSON.parse(fs.readFileSync(DATASET_PATH, 'utf-8'));
-  const datasetMap = new Map(dataset.map(item => [item.id, item]));
+  const editorial = loadEditorial();
+  if (!fs.existsSync(ARTICLES_DIR)) fs.mkdirSync(ARTICLES_DIR, { recursive: true });
 
-  if (!fs.existsSync(ARTICLES_DIR)) {
-    fs.mkdirSync(ARTICLES_DIR, { recursive: true });
-  }
-
-  let generatedCount = 0;
+  const published = { byId: new Map(), list: [] };
   dataset.forEach(item => {
-    const htmlContent = generateHTML(item, datasetMap);
-    const filePath = path.join(ARTICLES_DIR, `${item.slug}.html`);
-    fs.writeFileSync(filePath, htmlContent, 'utf-8');
-    generatedCount++;
+    const ed = editorial.get(item.slug);
+    if (ed) {
+      const entry = { item, ed };
+      published.byId.set(item.id, entry);
+      published.list.push(entry);
+    }
   });
 
-  console.log(`✅ Generated ${generatedCount} programmatic HTML articles with FAQPage + BreadcrumbList Schema.org!`);
+  const orphan = [...editorial.keys()].filter(slug => !dataset.some(d => d.slug === slug));
+  if (orphan.length) console.warn(`⚠️ Arquivos editoriais sem entrada no dataset: ${orphan.join(', ')}`);
 
-  // Build Master sitemap.xml (All-in-one sitemap preferred by Google Search Console)
-  const masterUrls = [
-    `  <url>\n    <loc>${SITE_URL}/</loc>\n    <priority>1.00</priority>\n  </url>`,
-    `  <url>\n    <loc>${SITE_URL}/gerador-de-senha.html</loc>\n    <priority>0.95</priority>\n  </url>`,
-    `  <url>\n    <loc>${SITE_URL}/sobre.html</loc>\n    <priority>0.80</priority>\n  </url>`,
-    `  <url>\n    <loc>${SITE_URL}/contato.html</loc>\n    <priority>0.80</priority>\n  </url>`,
-    `  <url>\n    <loc>${SITE_URL}/privacidade.html</loc>\n    <priority>0.80</priority>\n  </url>`,
-    `  <url>\n    <loc>${SITE_URL}/termos.html</loc>\n    <priority>0.80</priority>\n  </url>`,
-    ...dataset.map(item => `  <url>\n    <loc>${SITE_URL}/artigos/${item.slug}.html</loc>\n    <priority>0.90</priority>\n  </url>`)
+  let drafts = 0;
+  dataset.forEach(item => {
+    const entry = published.byId.get(item.id);
+    const html = entry ? renderEditorial(item, entry.ed, published) : renderDraft(item);
+    if (!entry) drafts++;
+    fs.writeFileSync(path.join(ARTICLES_DIR, `${item.slug}.html`), html, 'utf-8');
+  });
+  console.log(`✅ ${published.list.length} artigos editoriais publicados | ${drafts} rascunhos (noindex, sem anúncios)`);
+
+  // Sitemap: somente o que é indexável e aprovado
+  const urls = [
+    { loc: `${SITE_URL}/`, p: '1.00' },
+    { loc: `${SITE_URL}/gerador-de-senha.html`, p: '0.80' },
+    { loc: `${SITE_URL}/sobre.html`, p: '0.50' },
+    { loc: `${SITE_URL}/politica-editorial.html`, p: '0.50' },
+    { loc: `${SITE_URL}/contato.html`, p: '0.40' },
+    { loc: `${SITE_URL}/privacidade.html`, p: '0.40' },
+    { loc: `${SITE_URL}/termos.html`, p: '0.30' },
+    ...published.list.map(e => ({ loc: `${SITE_URL}/artigos/${e.item.slug}.html`, p: '0.90', lastmod: e.ed.atualizado_iso || e.ed.publicado_iso })),
+    ...SITE.staticAprovados.map(s => ({ loc: `${SITE_URL}/artigos/${s}.html`, p: '0.80' }))
   ];
 
-  const masterSitemapXML = `<?xml version="1.0" encoding="UTF-8"?>
+  const urlsetXML = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${masterUrls.join('\n')}
+${urls.map(u => `  <url>
+    <loc>${u.loc}</loc>${u.lastmod ? `\n    <lastmod>${u.lastmod}</lastmod>` : ''}
+    <priority>${u.p}</priority>
+  </url>`).join('\n')}
 </urlset>`;
+  fs.writeFileSync(path.join(ROOT_DIR, 'sitemap.xml'), urlsetXML, 'utf-8');
+  console.log(`🗺️ sitemap.xml com ${urls.length} URLs (somente conteúdo aprovado)`);
 
-  fs.writeFileSync(path.join(ROOT_DIR, 'sitemap.xml'), masterSitemapXML, 'utf-8');
-  console.log(`🗺️ Generated master sitemap.xml with ${masterUrls.length} total URLs!`);
-
-  // Build Sitemaps (Sitemap Index + Chunked Sitemaps)
-  const CHUNK_SIZE = 2000;
-  const sitemapFiles = ['sitemap.xml'];
-  const allUrls = dataset.map(item => `${SITE_URL}/artigos/${item.slug}.html`);
-
-  for (let i = 0; i < dataset.length; i += CHUNK_SIZE) {
-    const chunk = dataset.slice(i, i + CHUNK_SIZE);
-    const chunkNumber = Math.floor(i / CHUNK_SIZE) + 1;
-    const sitemapName = `sitemap-${chunkNumber}.xml`;
-
-    const urlElements = chunk.map(item => `  <url>
-    <loc>${SITE_URL}/artigos/${item.slug}.html</loc>
-    <priority>0.90</priority>
-  </url>`).join('\n');
-
-    const sitemapXML = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urlElements}
-</urlset>`;
-
-    fs.writeFileSync(path.join(ROOT_DIR, sitemapName), sitemapXML, 'utf-8');
-    sitemapFiles.push(sitemapName);
-  }
-
-  // Create sitemap-index.xml
-  const sitemapIndexEntries = sitemapFiles.map(file => `  <sitemap>
-    <loc>${SITE_URL}/${file}</loc>
-  </sitemap>`).join('\n');
-
-  const sitemapIndexXML = `<?xml version="1.0" encoding="UTF-8"?>
+  // sitemap-index aponta apenas para o sitemap principal; remove o antigo sitemap-1.xml duplicado
+  fs.writeFileSync(path.join(ROOT_DIR, 'sitemap-index.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapIndexEntries}
-</sitemapindex>`;
+  <sitemap>
+    <loc>${SITE_URL}/sitemap.xml</loc>
+  </sitemap>
+</sitemapindex>`, 'utf-8');
+  const stale = path.join(ROOT_DIR, 'sitemap-1.xml');
+  if (fs.existsSync(stale)) fs.unlinkSync(stale);
 
-  fs.writeFileSync(path.join(ROOT_DIR, 'sitemap-index.xml'), sitemapIndexXML, 'utf-8');
-  console.log(`🗺️ Generated sitemap-index.xml pointing to ${sitemapFiles.join(', ')}!`);
-
-  // Generate IndexNow payload format for Bing / Yandex / Seznam
-  const indexNowPayload = {
-    "host": "drgtech.com.br",
-    "key": "drgtech-indexnow-key-2026",
-    "keyLocation": `${SITE_URL}/drgtech-indexnow-key-2026.txt`,
-    "urlList": masterUrls.map(u => u.match(/<loc>(.*?)<\/loc>/)[1])
-  };
-  fs.writeFileSync(path.join(ROOT_DIR, 'indexnow.json'), JSON.stringify(indexNowPayload, null, 2), 'utf-8');
+  fs.writeFileSync(path.join(ROOT_DIR, 'indexnow.json'), JSON.stringify({
+    host: 'drgtech.com.br',
+    key: 'drgtech-indexnow-key-2026',
+    keyLocation: `${SITE_URL}/drgtech-indexnow-key-2026.txt`,
+    urlList: urls.map(u => u.loc)
+  }, null, 2), 'utf-8');
   fs.writeFileSync(path.join(ROOT_DIR, 'drgtech-indexnow-key-2026.txt'), 'drgtech-indexnow-key-2026', 'utf-8');
-  console.log('⚡ IndexNow payload and verification key generated!');
 
-  // Update robots.txt to point to sitemap.xml and sitemap-index.xml
-  const robotsTXT = `User-agent: *
+  fs.writeFileSync(path.join(ROOT_DIR, 'robots.txt'), `User-agent: *
 Allow: /
 
 Sitemap: ${SITE_URL}/sitemap.xml
-Sitemap: ${SITE_URL}/sitemap-index.xml
-`;
-  fs.writeFileSync(path.join(ROOT_DIR, 'robots.txt'), robotsTXT, 'utf-8');
-  console.log('🤖 Updated robots.txt pointing to sitemap.xml!');
+`, 'utf-8');
+  console.log('🤖 robots.txt, sitemap-index.xml e indexnow.json atualizados');
 }
 
 run();

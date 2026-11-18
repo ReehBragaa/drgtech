@@ -4,28 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Como Usar Passkeys (Chaves de Acesso) para Substituir Senhas com Segurança — DRGTech</title>
-  <meta name="description" content="As Passkeys (Chaves de Acesso) são a evolução da segurança digital que substituem senhas tradicionais por autenticação criptográfica via biometria (impress..." />
-  <meta name="keywords" content="como usar passkeys (chaves de acesso) para substituir senhas com segurança, tutorial segurança, suporte tecnico" />
+  <meta name="description" content="Guia definitivo sobre Passkeys: padrão FIDO2/WebAuthn, como configurar no Google, Apple e WhatsApp, imunidade a phishing e métodos de recuperação." />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Como Usar Passkeys (Chaves de Acesso) para Substituir Senhas com Segurança — DRGTech" />
-  <meta property="og:description" content="As Passkeys (Chaves de Acesso) são a evolução da segurança digital que substituem senhas tradicionais por autenticação criptográfica via biometria (impress..." />
+  <meta property="og:description" content="Guia definitivo sobre Passkeys: padrão FIDO2/WebAuthn, como configurar no Google, Apple e WhatsApp, imunidade a phishing e métodos de recuperação." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-usar-passkeys-chaves-de-acesso-substituir-senhas-seguranca.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Como Usar Passkeys (Chaves de Acesso) para Substituir Senhas com Segurança — DRGTech" />
-  <meta name="twitter:description" content="As Passkeys (Chaves de Acesso) são a evolução da segurança digital que substituem senhas tradicionais por autenticação criptográfica via biometria (impress..." />
+  <meta name="twitter:description" content="Guia definitivo sobre Passkeys: padrão FIDO2/WebAuthn, como configurar no Google, Apple e WhatsApp, imunidade a phishing e métodos de recuperação." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-usar-passkeys-chaves-de-acesso-substituir-senhas-seguranca.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Usar Passkeys (Chaves de Acesso) para Substituir Senhas com Segurança",
+  "description": "Guia definitivo sobre Passkeys: padrão FIDO2/WebAuthn, como configurar no Google, Apple e WhatsApp, imunidade a phishing e métodos de recuperação.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-usar-passkeys-chaves-de-acesso-substituir-senhas-seguranca.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,47 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Usar Passkeys (Chaves de Acesso) para Substituir Senhas com Segurança",
+      "name": "As Passkeys compartilham meus dados de impressão digital com os sites?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "As Passkeys (Chaves de Acesso) são a evolução da segurança digital que substituem senhas tradicionais por autenticação criptográfica via biometria (impressão digital ou Face ID). Elas são imunes a golpes de phishing e vazamentos de banco de dados."
+        "text": "Não. A biometria nunca sai do processador de segurança do seu próprio aparelho. O sensor biométrico serve unicamente para autorizar o chip local a assinar o desafio criptográfico. O site receptor recebe apenas a assinatura matemática pública, sem ter acesso aos seus dados biométricos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso fazer login com minha Passkey em um computador público de uma lan house?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim, com total segurança usando o recurso 'Fazer login com outro dispositivo'. O site no computador público exibirá um QR Code. Você abre a câmera do seu celular, escaneia o código e valida com sua biometria no celular. A conexão ocorre por proximidade Bluetooth e nenhuma credencial fica salva no computador público."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Por que as Passkeys são imunes a golpes de phishing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque o navegador valida a origem criptográfica exata (o domínio web). Se um criminoso criar um site falso perfeito chamado 'meubanco-seguro.com', seu aparelho reconhecerá que a chave foi registrada para 'meubanco.com.br' e se recusará terminantemente a assinar a autenticação."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que acontece se eu desativar o Bluetooth durante o login entre aparelhos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A autenticação entre dispositivos diferentes (celular autenticando login no PC) exige que ambos estejam com Bluetooth ativado. O Bluetooth não transmite dados confidenciais, mas serve como prova física de proximidade (proximidade de rádio) para impedir que invasores remotos tentem forçar a validação à distância."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Todas as empresas já suportam Passkeys em 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A grande maioria dos líderes de tecnologia (Google, Apple, Microsoft, WhatsApp, Amazon, PlayStation, GitHub, Shopify, X/Twitter) já suporta chaves de acesso nativamente. O mercado bancário brasileiro também vem realizando a migração progressiva nos aplicativos móveis."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -103,132 +153,161 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#seguranca">Segurança</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Usar Passkeys (Chaves de Acess...</span>
+        <span>Como Usar Passkeys (Chaves de Acesso)…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-red">Segurança</span>
         <h1 class="article-h1">Como Usar Passkeys (Chaves de Acesso) para Substituir Senhas com Segurança</h1>
         <div class="article-intro-meta">
-          <span class="meta-item">7 min de leitura</span>
-          <span class="meta-item">Atualizado em outubro de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">5 min de leitura</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> As Passkeys (Chaves de Acesso) são a evolução da segurança digital que substituem senhas tradicionais por autenticação criptográfica via biometria (impressão digital ou Face ID). Elas são imunes a golpes de phishing e vazamentos de banco de dados.
+        <strong>Resposta rápida:</strong> Passkeys (chaves de acesso) são credenciais digitais baseadas no padrão criptográfico FIDO2/WebAuthn que substituem senhas tradicionais por autenticação biométrica (Face ID, impressão digital ou PIN local do aparelho). Elas utilizam um par de chaves assimétricas: a chave privada fica isolada no enclave de segurança do seu dispositivo e a chave pública é registrada no serviço. Como as chaves de acesso são vinculadas criptograficamente ao domínio do site, elas são matematicamente imunes a ataques de phishing.
       </div>
 
       <article class="article-body" id="article-body">
+        <p>Durante mais de meio século de computação moderna, as senhas de texto foram a base da segurança e autenticação na internet. No entanto, o fator humano sempre representou o elo mais vulnerável dessa equação: pessoas escolhem senhas fracas, reutilizam a mesma combinação em dezenas de sites e caem com facilidade em páginas falsas de phishing projetadas para roubar credenciais digitadas.</p>
+        <p>Para resolver essa falha estrutural de uma vez por todas, as maiores empresas de tecnologia do planeta (Google, Apple, Microsoft) reuniram-se na FIDO Alliance e no consórcio W3C para desenvolver o padrão <strong>Passkeys</strong> (Chaves de Acesso). As chaves de acesso eliminam completamente a necessidade de criar, lembrar ou digitar senhas. O login em sites e aplicativos passa a ser realizado instantaneamente através da mesma biometria que você já usa para desbloquear o celular. Neste guia aprofundado, explicamos como a tecnologia funciona, como configurá-la nos principais serviços e como manter o acesso seguro caso perca seu aparelho.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> Android, iOS (iPhone/iPad), Windows 11, Mac e navegadores modernos</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Usar Passkeys (Chaves de Acesso) para Substituir Senhas com Segurança"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Segurança</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
+        <h2 id="como-funciona-criptografia-passkeys">Como Funcionam as Passkeys: A Criptografia de Chave Pública</h2>
+        <p>A revolução das chaves de acesso baseia-se em princípios de criptografia assimétrica consolidada:</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Elemento Criptográfico</th><th>Onde Fica Armazenado</th><th>Como Atua na Proteção</th></tr></thead>
+            <tbody>
+              <tr><td>Chave Privada (Private Key)</td><td>Gravada exclusivamente no hardware seguro do seu aparelho (TPM / Secure Enclave).</td><td>Nunca sai do seu dispositivo, nunca transita pela internet e não pode ser roubada em invasões de servidores.</td></tr>
+              <tr><td>Chave Pública (Public Key)</td><td>Registrada no servidor do site ou aplicativo (ex: servidores da Google).</td><td>Serve apenas para validar matematicamente as assinaturas geradas pelo seu aparelho durante o login.</td></tr>
+              <tr><td>Desafio Criptográfico</td><td>Gerado pelo servidor a cada tentativa de login.</td><td>O aparelho assina o desafio com a chave privada após a confirmação biométrica do usuário.</td></tr>
+              <tr><td>Vínculo Criptográfico de Origem</td><td>Atrelado estritamente ao domínio do site (ex: <code>google.com</code>).</td><td>Impossível de sofrer phishing: o navegador se recusa a assinar o desafio se você estiver em um site falso como <code>google-falso.com</code>.</td></tr>
+            </tbody>
+          </table>
         </div>
 
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
+        <h2 id="configurar-passkey-conta-google">Passo 1: Como Configurar uma Chave de Acesso na Conta Google</h2>
+        <p>A Google permite utilizar o próprio smartphone como chave de acesso mestra para todos os seus serviços (Gmail, YouTube, Drive):</p>
         <ol class="steps-list">
-
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">Acesse as configurações de segurança da sua conta (Google, Apple, Microsoft ou WhatsApp) e selecione 'Criar uma Passkey'.</div>
+            <div class="step-text">Acesse a página oficial de segurança da sua conta em <code>myaccount.google.com/security</code>.</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">Confirme a criação utilizando o sensor de impressão digital ou reconhecimento facial do seu celular/notebook.</div>
+            <div class="step-text">Na seção 'Como você faz login no Google', clique em <strong>Chaves de acesso e chaves de segurança</strong>.</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">Na próxima vez que fizer login, basta confirmar com a biometria sem precisar digitar nenhuma senha.</div>
+            <div class="step-text">Faça login com sua senha atual pela última vez.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Clique no botão <strong>Criar uma chave de acesso</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">O navegador exibirá o pop-up nativo do sistema operacional solicitando a validação biométrica (Face ID, leitor de digitais ou PIN do Windows Hello).</div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-text">Confirme a biometria: sua chave de acesso estará criada e pronta para uso imediato em futuros logins com um único toque.</div>
           </li>
         </ol>
 
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <h2 id="configurar-passkey-apple-id">Passo 2: Configurar Chaves de Acesso no Ecossistema Apple (iOS e Mac)</h2>
+        <p>No iPhone, iPad e Mac, as chaves de acesso são gerenciadas nativamente pelo Chaves do iCloud (iCloud Keychain) com sincronização criptografada ponta a ponta:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Certifique-se de que as Chaves do iCloud estão ativadas em Ajustes &gt; [Seu Nome] &gt; iCloud &gt; Senhas e Chaves.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Ao acessar sites e serviços compatíveis (como PayPal, WhatsApp, Amazon ou eBay) pelo Safari, o sistema perguntará automaticamente: 'Deseja salvar uma chave de acesso para sua conta?'.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Confirme com o Face ID ou Touch ID.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">A chave será sincronizada instantaneamente entre todos os seus dispositivos Apple logados no mesmo Apple ID.</div>
+          </li>
+        </ol>
+
+        <h2 id="gerenciadores-senhas-terceiros-passkeys">Passo 3: Usar Passkeys em Gerenciadores de Senhas (Bitwarden e 1Password)</h2>
+        <p>Se você utiliza simultaneamente aparelhos com sistemas diferentes (por exemplo, um computador Windows e um celular iPhone, ou um Mac com um celular Android), gerenciadores de terceiros oferecem portabilidade universal:</p>
+        <ul>
+          <li>Gerenciadores como <strong>Bitwarden</strong> e <strong>1Password</strong> suportam armazenamento nativo de Passkeys em suas extensões de navegador e aplicativos móveis.</li>
+          <li>Ao salvar a chave no cofre do gerenciador, ela fica acessível em qualquer computador, independente do sistema operacional ou marca do dispositivo.</li>
+          <li>O cofre permanece blindado pela sua Senha Mestra e pelo 2FA do aplicativo.</li>
+        </ul>
+
+        <h2 id="o-que-acontece-se-perder-celular">Passo 4: O Que Acontece se Você Perder ou Danificar o Celular?</h2>
+        <p>Um dos maiores receios dos usuários é perder o acesso às contas caso o aparelho seja roubado ou quebre. O padrão FIDO foi projetado com múltiplas camadas de recuperação:</p>
+        <ul>
+          <li><strong>Sincronização em Nuvem (Multi-device Passkeys):</strong> As chaves de acesso são sincronizadas com segurança criptografada ponta a ponta através do Google Password Manager, Chaves do iCloud ou cofre do Bitwarden. Ao logar sua conta em um novo celular, todas as suas chaves são restauradas automaticamente.</li>
+          <li><strong>Chaves Físicas FIDO de Backup (YubiKey):</strong> Usuários avançados e empresas podem registrar chaves físicas USB/NFC (como YubiKey) como método secundário de acesso.</li>
+          <li><strong>Métodos Tradicionais de Resgate:</strong> Durante a fase de transição, os serviços mantêm métodos alternativos de recuperação (como código enviado ao e-mail alternativo cadastrado ou número de telefone verificado).</li>
+        </ul>
+
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>As Passkeys compartilham meus dados de impressão digital com os sites?</h3>
+            <p>Não. A biometria nunca sai do processador de segurança do seu próprio aparelho. O sensor biométrico serve unicamente para autorizar o chip local a assinar o desafio criptográfico. O site receptor recebe apenas a assinatura matemática pública, sem ter acesso aos seus dados biométricos.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Posso fazer login com minha Passkey em um computador público de uma lan house?</h3>
+            <p>Sim, com total segurança usando o recurso 'Fazer login com outro dispositivo'. O site no computador público exibirá um QR Code. Você abre a câmera do seu celular, escaneia o código e valida com sua biometria no celular. A conexão ocorre por proximidade Bluetooth e nenhuma credencial fica salva no computador público.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Por que as Passkeys são imunes a golpes de phishing?</h3>
+            <p>Porque o navegador valida a origem criptográfica exata (o domínio web). Se um criminoso criar um site falso perfeito chamado 'meubanco-seguro.com', seu aparelho reconhecerá que a chave foi registrada para 'meubanco.com.br' e se recusará terminantemente a assinar a autenticação.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O que acontece se eu desativar o Bluetooth durante o login entre aparelhos?</h3>
+            <p>A autenticação entre dispositivos diferentes (celular autenticando login no PC) exige que ambos estejam com Bluetooth ativado. O Bluetooth não transmite dados confidenciais, mas serve como prova física de proximidade (proximidade de rádio) para impedir que invasores remotos tentem forçar a validação à distância.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Todas as empresas já suportam Passkeys em 2026?</h3>
+            <p>A grande maioria dos líderes de tecnologia (Google, Apple, Microsoft, WhatsApp, Amazon, PlayStation, GitHub, Shopify, X/Twitter) já suporta chaves de acesso nativamente. O mercado bancário brasileiro também vem realizando a migração progressiva nos aplicativos móveis.</p>
+          </div>
         </div>
 
-        
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://fidoalliance.org/passkeys/" target="_blank" rel="noopener noreferrer">FIDO Alliance — Passkeys (Chaves de Acesso): O futuro da autenticação segura</a></li>
+          <li><a href="https://safety.google/authentication/passkey/" target="_blank" rel="noopener noreferrer">Google Safety Center — Faça login com chaves de acesso em vez de senhas</a></li>
+        </ul>
 
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
-          </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
-          </div>
-        </div>
-
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-saber-se-whatsapp-foi-clonado-ou-hacker.html" class="related-card">
-              <span class="related-card-title">Como Saber se o WhatsApp Foi Clonado e Como Desconectar Hackers</span>
-            </a>
-            <a href="como-ativar-verificacao-duas-etapas-instagram-whatsapp.html" class="related-card">
-              <span class="related-card-title">Como Ativar a Verificação em Duas Etapas no WhatsApp e Instagram</span>
-            </a>
             <a href="como-criar-uma-senha-segura-e-forte.html" class="related-card">
-              <span class="related-card-title">Como Criar uma Senha Segura e Forte Passo a Passo</span>
+              <span class="related-card-title">Como Criar uma Senha Segura e Forte: Guia Completo e Diretrizes NIST</span>
+            </a>
+            <a href="como-saber-se-email-e-falso-ou-golpe-phishing.html" class="related-card">
+              <span class="related-card-title">Como Saber se um E-mail é Falso ou Golpe de Phishing</span>
+            </a>
+            <a href="como-saber-se-email-senha-foram-vazados-internet.html" class="related-card">
+              <span class="related-card-title">Como Saber se Seu E-mail e Senha Foram Vazados na Internet</span>
             </a>
             <a href="como-proteger-conta-whatsapp-contra-golpes-clonagem-sim-swap.html" class="related-card">
-              <span class="related-card-title">Como Proteger Sua Conta do WhatsApp Contra Golpes de Clonagem e SIM Swap</span>
+              <span class="related-card-title">Como Proteger Sua Conta do WhatsApp Contra Golpes e SIM Swap</span>
             </a>
           </div>
         </div>
@@ -238,13 +317,15 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#como-funciona-criptografia-passkeys">Como Funcionam as Passkeys: A Criptografia de Chave Pública</a></li>
+          <li><a href="#configurar-passkey-conta-google">Passo 1: Como Configurar uma Chave de Acesso na Conta Google</a></li>
+          <li><a href="#configurar-passkey-apple-id">Passo 2: Configurar Chaves de Acesso no Ecossistema Apple (iOS e Mac)</a></li>
+          <li><a href="#gerenciadores-senhas-terceiros-passkeys">Passo 3: Usar Passkeys em Gerenciadores de Senhas (Bitwarden e 1Password)</a></li>
+          <li><a href="#o-que-acontece-se-perder-celular">Passo 4: O Que Acontece se Você Perder ou Danificar o Celular?</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -252,7 +333,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>

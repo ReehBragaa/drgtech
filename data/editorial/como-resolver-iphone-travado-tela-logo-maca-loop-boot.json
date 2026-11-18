@@ -1,0 +1,155 @@
+{
+  "id": 137,
+  "slug": "como-resolver-iphone-travado-tela-logo-maca-loop-boot",
+  "titulo": "Como Resolver iPhone Travado na Maçã ou Loop de Inicialização",
+  "descricao": "Guia completo para destravar o iPhone travado na tela da maçã ou reiniciando em loop: reinício forçado, Modo de Recuperação e Restauração DFU sem perder dados.",
+  "resposta_curta": "Quando o iPhone fica travado no logotipo da Apple (maçã) ou reinicia em loop infinito, a primeira medida é realizar o reinício forçado combinando os botões físicos correspondentes ao seu modelo. Se persistir, conecte o aparelho a um computador (Mac com Finder ou PC com app Apple Devices/iTunes), coloque o iPhone em Modo de Recuperação e selecione a opção 'Atualizar' — o que reinstala o iOS sem apagar fotos ou dados pessoais.",
+  "aplica_se": "iPhone 8 até iPhone 16 (iOS 15, 16, 17 e 18)",
+  "intro": [
+    "Ver o iPhone congelado na tela preta com o logotipo prateado da maçã ou preso em um ciclo interminável de reinicializações (boot loop) é um dos maiores sustos que um proprietário de dispositivo Apple pode enfrentar. O problema costuma acontecer logo após uma atualização de sistema operacional interrompida pela metade, quando a bateria se esgota no meio de uma gravação de firmware, ou quando o armazenamento interno atinge 100% de ocupação e o iOS não consegue criar arquivos de swap temporários para carregar o sistema.",
+    "Apesar da aparência assustadora de 'morte do aparelho', na vasta maioria dos casos o circuito de hardware está intacto e o travamento é puramente lógico. O próprio ecossistema do iOS foi desenvolvido com camadas de proteção de boot (como o iBoot e o SecureROM) que permitem recuperar o sistema operacional sem necessariamente apagar fotos, conversas do WhatsApp ou documentos. Neste guia, apresentamos a sequência progressiva de soluções oficiais recomendadas pelo suporte da Apple."
+  ],
+  "secoes": [
+    {
+      "id": "reinicio-forcado-por-modelo",
+      "titulo": "Passo 1: Fazer o Reinício Forçado de Acordo com o Seu Modelo",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O reinício forçado corta a alimentação lógica dos circuitos temporários sem descarregar a memória flash. A combinação de teclas varia conforme a geração do iPhone:"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Modelo do iPhone",
+            "Sequência Exata de Botões Físicos"
+          ],
+          "linhas": [
+            [
+              "iPhone 8, SE (2ª e 3ª ger), X, XR, XS, 11, 12, 13, 14, 15 e 16",
+              "Pressione e solte rápido o botão **Aumentar Volume**; pressione e solte rápido o botão **Diminuir Volume**; mantenha pressionado o **botão Lateral (Power)** até a maçã sumir e reaparecer na tela (cerca de 10 a 15 segundos)."
+            ],
+            [
+              "iPhone 7 e iPhone 7 Plus",
+              "Mantenha pressionados simultaneamente o botão **Diminuir Volume** e o botão **Repousar/Despertar (Lateral)** até o logotipo da Apple reaparecer."
+            ],
+            [
+              "iPhone 6s, SE (1ª geração) e anteriores",
+              "Mantenha pressionados simultaneamente o botão **Início (Home)** e o botão **Superior ou Lateral** por pelo menos 10 segundos até ver a maçã."
+            ]
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "info",
+          "texto": "Não solte o botão lateral antes de ver a maçã reaparecer. Se você soltar precocemente quando a tela apagar, o aparelho simplesmente permanecerá desligado."
+        }
+      ]
+    },
+    {
+      "id": "modo-recuperacao-atualizar-sem-perder-dados",
+      "titulo": "Passo 2: Modo de Recuperação via Computador (Opção Atualizar)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se o reinício forçado não quebrar o loop e a maçã continuar piscando, coloque o iPhone em Modo de Recuperação para reinstalar o iOS preservando seus dados:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Conecte o iPhone a um computador (Mac com macOS Catalina ou superior via Finder, ou PC com Windows através do aplicativo oficial 'Dispositivos Apple' ou iTunes atualizado).",
+            "Com o cabo conectado ao computador, coloque o aparelho em Modo de Recuperação: no iPhone 8 e posteriores, pressione e solte Aumentar Volume, pressione e solte Diminuir Volume e mantenha o botão Lateral pressionado mesmo depois que a maçã aparecer, segurando até a tela exibir a imagem de um cabo apontando para um computador.",
+            "No computador, o Finder ou iTunes abrirá um alerta dizendo: 'Há um problema com o iPhone que requer que ele seja atualizado ou restaurado'.",
+            "Clique obrigatoriamente no botão **Atualizar** (NÃO clique em Restaurar neste momento).",
+            "O computador baixará a versão limpa mais recente do iOS (cerca de 6 a 8 GB) e reinstalará o software mantendo seus arquivos intactos."
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "atencao",
+          "texto": "Se o download do iOS demorar mais de 15 minutos, o iPhone sairá automaticamente da tela do Modo de Recuperação. Aguarde o download terminar completamente no computador e então repita o Passo 2 para recolocar o iPhone em Modo de Recuperação."
+        }
+      ]
+    },
+    {
+      "id": "modo-dfu-restauracao-profunda",
+      "titulo": "Passo 3: Modo DFU (Device Firmware Upgrade) para Casos Severos",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O Modo DFU é o estado de mais baixo nível acessível no iPhone. Ele ignora o bootloader principal (iBoot) e grava o firmware diretamente na memória. Esta opção deve ser usada quando o Modo de Recuperação tradicional der erro e ela **apagará todos os dados**:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Conecte o iPhone ao computador e abra o iTunes ou Finder.",
+            "Pressione e solte Volume Mais, pressione e solte Volume Menos e mantenha o botão Lateral pressionado por 10 segundos.",
+            "Sem soltar o botão Lateral, pressione e segure também o botão Diminuir Volume por 5 segundos.",
+            "Solte o botão Lateral, mas continue segurando o botão Diminuir Volume por mais 10 segundos.",
+            "A tela do iPhone deve permanecer completamente PRETA (sem maçã, sem texto). No computador, aparecerá a mensagem 'O computador detectou um iPhone em modo de recuperação'.",
+            "Clique em **Restaurar iPhone** para instalar o firmware limpo de fábrica."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "diagnostico-hardware-bateria-sensor",
+      "titulo": "Passo 4: Quando o Problema é Físico (Sensor do Alto-falante ou Bateria)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se mesmo após a restauração DFU com êxito o iPhone continuar reiniciando exatamente a cada 3 minutos, a falha reside em um componente físico com barramento I2C em curto:"
+        },
+        {
+          "tipo": "lista",
+          "itens": [
+            "**Flex do Alto-falante Superior / Sensor de Proximidade:** Se o aparelho sofreu contato com umidade ou suor no auricular, o sensor inunda o barramento I2C com sinais corrompidos, fazendo o circuito Watchdog reiniciar o aparelho pontualmente a cada 180 segundos.",
+            "**Bateria Degradada ou Termistor com Falha:** Se a placa-mãe não conseguir ler a linha de dados da bateria (dados HDQ/SWI), ela desliga o aparelho por proteção térmica.",
+            "Nesses cenários específicos, encaminhe o dispositivo a uma assistência técnica especializada para teste de desconexão de periféricos."
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O iPhone travou na maçã porque a memória estava 100% cheia. Vou perder tudo?",
+      "r": "Nem sempre. Ao conectar o aparelho ao computador e escolher a opção 'Atualizar' no Finder ou iTunes, o sistema tenta expandir a partição temporária e liberar caches do sistema operacional para iniciar. Se a atualização for concluída, o iPhone ligará permitindo que você apague vídeos pesados imediatamente."
+    },
+    {
+      "p": "Colocar o iPhone no congelador ajuda a sair do loop da maçã?",
+      "r": "Nunca faça isso. O choque térmico cria condensação interna de gotículas de água nos circuitos e microfissuras na solda do processador, danificando a placa-mãe de forma irreparável."
+    },
+    {
+      "p": "O que significa o Erro 4013 ou Erro 9 durante a restauração no computador?",
+      "r": "Os erros 4013 e 9 indicam falha de comunicação entre o computador e a memória flash NAND do iPhone. As causas mais frequentes são cabos Lightning/USB-C com defeito, portas USB lentas ou curto no flex do sensor superior do aparelho. Troque de cabo e de porta USB antes de tentar novamente."
+    },
+    {
+      "p": "Softwares de terceiros que prometem 'reparar o iOS sem apagar dados' são confiáveis?",
+      "r": "A maioria desses programas comerciais pagos apenas automatiza o mesmo comando do Modo de Recuperação gratuito que o Finder da Apple já realiza nativamente. Recomendamos utilizar estritamente as ferramentas oficiais da Apple."
+    },
+    {
+      "p": "Como evitar que o iPhone volte a travar na maçã no futuro?",
+      "r": "Mantenha sempre no mínimo 10% a 15% do armazenamento interno do aparelho livre (pelo menos 5 a 10 GB livres), evite instalar versões de teste Beta do iOS no seu aparelho principal de trabalho e mantenha o backup diário do iCloud ativado."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Suporte da Apple — Se o iPhone não ligar ou estiver travado",
+      "url": "https://support.apple.com/pt-br/102642"
+    },
+    {
+      "titulo": "Suporte da Apple — Se não for possível atualizar nem restaurar o iPhone ou iPod touch",
+      "url": "https://support.apple.com/pt-br/108964"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    112,
+    149,
+    138,
+    158
+  ]
+}

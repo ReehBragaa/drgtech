@@ -1,0 +1,165 @@
+{
+  "id": 141,
+  "slug": "como-resolver-wifi-conectado-sem-acesso-internet-pc-celular",
+  "titulo": "Como Resolver Wi-Fi Conectado Sem Acesso à Internet no PC e Celular",
+  "descricao": "Solução passo a passo para o aviso 'Wi-Fi Conectado, mas Sem Internet' no Windows e celular: falha de DHCP, conflito de IP, DNS e reinício de roteador.",
+  "resposta_curta": "O status 'Conectado, sem internet' indica que seu dispositivo estabeleceu conexão física de rádio com o roteador Wi-Fi com sucesso, mas o roteador não está conseguindo encaminhar o tráfego para a rede externa da operadora ou não atribuiu um endereço IP válido via DHCP. Para resolver, reinicie o roteador retirando-o da tomada por 30 segundos, renove a concessão de IP com `ipconfig /release` e `ipconfig /renew` no PC (ou use 'Esquecer rede' no celular) e verifique se o modem da operadora está com sinal de fibra sincronizado.",
+  "aplica_se": "Windows 11, Windows 10, Android e iPhone",
+  "intro": [
+    "Você olha para a barra de tarefas do computador ou para o topo da tela do celular e o ícone de Wi-Fi está visível, mas acompanhado por um ponto de exclamação, um pequeno triângulo amarelo ou a frustrante mensagem: **'Conectado, sem internet'** (ou 'Sem acesso à internet'). Nenhuma página carrega, o WhatsApp não envia mensagens e os aplicativos recusam conexão.",
+    "Esse estado ambíguo confunde muitos usuários porque a palavra 'Conectado' dá a falsa impressão de que a internet deveria estar funcionando. Tecnicamente, a conexão possui duas metades independentes: a comunicação sem fio local entre o seu aparelho e o roteador (Camada 2 / Enlace) e a comunicação entre o seu roteador e os servidores da provedora de internet (Camada 3 / Rede). Estar conectado significa apenas que o sinal de rádio entre o celular e a caixinha do Wi-Fi está bom, mas a ponte para a rua caiu. A seguir, ensinamos o método oficial para restabelecer o sinal."
+  ],
+  "secoes": [
+    {
+      "id": "diagnostico-luzes-modem",
+      "titulo": "Passo 1: Inspecionar as Luzes Indicadoras do Modem da Operadora",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Antes de alterar configurações no computador ou celular, verifique o estado físico do modem da sua operadora (Claro, Vivo, Oi, provedor regional de fibra):"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "LED no Modem",
+            "Cor Normal",
+            "Sintoma de Problema na Operadora"
+          ],
+          "linhas": [
+            [
+              "PON / Fibra / WAN",
+              "Verde ou Azul fixo",
+              "Vermelho piscando ou apagado: cabo de fibra óptica rompido ou rompimento externo de poste."
+            ],
+            [
+              "Internet / Online",
+              "Verde piscando rápido",
+              "Apagado ou Laranja: falta de autenticação de usuário ou bloqueio na central do provedor."
+            ],
+            [
+              "LAN / Ethernet",
+              "Verde fixo",
+              "Apagado: cabo de rede desconectado entre o modem e o roteador principal."
+            ]
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "atencao",
+          "texto": "Se a luz PON ou Internet estiver vermelha ou piscando sem parar, o problema é externo na fiação do provedor e nenhuma alteração no celular resolverá; ligue para o suporte da sua operadora."
+        }
+      ]
+    },
+    {
+      "id": "renovacao-ip-dhcp-windows",
+      "titulo": "Passo 2: Renovar a Concessão de IP e Tratar Endereço APIPA no PC",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se outros aparelhos da casa estão navegando normalmente e apenas o seu computador está sem internet, sua máquina pode ter recebido um endereço inválido de APIPA (iniciado em `169.254.x.x`):"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Pressione `Windows + X` e abra o **Terminal (Administrador)**.",
+            "Digite o comando abaixo para conferir seu IP atual:",
+            "Se o IPv4 começar com `169.254`, o roteador falhou ao entregar um IP via DHCP.",
+            "Execute a liberação e renovação forçada digitando:",
+            "Limpe os registros de nomes do Windows em seguida com `ipconfig /flushdns`."
+          ]
+        },
+        {
+          "tipo": "codigo",
+          "linguagem": "powershell",
+          "texto": "ipconfig\nipconfig /release\nipconfig /renew"
+        }
+      ]
+    },
+    {
+      "id": "esquecer-rede-celular-android-ios",
+      "titulo": "Passo 3: 'Esquecer Rede' e Redefinir Parâmetros no Smartphone",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "No celular Android ou iPhone, o perfil salvo da rede Wi-Fi pode ter mantido credenciais ou permissões de MAC Address travadas:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "No **iPhone (iOS):** Acesse Ajustes > Wi-Fi, toque no ícone de informação **(i)** ao lado do nome da sua rede e selecione **Esquecer Esta Rede**. Desligue o Wi-Fi por 10 segundos, reative-o, selecione a rede e digite a senha novamente.",
+            "No **Android:** Acesse Configurações > Rede e Internet > Internet (ou Conexões > Wi-Fi). Toque no ícone de engrenagem ao lado da rede conectada e selecione **Esquecer** (ou Excluir). Reconecte digitando a senha.",
+            "**Verificação de Endereço MAC:** Se o seu roteador tiver filtro de dispositivos, altere a opção 'Tipo de endereço MAC' de 'MAC Aleatório' para **MAC do Dispositivo** nas propriedades da rede do smartphone."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "configurar-dns-e-gateway-manual",
+      "titulo": "Passo 4: Configurar IP e DNS Estático para Descartar Falha no DHCP",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se o servidor DHCP do roteador parou de entregar endereços automáticos, você pode atribuir um IP fixo na mesma faixa da rede:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra as Conexões de Rede no Windows (`ncpa.cpl`).",
+            "Abra as Propriedades do adaptador Wi-Fi > duplo clique em **TCP/IPv4**.",
+            "Selecione 'Usar o seguinte endereço IP' e configure:",
+            "- Endereço IP: `192.168.1.150` (ou `192.168.0.150`, dependendo da faixa do seu roteador).",
+            "- Máscara de sub-rede: `255.255.255.0`.",
+            "- Gateway padrão: `192.168.1.1` (o endereço de acesso do seu roteador).",
+            "- Servidor DNS preferencial: `1.1.1.1` e alternativo: `8.8.8.8`.",
+            "Salve as configurações e verifique se o triângulo amarelo desaparece."
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O que causa conflito de endereço IP na rede local?",
+      "r": "Um conflito de IP ocorre quando dois dispositivos na mesma rede (por exemplo, sua Smart TV e seu computador) recebem exatamente o mesmo número de IP do roteador. Isso trava o tráfego de ambos os aparelhos. Reiniciar o roteador reorganiza a tabela DHCP e atribui IPs exclusivos para cada um."
+    },
+    {
+      "p": "O que significa quando o sinal do Wi-Fi está com exclamação?",
+      "r": "O ponto de exclamação é a representação visual dos sistemas operacionais para o teste de conectividade HTTP de sonda de rede (Captive Portal Detection). Se o sistema tentar acessar servidores de verificação (como connectivitycheck.gstatic.com do Google ou captive.apple.com da Apple) e não obtiver resposta 204, ele exibe a exclamação."
+    },
+    {
+      "p": "Redes Wi-Fi com tela de login (hotel, aeroporto) mostram esse erro?",
+      "r": "Sim. Em redes públicas com portal de autenticação, o aparelho ficará marcado como 'sem internet' até que você abra o navegador e preencha o cadastro ou aceite os termos de uso na tela de boas-vindas do estabelecimento."
+    },
+    {
+      "p": "Cabo de rede conectado funciona, mas o Wi-Fi fica sem internet?",
+      "r": "Isso indica que o sinal da internet no roteador está perfeito, mas o módulo de rádio sem fio do roteador está sofrendo interferência severa de canais vizinhos ou travou em uma frequência congestionada. Acesse as configurações do roteador e mude a largura de canal de 40MHz para 20MHz na faixa de 2.4 GHz."
+    },
+    {
+      "p": "Posso usar a ferramenta de Solução de Problemas do Windows?",
+      "r": "Sim. Clicar com o botão direito sobre o ícone de rede e selecionar 'Diagnosticar problemas de rede' reinicia o adaptador de rede e renova o contrato DHCP automaticamente na maioria dos casos simples."
+    },
+    {
+      "p": "Desativar o protocolo IPv6 temporariamente pode resolver a falta de internet?",
+      "r": "Sim. Em certas operadoras que sofrem instabilidade no túnel dual-stack IPv6, o computador tenta carregar rotas IPv6 inexistentes antes de recorrer ao IPv4, causando a impressão de queda total da rede. Desmarcar a caixa 'Protocolo IP Versão 6 (TCP/IPv6)' nas propriedades do adaptador de rede pode restabelecer a conexão imediata em IPv4."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Microsoft Support — Corrigir problemas de conexão Wi-Fi no Windows",
+      "url": "https://support.microsoft.com/pt-br/windows/corrigir-problemas-de-conex%C3%A3o-wi-fi-no-windows-9424a1f7-6a3b-65a6-4d78-7f07eee84d2c"
+    },
+    {
+      "titulo": "Ajuda do Google Android — Corrigir problemas de conexão com a Internet em dispositivos Android",
+      "url": "https://support.google.com/android/answer/7680439?hl=pt-BR"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    140,
+    162,
+    161,
+    194
+  ]
+}

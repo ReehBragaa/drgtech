@@ -1,0 +1,209 @@
+{
+  "id": 178,
+  "slug": "como-resolver-tela-azul-memory-management-windows-11",
+  "titulo": "Como Resolver a Tela Azul MEMORY_MANAGEMENT no Windows 11",
+  "descricao": "Guia técnico para diagnosticar e solucionar o erro MEMORY_MANAGEMENT (0x0000001A) no Windows 11: teste de pentes de memória RAM e integridade de arquivo de paginação.",
+  "resposta_curta": "A tela azul MEMORY_MANAGEMENT (código 0x0000001A) indica que o gerenciador de memória do Windows detectou uma corrupção severa nas estruturas de controle de paginação ou alocação de RAM física. Para resolver, execute o Diagnóstico de Memória do Windows (`mdsched.exe`) para identificar defeitos nos pentes de memória, redefina o arquivo de paginação (pagefile.sys), atualize os drivers de chipset, investigue pools de drivers com o Driver Verifier e desative perfis XMP/EXPO de aceleração de RAM na BIOS.",
+  "aplica_se": "Windows 11 e Windows 10",
+  "intro": [
+    "O gerenciador de memória do Windows é responsável por mapear endereços de memória virtual dos programas para endereços de memória física (RAM) e gerenciar a troca contínua de páginas com o arquivo pagefile.sys no disco de armazenamento. Quando o kernel detecta uma inconsistência lógica que não pode ser reconciliada (como contadores de descritores de página corrompidos, listas de quadros livres violadas ou bits invertidos em endereços físicos de memória), ele aciona a tela azul de parada MEMORY_MANAGEMENT (código 0x0000001A).",
+    "Embora muitos usuários associem esse erro exclusivamente a defeito físico irreversível na memória RAM, uma parcela expressiva das ocorrências decorre de problemas lógicos tratáveis, como drivers de vídeo gravando em áreas de memória de outros processos, arquivo de paginação corrompido em SSDs sobrecarregados ou tensões elétricas instáveis na placa-mãe. Neste artigo técnico, mostramos como separar falhas de software de defeitos reais de hardware e como interpretar os códigos de subdiagnóstico do kernel."
+  ],
+  "secoes": [
+    {
+      "id": "subcodigos-parametro-1-memoria",
+      "titulo": "Entendendo os Subcódigos do Parâmetro 1 (Arg1)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Ao abrir o arquivo de despejo de memória minidump com o WinDbg ou BlueScreenView, o primeiro parâmetro (Arg1) indica a causa exata identificada pelo subsistema de memória do kernel NT:"
+        },
+        {
+          "tipo": "tabela",
+          "cabecalho": [
+            "Código Arg1",
+            "Significado Técnico",
+            "Causa Mais Provável"
+          ],
+          "linhas": [
+            [
+              "0x41792",
+              "Uma tabela de páginas do processo foi corrompida.",
+              "Defeito de hardware em pente de RAM ou driver corrompendo pool."
+            ],
+            [
+              "0x41284",
+              "Uma lista de páginas modificadas foi corrompida.",
+              "Instabilidade de tensão no controlador de memória da CPU (IMC)."
+            ],
+            [
+              "0x41287",
+              "A contagem de referências de uma página tornou-se inconsistente.",
+              "Driver de dispositivo sobrescrevendo ponteiros de memória alheia."
+            ],
+            [
+              "0x61941",
+              "Falha de proteção em nível de decodificação de página.",
+              "Incompatibilidade severa de perfil de overclock XMP/EXPO."
+            ],
+            [
+              "0x3451",
+              "Falha de E/S ao ler uma página do disco no arquivo de paginação.",
+              "Setores defeituosos ou falha de comunicação no SSD/HD."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "diagnostico-memoria-windows",
+      "titulo": "Passo 1: Executar o Diagnóstico de Memória do Windows (mdsched)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O Windows inclui uma ferramenta integrada de diagnóstico que testa os módulos físicos de RAM antes do carregamento do sistema operacional, sem a interferência de drivers de terceiros:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Pressione as teclas `Windows + R`, digite `mdsched.exe` e pressione Enter.",
+            "Na janela que se abrir, clique na opção **Reiniciar agora e verificar se há problemas (recomendado)**.",
+            "O computador será reiniciado imediatamente na Ferramenta de Diagnóstico de Memória do Windows, executando uma série de testes de leitura e escrita em blocos.",
+            "Pressione a tecla **F1** para acessar as opções avançadas e selecione a combinação de teste **Estendida** com cache ativado para uma checagem rigorosa.",
+            "Aguarde o término dos testes (pode levar de 15 a 45 minutos). O computador reiniciará automaticamente no Windows."
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Se a ferramenta acusar qualquer erro em tela durante o teste, um ou mais pentes de memória RAM estão com defeito físico em células semicondutoras ou mal encaixados no slot da placa-mãe."
+        }
+      ]
+    },
+    {
+      "id": "redefinir-arquivo-paginacao",
+      "titulo": "Passo 2: Limpar e Redefinir o Arquivo de Paginação (pagefile.sys)",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se o arquivo de paginação no disco contiver setores corrompidos ou tiver sido dimensionado de forma fragmentada por programas de otimização, o gerenciador de memória falhará ao descarregar dados da RAM para o disco:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Pressione `Windows + R`, digite `sysdm.cpl` e pressione Enter para abrir as Propriedades do Sistema.",
+            "Acesse a aba **Avançado** e, na seção 'Desempenho', clique no botão **Configurações**.",
+            "Na nova janela, clique na aba **Avançado** e, na seção 'Memória virtual', clique em **Alterar**.",
+            "Desmarque a opção 'Gerenciar automaticamente o tamanho do arquivo de paginação de todas as unidades'.",
+            "Selecione a unidade C:, marque a opção **Sem arquivo de paginação** e clique no botão **Definir**.",
+            "Reinicie o computador para que o arquivo corrompido seja purgado do disco.",
+            "Após o reinício, retorne à mesma tela e marque novamente a opção **Gerenciar automaticamente o tamanho do arquivo de paginação**, clicando em OK e reiniciando mais uma vez."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "desativar-xmp-expo",
+      "titulo": "Passo 3: Desativar Perfis de Overclock XMP / AMD EXPO",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Muitas memórias modernas de alta velocidade são vendidas com frequências como 3200MHz, 3600MHz, 6000MHz ou superiores, que operam sob overclock de fábrica através de perfis Intel XMP ou AMD EXPO. Se o controlador de memória integrado da CPU (IMC) não conseguir manter a estabilidade térmica com essas tensões, ocorrerá o bugcheck 0x1A:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Acesse a BIOS/UEFI do computador pressionando **Del** ou **F2** na inicialização.",
+            "Localize a configuração de memória (geralmente sob as abas Ai Tweaker, OC ou Overclocking).",
+            "Mude o perfil XMP/EXPO de 'Enabled' para **Disabled** ou **Auto**.",
+            "Pressione **F10** para salvar e inicializar."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "driver-verifier-diagnostico",
+      "titulo": "Passo 4: Rastrear Drivers Conflitantes com o Driver Verifier",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se a memória RAM física estiver saudável mas a tela azul persistir, um driver de dispositivo está gravando ilegalmente em pools de memória reservados para outros componentes. O utilitário nativo Driver Verifier monitora essas violações:"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Pressione `Windows + R`, digite `verifier.exe` e execute como Administrador.",
+            "Selecione **Criar configurações padrão** e clique em Avançar.",
+            "Escolha **Selecionar drivers de uma lista** e ordene a lista por 'Provedor'.",
+            "Marque todos os drivers que NÃO sejam da Microsoft (drivers de placa de vídeo, placas de som, periféricos e antivírus).",
+            "Clique em Concluir e reinicie o computador para iniciar a monitoração intensiva."
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "nivel": "atencao",
+          "texto": "Caso o computador apresente tela azul no boot indicando o driver culpado, entre no Modo de Segurança e execute `verifier /reset` no Prompt para desativar o monitoramento antes de desinstalar o driver defeituoso."
+        }
+      ]
+    },
+    {
+      "id": "teste-individual-pentes",
+      "titulo": "Passo 5: Teste Físico e Limpeza dos Contatos dos Pentes de RAM",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Se os testes de software apontaram erros de memória e você possui mais de um pente instalado, isole qual deles é o culpado:"
+        },
+        {
+          "tipo": "lista",
+          "itens": [
+            "Desligue o computador da tomada e descarregue a eletricidade estática do corpo tocando em uma superfície metálica sem pintura.",
+            "Remova todos os pentes de memória e deixe apenas um único módulo conectado no slot primário (consulte o manual da placa-mãe, habitualmente o slot A2).",
+            "Limpe cuidadosamente os contatos dourados do pente com uma borracha branca escolar limpa e remova resíduos com pincel seco.",
+            "Ligue o computador e use normalmente. Se o erro não se repetir após alguns dias, teste o segundo pente no mesmo slot para confirmar o defeito."
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "p": "O erro MEMORY_MANAGEMENT pode ser causado por SSD ou HD defeituoso?",
+      "r": "Sim. Como a memória virtual depende diretamente do arquivo pagefile.sys gravado no SSD ou disco rígido, se o disco tiver setores defeituosos (bad blocks) no local onde o arquivo de paginação está alocado, a leitura da memória falhará, gerando a tela azul 0x1A com o subcódigo 0x3451."
+    },
+    {
+      "p": "Memória RAM suja pode gerar esse erro?",
+      "r": "Com certeza. Poeira acumulada nos slots da placa-mãe ou oxidação nos contatos dourados dos módulos de RAM aumentam a resistência elétrica e introduzem ruído nos sinais de alta frequência da memória, causando corrupção esporádica de bits de dados."
+    },
+    {
+      "p": "Posso misturar pentes de memória de marcas ou frequências diferentes?",
+      "r": "Não é recomendável. Misturar memórias de fabricantes distintos, com latências (CL) e chips de memória diferentes frequentemente causa incompatibilidade de sincronismo de temporização no controlador de memória da CPU, resultando em travamentos periódicos."
+    },
+    {
+      "p": "O comando sfc /scannow ajuda a resolver o Memory Management?",
+      "r": "Ajuda caso a causa seja a corrupção de arquivos de sistema ou drivers essenciais que operam no gerenciamento de memória. Execute o sfc /scannow e o dism /online /cleanup-image /restorehealth como medida complementar de software."
+    },
+    {
+      "p": "Qual a melhor ferramenta para testar memória além do Windows?",
+      "r": "A ferramenta de padrão ouro na indústria técnica é o MemTest86 (versão inicializável via pendrive da PassMark). Ele executa 13 algoritmos de teste matemático durante vários ciclos para detectar até mesmo falhas intermitentes que ocorrem apenas sob aquecimento prolongado."
+    }
+  ],
+  "fontes": [
+    {
+      "titulo": "Microsoft Learn — Bug Check 0x1A MEMORY_MANAGEMENT",
+      "url": "https://learn.microsoft.com/pt-br/windows-hardware/drivers/debugger/bug-check-0x1a---memory-management"
+    },
+    {
+      "titulo": "Microsoft Support — Como diagnosticar problemas de memória no Windows",
+      "url": "https://support.microsoft.com/pt-br/windows/diagnosticar-problemas-de-mem%C3%B3ria-do-computador-86ef5693-a44d-487d-8fb0-4ddf311c9703"
+    }
+  ],
+  "publicado_iso": "2026-11-06",
+  "atualizado_iso": "2026-11-06",
+  "atualizado": "novembro de 2026",
+  "relacionados": [
+    143,
+    155,
+    176,
+    177
+  ]
+}

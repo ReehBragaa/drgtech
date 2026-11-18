@@ -3,29 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como Corrigir o Erro de Download Pendente na Google Play Store — DRGTech</title>
-  <meta name="description" content="Se o download de aplicativos fica travado em 'Pendente' na Play Store, acesse Configurações > Aplicativos > Google Play Store > Armazenamento e toque em 'L..." />
-  <meta name="keywords" content="como corrigir o erro de download pendente na google play store, tutorial celular, suporte tecnico" />
+  <title>Como Corrigir o Erro 'Download Pendente' na Google Play Store — DRGTech</title>
+  <meta name="description" content="Passo a passo definitivo para resolver o travamento de download pendente na Play Store: fila de atualizações, limpeza de cache, otimização de bateria e Play Services." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Como Corrigir o Erro de Download Pendente na Google Play Store — DRGTech" />
-  <meta property="og:description" content="Se o download de aplicativos fica travado em 'Pendente' na Play Store, acesse Configurações > Aplicativos > Google Play Store > Armazenamento e toque em 'L..." />
+  <meta property="og:title" content="Como Corrigir o Erro 'Download Pendente' na Google Play Store — DRGTech" />
+  <meta property="og:description" content="Passo a passo definitivo para resolver o travamento de download pendente na Play Store: fila de atualizações, limpeza de cache, otimização de bateria e Play Services." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-corrigir-erro-download-pendente-google-play-store.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Como Corrigir o Erro de Download Pendente na Google Play Store — DRGTech" />
-  <meta name="twitter:description" content="Se o download de aplicativos fica travado em 'Pendente' na Play Store, acesse Configurações > Aplicativos > Google Play Store > Armazenamento e toque em 'L..." />
+  <meta name="twitter:title" content="Como Corrigir o Erro 'Download Pendente' na Google Play Store — DRGTech" />
+  <meta name="twitter:description" content="Passo a passo definitivo para resolver o travamento de download pendente na Play Store: fila de atualizações, limpeza de cache, otimização de bateria e Play Services." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-corrigir-erro-download-pendente-google-play-store.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Corrigir o Erro 'Download Pendente' na Google Play Store",
+  "description": "Passo a passo definitivo para resolver o travamento de download pendente na Play Store: fila de atualizações, limpeza de cache, otimização de bateria e Play Services.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-corrigir-erro-download-pendente-google-play-store.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,55 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Corrigir o Erro de Download Pendente na Google Play Store",
+      "name": "Por que a Play Store trava quando a bateria está muito fraca?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Se o download de aplicativos fica travado em 'Pendente' na Play Store, acesse Configurações > Aplicativos > Google Play Store > Armazenamento e toque em 'Limpar Dados' e 'Limpar Cache'. Em seguida, limpe o cache do app 'Serviços do Google Play' (Play Services) e desative downloads simultâneos em segundo plano."
+        "text": "Muitos fabricantes implementam políticas agressivas de economia de energia no Android que suspendem transferências em segundo plano do Google Play Services quando o nível da bateria atinge valores inferiores a 15% ou 20%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O uso de VPN ou DNS privado pode deixar o download pendente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Servidores VPN congestionados ou provedores de DNS privado (DoH/DoT) com regras rígidas de bloqueio de anúncios podem bloquear as portas de CDN (Content Delivery Network) utilizadas pela infraestrutura do Google para entregar os pacotes de instalação."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que fazer se a mensagem 'download pendente' ocorrer apenas no Wi-Fi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Isso indica instabilidade na conexão local com os servidores do Google. Desative o Wi-Fi e teste via dados móveis (4G/5G). Se funcionar nos dados móveis, reinicie seu roteador Wi-Fi ou mude os servidores DNS da sua rede para o DNS público do Google (8.8.8.8 e 8.8.4.4)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O controle dos pais do Google Family Link pode travar o download?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Se o aparelho for supervisionado pelo Family Link, o download de qualquer novo aplicativo ficará com status pendente até que o responsável aprove o pedido na notificação enviada ao celular dos pais."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Preciso remover e adicionar minha conta Google novamente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Em casos raros de falha de token de autenticação, sim. Vá em Configurações > Contas > Google, selecione sua conta e toque em 'Remover conta'. Reinicie o celular, retorne à mesma tela e adicione sua conta novamente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A falta de espaço de armazenamento causa esse sintoma?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. A Play Store exige um espaço livre no armazenamento interno correspondente ao dobro do tamanho do aplicativo para poder baixar o instalador compactado e descompactá-lo simultaneamente. Mantenha pelo menos 2 a 3 GB livres."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,7 +121,7 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Como Corrigir o Erro de Download Pendente na Google Play Store",
+      "name": "Como Corrigir o Erro 'Download Pendente' na Google Play Store",
       "item": "https://drgtech.com.br/artigos/como-corrigir-erro-download-pendente-google-play-store.html"
     }
   ]
@@ -103,132 +161,200 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#celular">Celular</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Corrigir o Erro de Download Pe...</span>
+        <span>Como Corrigir o Erro 'Download…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-green">Celular</span>
-        <h1 class="article-h1">Como Corrigir o Erro de Download Pendente na Google Play Store</h1>
+        <h1 class="article-h1">Como Corrigir o Erro 'Download Pendente' na Google Play Store</h1>
         <div class="article-intro-meta">
           <span class="meta-item">5 min de leitura</span>
-          <span class="meta-item">Atualizado em agosto de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> Se o download de aplicativos fica travado em 'Pendente' na Play Store, acesse Configurações > Aplicativos > Google Play Store > Armazenamento e toque em 'Limpar Dados' e 'Limpar Cache'. Em seguida, limpe o cache do app 'Serviços do Google Play' (Play Services) e desative downloads simultâneos em segundo plano.
+        <strong>Resposta rápida:</strong> O erro de download pendente na Google Play Store ocorre quando há outros aplicativos sendo atualizados simultaneamente em segundo plano, quando o cache da loja ou do Google Play Services está corrompido, ou devido a restrições de economia de bateria e limites de dados. Para resolver, abra a Play Store, cancele downloads em segundo plano em 'Gerenciar apps e dispositivos', limpe o cache e armazenamento da 'Google Play Store' e do 'Google Play Services' nas Configurações, e desative a otimização de bateria restritiva.
       </div>
 
       <article class="article-body" id="article-body">
+        <p>Você tenta baixar um novo aplicativo ou atualizar uma ferramenta urgente no smartphone e a Google Play Store exibe indefinidamente a mensagem 'Download pendente...' com uma barra circular cinza que nunca sai do lugar. Esse travamento é um dos mais comuns em celulares Android e impede a instalação de qualquer novo software, além de bloquear correções críticas de segurança.</p>
+        <p>A Google Play Store não baixa múltiplos aplicativos ao mesmo tempo por padrão: ela organiza os pedidos em uma fila sequencial rigorosa. Se um aplicativo grande estiver parado aguardando conexão Wi-Fi, se a bateria estiver em modo de ultraeconomia ou se o gerenciador de downloads do Android tiver perdido a sincronia de rede, toda a fila ficará congelada. A seguir, apresentamos a sequência metódica e oficial para destravar seus downloads em poucos minutos.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> Todos os celulares e tablets Android</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Corrigir o Erro de Download Pendente na Google Play Store"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Celular</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
-        </div>
-
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
+        <h2 id="cancelar-atualizacoes-fila">Passo 1: Verificar e Cancelar a Fila de Atualizações Automáticas</h2>
+        <p>A causa mais frequente é a própria Play Store atualizando aplicativos pesados em segundo plano no momento exato em que você solicitou o novo download:</p>
         <ol class="steps-list">
-
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">Vá em Configurações > Aplicativos > Google Play Store > Armazenamento e toque em 'Limpar Cache' e 'Limpar Dados'.</div>
+            <div class="step-text">Abra o aplicativo da <strong>Google Play Store</strong>.</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">Localize o app 'Google Play Services' na mesma lista, vá em Armazenamento > Gerenciar Espaço e selecione 'Limpar Todos os Dados'.</div>
+            <div class="step-text">Toque na foto do seu perfil no canto superior direito.</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">Abra a Play Store, vá nas configurações da sua conta e altere a preferência de download para 'Em qualquer rede'.</div>
+            <div class="step-text">Selecione <strong>Gerenciar apps e dispositivos</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Na aba 'Visão geral', verifique a seção 'Atualizações disponíveis'. Se estiver escrito 'Instalando atualizações...', toque em <strong>Ver detalhes</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Toque no botão <strong>Cancelar tudo</strong> para esvaziar a fila de espera temporariamente.</div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-text">Volte ao aplicativo que você desejava e tente baixá-lo novamente de forma individual.</div>
           </li>
         </ol>
 
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <h2 id="limpar-dados-play-store-services">Passo 2: Limpar Cache e Armazenamento da Play Store e Play Services</h2>
+        <p>Arquivos temporários fragmentados no banco de dados da loja causam bloqueios lógicos de download. Uma limpeza completa restabelece o funcionamento padrão:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Abra as <strong>Configurações</strong> do Android e acesse <strong>Aplicativos</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Localize e toque sobre <strong>Google Play Store</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Toque em <strong>Armazenamento</strong> e selecione primeiro <strong>Limpar Cache</strong> e em seguida <strong>Limpar Dados</strong> (ou Limpar Armazenamento). Confirme a mensagem.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Retorne à lista de aplicativos e localize o item <strong>Google Play Services</strong> (Serviços do Google Play).</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Toque em <strong>Armazenamento</strong>, selecione <strong>Limpar Cache</strong> e depois <strong>Gerenciar Espaço</strong> &gt; <strong>Limpar Todos os Dados</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-text">Reinicie o smartphone para reconfigurar os serviços de nuvem do Google.</div>
+          </li>
+        </ol>
+        <div class="info-box">
+          <div class="box-content"><p>Limpar os dados da Play Store não exclui seus aplicativos instalados nem apaga suas compras; apenas redefine o cache e as preferências locais do aplicativo.</p></div>
         </div>
 
-        
+        <h2 id="desativar-otimizacao-bateria">Passo 3: Desativar a Otimização de Bateria Agressiva</h2>
+        <p>Sistemas modernos de economia de energia (como o gerenciamento adaptativo da Xiaomi, Samsung e Motorola) colocam serviços de download em suspensão profunda:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Acesse <strong>Configurações</strong> &gt; <strong>Aplicativos</strong> &gt; <strong>Google Play Store</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Toque em <strong>Bateria</strong> (ou Uso da Bateria).</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Altere a configuração de 'Otimizado' para <strong>Irrestrito</strong> (ou Sem Restrições).</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Faça o mesmo ajuste de bateria irrestrita para o <strong>Google Play Services</strong> e para o <strong>Gerenciador de Downloads</strong> do sistema.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-text">Essa alteração garante que o processo de download não seja abortado pelo sistema quando a tela do celular apagar.</div>
+          </li>
+        </ol>
 
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
+        <h2 id="verificar-gerenciador-downloads-sistema">Passo 4: Limpar o Gerenciador de Downloads do Android</h2>
+        <p>A Play Store depende de um processo nativo do sistema operacional chamado Download Manager para transferir os arquivos APK dos servidores para a memória do celular:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Nas <strong>Configurações</strong> &gt; <strong>Aplicativos</strong>, toque no menu de três pontos e selecione <strong>Mostrar aplicativos do sistema</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Procure pelo aplicativo <strong>Gerenciador de Downloads</strong> (Download Manager).</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Toque em <strong>Armazenamento</strong> e selecione <strong>Limpar Dados</strong> e <strong>Limpar Cache</strong>.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Verifique se as permissões de notificação e rede do gerenciador estão ativadas.</div>
+          </li>
+        </ol>
+
+        <h2 id="preferencias-download-rede-data">Passo 5: Ajustar Preferências de Rede, Espaço em Disco e Data/Hora</h2>
+        <p>Configurações erradas de data e hora impedem a validação de certificados SSL/TLS da Google, pausando os downloads por segurança:</p>
+        <ul>
+          <li><strong>Data e Hora Automáticas:</strong> Acesse Configurações &gt; Sistema &gt; Data e hora e certifique-se de que a opção 'Usar horário fornecido pela rede' está ativada.</li>
+          <li><strong>Preferência de Download de Rede:</strong> Dentro da Play Store, toque no seu perfil &gt; Configurações &gt; Preferências de rede &gt; Preferência de download de apps e selecione <strong>Por qualquer rede</strong> (para evitar que downloads fiquem pendentes esperando por Wi-Fi).</li>
+          <li><strong>Espaço Mínimo de Armazenamento:</strong> Se o celular tiver menos de 1 GB de espaço livre na memória interna, o Android recusa o início de novos downloads para proteger a estabilidade do sistema operacional. Exclua arquivos desnecessários na lixeira.</li>
+        </ul>
+
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>Por que a Play Store trava quando a bateria está muito fraca?</h3>
+            <p>Muitos fabricantes implementam políticas agressivas de economia de energia no Android que suspendem transferências em segundo plano do Google Play Services quando o nível da bateria atinge valores inferiores a 15% ou 20%.</p>
           </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
+          <div class="faq-item">
+            <h3>O uso de VPN ou DNS privado pode deixar o download pendente?</h3>
+            <p>Sim. Servidores VPN congestionados ou provedores de DNS privado (DoH/DoT) com regras rígidas de bloqueio de anúncios podem bloquear as portas de CDN (Content Delivery Network) utilizadas pela infraestrutura do Google para entregar os pacotes de instalação.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O que fazer se a mensagem 'download pendente' ocorrer apenas no Wi-Fi?</h3>
+            <p>Isso indica instabilidade na conexão local com os servidores do Google. Desative o Wi-Fi e teste via dados móveis (4G/5G). Se funcionar nos dados móveis, reinicie seu roteador Wi-Fi ou mude os servidores DNS da sua rede para o DNS público do Google (8.8.8.8 e 8.8.4.4).</p>
+          </div>
+          <div class="faq-item">
+            <h3>O controle dos pais do Google Family Link pode travar o download?</h3>
+            <p>Sim. Se o aparelho for supervisionado pelo Family Link, o download de qualquer novo aplicativo ficará com status pendente até que o responsável aprove o pedido na notificação enviada ao celular dos pais.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Preciso remover e adicionar minha conta Google novamente?</h3>
+            <p>Em casos raros de falha de token de autenticação, sim. Vá em Configurações &gt; Contas &gt; Google, selecione sua conta e toque em 'Remover conta'. Reinicie o celular, retorne à mesma tela e adicione sua conta novamente.</p>
+          </div>
+          <div class="faq-item">
+            <h3>A falta de espaço de armazenamento causa esse sintoma?</h3>
+            <p>Sim. A Play Store exige um espaço livre no armazenamento interno correspondente ao dobro do tamanho do aplicativo para poder baixar o instalador compactado e descompactá-lo simultaneamente. Mantenha pelo menos 2 a 3 GB livres.</p>
           </div>
         </div>
 
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://support.google.com/googleplay/answer/7513003?hl=pt-BR" target="_blank" rel="noopener noreferrer">Ajuda do Google Play — A Play Store não abre, não carrega ou não faz o download de apps</a></li>
+          <li><a href="https://support.google.com/googleplay/answer/1067233?hl=pt-BR" target="_blank" rel="noopener noreferrer">Ajuda do Google Play — Corrigir problemas de download de apps com etapas básicas</a></li>
+        </ul>
+
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-limpar-cache-whatsapp-liberar-espaco.html" class="related-card">
-              <span class="related-card-title">Como Limpar o Cache do WhatsApp e Liberar Espaço no Celular</span>
+            <a href="como-resolver-erro-interface-sistema-parou-system-ui-android.html" class="related-card">
+              <span class="related-card-title">Como Resolver o Erro 'A Interface do Sistema Parou' no Android</span>
             </a>
-            <a href="como-saber-se-whatsapp-foi-clonado-ou-hacker.html" class="related-card">
-              <span class="related-card-title">Como Saber se o WhatsApp Foi Clonado e Como Desconectar Hackers</span>
+            <a href="como-resolver-erro-dispositivo-incompativel-google-play-store.html" class="related-card">
+              <span class="related-card-title">Como Resolver o Erro 'Seu Dispositivo Não é Compatível com Esta Versão'</span>
             </a>
-            <a href="como-eliminar-bateria-vazando-wakelocks-google-play-services.html" class="related-card">
-              <span class="related-card-title">Como Eliminar Bateria Vazando por WakeLocks do Google Play Services</span>
+            <a href="como-recuperar-fotos-videos-apagados-lixeira-celular.html" class="related-card">
+              <span class="related-card-title">Como Recuperar Fotos e Vídeos Apagados da Lixeira do Celular</span>
             </a>
-            <a href="gestao-avancada-armazenamento-liberacao-memoria-smartphones.html" class="related-card">
-              <span class="related-card-title">Gestão Avançada de Armazenamento e Liberação de Memória em Smartphones</span>
+            <a href="como-resolver-armazenamento-sistema-cheio-iphone-ios.html" class="related-card">
+              <span class="related-card-title">Como Resolver Armazenamento do Sistema Cheio no iPhone (Dados do Sistema)</span>
             </a>
           </div>
         </div>
@@ -238,13 +364,15 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#cancelar-atualizacoes-fila">Passo 1: Verificar e Cancelar a Fila de Atualizações Automáticas</a></li>
+          <li><a href="#limpar-dados-play-store-services">Passo 2: Limpar Cache e Armazenamento da Play Store e Play Services</a></li>
+          <li><a href="#desativar-otimizacao-bateria">Passo 3: Desativar a Otimização de Bateria Agressiva</a></li>
+          <li><a href="#verificar-gerenciador-downloads-sistema">Passo 4: Limpar o Gerenciador de Downloads do Android</a></li>
+          <li><a href="#preferencias-download-rede-data">Passo 5: Ajustar Preferências de Rede, Espaço em Disco e Data/Hora</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -252,7 +380,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>

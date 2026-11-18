@@ -4,28 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11 — DRGTech</title>
-  <meta name="description" content="A tela azul WHEA_UNCORRECTABLE_ERROR (Windows Hardware Error Architecture) indica uma falha crítica de hardware ou instabilidade de voltagem no processador..." />
-  <meta name="keywords" content="como corrigir a tela azul whea_uncorrectable_error no windows 11, tutorial windows, suporte tecnico" />
+  <meta name="description" content="Guia técnico para diagnosticar e solucionar o erro de parada WHEA Uncorrectable Error (0x00000124) no Windows 11: causas de hardware, voltagem e BIOS." />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11 — DRGTech" />
-  <meta property="og:description" content="A tela azul WHEA_UNCORRECTABLE_ERROR (Windows Hardware Error Architecture) indica uma falha crítica de hardware ou instabilidade de voltagem no processador..." />
+  <meta property="og:description" content="Guia técnico para diagnosticar e solucionar o erro de parada WHEA Uncorrectable Error (0x00000124) no Windows 11: causas de hardware, voltagem e BIOS." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://drgtech.com.br/artigos/como-corrigir-tela-azul-whea-uncorrectable-error-windows-11.html" />
   <meta property="og:image" content="https://drgtech.com.br/img/og-preview.png" />
   <meta property="og:site_name" content="DRGTech" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11 — DRGTech" />
-  <meta name="twitter:description" content="A tela azul WHEA_UNCORRECTABLE_ERROR (Windows Hardware Error Architecture) indica uma falha crítica de hardware ou instabilidade de voltagem no processador..." />
+  <meta name="twitter:description" content="Guia técnico para diagnosticar e solucionar o erro de parada WHEA Uncorrectable Error (0x00000124) no Windows 11: causas de hardware, voltagem e BIOS." />
   <meta name="twitter:image" content="https://drgtech.com.br/img/og-preview.png" />
-  <meta property="article:publisher" content="https://drgtech.com.br" />
   <link rel="canonical" href="https://drgtech.com.br/artigos/como-corrigir-tela-azul-whea-uncorrectable-error-windows-11.html" />
-                        <!-- Clean Canonical URL -->
-    <link rel="icon" type="image/png" href="../img/favicon.png" />
+  <link rel="icon" type="image/png" href="../img/favicon.png" />
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Google AdSense -->
+  <!-- Google AdSense: somente em artigos editoriais aprovados -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942071950167193" crossorigin="anonymous"></script>
-  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11",
+  "description": "Guia técnico para diagnosticar e solucionar o erro de parada WHEA Uncorrectable Error (0x00000124) no Windows 11: causas de hardware, voltagem e BIOS.",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-11-06",
+  "dateModified": "2026-11-06",
+  "mainEntityOfPage": "https://drgtech.com.br/artigos/como-corrigir-tela-azul-whea-uncorrectable-error-windows-11.html",
+  "image": "https://drgtech.com.br/img/og-preview.png",
+  "author": {
+    "@type": "Person",
+    "name": "Renato Braga",
+    "url": "https://drgtech.com.br/sobre.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DRGTech",
+    "url": "https://drgtech.com.br"
+  }
+}
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,16 +52,47 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11",
+      "name": "O erro WHEA_UNCORRECTABLE_ERROR pode ser causado por vírus ou malware?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A tela azul WHEA_UNCORRECTABLE_ERROR (Windows Hardware Error Architecture) indica uma falha crítica de hardware ou instabilidade de voltagem no processador, memória RAM ou SSD. Para corrigir, desative o overclock na BIOS/UEFI (restaurando as configurações padrão/XMP), verifique o estado do SSD com a ferramenta CrystalDiskInfo e teste as memórias RAM com a Diagnóstico de Memória do Windows."
+        "text": "É extremamente improvável. Esse erro é gerado diretamente por interrupções físicas de hardware (Machine Check Exceptions) disparadas pelos registradores da CPU e dos barramentos da placa-mãe. Vírus comuns não possuem a capacidade de forçar essa exceção específica, a menos que atuem como mineradores ocultos que causem superaquecimento extremo e imediato das peças."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Reinstalar o Windows 11 resolve o WHEA Uncorrectable Error?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Na grande maioria dos casos, não. Como a origem da falha está ligada a tensões elétricas instáveis, superaquecimento, firmware desatualizado ou defeito físico em componentes de hardware (como processador, pentes de memória ou SSDs), uma simples formatação não resolverá o problema se a causa física subjacente não for tratada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que significa o parâmetro Arg1 com valor 0x0 ou 0x4 no dump de memória?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No relatório de despejo de memória da tela azul WHEA, o primeiro parâmetro (Arg1) indica o tipo de fonte de erro. O valor 0x0 aponta para uma Machine Check Exception disparada pelo processador; o valor 0x4 indica um erro de porta ou dispositivo de barramento PCI Express (frequentemente a placa de vídeo ou o SSD NVMe)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A fonte de alimentação (PSU) pode causar erro WHEA no computador?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Se a fonte de alimentação for de baixa qualidade ou estiver com capacitores degradados na linha de 12V, ela pode sofrer quedas súbitas de tensão (vDroop) quando o processador ou a placa de vídeo exigem pico de corrente elétrica, desestabilizando os circuitos da CPU e forçando o erro WHEA."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quando devo acionar a garantia do processador ou placa-mãe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se você redefiniu as configurações da BIOS, removeu qualquer overclock ou perfil XMP, confirmou que as temperaturas operacionais estão seguras (abaixo de 80°C) e atualizou todos os firmwares, mas o erro continua se manifestando mesmo em tarefas leves, é o momento de acionar a garantia do processador, da placa-mãe ou do SSD com o fabricante."
       }
     }
   ]
 }
   </script>
-  <!-- Schema.org BreadcrumbList -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -103,132 +153,174 @@
         <span class="breadcrumb-sep">›</span>
         <a href="../index.html#windows">Windows</a>
         <span class="breadcrumb-sep">›</span>
-        <span>Como Corrigir a Tela Azul WHEA_UNCO...</span>
+        <span>Como Corrigir a Tela Azul…</span>
       </nav>
 
       <header class="article-header">
         <span class="article-badge badge-blue">Windows</span>
         <h1 class="article-h1">Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11</h1>
         <div class="article-intro-meta">
-          <span class="meta-item">8 min de leitura</span>
-          <span class="meta-item">Atualizado em agosto de 2026</span>
-          <span class="meta-item">Equipe DRGTech</span>
-          <span class="difficulty diff-easy">Nível: Prático</span>
+          <span class="meta-item">6 min de leitura</span>
+          <span class="meta-item">Atualizado em novembro de 2026</span>
+          <span class="meta-item">Por <a href="../sobre.html">Renato Braga</a></span>
         </div>
       </header>
 
-      <!-- Featured Snippet Box -->
       <div class="article-intro">
-        <strong>Resposta Rápida:</strong> A tela azul WHEA_UNCORRECTABLE_ERROR (Windows Hardware Error Architecture) indica uma falha crítica de hardware ou instabilidade de voltagem no processador, memória RAM ou SSD. Para corrigir, desative o overclock na BIOS/UEFI (restaurando as configurações padrão/XMP), verifique o estado do SSD com a ferramenta CrystalDiskInfo e teste as memórias RAM com a Diagnóstico de Memória do Windows.
+        <strong>Resposta rápida:</strong> O erro de tela azul WHEA_UNCORRECTABLE_ERROR (código de parada 0x00000124) indica uma falha de hardware irrecuperável detectada pela arquitetura WHEA (Windows Hardware Error Architecture). As causas mais frequentes envolvem superaquecimento do processador, instabilidades de voltagem decorrentes de overclock, firmware de BIOS desatualizado ou falha física no SSD NVMe. Para resolver, restaure as configurações padrão da BIOS, monitore temperaturas e atualize os drivers de chipset e firmware de armazenamento.
       </div>
 
       <article class="article-body" id="article-body">
+        <p>Diferente da maior parte das telas azuis causadas por drivers de software corrompidos ou incompatibilidade pontual de programas de terceiros, o código de parada WHEA_UNCORRECTABLE_ERROR (bugcheck 0x00000124) possui uma natureza estritamente associada a componentes de hardware. A sigla WHEA significa Windows Hardware Error Architecture, um subsistema introduzido pela Microsoft para monitorar e consolidar diagnósticos físicos de processadores, barramentos de alta velocidade PCI Express e memória através de registradores de Machine Check Exception (MCE) integrados diretamente aos núcleos da CPU.</p>
+        <p>Quando esse erro ocorre, o processador ou o barramento PCIe comunicou ao kernel do Windows que ocorreu um erro crítico que não pôde ser corrigido pelo circuito interno de paridade e tolerância a falhas. Para evitar corrupção em cascata dos seus dados no disco de armazenamento, o sistema operacional interrompe o funcionamento de maneira imediata. Neste guia prático, apresentamos a sequência metódica de testes para isolar a causa exata sem a necessidade de trocar peças desnecessariamente.</p>
+        <p class="applies-to"><strong>Aplica-se a:</strong> Windows 11 e Windows 10 em processadores Intel e AMD</p>
 
-        <h2 id="diagnostico-tecnico">Diagnóstico e Contexto Técnico</h2>
-        <div class="tech-context-box">
-          <p>Esta falha ou dúvida relacionada a <strong>"Como Corrigir a Tela Azul WHEA_UNCORRECTABLE_ERROR no Windows 11"</strong> costuma afetar usuários no dia a dia em ambientes <strong>Windows</strong>. Em análises técnicas de suporte e relatórios de estabilidade, identificou-se que esse comportamento ocorre devido a inconsistências no sistema de arquivos, permissões de usuário ou conflitos de bibliotecas em segundo plano.</p>
-          <p>Quando os componentes de software ou registradores de rede não conseguem concluir os ciclos de comunicação, o sistema operacional gera mensagens de erro ou entra em estado de espera prolongada (timeout). Aplicar a solução correta no momento inicial evita a degradação do hardware e previne a corrupção de dados mais graves.</p>
+        <h2 id="principais-causas-whea">Causas Físicas e Lógicas do Erro 0x00000124</h2>
+        <p>A arquitetura de erro de hardware do Windows aciona essa tela azul principalmente sob quatro circunstâncias bem documentadas:</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Origem da Falha</th><th>Comportamento Típico</th><th>Solução Recomendada</th></tr></thead>
+            <tbody>
+              <tr><td>Instabilidade de Overclock ou Undervolt</td><td>Tela azul repentina sob carga de jogos ou renderização 3D pesada.</td><td>Resetar frequências e tensões de CPU e memória na BIOS/UEFI.</td></tr>
+              <tr><td>Superaquecimento de CPU ou Placa-Mãe</td><td>Computador desliga ou exibe BSOD após alguns minutos de uso intenso.</td><td>Troca de pasta térmica, limpeza de radiadores e ventoinhas.</td></tr>
+              <tr><td>Degradação ou superaquecimento de SSD NVMe</td><td>Travamento súbito do sistema com LED de atividade do disco aceso sem resposta.</td><td>Atualização de firmware de SSD e verificação de integridade SMART.</td></tr>
+              <tr><td>Firmware de BIOS desatualizado</td><td>Incompatibilidade de microcódigo com novas revisões de processadores.</td><td>Instalação da versão mais recente da BIOS disponibilizada pela fabricante.</td></tr>
+            </tbody>
+          </table>
         </div>
+        <p>Em computadores recém-montados ou que receberam upgrades de processador recente, a desatualização de microcódigo da BIOS é uma das causas mais recorrentes de relatos deste erro.</p>
 
-        <h2 id="passo-a-passo">Passo a Passo Completo de Solução</h2>
-        <p>Siga com atenção as etapas numeradas abaixo para aplicar a correção diretamente no seu dispositivo. Caso esteja em dúvida em alguma etapa, mantenha os valores originais em backup antes de alterar registros do sistema.</p>
+        <h2 id="redefinir-bios-overclock">Passo 1: Desativar Overclock e Redefinir a BIOS/UEFI para os Padrões</h2>
+        <p>A causa mais comum de erros WHEA em computadores desktop é a configuração instável de tensões (Vcore), frequências elevadas na CPU ou perfis de memória XMP/EXPO com temporizações excessivamente agressivas:</p>
         <ol class="steps-list">
-
           <li>
             <div class="step-num">1</div>
-            <div class="step-text">Reinicie o computador, acesse a BIOS/UEFI (teclas Del ou F2 durante o boot) e selecione a opção 'Load Optimized Defaults' para cancelar qualquer overclock de CPU ou RAM.</div>
+            <div class="step-text">Reinicie o computador e pressione repetidamente a tecla de acesso à BIOS (habitualmente Del, F2 ou F12, dependendo da fabricante da placa-mãe).</div>
           </li>
           <li>
             <div class="step-num">2</div>
-            <div class="step-text">Pressione Win + R, digite 'mdsched.exe', escolha 'Reiniciar agora e verificar se há problemas' e aguarde a verificação das memórias RAM.</div>
+            <div class="step-text">Navegue até o menu de encerramento ou opções de performance e selecione <strong>Load Optimized Defaults</strong> (Carregar Padrões Otimizados) ou <strong>Restore Defaults</strong>.</div>
           </li>
           <li>
             <div class="step-num">3</div>
-            <div class="step-text">Faça o download da ferramenta gratuita CrystalDiskInfo e confirme se a saúde do seu SSD/NVMe aparece como 'Saudável 100%'.</div>
+            <div class="step-text">Desative temporariamente perfis de aceleração de memória como <strong>XMP (Extreme Memory Profile)</strong> ou <strong>AMD EXPO</strong> para rodar os pentes de memória RAM em suas frequências nativas padrão JEDEC.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Pressione a tecla <strong>F10</strong> para salvar as alterações e reiniciar o computador normalmente para testar a estabilidade.</div>
+          </li>
+        </ol>
+        <div class="info-box">
+          <div class="box-content"><p>Se a tela azul cessar após essa etapa, a instabilidade residia na taxa de alimentação elétrica do processador ou na sincronização dos pentes de memória sob frequências aceleradas fora do padrão.</p></div>
+        </div>
+
+        <h2 id="monitoramento-de-temperaturas">Passo 2: Monitorar Temperaturas de Operação da CPU</h2>
+        <p>Se a bomba do water cooler falhar, o bloco estiver mal encaixado com pressão insuficiente ou a pasta térmica tiver ressecado com o tempo, a temperatura dos núcleos pode atingir 100°C instantaneamente ao abrir um jogo ou renderizador, acionando o circuito de proteção térmica via WHEA:</p>
+        <ul>
+          <li>Utilize utilitários consolidados de monitoramento de hardware (como HWMonitor, HWiNFO ou o próprio software utilitário da placa-mãe) para checar as temperaturas em repouso e sob carga.</li>
+          <li>Em repouso (Desktop sem aplicativos abertos), a CPU deve operar entre 35°C e 50°C.</li>
+          <li>Sob estresse máximo contínuo, a temperatura não deve ultrapassar de forma constante 85°C a 90°C (dependendo das especificações do fabricante do chip).</li>
+          <li>Se você notar picos imediatos para 95°C a 105°C acompanhados do congelamento do sistema, desligue o equipamento e efetue a manutenção física no sistema de refrigeração e pasta térmica.</li>
+        </ul>
+
+        <h2 id="diagnostico-de-ssd-nvme">Passo 3: Verificar a Saúde e Firmware do SSD NVMe</h2>
+        <p>Controladoras de SSDs PCIe NVMe defeituosas ou que sofrem estrangulamento térmico (thermal throttling) severo frequentemente perdem a comunicação temporária com as pistas PCIe da placa-mãe, resultando em erro WHEA:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Baixe o painel de gerenciamento oficial da marca do seu SSD (como Samsung Magician, Kingston SSD Manager, Crucial Storage Executive ou Western Digital Dashboard).</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Verifique se há atualizações de firmware pendentes para a unidade de armazenamento instalada e aplique-as conforme instruído pela fabricante.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Inspecione a tabela SMART de integridade em busca de atributos críticos como 'Critical Warning', 'Media and Data Integrity Errors' ou 'Available Spare' reduzido.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">No Prompt de Comando como Administrador, execute uma verificação lógica na partição do sistema operacional com o comando <code>chkdsk C: /f /r</code> e confirme o agendamento para o próximo reinício.</div>
           </li>
         </ol>
 
-        <h2 id="prevencao-boas-praticas">Dicas de Prevenção e Boas Práticas</h2>
-        <div class="prevention-box" style="background: #f8fafc; border-left: 4px solid var(--accent-blue); padding: 1.2rem; border-radius: 8px; margin: 1.5rem 0;">
-          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.7;">
-            <li><strong>Manutenção Regular:</strong> Mantenha seu sistema operacional e drivers de rede sempre atualizados nos canais oficiais de distribuição.</li>
-            <li><strong>Segurança e Permissões:</strong> Evite conceder privilégios administrativos irrestritos a aplicativos desconhecidos ou executáveis de fontes não verificadas.</li>
-            <li><strong>Backup Automático:</strong> Mantenha uma cópia de segurança recente dos seus arquivos mais importantes na nuvem ou em armazenamento externo offline.</li>
-          </ul>
+        <h2 id="atualizar-microcodigo-bios">Passo 4: Atualizar a BIOS da Placa-Mãe</h2>
+        <p>Fabricantes de processadores lançam atualizações periódicas de microcódigo para corrigir falhas de estabilidade na regulação de tensão e compatibilidade de barramentos PCIe. Essas correções são incorporadas pelas marcas de placas-mãe (ASUS, Gigabyte, MSI, ASRock) nas atualizações de BIOS:</p>
+        <ol class="steps-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text">Pressione as teclas <code>Windows + R</code>, digite <code>msinfo32</code> e pressione Enter para abrir as Informações do Sistema.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text">Localize os campos 'Fabricante da Placa-Base', 'Produto Base' e 'Versão/Data do BIOS'.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text">Acesse a página oficial de suporte do fabricante da sua placa-mãe e compare o número da sua versão instalada com as versões recentes disponibilizadas para download.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text">Siga rigorosamente as instruções do fabricante para instalar a atualização de BIOS (utilizando pendrive formatado em FAT32 e ferramentas como Q-Flash ou EZ Flash na própria interface da placa).</div>
+          </li>
+        </ol>
+        <div class="warning-box">
+          <div class="box-content"><p>Nunca desligue o computador da tomada nem interrompa o processo durante uma atualização de BIOS, pois isso pode corromper a memória flash da placa-mãe de forma irreversível sem equipamento especializado.</p></div>
         </div>
 
-        
-
-        <h2 id="perguntas-frequentes">Perguntas Frequentes (FAQ)</h2>
-        <div class="faq-accordion" style="margin-bottom: 2rem;">
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">1. É seguro aplicar estes comandos ou alterações no meu aparelho?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Sim! Todos os comandos e configurações recomendados no DRGTech utilizam ferramentas nativas do sistema operacional (como regedit, cmd, Ajustes do iOS ou Configurações do Android) sem a necessidade de softwares suspeitos de terceiros.</p>
+        <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <h3>O erro WHEA_UNCORRECTABLE_ERROR pode ser causado por vírus ou malware?</h3>
+            <p>É extremamente improvável. Esse erro é gerado diretamente por interrupções físicas de hardware (Machine Check Exceptions) disparadas pelos registradores da CPU e dos barramentos da placa-mãe. Vírus comuns não possuem a capacidade de forçar essa exceção específica, a menos que atuem como mineradores ocultos que causem superaquecimento extremo e imediato das peças.</p>
           </div>
-          <div class="faq-item" style="margin-bottom: 1rem; padding: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;">
-            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">2. O que fazer se o problema persistir após executar o passo a passo?</h3>
-            <p style="color: var(--text-muted); margin: 0; line-height: 1.6;">Caso o erro retorne, recomendamos reiniciar o dispositivo em Modo de Segurança para descartar conflitos com antivírus de terceiros ou enviar sua dúvida na caixa de comentários abaixo para nossa equipe analisar seu caso especificamente.</p>
+          <div class="faq-item">
+            <h3>Reinstalar o Windows 11 resolve o WHEA Uncorrectable Error?</h3>
+            <p>Na grande maioria dos casos, não. Como a origem da falha está ligada a tensões elétricas instáveis, superaquecimento, firmware desatualizado ou defeito físico em componentes de hardware (como processador, pentes de memória ou SSDs), uma simples formatação não resolverá o problema se a causa física subjacente não for tratada.</p>
+          </div>
+          <div class="faq-item">
+            <h3>O que significa o parâmetro Arg1 com valor 0x0 ou 0x4 no dump de memória?</h3>
+            <p>No relatório de despejo de memória da tela azul WHEA, o primeiro parâmetro (Arg1) indica o tipo de fonte de erro. O valor 0x0 aponta para uma Machine Check Exception disparada pelo processador; o valor 0x4 indica um erro de porta ou dispositivo de barramento PCI Express (frequentemente a placa de vídeo ou o SSD NVMe).</p>
+          </div>
+          <div class="faq-item">
+            <h3>A fonte de alimentação (PSU) pode causar erro WHEA no computador?</h3>
+            <p>Sim. Se a fonte de alimentação for de baixa qualidade ou estiver com capacitores degradados na linha de 12V, ela pode sofrer quedas súbitas de tensão (vDroop) quando o processador ou a placa de vídeo exigem pico de corrente elétrica, desestabilizando os circuitos da CPU e forçando o erro WHEA.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Quando devo acionar a garantia do processador ou placa-mãe?</h3>
+            <p>Se você redefiniu as configurações da BIOS, removeu qualquer overclock ou perfil XMP, confirmou que as temperaturas operacionais estão seguras (abaixo de 80°C) e atualizou todos os firmwares, mas o erro continua se manifestando mesmo em tarefas leves, é o momento de acionar a garantia do processador, da placa-mãe ou do SSD com o fabricante.</p>
           </div>
         </div>
 
-        <!-- Author / Trust E-E-A-T Box -->
-        <div class="author-box" style="display: flex; align-items: center; gap: 1rem; padding: 1.2rem; background: #f1f5f9; border-radius: 12px; margin-top: 2rem;">
-          <div class="author-avatar" style="width: 54px; height: 54px; border-radius: 50%; background: var(--gradient-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem;">D</div>
+        <h2 id="fontes">Fontes consultadas</h2>
+        <ul class="sources-list">
+          <li><a href="https://learn.microsoft.com/pt-br/windows-hardware/drivers/debugger/bug-check-0x124---whea-uncorrectable-error" target="_blank" rel="noopener noreferrer">Microsoft Learn — Bug Check 0x124 WHEA_UNCORRECTABLE_ERROR</a></li>
+          <li><a href="https://www.intel.com.br/content/www/br/pt/support/articles/000028083/processors.html" target="_blank" rel="noopener noreferrer">Intel — Como solucionar o erro WHEA_UNCORRECTABLE_ERROR em processadores</a></li>
+        </ul>
+
+        <div class="author-box">
+          <div class="author-avatar">R</div>
           <div class="author-info">
-            <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-main);">Revisado por Equipe Editorial DRGTech</h4>
-            <p style="margin: 0.2rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">Especialistas em Suporte Técnico, Diagnósticos de TI e Segurança da Informação. Saiba mais na nossa página <a href="../sobre.html" style="color: var(--accent-blue); text-decoration: underline;">Sobre Nós</a>.</p>
-          </div>
-        </div>
-
-        <div class="success-box" style="margin-top: 1.5rem;">
-          <div class="box-content">
-            <p><strong>Dica DRGTech:</strong> Siga as etapas na ordem listada acima. Se esta solução resolveu seu problema, avalie nosso tutorial abaixo!</p>
-          </div>
-        </div>
-
-        <!-- Feedback UX Widget ("Ajudou? 👍 / 👎") -->
-        <div class="feedback-widget" id="feedback-widget">
-          <p class="feedback-title">Esta resposta foi útil para você?</p>
-          <div class="feedback-buttons">
-            <button class="feedback-btn btn-yes" data-vote="yes">👍 Sim, ajudou!</button>
-            <button class="feedback-btn btn-no" data-vote="no">👎 Não ajudou</button>
-          </div>
-          <div class="feedback-response" id="feedback-response" style="display:none;">
-            <span class="feedback-thanks">Obrigado pelo seu feedback! Isso ajuda a melhorar nossos guias.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Question Capture ("Ainda tem dúvidas?") -->
-        <div class="question-capture-box">
-          <h3>Ainda tem dúvidas sobre este tema?</h3>
-          <p>Envie sua pergunta abaixo. Nossa equipe e sistema cadastram novas soluções diariamente!</p>
-          <form class="question-form" id="question-form">
-            <input type="text" id="user-question-input" placeholder="Escreva sua dúvida aqui..." required />
-            <button type="submit" class="question-submit-btn">Enviar Dúvida</button>
-          </form>
-          <div class="question-success-msg" id="question-success-msg" style="display:none;">
-            ✓ Sua dúvida foi registrada com sucesso e entrará na fila de produção!
+            <h4>Renato Braga</h4>
+            <p>Editor responsável pelo DRGTech. Veja como pesquisamos e corrigimos nossos guias na <a href="../politica-editorial.html">política editorial</a>. Encontrou um erro? Escreva para <a href="mailto:contato@drgtech.com.br">contato@drgtech.com.br</a>.</p>
           </div>
         </div>
 
         <div class="divider"></div>
-
-        <!-- Internal Interlinking Widget ("Teia de Aranha") -->
         <div class="related-articles">
-          <h2>Dúvidas Relacionadas</h2>
+          <h2>Leia também</h2>
           <div class="related-grid">
-
-            <a href="como-tirar-print-screen-notebook-windows.html" class="related-card">
-              <span class="related-card-title">Como Tirar Print Screen no Notebook Windows 10 e 11</span>
+            <a href="como-usar-comandos-dism-sfc-windows-11-corrigir-erros.html" class="related-card">
+              <span class="related-card-title">Como Usar DISM e SFC no Windows 11 para Reparar Arquivos do Sistema</span>
             </a>
-            <a href="como-formatar-notebook-windows-10-restaurar-fabrica.html" class="related-card">
-              <span class="related-card-title">Como Formatar o Notebook Windows 10 e Restaurar de Fábrica</span>
+            <a href="como-resolver-tela-azul-system-service-exception-windows-11.html" class="related-card">
+              <span class="related-card-title">Como Resolver a Tela Azul SYSTEM_SERVICE_EXCEPTION no Windows 11</span>
+            </a>
+            <a href="como-resolver-tela-azul-memory-management-windows-11.html" class="related-card">
+              <span class="related-card-title">Como Resolver a Tela Azul MEMORY_MANAGEMENT no Windows 11</span>
             </a>
             <a href="como-corrigir-tela-azul-dpc-watchdog-violation-windows-11.html" class="related-card">
               <span class="related-card-title">Como Corrigir a Tela Azul DPC_WATCHDOG_VIOLATION no Windows 11</span>
-            </a>
-            <a href="como-resolver-superaquecimento-processador-cpu-thermal-throttling.html" class="related-card">
-              <span class="related-card-title">Como Identificar e Resolver o Superaquecimento do Processador (Thermal Throttling)</span>
             </a>
           </div>
         </div>
@@ -238,13 +330,15 @@
 
     <aside class="toc-sidebar">
       <div class="toc-card">
-        <div class="toc-title">Neste Artigo</div>
+        <div class="toc-title">Neste artigo</div>
         <ul class="toc-list">
-          <li><a href="#diagnostico-tecnico">Diagnóstico Técnico</a></li>
-          <li><a href="#passo-a-passo">Passo a Passo</a></li>
-          <li><a href="#prevencao-boas-praticas">Prevenção e Boas Práticas</a></li>
-          <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
-          <li><a href="#feedback-widget">Avaliação de Utilidade</a></li>
+          <li><a href="#principais-causas-whea">Causas Físicas e Lógicas do Erro 0x00000124</a></li>
+          <li><a href="#redefinir-bios-overclock">Passo 1: Desativar Overclock e Redefinir a BIOS/UEFI para os Padrões</a></li>
+          <li><a href="#monitoramento-de-temperaturas">Passo 2: Monitorar Temperaturas de Operação da CPU</a></li>
+          <li><a href="#diagnostico-de-ssd-nvme">Passo 3: Verificar a Saúde e Firmware do SSD NVMe</a></li>
+          <li><a href="#atualizar-microcodigo-bios">Passo 4: Atualizar a BIOS da Placa-Mãe</a></li>
+          <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+          <li><a href="#fontes">Fontes consultadas</a></li>
         </ul>
       </div>
     </aside>
@@ -252,7 +346,9 @@
 
   <footer class="site-footer">
     <div class="footer-bottom" style="max-width: var(--max-width); margin: 0 auto;">
-      <p>© 2026 <strong>DRGTech</strong> — Todos os direitos reservados.</p>
+      <p>© 2026 <strong>DRGTech</strong>. Todos os direitos reservados.</p>
+      <!-- policy-links -->
+      <p class="footer-legal"><a href="../sobre.html">Sobre</a> · <a href="../politica-editorial.html">Política editorial</a> · <a href="../contato.html">Contato</a> · <a href="../privacidade.html">Privacidade</a> · <a href="../termos.html">Termos de uso</a></p>
       <p><a href="../index.html">← Voltar ao início</a></p>
     </div>
   </footer>
