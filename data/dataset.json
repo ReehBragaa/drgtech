@@ -1149,5 +1149,455 @@
     "duvidas_relacionadas": [103, 108, 120, 149],
     "read_time": "7 min de leitura",
     "updated_at": "agosto de 2026"
+  },
+  {
+    "id": 176,
+    "slug": "como-resolver-tela-azul-system-service-exception-windows-11",
+    "keyword_principal": "Como Resolver a Tela Azul SYSTEM_SERVICE_EXCEPTION no Windows 11",
+    "categoria": "windows",
+    "resposta_curta": "A tela azul SYSTEM_SERVICE_EXCEPTION (BSOD) ocorre devido a conflitos de drivers desatualizados, corrupção no sistema de arquivos ou incompatibilidade de software antivírus. Para resolver, execute sfc /scannow no Prompt de Comando (Admin), atualize os drivers de vídeo e chipset e verifique o arquivo de minidump em C:\\Windows\\Minidump.",
+    "passo_a_passo": [
+      "Abra o Menu Iniciar, digite 'cmd', clique com o botão direito e escolha 'Executar como Administrador'. Execute o comando 'sfc /scannow' e aguarde a reparação.",
+      "Abra o Gerenciador de Dispositivos (Win + X), expanda 'Adaptadores de vídeo' e selecione 'Atualizar driver' para corrigir falhas de renderização gráfica.",
+      "Reinicie o Windows em Modo de Segurança caso a tela azul continue ocorrendo em loop, permitindo desinstalar os softwares recentemente instalados."
+    ],
+    "duvidas_relacionadas": [102, 119, 143, 155],
+    "read_time": "8 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 177,
+    "slug": "como-resolver-erro-critical-process-died-boot-windows-11",
+    "keyword_principal": "Como Resolver o Erro CRITICAL_PROCESS_DIED no Boot do Windows 11",
+    "categoria": "windows",
+    "resposta_curta": "O erro CRITICAL_PROCESS_DIED indica que um processo essencial do kernel do Windows foi encerrado inesperadamente. Para restaurar o sistema, acesse as Opções Avançadas de Inicialização, abra o Prompt de Comando e execute o comando DISM: dism /online /cleanup-image /restorehealth seguido por um Ponto de Restauração.",
+    "passo_a_passo": [
+      "Force a reinicialização 3 vezes mantendo o botão Power pressionado para entrar na tela de Recuperação Automática do Windows.",
+      "Acesse Solução de Problemas > Opções Avançadas > Prompt de Comando e digite 'sfc /scannow /offbootdir=C:\\ /offwindir=C:\\windows'.",
+      "Caso o erro persista, selecione 'Restauração do Sistema' e escolha uma data em que o computador estava funcionando perfeitamente."
+    ],
+    "duvidas_relacionadas": [102, 127, 143, 176],
+    "read_time": "8 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 178,
+    "slug": "como-resolver-tela-azul-memory-management-windows-11",
+    "keyword_principal": "Como Resolver a Tela Azul MEMORY_MANAGEMENT no Windows 11",
+    "categoria": "windows",
+    "resposta_curta": "O código de parada MEMORY_MANAGEMENT surge quando ocorre um erro crítico na alocação de memória RAM ou no arquivo de paginação (pagefile.sys). Para reparar, execute a ferramenta Diagnóstico de Memória do Windows (mdsched.exe) e teste os módulos de memória RAM instalados no computador.",
+    "passo_a_passo": [
+      "Pressione Win + R, digite 'mdsched.exe' e selecione 'Reiniciar agora e verificar se há problemas'. Aguarde o teste completo durante o boot.",
+      "Abra as Configurações do Sistema > Sobre > Configurações Avançadas do Sistema > Desempenho > Avançado e redefina a Memória Virtual para 'Tamanho gerenciado pelo sistema'.",
+      "Desligue o computador, retire os pentes de memória RAM e limpe os contatos metálicos com uma borracha escolar branca para remover oxidação."
+    ],
+    "duvidas_relacionadas": [102, 106, 146, 155],
+    "read_time": "7 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 179,
+    "slug": "como-analisar-arquivos-minidump-dmp-crashes-windows-11",
+    "keyword_principal": "Como Analisar Arquivos de Minidump (.dmp) de Crashes no Windows 11",
+    "categoria": "windows",
+    "resposta_curta": "Os arquivos de minidump (.dmp) gravam o estado do sistema no momento exato de uma tela azul. Para identificar qual driver ou programa causou o crash, utilize a ferramenta gratuita BlueScreenView ou o WinDbg (Windows Debugger) para ler os registros salvos na pasta C:\\Windows\\Minidump.",
+    "passo_a_passo": [
+      "Faça o download da ferramenta gratuita BlueScreenView no site oficial NirSoft e abra o aplicativo.",
+      "O programa localizará automaticamente os arquivos `.dmp` na pasta `C:\\Windows\\Minidump` e destacará em vermelho o arquivo `.sys` causador da falha.",
+      "Identifique o driver associado ao arquivo marcado (ex: nvkflt.sys para Nvidia ou Realtek.sys para áudio) e reinstale-o."
+    ],
+    "duvidas_relacionadas": [102, 155, 176, 178],
+    "read_time": "7 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 180,
+    "slug": "como-corrigir-erro-0x800f0988-windows-update-windows-11",
+    "keyword_principal": "Como Corrigir o Erro 0x800f0988 no Windows Update no Windows 11",
+    "categoria": "windows",
+    "resposta_curta": "O erro 0x800f0988 ocorre quando o Windows Update falha ao descompactar arquivos de atualizações cumulativas devido a pacotes corrompidos no repositório de componentes. Para corrigir, limpe a pasta SoftwareDistribution e execute o comando dism /online /cleanup-image /startcomponentcleanup /resetbase.",
+    "passo_a_passo": [
+      "Abra o Prompt de Comando como Administrador e interrompa os serviços digitando 'net stop wuauserv' e 'net stop bits'.",
+      "Navegue até a pasta C:\\Windows\\SoftwareDistribution e apague todo o conteúdo das pastas 'Download' e 'DataStore'.",
+      "Reinicie os serviços com 'net start wuauserv' e execute 'dism /online /cleanup-image /startcomponentcleanup' antes de tentar atualizar novamente."
+    ],
+    "duvidas_relacionadas": [102, 119, 145, 153],
+    "read_time": "7 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 181,
+    "slug": "como-executar-in-place-upgrade-reparar-windows-11-sem-perder-arquivos",
+    "keyword_principal": "Como Executar um In-Place Upgrade para Reparar o Windows 11 Sem Perder Arquivos",
+    "categoria": "windows",
+    "resposta_curta": "O In-Place Upgrade é o método mais eficiente para reparar arquivos corrompidos do Windows 11 sem formatar o disco ou apagar seus programas. Basta baixar a imagem ISO oficial da Microsoft, montar o arquivo no sistema e executar o setup.exe selecionando 'Manter arquivos pessoais e aplicativos'.",
+    "passo_a_passo": [
+      "Acesse o site oficial da Microsoft e faça o download da imagem ISO do Windows 11.",
+      "Clique duas vezes no arquivo ISO baixado para montá-lo como uma unidade virtual e abra o executável 'setup.exe'.",
+      "Avance as etapas de instalação, confirme que a opção 'Manter arquivos pessoais e aplicativos' está selecionada e clique em 'Instalar'."
+    ],
+    "duvidas_relacionadas": [102, 119, 143, 153],
+    "read_time": "8 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 182,
+    "slug": "como-resolver-erro-dispositivo-usb-desconhecido-falha-descritor",
+    "keyword_principal": "Como Resolver o Erro de Dispositivo USB Desconhecido (Falha na Solicitação de Descritor)",
+    "categoria": "windows",
+    "resposta_curta": "O erro 'Dispositivo USB Desconhecido (Falha na solicitação de descritor de dispositivo)' ocorre quando o Windows não consegue negociar os protocolos de energia ou identificação da porta USB. Para resolver, desinstale o hub raiz USB no Gerenciador de Dispositivos e desative a Suspensão Seletiva de USB.",
+    "passo_a_passo": [
+      "Pressione Win + X, abra o Gerenciador de Dispositivos e expanda a categoria 'Controladores USB'.",
+      "Clique com o botão direito sobre os itens 'USB Root Hub' e 'Generic USB Hub', selecione 'Desinstalar dispositivo' e reinicie o computador.",
+      "Abra as Opções de Energia no Painel de Controle, vá em Configurações do Plano > Alterar configurações de energia avançadas > Configurações USB e defina 'Configuração de suspensão seletiva USB' como 'Desativado'."
+    ],
+    "duvidas_relacionadas": [102, 107, 127, 146],
+    "read_time": "7 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 183,
+    "slug": "como-liberar-memoria-ram-reservada-para-hardware-windows-11",
+    "keyword_principal": "Como Liberar Memória RAM Reservada para Hardware no Windows 11",
+    "categoria": "windows",
+    "resposta_curta": "Se o Windows 11 exibe grande parte da sua memória RAM como 'Reservada para Hardware' no Gerenciador de Tarefas, isso pode ser causado por limites configurados no msconfig, placa de vídeo integrada consumindo VRAM excessiva ou posicionamento incorreto dos pentes de memória no dual channel.",
+    "passo_a_passo": [
+      "Pressione Win + R, digite 'msconfig', vá na aba 'Inicialização do Sistema' > 'Opções avançadas' e certifique-se de que a opção 'Memória máxima' está desmarcada.",
+      "Acesse a BIOS/UEFI do computador e ajuste a opção 'UMA Frame Buffer Size' (memória da placa de vídeo integrada) para o valor recomendado de 1 GB ou 2 GB.",
+      "Desligue o PC e instale os módulos de memória RAM nos slots corretos da placa-mãe (geralmente slots A2 e B2 para Dual Channel)."
+    ],
+    "duvidas_relacionadas": [102, 106, 146, 178],
+    "read_time": "7 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 184,
+    "slug": "como-corrigir-falha-de-audio-windows-11-apos-atualizacao",
+    "keyword_principal": "Como Corrigir a Falha de Áudio no Windows 11 Após Atualização",
+    "categoria": "windows",
+    "resposta_curta": "Problemas de som sumindo ou ruídos estáticos após atualizações do Windows 11 costumam ser causados por substituição incorreta de drivers de áudio da Realtek ou conflito no serviço Windows Audio. Para resolver, reinicie o serviço audiosrv no serviços.msc e reinstale o driver de dispositivo genérico de alta definição.",
+    "passo_a_passo": [
+      "Pressione Win + R, digite 'services.msc', localize 'Áudio do Windows', clique com o botão direito e selecione 'Reiniciar'.",
+      "Abra o Gerenciador de Dispositivos, expanda 'Controladores de som, vídeo e jogos', clique com o botão direito sobre o dispositivo de áudio e selecione 'Atualizar driver'.",
+      "Escolha 'Procurar drivers no meu computador' > 'Permitir que eu escolha em uma lista' e selecione 'Dispositivo de Áudio de Alta Definição'."
+    ],
+    "duvidas_relacionadas": [102, 107, 127, 146],
+    "read_time": "6 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 185,
+    "slug": "como-resolver-erro-chave-produto-0x803fa067-ativacao-windows",
+    "keyword_principal": "Como Resolver o Erro de Chave de Produto 0x803fa067 na Ativação do Windows",
+    "categoria": "windows",
+    "resposta_curta": "O erro 0x803fa067 surge ao tentar atualizar o Windows 11 Home para o Windows 11 Pro utilizando uma chave de produto válida enquanto o computador está conectado à internet. Para corrigir, desconecte a internet, insira a chave genérica de atualização da Microsoft no Prompt de Comando e conclua a ativação.",
+    "passo_a_passo": [
+      "Desconecte seu computador de qualquer rede Wi-Fi ou cabo de rede Ethernet.",
+      "Abra o Prompt de Comando como Administrador e execute 'slmgr.vbs /ipk VK7JG-NPHTM-C97JM-9MPGT-3V66T' (chave genérica de upgrade para Windows Pro).",
+      "Reinicie o computador para concluir a conversão de edição, reconecte a internet e insira sua chave de licença Pro definitiva em Configurações > Ativação."
+    ],
+    "duvidas_relacionadas": [102, 119, 133, 181],
+    "read_time": "6 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 186,
+    "slug": "como-resolver-conectado-sem-internet-wifi-celular",
+    "keyword_principal": "Como Resolver a Mensagem 'Conectado Sem Internet' no Wi-Fi do Celular",
+    "categoria": "celular",
+    "resposta_curta": "O erro 'Conectado, sem internet' no Android ou iPhone indica que o celular estabeleceu conexão de rádio com o roteador, mas não conseguiu obter resposta do servidor DNS ou gateway. Para resolver, altere o IP para Estático nas configurações do Wi-Fi ou altere o servidor DNS para 1.1.1.1 (Cloudflare).",
+    "passo_a_passo": [
+      "Abra as Configurações do Wi-Fi no celular, toque no ícone de engrenagem/informações da rede conectada e selecione 'Esquecer rede'.",
+      "Reconecte-se digitando a senha, acesse as opções avançadas da rede e altere a 'Definição de IP' de DHCP para Estático.",
+      "Configure o DNS 1 para `1.1.1.1` e o DNS 2 para `8.8.8.8`, salvando as alterações e reiniciando a conexão."
+    ],
+    "duvidas_relacionadas": [101, 103, 104, 161],
+    "read_time": "6 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 187,
+    "slug": "como-resolver-erro-autenticacao-wifi-android-iphone",
+    "keyword_principal": "Como Resolver o Erro de Autenticação no Wi-Fi no Android e iPhone",
+    "categoria": "celular",
+    "resposta_curta": "O erro de falha na autenticação do Wi-Fi acontece quando o protocolo de criptografia da rede (WPA2/WPA3) entra em conflito com os arquivos de credenciais salvas no celular. Para resolver, redefina os arquivos de rede e force a reconexão alterando o Modo Avião por 15 segundos.",
+    "passo_a_passo": [
+      "Ative o 'Modo Avião' no painel de controle do celular, aguarde 15 segundos e desative-o.",
+      "Vá em Configurações > Wi-Fi, selecione a rede com erro, toque em 'Esquecer' e digite a senha novamente prestando atenção aos caracteres maiúsculos e minúsculos.",
+      "Caso persista, desligue o roteador da tomada por 30 segundos e ligue-o novamente para renovar as tabelas DHCP."
+    ],
+    "duvidas_relacionadas": [101, 103, 104, 186],
+    "read_time": "6 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 188,
+    "slug": "como-ativar-endereco-mac-privado-aleatorio-android-iphone",
+    "keyword_principal": "Como Ativar o Endereço MAC Privado (Aleatório) no Android e iPhone",
+    "categoria": "celular",
+    "resposta_curta": "O recurso de Endereço MAC Privado / Aleatório impede que roteadores e rastreadores públicos identifiquem seu smartphone ao se conectar a redes Wi-Fi. A função pode ser ativada nas propriedades avançadas da conexão sem fio no iOS e Android.",
+    "passo_a_passo": [
+      "No iPhone: Vá em Ajustes > Wi-Fi, toque no ícone 'i' ao lado da rede conectada e ative a chave 'Endereço Wi-Fi Privado'.",
+      "No Android: Vá em Configurações > Conexões > Wi-Fi, toque na engrenagem da rede > Ver mais > Tipo de endereço MAC e selecione 'Usar MAC aleatório'.",
+      "Reconecte-se à rede para aplicar o novo endereço físico mascarado."
+    ],
+    "duvidas_relacionadas": [103, 108, 161, 186],
+    "read_time": "6 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 189,
+    "slug": "como-redefinir-configuracoes-de-rede-android-iphone-sem-perder-arquivos",
+    "keyword_principal": "Como Redefinir as Configurações de Rede no Android e iPhone Sem Perder Arquivos",
+    "categoria": "celular",
+    "resposta_curta": "Redefinir as configurações de rede limpa arquivos de cache corrompidos de Wi-Fi, Bluetooth e dados móveis sem apagar fotos, contatos ou aplicativos. É o procedimento mais recomendado para resolver erros de conexão persistentes.",
+    "passo_a_passo": [
+      "No iPhone: Acesse Ajustes > Geral > Transferir ou Redefinir o iPhone > Redefinir > 'Redefinir Configurações de Rede'.",
+      "No Android: Acesse Configurações > Gerenciamento Geral (ou Sistema) > Redefinir > 'Redefinir configurações de rede Wi-Fi, móvel e Bluetooth'.",
+      "Confirme com sua senha ou biometria e aguarde o reinício do dispositivo."
+    ],
+    "duvidas_relacionadas": [103, 108, 149, 186],
+    "read_time": "6 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 190,
+    "slug": "como-resolver-tela-preta-com-som-no-celular-android-iphone",
+    "keyword_principal": "Como Resolver a Tela Preta com Som no Celular (Android e iPhone)",
+    "categoria": "celular",
+    "resposta_curta": "Quando o celular fica com a tela preta mas continua emitindo sons de notificações ou vibração, o problema geralmente é travamento do sistema de renderização do display (System UI). Para restaurar a imagem, force a reinicialização rígida (Hard Reset) pelos botões físicos.",
+    "passo_a_passo": [
+      "No iPhone: Pressione e solte o botão Aumentar Volume, pressione e solte Diminuir Volume e mantenha pressionado o botão Lateral até o logo da Maçã aparecer.",
+      "No Android: Mantenha pressionados os botões Diminuir Volume e Power simultaneamente por 10 a 15 segundos até o celular reiniciar.",
+      "Conecte o smartphone ao carregador por 15 minutos se o aparelho não responder imediatamente aos comandos de botões."
+    ],
+    "duvidas_relacionadas": [103, 108, 120, 148],
+    "read_time": "6 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 191,
+    "slug": "como-corrigir-aquecimento-excessivo-celular-durante-carregamento",
+    "keyword_principal": "Como Corrigir o Aquecimento Excessivo do Celular Durante o Carregamento",
+    "categoria": "celular",
+    "resposta_curta": "O aquecimento excessivo durante a recarga da bateria reduz a vida útil do componente e pode disparar o estrangulamento térmico. Para corrigir, evite usar o aparelho enquanto carrega, retire capinhas grossas de proteção e utilize carregadores certificados com padrão Power Delivery (PD).",
+    "passo_a_passo": [
+      "Remova capinhas de silicone ou couro espessas durante o carregamento para facilitar a dissipação de calor.",
+      "Desative funções de alto consumo como GPS, Hotspot Wi-Fi e jogos pesados enquanto o aparelho estiver conectado à tomada.",
+      "Vá nas Configurações de Bateria do celular e desative temporariamente a opção 'Carregamento Ultra Rápido' se estiver em um ambiente quente."
+    ],
+    "duvidas_relacionadas": [103, 115, 127, 147],
+    "read_time": "6 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 192,
+    "slug": "como-remover-aplicativos-sistema-bloatware-android-sem-root",
+    "keyword_principal": "Como Remover Aplicativos de Sistema (Bloatware) no Android Sem Root",
+    "categoria": "celular",
+    "resposta_curta": "Aplicativos pré-instalados de fábrica (bloatwares) consomem espaço e memória RAM em segundo plano. É possível desinstalar ou desativar esses apps com segurança utilizando o utilitário Universal Android Debloater ou comandos ADB via cabo USB sem precisar de root.",
+    "passo_a_passo": [
+      "Ative as 'Opções do Desenvolvedor' no Android tocando 7 vezes em 'Número da Versão' nas Configurações e marque a opção 'Depuração USB'.",
+      "Conecte o celular ao computador via cabo USB e abra a ferramenta Universal Android Debloater no PC.",
+      "Selecione os aplicativos desnecessários da operadora/fabricante e clique em 'Uninstall Selected' para desinstalar os pacotes."
+    ],
+    "duvidas_relacionadas": [103, 116, 127, 159],
+    "read_time": "7 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 193,
+    "slug": "como-corrigir-microfone-abafado-baixo-chamadas-celular",
+    "keyword_principal": "Como Corrigir o Microfone Abafado ou Baixo nas Chamadas do Celular",
+    "categoria": "celular",
+    "resposta_curta": "Microfone com som abafado ou baixo em ligações e áudios de aplicativos pode ser causado por acúmulo de sujeira nas aberturas físicas do celular ou pela função de 'Cancelamento de Ruído' desajustada nas configurações de acessibilidade.",
+    "passo_a_passo": [
+      "Utilize uma escova de dentes limpa e com cerdas macias para limpar delicadamente a pequena abertura do microfone na parte inferior do celular.",
+      "Remova capas de proteção que possam estar cobrindo acidentalmente o microfone secundário de redução de ruído no topo do aparelho.",
+      "Vá em Configurações > Acessibilidade > Áudio e desative/ative a opção 'Cancelamento de Ruído do Telefone' para redefinir os filtros de voz."
+    ],
+    "duvidas_relacionadas": [103, 108, 120, 149],
+    "read_time": "6 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 194,
+    "slug": "como-resolver-aviso-seguranca-fraca-wifi-celular-pc",
+    "keyword_principal": "Como Resolver o Aviso de 'Segurança Fraca' no Wi-Fi do Celular ou PC",
+    "categoria": "internet",
+    "resposta_curta": "O aviso de 'Segurança Fraca' surge no iPhone, Android ou Windows quando a rede Wi-Fi utiliza protocolos de criptografia legados e vulneráveis (como WEP ou WPA/WPA2 TKIP). Para resolver, acesse o painel do roteador e mude a criptografia para WPA3 ou WPA2-Personal (AES/CCMP).",
+    "passo_a_passo": [
+      "Abra o navegador e digite o IP do seu roteador (geralmente `192.168.1.1` ou `192.168.0.1`) com usuário e senha administrativos.",
+      "Vá para a seção de Configurações Sem Fio / Criptografia e mude o tipo de segurança de 'WPA/WPA2-Auto' para 'WPA3-Personal' ou 'WPA2-PSK (AES)'.",
+      "Salve as configurações, reinicie o roteador e reconecte seus dispositivos digitando a senha."
+    ],
+    "duvidas_relacionadas": [101, 104, 151, 161],
+    "read_time": "7 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 195,
+    "slug": "como-ativar-protocolo-seguranca-wpa3-roteador-wifi",
+    "keyword_principal": "Como Ativar o Protocolo de Segurança WPA3 no Roteador Wi-Fi",
+    "categoria": "internet",
+    "resposta_curta": "O protocolo WPA3 é o padrão mais avançado de segurança Wi-Fi, oferecendo proteção superior contra ataques de força bruta à senha da rede e criptografia de dados individualizada. A ativação é feita no painel de controle do roteador sem fio.",
+    "passo_a_passo": [
+      "Acesse o painel do roteador digitando seu IP no navegador (192.168.1.1).",
+      "Navegue até Wireless > Segurança Sem Fio e selecione o modo 'WPA3-SAE' ou 'WPA2/WPA3 Mixed' (para manter compatibilidade com aparelhos mais antigos).",
+      "Salve as alterações e atualize os drivers Wi-Fi dos computadores e celulares da casa."
+    ],
+    "duvidas_relacionadas": [101, 104, 164, 194],
+    "read_time": "6 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 196,
+    "slug": "como-configurar-dns-sobre-https-doh-chrome-firefox-edge",
+    "keyword_principal": "Como Configurar DNS Sobre HTTPS (DoH) no Chrome, Firefox e Edge",
+    "categoria": "internet",
+    "resposta_curta": "O DNS Sobre HTTPS (DoH) criptografa as pesquisas de nomes de domínio feitas pelo seu navegador, impedindo que provedores de internet e terceiros espionem os sites que você visita. O recurso pode ser ativado diretamente nas configurações do seu navegador.",
+    "passo_a_passo": [
+      "No Chrome/Edge: Vá em Configurações > Privacidade e Segurança > Segurança > 'Usar DNS Seguro' e selecione Cloudflare (1.1.1.1) ou Google.",
+      "No Firefox: Vá em Configurações > Privacidade e Segurança > DNS Sobre HTTPS e marque a opção 'Proteção Máxima'.",
+      "Acesse o site `1.1.1.1/help` para confirmar se a verificação de DoH aparece como ativada no seu navegador."
+    ],
+    "duvidas_relacionadas": [101, 104, 122, 161],
+    "read_time": "7 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 197,
+    "slug": "como-corrigir-lentidao-wifi-interferencia-canais-vizinhos",
+    "keyword_principal": "Como Corrigir a Lentidão do Wi-Fi Causada por Interferência de Canais Vizinhos",
+    "categoria": "internet",
+    "resposta_curta": "Quando vários roteadores vizinhos transmitem no mesmo canal Wi-Fi (especialmente na frequência de 2.4 GHz), ocorre congestionamento de sinal e queda acentuada de velocidade. Para corrigir, utilize o app WiFi Analyzer para descobrir o canal menos utilizado e altere o canal no painel do roteador.",
+    "passo_a_passo": [
+      "Baixe o aplicativo gratuito WiFi Analyzer no celular Android ou PC.",
+      "Analise o gráfico de canais e identifique qual canal na frequência 2.4 GHz (geralmente canais 1, 6 ou 11) tem menor interferência.",
+      "Acesse o painel do seu roteador (192.168.1.1), vá em Configurações Sem Fio e mude a seleção de Canal de 'Auto' para o canal livre identificado."
+    ],
+    "duvidas_relacionadas": [101, 104, 109, 151],
+    "read_time": "7 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 198,
+    "slug": "como-resolver-erro-dns-probe-started-abrir-sites-navegador",
+    "keyword_principal": "Como Resolver o Erro 'DNS_PROBE_STARTED' ao Abrir Sites no Navegador",
+    "categoria": "internet",
+    "resposta_curta": "O erro DNS_PROBE_STARTED surge quando o navegador tenta iniciar a resolução do endereço IP de um site, mas o serviço de DNS do sistema operacional entra em timeout. Para resolver, execute a limpeza do cache de DNS com ipconfig /flushdns no Prompt de Comando.",
+    "passo_a_passo": [
+      "Abra o Prompt de Comando como Administrador e execute 'ipconfig /flushdns'.",
+      "Em seguida, rode os comandos 'netsh winsock reset' e 'netsh int ip reset' para redefinir as pilhas de rede do Windows.",
+      "Reinicie o computador e teste o acesso aos sites novamente."
+    ],
+    "duvidas_relacionadas": [101, 104, 130, 162],
+    "read_time": "6 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 199,
+    "slug": "como-proteger-rede-wifi-desativando-conexao-automatica-redes-publicas",
+    "keyword_principal": "Como Proteger Sua Rede Wi-Fi Desativando a Conexão Automática em Redes Públicas",
+    "categoria": "internet",
+    "resposta_curta": "Deixar o celular configurado para conectar automaticamente a redes Wi-Fi públicas expõe seu dispositivo a ataques de 'Evil Twin' (roteadores falsos criados por hackers para roubar dados). Para se proteger, desative o recurso de Auto-Conexão em redes desconhecidas.",
+    "passo_a_passo": [
+      "No iPhone: Vá em Ajustes > Wi-Fi, toque no 'i' ao lado das redes públicas salvas e desative a chave 'Conexão Automática'.",
+      "No Android: Vá em Configurações > Conexões > Wi-Fi > Avançado e desative a opção 'Conectar a redes abertas automaticamente'.",
+      "Utilize sempre uma VPN confiável quando precisar utilizar conexões sem fio públicas em aeroportos ou hotéis."
+    ],
+    "duvidas_relacionadas": [101, 104, 151, 164],
+    "read_time": "6 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 200,
+    "slug": "como-bloquear-anuncios-rastreadores-rede-dns-privado",
+    "keyword_principal": "Como Bloquear Anúncios e Rastreadores em Toda a Rede com DNS Privado",
+    "categoria": "internet",
+    "resposta_curta": "É possível bloquear anúncios intrusivos, pop-ups e rastreadores de privacidade em todos os aplicativos do celular sem instalar nenhum app, basta configurar um servidor de DNS Privado como o AdGuard DNS (`dns.adguard-dns.com`) nas configurações do sistema.",
+    "passo_a_passo": [
+      "No Android: Acesse Configurações > Conexões > Mais configurações de conexão > DNS Privado.",
+      "Selecione a opção 'Nome do host do provedor de DNS privado' e digite `dns.adguard-dns.com`.",
+      "Salve as configurações. Abra seu navegador para verificar que os anúncios e rastreadores foram bloqueados."
+    ],
+    "duvidas_relacionadas": [101, 104, 161, 196],
+    "read_time": "6 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 201,
+    "slug": "como-usar-passkeys-chaves-de-acesso-substituir-senhas-seguranca",
+    "keyword_principal": "Como Usar Passkeys (Chaves de Acesso) para Substituir Senhas com Segurança",
+    "categoria": "seguranca",
+    "resposta_curta": "As Passkeys (Chaves de Acesso) são a evolução da segurança digital que substituem senhas tradicionais por autenticação criptográfica via biometria (impressão digital ou Face ID). Elas são imunes a golpes de phishing e vazamentos de banco de dados.",
+    "passo_a_passo": [
+      "Acesse as configurações de segurança da sua conta (Google, Apple, Microsoft ou WhatsApp) e selecione 'Criar uma Passkey'.",
+      "Confirme a criação utilizando o sensor de impressão digital ou reconhecimento facial do seu celular/notebook.",
+      "Na próxima vez que fizer login, basta confirmar com a biometria sem precisar digitar nenhuma senha."
+    ],
+    "duvidas_relacionadas": [105, 110, 131, 165],
+    "read_time": "7 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 202,
+    "slug": "como-detectar-bloquear-ataques-sim-swap-linha-telefonica",
+    "keyword_principal": "Como Detectar e Bloquear Ataques de SIM Swap na Sua Linha Telefônica",
+    "categoria": "seguranca",
+    "resposta_curta": "O ataque de SIM Swap ocorre quando criminosos convencem a operadora a transferir seu número de telefone para um novo chip sob controle deles. Para se proteger, defina um código PIN no chip SIM físico e altere a autenticação de 2 fatores dos seus apps de SMS para aplicativos autenticadores (Google Authenticator).",
+    "passo_a_passo": [
+      "Substitua a verificação por SMS em todas as suas contas bancárias e redes sociais por aplicativos autenticadores como Google Authenticator ou Bitwarden.",
+      "Defina uma senha PIN de segurança no chip SIM do celular indo em Configurações > Segurança > Bloqueio do cartão SIM.",
+      "Caso sua linha perca o sinal de rede celular de forma repentina ('Sem serviço'), entre em contato imediatamente com sua operadora de telefonia."
+    ],
+    "duvidas_relacionadas": [105, 110, 165, 166],
+    "read_time": "7 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 203,
+    "slug": "como-identificar-evitar-emails-anexos-maliciosos-maldoc",
+    "keyword_principal": "Como Identificar e Evitar E-mails com Anexos Maliciosos do Tipo Maldoc",
+    "categoria": "seguranca",
+    "resposta_curta": "Documentos maliciosos (Maldocs) em formato Word, Excel ou PDF utilizam macros ocultas ou falhas de software para infectar computadores com ransomware e trojans ao serem abertos. Para se proteger, nunca ative 'Habilitar Edição' ou 'Habilitar Conteúdo' em arquivos recebidos por e-mail.",
+    "passo_a_passo": [
+      "Inspecione o endereço do remetente com atenção para identificar falsificações de domínios corporativos.",
+      "Ao abrir um documento recebido por e-mail, mantenha a 'Exibição Protegida' ativada e nunca clique em 'Habilitar Macros' ou 'Habilitar Conteúdo'.",
+      "Submeta anexos suspeitos para varredura gratuita no site VirusTotal antes de abri-los localmente."
+    ],
+    "duvidas_relacionadas": [105, 110, 131, 152],
+    "read_time": "7 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 204,
+    "slug": "como-proteger-contas-golpe-engenharia-social-chamadas-falsas",
+    "keyword_principal": "Como Proteger Suas Contas Contra Golpe de Engenharia Social Via Chamadas Falsas",
+    "categoria": "seguranca",
+    "resposta_curta": "Golpes de engenharia social via telefone (Vishing) utilizam falsa central de atendimento do banco para induzir a vítima a transferir valores ou informar códigos de verificação. Lembre-se: bancos e plataformas digitais jamais solicitam senhas ou transferência de valores por telefone.",
+    "passo_a_passo": [
+      "Caso receba uma ligação informando sobre 'compra suspeita' ou 'conta invadida', desligue imediatamente a chamada.",
+      "Não forneça códigos de verificação enviados por SMS ou WhatsApp ao interlocutor da ligação.",
+      "Ligue diretamente para o número oficial impresso no verso do seu cartão bancário para confirmar qualquer pendência."
+    ],
+    "duvidas_relacionadas": [105, 110, 131, 170],
+    "read_time": "6 min de leitura",
+    "updated_at": "outubro de 2026"
+  },
+  {
+    "id": 205,
+    "slug": "como-criar-pendrive-resgate-criptografado-backup-emergencia",
+    "keyword_principal": "Como Criar um Pendrive de Resgate Criptografado para Backup de Emergência",
+    "categoria": "seguranca",
+    "resposta_curta": "Criar uma cópia de segurança em pendrive criptografado garante que seus documentos mais sensíveis fiquem protegidos contra vazamentos em caso de perda do dispositivo físico. No Windows, utilize o BitDrive ou a ferramenta gratuita VeraCrypt para proteger a unidade.",
+    "passo_a_passo": [
+      "Conecte o pendrive ao computador, abra o Meu Computador, clique com o botão direito na unidade e selecione 'Ligar BitLocker'.",
+      "Defina uma senha forte para desbloqueio do pendrive e salve a chave de recuperação em local seguro.",
+      "Aguarde a conclusão da criptografia. Agora o pendrive só poderá ter seu conteúdo lido mediante a digitação da sua senha."
+    ],
+    "duvidas_relacionadas": [105, 110, 152, 166],
+    "read_time": "7 min de leitura",
+    "updated_at": "outubro de 2026"
   }
 ]
